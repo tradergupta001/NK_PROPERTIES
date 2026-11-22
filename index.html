@@ -16,10 +16,10 @@ a{color:inherit;text-decoration:none}
 .hide{display:none!important}
 /* header */
 header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 8px;position:relative;z-index:3}
-.logo{display:flex;align-items:center;gap:8px}
-.logo svg{width:58px;height:50px}
-.logo img.owner{width:62px;height:62px;border-radius:50%;object-fit:cover;border:3px solid var(--yellow);box-shadow:0 0 0 2px rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.5);flex:none}
-.logo .nk{font-size:44px;font-weight:900;line-height:1;letter-spacing:-2px}
+.logo{display:flex;align-items:center;gap:8px;min-width:0}
+.logo .mark{position:relative;display:block;padding-top:15px;flex:none}
+.logo .mark svg{position:absolute;left:-6px;top:0;width:calc(100% + 12px);height:22px}
+.logo .nk{display:block;font-size:44px;font-weight:900;line-height:1;letter-spacing:-2px}
 .logo .tx{line-height:1.05}
 .logo .tx b{display:block;color:var(--yellow);font-size:25px;font-weight:900;letter-spacing:.5px}
 .logo .tx i{font-size:10.5px;font-style:italic;opacity:.9}
@@ -31,16 +31,14 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .menu a{display:block;padding:12px 14px;border-radius:10px;font-weight:600}
 .menu a:hover{background:#eef3ff}
 /* hero */
-.hero{position:relative;padding:18px 16px 20px;min-height:230px}
-.hero h1{font-size:clamp(24px,7vw,36px);line-height:1.2;font-weight:800;position:relative;z-index:2;max-width:64%}
+.hero{position:relative;padding:18px 16px 22px;min-height:250px}
+.hero h1{font-size:clamp(28px,8.4vw,44px);line-height:1.12;font-weight:800;position:relative;z-index:2;max-width:62%}
 .hero h1 em{color:var(--yellow);font-style:normal;display:block;white-space:nowrap}
-.hero p{position:relative;z-index:2}
-.hero p.hsub{margin-top:10px;font-size:clamp(13px,3.7vw,17px);font-weight:500;color:#dbe6ff;line-height:1.45;max-width:62%}
-.hero p.hareas{margin-top:10px;font-size:clamp(14px,4vw,18px);font-weight:800;color:var(--yellow);max-width:64%}
-.hero p s{text-decoration:none;margin:0 6px}
-.hero .art{position:absolute;right:0;top:0;width:62%;height:100%;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%),linear-gradient(180deg,transparent,#000 12%,#000 90%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 40%),linear-gradient(180deg,transparent,#000 12%,#000 90%,transparent);mask-composite:intersect}
-.hero .art svg{width:100%;height:100%}
-.hero .swoosh{position:absolute;left:16px;bottom:8px;width:360px;height:3px;background:linear-gradient(90deg,var(--yellow),transparent);border-radius:3px;z-index:2}
+.hero p.hsub{position:relative;z-index:2;margin-top:12px;font-size:clamp(14px,4.2vw,20px);font-weight:600;color:#fff;line-height:1.4;max-width:70%}
+.hero .art{position:absolute;right:0;top:0;width:66%;height:100%;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 38%),linear-gradient(180deg,transparent,#000 10%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 38%),linear-gradient(180deg,transparent,#000 10%,#000 88%,transparent);mask-composite:intersect}
+.hero .art svg,.hero .art img{width:100%;height:100%;display:block}
+.hero .art img{object-fit:cover;object-position:60% center}
+.hero .swoosh{position:absolute;left:16px;bottom:8px;width:300px;height:3px;background:linear-gradient(90deg,var(--yellow),transparent);border-radius:3px;z-index:2}
 /* search card */
 .sc{margin:6px 14px 0;background:#fff;color:var(--ink);border-radius:26px;padding:18px 16px 16px;box-shadow:0 0 0 2px rgba(59,130,246,.35),0 10px 40px rgba(20,87,214,.4);position:relative;z-index:3}
 .sc h2{font-size:25px;display:flex;align-items:center;gap:12px;margin-bottom:14px;color:#10275a}
@@ -56,7 +54,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .va{border:1.5px solid #3b82f6;background:transparent;color:#fff;border-radius:30px;padding:9px 16px;font-weight:600;font-size:16px}
 .cats{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 14px}
 .cat{height:100px;border-radius:20px;overflow:hidden;position:relative;border:2px solid #1f4fa8;cursor:pointer;background:#123}
-.cat svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.cat svg.bg,.cat img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(3,13,40,.92))}
 .cat .lb{position:absolute;left:10px;right:10px;bottom:8px;z-index:2;display:flex;align-items:center;gap:8px;font-weight:700;font-size:clamp(13px,3.8vw,17px)}
 .cat .lb>span:nth-child(2){min-width:0;line-height:1.15}
@@ -177,7 +175,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .langbar button:hover{border-color:#fff}
 html{scroll-behavior:smooth}
 body{overflow-x:hidden}
-.logo{min-width:0}
 .call.wa{animation:waPulseCall 2s ease-out infinite}
 .pbtn.g.wa{animation:waPulse 2s ease-out infinite}
 .wa{position:relative;overflow:hidden;transition:transform .2s ease,filter .2s ease}
@@ -193,9 +190,10 @@ body{overflow-x:hidden}
 @media(max-width:480px){
  header{padding:12px 10px 6px;gap:6px}
  .logo{gap:5px}
- .logo img.owner{width:44px;height:44px;border-width:2px}
- .logo .nk{font-size:30px;letter-spacing:-1px}
- .logo .tx b{font-size:17px}
+ .logo .mark{padding-top:13px}
+ .logo .mark svg{height:19px}
+ .logo .nk{font-size:32px;letter-spacing:-1px}
+ .logo .tx b{font-size:18px}
  .logo .tx i{font-size:8px;white-space:nowrap}
  .hr{gap:4px}
  .pill{font-size:11px;padding:6px 9px;gap:4px;white-space:nowrap}
@@ -210,25 +208,23 @@ body{overflow-x:hidden}
  .trust div{font-size:12.5px}.trust small{font-size:10.5px}.trust svg{width:30px;height:30px}
  .va{padding:7px 11px;font-size:14px}
 }
-@media(max-width:699px){.hero .art{width:46%}.hero h1,.hero p.hsub,.hero p.hareas{max-width:58%}}
+@media(max-width:699px){.hero .art{width:62%}.hero h1,.hero p.hsub{max-width:62%}}
 @media(max-width:480px){.reg svg{display:none}.reg{font-size:15px;padding:0 6px}.call{flex:1.5}}
 @media(max-width:440px){.pill svg{display:none}}
-@media(max-width:380px){.logo .tx i{display:none}.logo .nk{font-size:26px}}
+@media(max-width:380px){.logo .tx i{display:none}.logo .nk{font-size:28px}}
 @media(min-width:700px){
  .app{max-width:900px}
  .cats{grid-template-columns:repeat(4,1fr)}
  .cat{height:150px}
  .grid{grid-template-columns:repeat(2,1fr)}
- .hero{min-height:320px;padding:30px 24px}
- .hero h1{font-size:46px;max-width:56%}
- .hero p.hsub{font-size:20px;max-width:52%}
- .hero p.hareas{font-size:22px;max-width:56%}
+ .hero{min-height:340px;padding:30px 24px}
+ .hero h1{font-size:50px;max-width:52%}
+ .hero p.hsub{font-size:22px;max-width:52%}
  .sc{margin:6px 24px 0;padding:22px 22px 20px}
  .sec-h,.cats,.areas,.sub2{padding-left:24px;padding-right:24px}
  .mapbox,.cta{margin-left:24px;margin-right:24px}
  .trust{margin:20px 24px 0}
  .page{padding:6px 24px 24px}
- .logo img.owner{width:70px;height:70px}
 }
 @media(min-width:1000px){.app{max-width:1100px}.grid{grid-template-columns:repeat(3,1fr)}}
 </style>
@@ -238,12 +234,14 @@ body{overflow-x:hidden}
 
 <header>
   <a class="logo" href="#home">
-    <img class="owner" alt="NK Properties" src="data:image/jpeg;base64,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">
-    <span class="nk">NK</span>
+    <span class="mark">
+      <svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M3 22 50 3l47 19" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><g fill="#fff"><rect x="44" y="9" width="5" height="5"/><rect x="51" y="9" width="5" height="5"/><rect x="44" y="16" width="5" height="5"/><rect x="51" y="16" width="5" height="5"/></g></svg>
+      <span class="nk">NK</span>
+    </span>
     <span class="tx"><b>PROPERTIES</b><i>Dream • Buy • Sell • Rent • Invest</i></span>
   </a>
   <div class="hr">
-    <span class="pill"><svg width="22" height="24" viewBox="0 0 24 26"><path d="M12 1 2 5v8c0 6 4.5 10 10 12 5.500-2 10-6 10-12V5z" fill="#22c55e"/><path d="m7 13 3.500 3.500L17 10" fill="none" stroke="#fff" stroke-width="2.500" stroke-linecap="round"/></svg>Property Portal</span>
+    <span class="pill"><svg width="22" height="24" viewBox="0 0 24 26"><path d="M12 1 2 5v8c0 6 4.5 10 10 12 5.5-2 10-6 10-12V5z" fill="#22c55e"/><path d="m7 13 3.5 3.5L17 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>Property Portal</span>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="menu hide" id="menu">
@@ -261,25 +259,24 @@ body{overflow-x:hidden}
 <main id="v-home">
   <section class="hero">
     <div class="art" id="heroArt"></div>
-    <h1 data-i="h_title">Apni Zameen, Apna Makaan, Apna Plot</h1>
-    <p class="hsub" data-i="h_sub">Plot, makaan, dukaan aur krishi bhoomi - kharidein ya apni property bechein, sab ek hi jagah.</p>
-    <p class="hareas" data-i="h_areas">मुख्य क्षेत्र: टोंक | उनियारा | अलीगढ़</p>
+    <h1><span data-i="h_t1">Find Your</span><em data-i="h_t2">Dream Property</em></h1>
+    <p class="hsub" data-i="h_sub">Buy • Sell • Rent • Invest</p>
     <div class="swoosh"></div>
   </section>
 
   <section class="sc">
     <h2><svg width="46" height="40" viewBox="0 0 46 40"><path d="M3 20 23 3l20 17" fill="none" stroke="#1457d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 18v18h28V18L23 7z" fill="#1457d6"/><rect x="19" y="24" width="8" height="12" fill="#fff"/></svg><span data-i="s_title">आप क्या ढूंढ रहे हैं?</span></h2>
     <div class="tabs" id="ptabs">
-      <button class="on" data-p="buy"><svg width="26" height="24" viewBox="0 0 26 24"><path d="M2 12 13 2l11 10" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round"/><path d="M5 11v11h16V11" fill="currentColor"/><rect x="11" y="15" width="4" height="7" fill="#1457d6"/></svg><span data-i="tab_buy">Buy</span></button>
+      <button class="on" data-p="buy"><svg width="26" height="24" viewBox="0 0 26 24"><path d="M2 12 13 2l11 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M5 11v11h16V11" fill="currentColor"/><rect x="11" y="15" width="4" height="7" fill="#1457d6"/></svg><span data-i="tab_buy">Buy</span></button>
       <button data-p="rent"><svg width="28" height="24" viewBox="0 0 28 24"><path d="M2 12l6-5 5 2 5-3 8 6-7 8-3-2-3 2z" fill="#1c2f5e"/></svg><span data-i="tab_rent">Rent</span></button>
       <button data-p="sell"><svg width="26" height="24" viewBox="0 0 26 24"><rect x="2" y="12" width="5" height="10" fill="#1c2f5e"/><rect x="10" y="7" width="5" height="15" fill="#1c2f5e"/><rect x="18" y="2" width="5" height="20" fill="#1c2f5e"/></svg><span data-i="tab_sell">Sell</span></button>
     </div>
     <div class="sel">
-      <svg width="26" height="30" viewBox="0 0 26 30"><path d="M13 1C7 1 3 5.500 3 11c0 7.500 10 18 10 18s10-10.500 10-18C23 5.500 19 1 13 1z" fill="#444"/><circle cx="13" cy="11" r="4" fill="#fff"/></svg>
+      <svg width="26" height="30" viewBox="0 0 26 30"><path d="M13 1C7 1 3 5.5 3 11c0 7.5 10 18 10 18s10-10.5 10-18C23 5.5 19 1 13 1z" fill="#444"/><circle cx="13" cy="11" r="4" fill="#fff"/></svg>
       <select id="loc"></select>
       <svg width="20" height="12" viewBox="0 0 20 12"><path d="m2 2 8 8 8-8" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/></svg>
     </div>
-    <button class="btn-search" id="btnSearch"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="12" cy="12" r="8" fill="none" stroke="#fff" stroke-width="3.500"/><path d="m18 18 8 8" stroke="#fff" stroke-width="3.500" stroke-linecap="round"/></svg><span data-i="btn_search">Search Properties</span></button>
+    <button class="btn-search" id="btnSearch"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="12" cy="12" r="8" fill="none" stroke="#fff" stroke-width="3.5"/><path d="m18 18 8 8" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/></svg><span data-i="btn_search">Search Properties</span></button>
   </section>
 
   <div class="sec-h"><h3 data-i="cat_h">Popular Property Categories</h3><button class="va" id="viewAll" data-i="view_all">View All →</button></div>
@@ -287,9 +284,9 @@ body{overflow-x:hidden}
 
   <div class="trust">
     <div data-go="list"><svg viewBox="0 0 40 40"><path d="M20 3 6 8v11c0 9 6 15 14 18 8-3 14-9 14-18V8z" fill="#3b82f6"/><path d="m12 20 6 6 11-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg><span data-h="tr1">Verified<br>Properties</span></div>
-    <div data-go="list"><svg viewBox="0 0 40 40"><circle cx="20" cy="12" r="6" fill="#1457d6"/><circle cx="8" cy="15" r="4.500" fill="#1457d6"/><circle cx="32" cy="15" r="4.500" fill="#1457d6"/><path d="M8 34c0-8 5-12 12-12s12 4 12 12z" fill="#1457d6"/></svg><span data-h="tr2">Trusted<br>Agents</span></div>
+    <div data-go="list"><svg viewBox="0 0 40 40"><circle cx="20" cy="12" r="6" fill="#1457d6"/><circle cx="8" cy="15" r="4.5" fill="#1457d6"/><circle cx="32" cy="15" r="4.5" fill="#1457d6"/><path d="M8 34c0-8 5-12 12-12s12 4 12 12z" fill="#1457d6"/></svg><span data-h="tr2">Trusted<br>Agents</span></div>
     <div id="aiBtn"><svg viewBox="0 0 40 40"><path d="M7 24v-5a13 13 0 0 1 26 0v5" fill="none" stroke="#1457d6" stroke-width="4"/><rect x="3" y="21" width="8" height="12" rx="4" fill="#1457d6"/><rect x="29" y="21" width="8" height="12" rx="4" fill="#1457d6"/><path d="M33 33c0 4-4 5-9 5" fill="none" stroke="#1457d6" stroke-width="3"/></svg><span data-h="tr3">AI Assistant<small>(Hindi / English)</small></span></div>
-    <div id="waTrust" class="wa"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#22c55e"/><path d="M12 29l1.800-6A9 9 0 1 1 18 28z" fill="#fff"/><path d="M16.500 15c.5 3 3.500 6 6.500 6.500l1.500-1.800-2.500-1-1 .8c-1-.5-2-1.500-2.500-2.500l.8-1-1-2.500z" fill="#22c55e"/></svg><span data-h="tr4">Chat on<br>WhatsApp</span></div>
+    <div id="waTrust" class="wa"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#22c55e"/><path d="M12 29l1.8-6A9 9 0 1 1 18 28z" fill="#fff"/><path d="M16.5 15c.5 3 3.5 6 6.5 6.5l1.5-1.8-2.5-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2.5z" fill="#22c55e"/></svg><span data-h="tr4">Chat on<br>WhatsApp</span></div>
   </div>
 
   <div class="sec-h"><h3 data-i="ar_h">Hamare Kshetra</h3></div>
@@ -347,7 +344,7 @@ body{overflow-x:hidden}
       <label data-i="f_desc">Anya Details</label><textarea id="s_desc" data-ph="p_desc" placeholder="Road facing, registry, paas mein kya hai..."></textarea>
       <label data-i="f_photo">Property ki Photo</label>
       <div class="photos wide" id="s_ph"></div>
-      <button class="pbtn g sbtn wa" type="submit"><svg width="20" height="20" viewBox="0 0 40 40"><path d="M20 3a17 17 0 0 0-14.500 25.500L3 37l8.800-2.300A17 17 0 1 0 20 3z" fill="none" stroke="#fff" stroke-width="3.500"/><path d="M14 12c.8 6 6 11.500 12.500 13l2.200-2.800-4-1.800-1.800 1.400c-2-.9-3.800-2.700-4.700-4.700l1.400-1.800-1.800-4z" fill="#fff"/></svg><span data-i="btn_send">Property Bhejein</span></button>
+      <button class="pbtn g sbtn wa" type="submit"><svg width="20" height="20" viewBox="0 0 40 40"><path d="M20 3a17 17 0 0 0-14.5 25.5L3 37l8.8-2.3A17 17 0 1 0 20 3z" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M14 12c.8 6 6 11.5 12.5 13l2.2-2.8-4-1.8-1.8 1.4c-2-.9-3.8-2.7-4.7-4.7l1.4-1.8-1.8-4z" fill="#fff"/></svg><span data-i="btn_send">Property Bhejein</span></button>
       <p class="note" data-i="s_note">Aapka mobile number sirf NK Properties ko dikhta hai, website par nahi.</p>
     </form>
   </div>
@@ -384,7 +381,7 @@ body{overflow-x:hidden}
 
 <div class="bar">
   <a class="call wa" id="callBtn" target="_blank" rel="noopener">
-    <svg viewBox="0 0 48 48"><path d="M24 4a20 20 0 0 0-17 30l-3 10 10.500-3A20 20 0 1 0 24 4z" fill="none" stroke="#fff" stroke-width="3.500"/><path d="M17 15c1 6 7 12 14 14l3-3.500-5-2-2 1.600c-2-1-4-3-5-5l1.600-2-2-5z" fill="#fff"/></svg>
+    <svg viewBox="0 0 48 48"><path d="M24 4a20 20 0 0 0-17 30l-3 10 10.5-3A20 20 0 1 0 24 4z" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M17 15c1 6 7 12 14 14l3-3.5-5-2-2 1.6c-2-1-4-3-5-5l1.6-2-2-5z" fill="#fff"/></svg>
     <span><small data-i="bar_call">Call / WhatsApp</small><b id="phoneTxt">9785480342</b></span>
   </a>
   <button class="reg" id="regBtn"><svg width="30" height="30" viewBox="0 0 30 30"><circle cx="12" cy="9" r="6" fill="#10275a"/><path d="M1 28c0-8 5-11 11-11s11 3 11 11z" fill="#10275a"/><path d="M24 4v8M20 8h8" stroke="#10275a" stroke-width="3" stroke-linecap="round"/></svg><span data-i="reg_btn">Register / Login</span></button>
@@ -401,6 +398,16 @@ const FIREBASE_CONFIG = null;
 //    Email = <mobile number>@nkproperties.in  (jaise 9785480342@nkproperties.in), Password = aapka password
 const LOCAL_ADMIN = { phone: "9785480342", pass: "nk@12345" };
 
+/* ============ PHOTOS ============
+   Ye 5 photo index.html ke SAATH, usi folder mein rakhein:
+   hero.jpg  -> upar ka bada ghar (hero)
+   plot.jpg  -> Residential Plot
+   house.jpg -> House / Villa
+   agri.jpg  -> Agricultural Land
+   shop.jpg  -> Commercial Shop (optional, na ho to drawing dikhegi)
+   Photo na mile to apne aap neeche wali drawing dikhti hai. */
+const PHOTO = { hero:"hero.jpg", plot:"plot.jpg", house:"house.jpg", agri:"agri.jpg", shop:"shop.jpg" };
+
 const TYPES = {
   plot:{n:"Residential Plot"}, house:{n:"House / Villa"}, agri:{n:"Agricultural Land"}, shop:{n:"Commercial Shop"}
 };
@@ -409,9 +416,9 @@ m_home:["🏠 Home","🏠 होम","🏠 Home"],
 m_all:["🔎 Sabhi Properties","🔎 सभी प्रॉपर्टी","🔎 All Properties"],
 m_sell:["📝 Apni Property Daalein","📝 अपनी प्रॉपर्टी डालें","📝 List Your Property"],
 m_loc:["📍 Hamari Location (Map)","📍 हमारी लोकेशन (मैप)","📍 Our Location (Map)"],
-h_title:["Apni Zameen, Apna Makaan, Apna Plot","अपनी ज़मीन, अपना मकान, अपना प्लॉट","Your Land, Your Home, Your Plot"],
-h_sub:["Plot, makaan, dukaan aur krishi bhoomi - kharidein ya apni property bechein, sab ek hi jagah.","प्लॉट, मकान, दुकान और कृषि भूमि - खरीदें या अपनी प्रॉपर्टी बेचें, सब एक ही जगह।","Plots, houses, shops and farmland - buy or sell your property, all in one place."],
-h_areas:["मुख्य क्षेत्र: टोंक | उनियारा | अलीगढ़","मुख्य क्षेत्र: टोंक | उनियारा | अलीगढ़","Main areas: Tonk | Uniara | Aligarh"],
+h_t1:["Find Your","अपनी सपनों की","Find Your"],
+h_t2:["Dream Property","प्रॉपर्टी खोजें","Dream Property"],
+h_sub:["Buy • Sell • Rent • Invest","खरीदें • बेचें • किराया • निवेश","Buy • Sell • Rent • Invest"],
 s_title:["आप क्या ढूंढ रहे हैं?","आप क्या ढूंढ रहे हैं?","What are you looking for?"],
 tab_buy:["Buy","खरीदें","Buy"],tab_rent:["Rent","किराया","Rent"],tab_sell:["Sell","बेचें","Sell"],
 loc_ph:["जिला / शहर / गाँव चुनें","जिला / शहर / गाँव चुनें","Select district / city / village"],
@@ -503,21 +510,24 @@ const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&
 const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2600)}
 
-/* ============ art (SVG) ============ */
-function houseSVG(){return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMaxYMax meet"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27508f"/><stop offset="1" stop-color="#0c2250"/></linearGradient><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#ff9d2e"/></linearGradient></defs><rect width="400" height="260" fill="url(#sk)"/><circle cx="360" cy="40" r="2" fill="#fff"/><path d="M0 235h400v25H0z" fill="#12361f"/><ellipse cx="40" cy="190" rx="38" ry="55" fill="#0d3a22"/><ellipse cx="385" cy="170" rx="30" ry="70" fill="#0d3a22"/><rect x="80" y="130" width="260" height="105" fill="#e9edf5"/><rect x="60" y="62" width="150" height="76" fill="#cfd6e4"/><rect x="60" y="56" width="165" height="10" fill="#3a3f4a"/><rect x="210" y="40" width="40" height="95" fill="#8a5a3c"/><rect x="215" y="115" width="140" height="10" fill="#2d323d"/><rect x="95" y="145" width="45" height="75" fill="url(#gl)"/><rect x="150" y="145" width="45" height="75" fill="url(#gl)"/><rect x="265" y="140" width="62" height="80" fill="url(#gl)"/><rect x="85" y="75" width="40" height="50" fill="url(#gl)"/><rect x="135" y="75" width="40" height="50" fill="url(#gl)"/><rect x="230" y="55" width="12" height="70" fill="url(#gl)" opacity=".9"/><rect x="85" y="132" width="250" height="5" fill="#2d323d"/><rect x="160" y="228" width="60" height="6" fill="#f6c667" opacity=".7"/></svg>`}
+/* ============ art (SVG fallbacks) ============ */
+function houseSVG(){return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMaxYMax meet"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27508f"/><stop offset="1" stop-color="#0c2250"/></linearGradient><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#ff9d2e"/></linearGradient></defs><rect width="400" height="260" fill="url(#sk)"/><path d="M0 235h400v25H0z" fill="#12361f"/><ellipse cx="40" cy="190" rx="38" ry="55" fill="#0d3a22"/><ellipse cx="385" cy="170" rx="30" ry="70" fill="#0d3a22"/><rect x="80" y="130" width="260" height="105" fill="#e9edf5"/><rect x="60" y="62" width="150" height="76" fill="#cfd6e4"/><rect x="60" y="56" width="165" height="10" fill="#3a3f4a"/><rect x="210" y="40" width="40" height="95" fill="#8a5a3c"/><rect x="215" y="115" width="140" height="10" fill="#2d323d"/><rect x="95" y="145" width="45" height="75" fill="url(#gl)"/><rect x="150" y="145" width="45" height="75" fill="url(#gl)"/><rect x="265" y="140" width="62" height="80" fill="url(#gl)"/><rect x="85" y="75" width="40" height="50" fill="url(#gl)"/><rect x="135" y="75" width="40" height="50" fill="url(#gl)"/><rect x="85" y="132" width="250" height="5" fill="#2d323d"/></svg>`}
 function catSVG(t){
  const m={
- plot:`<rect width="300" height="120" fill="#7fb7e6"/><path d="M0 52h300v68H0z" fill="#5fae45"/><path d="M0 62 120 52 300 70M20 120 110 58M150 120 190 56M260 120 240 60" stroke="#e7d968" stroke-width="2.500" fill="none"/><path d="M0 52h300" stroke="#2c6b2c" stroke-width="6" stroke-dasharray="14 4 6 5"/>`,
+ plot:`<rect width="300" height="120" fill="#7fb7e6"/><path d="M0 52h300v68H0z" fill="#5fae45"/><path d="M0 62 120 52 300 70M20 120 110 58M150 120 190 56M260 120 240 60" stroke="#e7d968" stroke-width="2.5" fill="none"/>`,
  house:`<rect width="300" height="120" fill="#6fa8dc"/><rect x="110" y="30" width="110" height="80" fill="#e9edf5"/><rect x="90" y="48" width="70" height="36" fill="#c8cfdd"/><rect x="125" y="44" width="28" height="36" fill="#ffc261"/><rect x="170" y="44" width="40" height="36" fill="#ffc261"/><rect x="0" y="100" width="300" height="20" fill="#2f6b34"/>`,
  agri:`<rect width="300" height="120" fill="#f5a35a"/><circle cx="150" cy="58" r="22" fill="#ffe29a"/><rect y="62" width="300" height="58" fill="#3f9a3a"/><path d="M150 62 20 120M150 62 80 120M150 62 150 120M150 62 220 120M150 62 280 120" stroke="#7fd25a" stroke-width="5"/>`,
  shop:`<rect width="300" height="120" fill="#8fc0ee"/><rect x="95" y="20" width="120" height="90" fill="#24467f"/><g fill="#7ec3ff"><rect x="102" y="28" width="26" height="28"/><rect x="134" y="28" width="26" height="28"/><rect x="166" y="28" width="26" height="28"/><rect x="102" y="62" width="26" height="28"/><rect x="134" y="62" width="26" height="28"/><rect x="166" y="62" width="26" height="28"/></g><rect x="40" y="55" width="55" height="55" fill="#d4d9e3"/><rect y="105" width="300" height="15" fill="#3f7a3a"/>`};
  return `<svg class="bg" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice">${m[t]||m.house}</svg>`;
 }
+/* photo (jpg) dikhao; na mile to drawing */
+function catFB(el,k,keepBg){const h=catSVG(k);el.outerHTML=keepBg?h:h.replace('class="bg"','')}
+function typeImg(k,bg){return `<img ${bg?'class="bg" ':''}src="${PHOTO[k]||""}" alt="" loading="lazy" onerror="catFB(this,'${k}',${bg?1:0})">`}
 const catIcons={
- plot:'<svg width="18" height="20" viewBox="0 0 26 30"><path d="M13 1C7 1 3 5.500 3 11c0 7.500 10 18 10 18s10-10.500 10-18C23 5.500 19 1 13 1z" fill="#10275a"/><circle cx="13" cy="11" r="4" fill="#fff"/></svg>',
+ plot:'<svg width="18" height="20" viewBox="0 0 26 30"><path d="M13 1C7 1 3 5.5 3 11c0 7.5 10 18 10 18s10-10.5 10-18C23 5.5 19 1 13 1z" fill="#10275a"/><circle cx="13" cy="11" r="4" fill="#fff"/></svg>',
  house:'<svg width="20" height="18" viewBox="0 0 26 24"><path d="M2 12 13 2l11 10" fill="none" stroke="#10275a" stroke-width="3"/><path d="M5 11v11h16V11" fill="#10275a"/></svg>',
- agri:'<svg width="18" height="20" viewBox="0 0 20 24"><path d="M10 23V8M10 8C6 8 4 5 4 2c4 0 6 2 6 6zm0 0c4 0 6-3 6-6-4 0-6 2-6 6zM10 16c-4 0-6-3-6-6 4 0 6 2 6 6zm0 0c4 0 6-3 6-6-4 0-6 2-6 6z" fill="#10275a" stroke="#10275a" stroke-width="1.500"/></svg>',
- shop:'<svg width="18" height="20" viewBox="0 0 22 24"><path d="M2 8h18l-1 14H3z" fill="#10275a"/><path d="M7 8V6a4 4 0 0 1 8 0v2" fill="none" stroke="#10275a" stroke-width="2.500"/></svg>'
+ agri:'<svg width="18" height="20" viewBox="0 0 20 24"><path d="M10 23V8M10 8C6 8 4 5 4 2c4 0 6 2 6 6zm0 0c4 0 6-3 6-6-4 0-6 2-6 6zM10 16c-4 0-6-3-6-6 4 0 6 2 6 6zm0 0c4 0 6-3 6-6-4 0-6 2-6 6z" fill="#10275a" stroke="#10275a" stroke-width="1.5"/></svg>',
+ shop:'<svg width="18" height="20" viewBox="0 0 22 24"><path d="M2 8h18l-1 14H3z" fill="#10275a"/><path d="M7 8V6a4 4 0 0 1 8 0v2" fill="none" stroke="#10275a" stroke-width="2.5"/></svg>'
 };
 
 /* ============ data layer ============ */
@@ -588,11 +598,11 @@ function applySettings(){
 
 /* ============ render ============ */
 function renderCats(){
-  $("#cats").innerHTML=Object.entries(TYPES).map(([k,v])=>`<div class="cat" data-t="${k}">${catSVG(k)}<div class="lb"><span class="ic">${catIcons[k]}</span><span>${tn(k)}</span><span class="go">›</span></div></div>`).join("");
+  $("#cats").innerHTML=Object.entries(TYPES).map(([k,v])=>`<div class="cat" data-t="${k}">${typeImg(k,true)}<div class="lb"><span class="ic">${catIcons[k]}</span><span>${tn(k)}</span><span class="go">›</span></div></div>`).join("");
   document.querySelectorAll(".cat").forEach(c=>c.onclick=()=>{fType=c.dataset.t;fArea="all";fPur="all";go("list")});
 }
 function cardHTML(p){
-  const img=p.photos&&p.photos[0]?`<img src="${p.photos[0]}" alt="">`:catSVG(p.type).replace('class="bg"','');
+  const img=p.photos&&p.photos[0]?`<img src="${p.photos[0]}" alt="">`:typeImg(p.type,false);
   return `<div class="pc" data-id="${esc(p.id)}"><div class="im">${img}<span class="tag ${p.purpose==="rent"?"rent":""}">${p.purpose==="rent"?t("c_rent"):t("c_buy")}</span></div><div class="bd"><h4>${esc(p.title||TYPES[p.type]?.n)}</h4><div class="pr">${esc(p.price||t("d_ask"))}</div><div class="mt">📍 ${esc(p.village?p.village+", ":"")}${esc(an(p.area))} &nbsp;•&nbsp; ${esc(p.size||"")}</div></div></div>`;
 }
 function renderList(){
@@ -618,7 +628,7 @@ function modal(html){
 }
 function openDetail(id){
   const p=PROPS.find(x=>x.id===id);if(!p)return;
-  const gal=p.photos&&p.photos.length?p.photos.map(s=>`<img src="${s}" alt="">`).join(""):catSVG(p.type).replace('class="bg"','style="height:190px;min-width:100%"');
+  const gal=p.photos&&p.photos.length?p.photos.map(s=>`<img src="${s}" alt="">`).join(""):typeImg(p.type,false);
   const msg=`Namaste, mujhe ye property chahiye: ${p.title} (${p.village||""} ${p.area}) - ${p.price||""}`;
   modal(`<h3>${esc(p.title)}</h3><div class="gal">${gal}</div><div class="pr" style="color:#1457d6;font-weight:800;font-size:22px">${esc(p.price||t("d_ask"))}</div>
   <div class="kv"><span>${t("d_type")}</span><b>${tn(p.type)}</b><span>${t("d_area")}</span><b>${esc(an(p.area))}</b><span>${t("d_vill")}</span><b>${esc(p.village||"-")}</b><span>${t("d_size")}</span><b>${esc(p.size||"-")}</b><span>${t("d_cat")}</span><b>${p.purpose==="rent"?t("c_rent"):t("c_buy")}</b></div>
@@ -646,7 +656,6 @@ function photoPicker(box,arr){
   }
   draw();
 }
-
 function widePicker(box,arr){
   function draw(){
     box.innerHTML=(arr.length?`<div class="row2">${arr.map((s,i)=>`<div class="ph"><img src="${s}"><b data-i="${i}">×</b></div>`).join("")}</div>`:"")+
@@ -696,7 +705,7 @@ function renderAdmin(){
   $("#a-list").classList.toggle("hide",isSet);$("#a-settings").classList.toggle("hide",!isSet);
   if(isSet)return renderSettings();
   const rows=PROPS.filter(p=>aTab==="all"||p.status===aTab).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-  $("#a-list").innerHTML=rows.length?rows.map(p=>`<div class="ar"><div class="th">${p.photos&&p.photos[0]?`<img src="${p.photos[0]}">`:catSVG(p.type).replace('class="bg"','')}</div><div class="in"><h4>${esc(p.title)}</h4><div class="mt">${TYPES[p.type]?.n} • ${p.purpose==="rent"?"Rent":"Buy"} • ${esc(p.area)} ${esc(p.village||"")}</div><div class="mt">${esc(p.size||"")} • <b>${esc(p.price||"")}</b></div><div class="mt">👤 ${esc(p.sellerName||"-")} ${esc(p.sellerMobile||"")}</div><span class="st ${p.status}">${p.status}</span>
+  $("#a-list").innerHTML=rows.length?rows.map(p=>`<div class="ar"><div class="th">${p.photos&&p.photos[0]?`<img src="${p.photos[0]}">`:typeImg(p.type,false)}</div><div class="in"><h4>${esc(p.title)}</h4><div class="mt">${TYPES[p.type]?.n} • ${p.purpose==="rent"?"Rent":"Buy"} • ${esc(p.area)} ${esc(p.village||"")}</div><div class="mt">${esc(p.size||"")} • <b>${esc(p.price||"")}</b></div><div class="mt">👤 ${esc(p.sellerName||"-")} ${esc(p.sellerMobile||"")}</div><span class="st ${p.status}">${p.status}</span>
   <div class="acts" data-id="${esc(p.id)}">${p.status!=="approved"?'<button class="ok" data-a="ok">✅ Approve</button>':""}${p.status!=="rejected"?'<button class="no" data-a="no">Reject</button>':""}<button data-a="edit">✏ Edit</button><button data-a="del">🗑 Delete</button>${p.sellerMobile?`<button data-a="wa">💬 Seller</button>`:""}</div></div></div>`).join(""):`<div class="empty">Koi property nahi.</div>`;
   document.querySelectorAll("#a-list .acts button").forEach(b=>b.onclick=async()=>{
     const id=b.parentElement.dataset.id,p=PROPS.find(x=>x.id===id),a=b.dataset.a;
@@ -761,7 +770,8 @@ window.addEventListener("hashchange",route);
 
 /* ============ boot ============ */
 async function boot(){
-  $("#heroArt").innerHTML=houseSVG();
+  const ha=$("#heroArt");ha.innerHTML=`<img src="${PHOTO.hero}" alt="NK Properties">`;
+  ha.firstChild.onerror=()=>{ha.innerHTML=houseSVG()};
   await Store.init();
   S=await Store.settings();PROPS=await Store.list().catch(()=>[]);
   if(Store.mode==="firebase"){fauth.onAuthStateChanged(u=>{isAdmin=!!u;if((location.hash||"")==="#admin")showAdmin()})}
