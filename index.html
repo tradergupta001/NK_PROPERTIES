@@ -142,6 +142,8 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .acts button{border-radius:10px;padding:7px 11px;font-size:13px;font-weight:700;background:#eef2fb;color:#10275a}
 .acts .ok{background:#d4f5de;color:#0c6b2a}.acts .no{background:#fde0e2;color:#a0212d}
+.awarn{background:#fff1c9;color:#6b4300;border-radius:14px;padding:12px 14px;margin-bottom:12px;font-size:14px;line-height:1.45;font-weight:600}
+.awarn.ok{background:#d4f5de;color:#0c6b2a}
 .toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:#10275a;color:#fff;padding:12px 20px;border-radius:30px;z-index:99;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.5);max-width:90%;text-align:center}
 .sellgrid{display:grid;grid-template-columns:1fr;gap:16px}
 .sinfo{background:#12305a;border-radius:18px;padding:22px 20px;line-height:1.5}
@@ -357,14 +359,14 @@ body{overflow-x:hidden}
   <div class="sellgrid">
     <aside class="sinfo">
       <h2 data-i="s_h">Seller Panel: Apni Zameen / Makaan Daalein</h2>
-      <p data-i="s_p1">Form bharein aur photo jodein - aapki property turant website par dikhne lagegi aur jaankari hamare Admin Panel mein bhi pahunch jaati hai.</p>
+      <p data-i="s_p1">Form bharein aur photo jodein - aapki property hamare Admin Panel mein pahunchegi. Hum check karke approve karenge, uske baad wo website par dikhegi.</p>
       <ul>
         <li data-i="s_l1">Bilkul free listing</li>
         <li data-i="s_l2">Plot, makaan, dukaan, krishi bhoomi sab</li>
         <li data-i="s_l3">Photo ke saath (max 3)</li>
         <li data-i="s_l4">Hum khud aapko call / WhatsApp karenge</li>
       </ul>
-      <p data-i="s_p2">Aapki property submit karte hi website par dikhne lagegi.</p>
+      <p data-i="s_p2">Admin ke approve karte hi aapki property website par dikhne lagegi.</p>
     </aside>
     <form class="fm sform" id="sellForm">
       <input type="hidden" id="s_purpose" value="buy">
@@ -405,6 +407,7 @@ body{overflow-x:hidden}
   </div>
   <div id="a-main" class="hide">
     <h2>Admin Panel</h2>
+    <div id="a-warn"></div>
     <div class="atabs" id="atabs"></div>
     <div id="a-list"></div>
     <div id="a-settings" class="hide"></div>
@@ -431,7 +434,8 @@ body{overflow-x:hidden}
 <script>
 /* ============ CONFIG ============ */
 // 1) Firebase config yahan paste karein (Firebase Console > Project settings > Web app).
-//    Jab tak null hai, data sirf isi browser (localStorage) mein save hota hai.
+//    Jab tak null hai, data sirf isi browser (localStorage) mein save hota hai
+//    (yani dusre logon ko property nahi dikhegi aur seller ki property admin tak nahi pahunchegi).
 const FIREBASE_CONFIG = null;
 // 2) Admin login: Mobile Number + Password.
 //    Firebase mode mein Firebase Console > Authentication mein user banayein:
@@ -497,12 +501,12 @@ d_ask:["Price poochein","कीमत पूछें","Ask for price"],
 d_type:["Type","प्रकार","Type"],d_area:["Kshetra","क्षेत्र","Area"],d_vill:["Gaon / Mohalla","गाँव / मोहल्ला","Village / Locality"],
 d_size:["Size","साइज़","Size"],d_cat:["Category","श्रेणी","Category"],d_call:["Call","कॉल","Call"],
 s_h:["Seller Panel: Apni Zameen / Makaan Daalein","सेलर पैनल: अपनी ज़मीन / मकान डालें","Seller Panel: List Your Land / House"],
-s_p1:["Form bharein aur photo jodein - aapki property turant website par dikhne lagegi aur jaankari hamare Admin Panel mein bhi pahunch jaati hai.","फॉर्म भरें और फोटो जोड़ें - आपकी प्रॉपर्टी तुरंत वेबसाइट पर दिखने लगेगी और जानकारी हमारे एडमिन पैनल में भी पहुँच जाती है।","Fill in the form and add photos - your property appears on the website right away and the details also reach our Admin Panel."],
+s_p1:["Form bharein aur photo jodein - aapki property hamare Admin Panel mein pahunchegi. Hum check karke approve karenge, uske baad wo website par dikhegi.","फॉर्म भरें और फोटो जोड़ें - आपकी प्रॉपर्टी हमारे एडमिन पैनल में पहुँचेगी। हम जाँच कर अप्रूव करेंगे, उसके बाद वह वेबसाइट पर दिखेगी।","Fill in the form and add photos - your property reaches our Admin Panel. We will review and approve it, then it appears on the website."],
 s_l1:["Bilkul free listing","बिल्कुल फ्री लिस्टिंग","Completely free listing"],
 s_l2:["Plot, makaan, dukaan, krishi bhoomi sab","प्लॉट, मकान, दुकान, कृषि भूमि सब","Plots, houses, shops, farmland - all"],
 s_l3:["Photo ke saath (max 3)","फोटो के साथ (अधिकतम 3)","With photos (max 3)"],
 s_l4:["Hum khud aapko call / WhatsApp karenge","हम खुद आपको कॉल / WhatsApp करेंगे","We will call / WhatsApp you ourselves"],
-s_p2:["Aapki property submit karte hi website par dikhne lagegi.","आपकी प्रॉपर्टी सबमिट करते ही वेबसाइट पर दिखने लगेगी।","Your property will appear on the website as soon as you submit."],
+s_p2:["Admin ke approve karte hi aapki property website par dikhne lagegi.","एडमिन के अप्रूव करते ही आपकी प्रॉपर्टी वेबसाइट पर दिखने लगेगी।","Your property will appear on the website as soon as the admin approves it."],
 f_name:["Aapka Naam","आपका नाम","Your Name"],f_mob:["Mobile Number","मोबाइल नंबर","Mobile Number"],
 f_type:["Property Type","प्रॉपर्टी का प्रकार","Property Type"],f_area:["Kshetra","क्षेत्र","Area"],
 f_vill:["Gaon / Mohalla","गाँव / मोहल्ला","Village / Locality"],f_size:["Size / Area","साइज़ / क्षेत्रफल","Size / Area"],
@@ -516,8 +520,8 @@ p_price:["Jaise: 8 lakh","जैसे: 8 लाख","e.g. 8 lakh"],p_desc:["Roa
 btn_send:["Property Bhejein","प्रॉपर्टी भेजें","Submit Property"],
 s_note:["Aapka mobile number sirf NK Properties ko dikhta hai, website par nahi.","आपका मोबाइल नंबर सिर्फ NK Properties को दिखता है, वेबसाइट पर नहीं।","Your mobile number is visible only to NK Properties, not on the website."],
 pk_add:["📷 Photo jodein (max 3)","📷 फोटो जोड़ें (अधिकतम 3)","📷 Add photos (max 3)"],
-ok_h:["✅ Property website par lag gayi!","✅ प्रॉपर्टी वेबसाइट पर लग गई!","✅ Property is now live!"],
-ok_p:["Aapki property ab website par dikh rahi hai. Hum aapko jald call / WhatsApp karenge.","आपकी प्रॉपर्टी अब वेबसाइट पर दिख रही है। हम आपको जल्द कॉल / WhatsApp करेंगे।","Your property is now showing on the website. We will call / WhatsApp you soon."],
+ok_h:["✅ Property bhej di gayi!","✅ प्रॉपर्टी भेज दी गई!","✅ Property submitted!"],
+ok_p:["Aapki property Admin ke paas review ke liye pahunch gayi hai. Approve hote hi wo website par dikhne lagegi. Hum aapko jald call / WhatsApp karenge.","आपकी प्रॉपर्टी एडमिन के पास रिव्यू के लिए पहुँच गई है। अप्रूव होते ही वह वेबसाइट पर दिखने लगेगी। हम आपको जल्द कॉल / WhatsApp करेंगे।","Your property has reached the Admin for review. It will appear on the website once approved. We will call / WhatsApp you soon."],
 ok_wa:["WhatsApp par bhi bhejein","WhatsApp पर भी भेजें","Also send on WhatsApp"],
 ai_h:["AI Assistant (Hindi / English)","AI सहायक (हिंदी / English)","AI Assistant (Hindi / English)"],
 ai_p:["Aap kya dhoondh rahe hain? Apni zaroorat WhatsApp par bhejein, hum turant jawab denge.","आप क्या ढूंढ रहे हैं? अपनी ज़रूरत WhatsApp पर भेजें, हम तुरंत जवाब देंगे।","What are you looking for? Send your need on WhatsApp and we will reply right away."],
@@ -535,7 +539,7 @@ c_chips:["Plot dikhao|Makaan kiraye par|20 lakh tak zameen|Apni property bechni 
 c_greet:["Namaste! 👋 Main NK Properties ka AI Assistant hoon. Batayein - kaun si property chahiye (plot, makaan, dukaan, zameen), kis kshetra mein aur budget kitna hai?","नमस्ते! 👋 मैं NK Properties का AI सहायक हूँ। बताइए - कौन सी प्रॉपर्टी चाहिए (प्लॉट, मकान, दुकान, जमीन), किस क्षेत्र में और बजट कितना है?","Hello! 👋 I'm the NK Properties AI Assistant. Tell me what you're looking for (plot, house, shop, farmland), which area and your budget."],
 c_found:["Aapke liye {n} property mili:","आपके लिए {n} प्रॉपर्टी मिली:","I found {n} matching properties:"],
 c_none:["Is selection mein abhi koi property nahi hai. Kshetra ya budget badal kar poochein, ya WhatsApp par bataiye - hum aapke liye dhoondh denge.","इस चयन में अभी कोई प्रॉपर्टी नहीं है। क्षेत्र या बजट बदल कर पूछें, या WhatsApp पर बताइए - हम आपके लिए ढूंढ देंगे।","There are no matching properties right now. Try a different area or budget, or tell us on WhatsApp and we will find one for you."],
-c_sell:["Apni property bechne ke liye Seller form bharein - bilkul free hai aur turant website par lag jaati hai.","अपनी प्रॉपर्टी बेचने के लिए सेलर फॉर्म भरें - बिल्कुल फ्री है और तुरंत वेबसाइट पर लग जाती है।","To sell your property, fill in the Seller form - it is free and goes live on the website right away."],
+c_sell:["Apni property bechne ke liye Seller form bharein - bilkul free hai. Admin approve karte hi wo website par lag jaati hai.","अपनी प्रॉपर्टी बेचने के लिए सेलर फॉर्म भरें - बिल्कुल फ्री है। एडमिन के अप्रूव करते ही वह वेबसाइट पर लग जाती है।","To sell your property, fill in the Seller form - it is free and goes live once the admin approves it."],
 c_agent:["Agent hain? Agent Panel mein register / login karke apni properties daal aur manage kar sakte hain.","एजेंट हैं? एजेंट पैनल में रजिस्टर / लॉगिन करके अपनी प्रॉपर्टी डाल और मैनेज कर सकते हैं।","Are you an agent? Register / log in to the Agent Panel to add and manage your properties."],
 c_contact:["Aap hamein seedha Call / WhatsApp kar sakte hain: +91 {ph}","आप हमें सीधे कॉल / WhatsApp कर सकते हैं: +91 {ph}","You can call / WhatsApp us directly at +91 {ph}"],
 c_loc:["Hamare kshetra: {areas}. Office ki location ke liye Home page par Google Maps dekhein.","हमारे क्षेत्र: {areas}। ऑफिस की लोकेशन के लिए होम पेज पर Google Maps देखें।","Our areas: {areas}. See Google Maps on the Home page for our office location."],
@@ -602,7 +606,12 @@ const Store = {
     }
   },
   async list(){
-    if(this.mode==="firebase"){const s=await fdb.collection("properties").get();return s.docs.map(d=>({...d.data(),id:d.id}))}
+    if(this.mode==="firebase"){
+      // Login (admin / agent) ho to sab dikhe; warna sirf approved (rules bhi yahi allow karte hain)
+      const col=fdb.collection("properties");
+      const q=(fauth&&fauth.currentUser)?col:col.where("status","==","approved");
+      const s=await q.get();return s.docs.map(d=>({...d.data(),id:d.id}))
+    }
     try{const v=JSON.parse(localStorage.getItem("nk_props")||"null");if(v)return v}catch(e){}
     const seed=seedData();localStorage.setItem("nk_props",JSON.stringify(seed));return seed;
   },
@@ -735,14 +744,13 @@ function initSell(){
   photoPicker($("#s_ph"),sellPh);
   $("#sellForm").onsubmit=async e=>{
     e.preventDefault();
-    // Seller ki property seedha website par live hoti hai (admin baad mein reject / delete kar sakta hai)
-    const p={title:`${TYPES[$("#s_type").value].n} - ${$("#s_area").value}`,type:$("#s_type").value,purpose:$("#s_pur").value||"buy",area:$("#s_area").value,village:$("#s_vill").value.trim(),size:$("#s_size").value.trim(),price:$("#s_price").value.trim(),desc:$("#s_desc").value.trim(),photos:[...sellPh],sellerName:$("#s_name").value.trim(),sellerMobile:$("#s_mob").value.trim(),status:"approved",createdAt:Date.now()};
+    // Seller ki property pehle "pending" mein jaati hai. Admin approve kare tabhi website par dikhti hai.
+    const p={title:`${TYPES[$("#s_type").value].n} - ${$("#s_area").value}`,type:$("#s_type").value,purpose:$("#s_pur").value||"buy",area:$("#s_area").value,village:$("#s_vill").value.trim(),size:$("#s_size").value.trim(),price:$("#s_price").value.trim(),desc:$("#s_desc").value.trim(),photos:[...sellPh],sellerName:$("#s_name").value.trim(),sellerMobile:$("#s_mob").value.trim(),status:"pending",createdAt:Date.now()};
     try{await Store.save(p)}catch(err){return toast("Save nahi hua, dobara try karein")}
-    PROPS=await Store.list();
+    try{PROPS=await Store.list()}catch(err){}
     e.target.reset();sellPh.length=0;photoPicker($("#s_ph"),sellPh);applySettings();
-    fType="all";fArea="all";fPur="all";
-    location.hash="#list";
-    modal(`<h3>${t("ok_h")}</h3><p style="margin:8px 0 4px">${t("ok_p")}</p><a class="pbtn g wa" style="display:block;text-align:center;text-decoration:none" target="_blank" rel="noopener" href="${waLink(`Namaste, maine NK Properties par apni ${p.title} (${p.size}) list ki hai. Naam: ${p.sellerName}`)}">${t("ok_wa")}</a>`);
+    location.hash="#home";
+    modal(`<h3>${t("ok_h")}</h3><p style="margin:8px 0 4px">${t("ok_p")}</p><a class="pbtn g wa" style="display:block;text-align:center;text-decoration:none" target="_blank" rel="noopener" href="${waLink(`Namaste, maine NK Properties par apni ${p.title} (${p.size}) bheji hai. Naam: ${p.sellerName}`)}">${t("ok_wa")}</a>`);
   };
 }
 
@@ -753,18 +761,27 @@ async function adminLogin(phone,pass){
   const savedPass=localStorage.getItem("nk_apass")||LOCAL_ADMIN.pass;
   return phone===LOCAL_ADMIN.phone&&pass===savedPass;
 }
-function showAdmin(){
+let adminOpened=false;
+async function showAdmin(){
   $("#a-login").classList.toggle("hide",isAdmin);
   $("#a-main").classList.toggle("hide",!isAdmin);
-  if(isAdmin)renderAdmin();
+  if(isAdmin){
+    // Admin khulte hi nayi (pending) properties ka list taza karke dikhao
+    try{PROPS=await Store.list()}catch(e){}
+    if(!adminOpened){adminOpened=true;if(PROPS.some(p=>p.status==="pending"))aTab="pending"}
+    renderAdmin();
+  }
 }
 function renderAdmin(){
   const cnt=s=>PROPS.filter(p=>p.status===s).length;
-  const tabs=[["all","All",0],["approved","Live",0],["pending","Pending",cnt("pending")],["rejected","Rejected",0],["agents","👥 Agents",0],["settings","⚙ Settings",0]];
+  $("#a-warn").innerHTML=Store.mode==="local"
+    ?`<div class="awarn">⚠️ Abhi Firebase juda nahi hai, isliye data sirf is browser mein hai. Seller ki property yahan nahi aayegi aur aapki daali property dusron ko nahi dikhegi. <code>index.html</code> ke upar <code>FIREBASE_CONFIG</code> mein config paste karein.</div>`
+    :`<div class="awarn ok">✅ Online database juda hai. Seller ki property pehle yahan <b>Pending</b> mein aati hai; Approve karte hi website par dikhti hai. Aap yahan se jo daalenge wo seedha live hogi.</div>`;
+  const tabs=[["all","All",0],["pending","Pending",cnt("pending")],["approved","Live",0],["rejected","Rejected",0],["agents","👥 Agents",0],["settings","⚙ Settings",0]];
   $("#atabs").innerHTML=tabs.map(([k,n,c])=>`<button data-k="${k}" class="${aTab===k?"on":""}">${n}${c?`<b>${c}</b>`:""}</button>`).join("")+`<button id="addNew" style="background:var(--green)">➕ Nayi Property</button><button id="logoutBtn" style="background:#d92d3a">Logout</button>`;
   document.querySelectorAll("#atabs button[data-k]").forEach(b=>b.onclick=()=>{aTab=b.dataset.k;renderAdmin()});
   $("#addNew").onclick=()=>propForm();
-  $("#logoutBtn").onclick=async()=>{if(fauth)await fauth.signOut();isAdmin=false;sessionStorage.removeItem("nk_admin");showAdmin()};
+  $("#logoutBtn").onclick=async()=>{if(fauth)await fauth.signOut();isAdmin=false;adminOpened=false;sessionStorage.removeItem("nk_admin");try{PROPS=await Store.list()}catch(e){}showAdmin()};
   const isSet=aTab==="settings";
   $("#a-list").classList.toggle("hide",isSet);$("#a-settings").classList.toggle("hide",!isSet);
   if(isSet)return renderSettings();
@@ -776,9 +793,11 @@ function renderAdmin(){
     const id=b.parentElement.dataset.id,p=PROPS.find(x=>x.id===id),a=b.dataset.a;
     if(a==="edit")return propForm(p);
     if(a==="wa")return window.open(`https://wa.me/91${p.sellerMobile.replace(/\D/g,"").slice(-10)}?text=${encodeURIComponent("Namaste "+(p.sellerName||"")+", NK Properties se bol rahe hain, aapki property ke baare mein.")}`,"_blank");
-    if(a==="del"){if(!confirm("Pakka delete karein?"))return;await Store.remove(id)}
-    else{p.status=a==="ok"?"approved":"rejected";await Store.save(p)}
-    PROPS=await Store.list();renderAdmin();toast("Ho gaya");
+    try{
+      if(a==="del"){if(!confirm("Pakka delete karein?"))return;await Store.remove(id)}
+      else{p.status=a==="ok"?"approved":"rejected";await Store.save(p)}
+      PROPS=await Store.list();renderAdmin();toast(a==="ok"?"Approve ho gayi - ab website par live hai":"Ho gaya");
+    }catch(err){toast("Nahi hua: "+(err.code||err.message))}
   });
 }
 function propForm(p,agent,after){
@@ -798,8 +817,8 @@ function propForm(p,agent,after){
   m.querySelector("form").onsubmit=async ev=>{
     ev.preventDefault();const q=s=>m.querySelector(s).value.trim();
     const np={...e,title:q("#f_title"),type:q("#f_type"),purpose:q("#f_pur"),area:q("#f_area"),village:q("#f_vill"),size:q("#f_size"),price:q("#f_price"),...(agent?{sellerName:agent.name,sellerMobile:agent.mobile,agentId:agent.id,agentName:agent.name,agentMobile:agent.mobile}:{sellerName:q("#f_sn"),sellerMobile:q("#f_sm")}),desc:q("#f_desc"),photos:ph,status:"approved",createdAt:e.createdAt||Date.now()};
-    try{await Store.save(np)}catch(err){return}
-    PROPS=await Store.list();m.remove();(after||renderAdmin)();toast("Save ho gaya");
+    try{await Store.save(np)}catch(err){return toast("Save nahi hua: "+(err.code||err.message))}
+    PROPS=await Store.list();m.remove();(after||renderAdmin)();toast("Save ho gaya - website par live");
   };
 }
 function renderSettings(){
@@ -888,6 +907,7 @@ function renderAgentAuth(){
     try{
       AG=reg?await Agents.register($("#g_name").value.trim(),mob,pw,$("#g_area").value):await Agents.login(mob,pw);
       try{sessionStorage.setItem("nk_agent",AG.id)}catch(x){}
+      try{PROPS=await Store.list()}catch(x){}
       showAgent();toast(reg?"Register ho gaye!":"Login ho gaya");
     }catch(err){
       const c=String(err.code||"")+" "+String(err.message||"");
@@ -1022,7 +1042,9 @@ async function boot(){
       if(u.email.endsWith(AG_DOMAIN)){try{const d=await fdb.collection("agents").doc(u.uid).get();if(d.exists&&!d.data().blocked)AG={...d.data(),id:d.id}}catch(e){}}
       else isAdmin=u.email.endsWith("@nkproperties.in");
     }
-    const h=location.hash||"";if(h==="#admin")showAdmin();if(h==="#agent")showAgent();
+    // login badalne par list dobara laao (admin ko pending bhi dikhni chahiye)
+    try{PROPS=await Store.list()}catch(e){}
+    const h=location.hash||"";if(h==="#admin")showAdmin();if(h==="#agent")showAgent();if(h==="#list")renderList();
   })}
   else{
     isAdmin=sessionStorage.getItem("nk_admin")==="1";
