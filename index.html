@@ -437,10 +437,9 @@ body{overflow-x:hidden}
 //    Jab tak null hai, data sirf isi browser (localStorage) mein save hota hai
 //    (yani dusre logon ko property nahi dikhegi aur seller ki property admin tak nahi pahunchegi).
 const FIREBASE_CONFIG = null;
-// 2) Admin login: Mobile Number + Password.
-//    Firebase mode mein Firebase Console > Authentication mein user banayein:
-//    Email = <mobile number>@nkproperties.in  (jaise 9785480342@nkproperties.in), Password = aapka password
-const LOCAL_ADMIN = { phone: "9785480342", pass: "nk@12345" };
+// 2) Admin: code mein koi password nahi hai. Firebase Authentication mein user banayein
+//    (Email = <mobile number>@nkproperties.in) aur Firestore mein admins/<us user ki UID> document banayein.
+//    firestore.rules publish karna zaroori hai. Poore steps SETUP.md mein hain.
 
 /* ============ PHOTOS ============
    Ye 5 photo index.html ke SAATH, usi folder mein rakhein:
@@ -574,6 +573,14 @@ const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&
 const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2600)}
 
+/* Database se aaya data bharose layak nahi: photo / type / status ko jaanchein */
+const PHOTO_RE=/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/]+={0,2}$/;
+const clean=p=>({...p,
+  photos:(Array.isArray(p.photos)?p.photos:[]).filter(x=>typeof x==="string"&&PHOTO_RE.test(x)).slice(0,3),
+  type:Object.prototype.hasOwnProperty.call(TYPES,p.type)?p.type:"plot",
+  purpose:p.purpose==="rent"?"rent":"buy",
+  status:["pending","approved","rejected"].includes(p.status)?p.status:"pending"});
+
 /* ============ art (SVG fallbacks) ============ */
 function houseSVG(){return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMaxYMax meet"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27508f"/><stop offset="1" stop-color="#0c2250"/></linearGradient><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#ff9d2e"/></linearGradient></defs><rect width="400" height="260" fill="url(#sk)"/><path d="M0 235h400v25H0z" fill="#12361f"/><ellipse cx="40" cy="190" rx="38" ry="55" fill="#0d3a22"/><ellipse cx="385" cy="170" rx="30" ry="70" fill="#0d3a22"/><rect x="80" y="130" width="260" height="105" fill="#e9edf5"/><rect x="60" y="62" width="150" height="76" fill="#cfd6e4"/><rect x="60" y="56" width="165" height="10" fill="#3a3f4a"/><rect x="210" y="40" width="40" height="95" fill="#8a5a3c"/><rect x="215" y="115" width="140" height="10" fill="#2d323d"/><rect x="95" y="145" width="45" height="75" fill="url(#gl)"/><rect x="150" y="145" width="45" height="75" fill="url(#gl)"/><rect x="265" y="140" width="62" height="80" fill="url(#gl)"/><rect x="85" y="75" width="40" height="50" fill="url(#gl)"/><rect x="135" y="75" width="40" height="50" fill="url(#gl)"/><rect x="85" y="132" width="250" height="5" fill="#2d323d"/></svg>`}
 function catSVG(t){
@@ -607,24 +614,39 @@ const Store = {
   },
   async list(){
     if(this.mode==="firebase"){
-      // Login (admin / agent) ho to sab dikhe; warna sirf approved (rules bhi yahi allow karte hain)
-      const col=fdb.collection("properties");
-      const q=(fauth&&fauth.currentUser)?col:col.where("status","==","approved");
-      const s=await q.get();return s.docs.map(d=>({...d.data(),id:d.id}))
+      // Rules filter nahi karte: har query wahi maange jiski permission hai.
+      // Seller naam/mobile alag "propertyPrivate" collection mein hai.
+      const col=fdb.collection("properties"),priv=fdb.collection("propertyPrivate");
+      const rows=s=>s.docs.map(d=>({...d.data(),id:d.id}));
+      if(isAdmin){
+        const [a,b]=await Promise.all([col.get(),priv.get()]);
+        const m={};b.docs.forEach(d=>m[d.id]=d.data());
+        return rows(a).map(p=>clean({...p,...(m[p.id]||{})}));
+      }
+      const all=rows(await col.where("status","==","approved").get());
+      if(AG){const own=rows(await col.where("agentId","==",AG.id).get());own.forEach(p=>{const i=all.findIndex(x=>x.id===p.id);if(i<0)all.push(p);else all[i]=p})}
+      return all.map(clean);
     }
-    try{const v=JSON.parse(localStorage.getItem("nk_props")||"null");if(v)return v}catch(e){}
-    const seed=seedData();localStorage.setItem("nk_props",JSON.stringify(seed));return seed;
+    // Bina Firebase: sirf dekhne ke liye
+    try{const v=JSON.parse(localStorage.getItem("nk_props")||"null");if(Array.isArray(v))return v.map(p=>{const c=clean(p);delete c.sellerName;delete c.sellerMobile;return c})}catch(e){}
+    return seedData();
   },
   async save(p){
-    if(this.mode==="firebase"){const id=p.id||uid();p.id=id;await fdb.collection("properties").doc(id).set(p);return p}
-    const all=await this.list();p.id=p.id||uid();const i=all.findIndex(x=>x.id===p.id);
-    if(i>=0)all[i]=p;else all.push(p);
-    try{localStorage.setItem("nk_props",JSON.stringify(all))}catch(e){toast("Storage full - photo kam karein");throw e}
-    return p;
+    if(this.mode!=="firebase")throw new Error("Online database juda nahi hai");
+    const isNew=!p.id;p.id=p.id||fdb.collection("properties").doc().id;
+    const {id,sellerName,sellerMobile,...pub}=clean(p);
+    const batch=fdb.batch();
+    batch.set(fdb.collection("properties").doc(id),pub);
+    // Naye record ya admin ke edit par hi private jaankari likhein
+    if(isNew||isAdmin||sellerMobile!==undefined)batch.set(fdb.collection("propertyPrivate").doc(id),{sellerName:sellerName||"",sellerMobile:sellerMobile||""});
+    await batch.commit();return p;
   },
   async remove(id){
-    if(this.mode==="firebase"){await fdb.collection("properties").doc(id).delete();return}
-    const all=(await this.list()).filter(x=>x.id!==id);localStorage.setItem("nk_props",JSON.stringify(all));
+    if(this.mode!=="firebase")throw new Error("Online database juda nahi hai");
+    const batch=fdb.batch();
+    batch.delete(fdb.collection("properties").doc(id));
+    batch.delete(fdb.collection("propertyPrivate").doc(id));
+    await batch.commit();
   },
   async settings(){
     if(this.mode==="firebase"){try{const d=await fdb.collection("settings").doc("main").get();if(d.exists)return mergeSettings(d.data())}catch(e){}return {...DEF_SETTINGS}}
@@ -632,7 +654,7 @@ const Store = {
   },
   async saveSettings(s){
     if(this.mode==="firebase"){await fdb.collection("settings").doc("main").set(s);return}
-    localStorage.setItem("nk_set",JSON.stringify(s));
+    throw new Error("Online database juda nahi hai");
   }
 };
 function seedData(){
@@ -746,6 +768,11 @@ function initSell(){
     e.preventDefault();
     // Seller ki property pehle "pending" mein jaati hai. Admin approve kare tabhi website par dikhti hai.
     const p={title:`${TYPES[$("#s_type").value].n} - ${$("#s_area").value}`,type:$("#s_type").value,purpose:$("#s_pur").value||"buy",area:$("#s_area").value,village:$("#s_vill").value.trim(),size:$("#s_size").value.trim(),price:$("#s_price").value.trim(),desc:$("#s_desc").value.trim(),photos:[...sellPh],sellerName:$("#s_name").value.trim(),sellerMobile:$("#s_mob").value.trim(),status:"pending",createdAt:Date.now()};
+    if(Store.mode!=="firebase"){
+      // Database nahi hai to jhootha "bhej diya" na dikhayein; WhatsApp se bhejein
+      modal(`<h3>Online form abhi chalu nahi hai</h3><p style="margin:8px 0 4px">Aapki jaankari abhi bheji nahi gayi hai. Neeche button dabakar WhatsApp par bhejein, photo bhi wahin jodein.</p><a class="pbtn g wa" style="display:block;text-align:center" target="_blank" rel="noopener" href="${esc(waLink(`Namaste, meri property: ${p.title}, ${p.village}, ${p.size}, ${p.price}. ${p.desc} Naam: ${p.sellerName}, Mobile: ${p.sellerMobile}`))}">WhatsApp par bhejein</a>`);
+      return;
+    }
     try{await Store.save(p)}catch(err){return toast("Save nahi hua, dobara try karein")}
     try{PROPS=await Store.list()}catch(err){}
     e.target.reset();sellPh.length=0;photoPicker($("#s_ph"),sellPh);applySettings();
@@ -755,11 +782,16 @@ function initSell(){
 }
 
 /* ============ admin ============ */
+async function isAdminUser(u){
+  if(!u)return false;
+  try{return (await fdb.collection("admins").doc(u.uid).get()).exists}catch(e){return false}
+}
 async function adminLogin(phone,pass){
+  if(Store.mode!=="firebase")throw new Error("Admin login ke liye Firebase jodna zaroori hai");
   phone=String(phone).replace(/\D/g,"").slice(-10);
-  if(Store.mode==="firebase"){await fauth.signInWithEmailAndPassword(phone+"@nkproperties.in",pass);return true}
-  const savedPass=localStorage.getItem("nk_apass")||LOCAL_ADMIN.pass;
-  return phone===LOCAL_ADMIN.phone&&pass===savedPass;
+  const cred=await fauth.signInWithEmailAndPassword(phone+"@nkproperties.in",pass);
+  if(!await isAdminUser(cred.user)){await fauth.signOut();return false}
+  isAdmin=true;AG=null;return true;
 }
 let adminOpened=false;
 async function showAdmin(){
@@ -774,14 +806,12 @@ async function showAdmin(){
 }
 function renderAdmin(){
   const cnt=s=>PROPS.filter(p=>p.status===s).length;
-  $("#a-warn").innerHTML=Store.mode==="local"
-    ?`<div class="awarn">⚠️ Abhi Firebase juda nahi hai, isliye data sirf is browser mein hai. Seller ki property yahan nahi aayegi aur aapki daali property dusron ko nahi dikhegi. <code>index.html</code> ke upar <code>FIREBASE_CONFIG</code> mein config paste karein.</div>`
-    :`<div class="awarn ok">✅ Online database juda hai. Seller ki property pehle yahan <b>Pending</b> mein aati hai; Approve karte hi website par dikhti hai. Aap yahan se jo daalenge wo seedha live hogi.</div>`;
+  $("#a-warn").innerHTML=`<div class="awarn ok">✅ Online database juda hai. Seller ki property pehle yahan <b>Pending</b> mein aati hai; Approve karte hi website par dikhti hai.</div>`;
   const tabs=[["all","All",0],["pending","Pending",cnt("pending")],["approved","Live",0],["rejected","Rejected",0],["agents","👥 Agents",0],["settings","⚙ Settings",0]];
   $("#atabs").innerHTML=tabs.map(([k,n,c])=>`<button data-k="${k}" class="${aTab===k?"on":""}">${n}${c?`<b>${c}</b>`:""}</button>`).join("")+`<button id="addNew" style="background:var(--green)">➕ Nayi Property</button><button id="logoutBtn" style="background:#d92d3a">Logout</button>`;
   document.querySelectorAll("#atabs button[data-k]").forEach(b=>b.onclick=()=>{aTab=b.dataset.k;renderAdmin()});
   $("#addNew").onclick=()=>propForm();
-  $("#logoutBtn").onclick=async()=>{if(fauth)await fauth.signOut();isAdmin=false;adminOpened=false;sessionStorage.removeItem("nk_admin");try{PROPS=await Store.list()}catch(e){}showAdmin()};
+  $("#logoutBtn").onclick=async()=>{if(fauth)await fauth.signOut();isAdmin=false;adminOpened=false;try{PROPS=await Store.list()}catch(e){}showAdmin()};
   const isSet=aTab==="settings";
   $("#a-list").classList.toggle("hide",isSet);$("#a-settings").classList.toggle("hide",!isSet);
   if(isSet)return renderSettings();
@@ -812,13 +842,13 @@ function propForm(p,agent,after){
   ${agent?"":`<div class="r2"><div><label>Seller Naam</label><input id="f_sn" value="${esc(e.sellerName||"")}"></div><div><label>Seller Mobile</label><input id="f_sm" type="tel" value="${esc(e.sellerMobile||"")}"></div></div>`}
   <label>Description</label><textarea id="f_desc">${esc(e.desc||"")}</textarea>
   <label>Photos (max 3)</label><div class="photos" id="f_ph"></div>
-  <button class="pbtn g" type="submit">✅ Website par Lagayein</button></form>`);
+  <button class="pbtn g" type="submit">${agent?"📨 Approval ke liye bhejein":"✅ Website par Lagayein"}</button></form>`);
   photoPicker(m.querySelector("#f_ph"),ph);
   m.querySelector("form").onsubmit=async ev=>{
     ev.preventDefault();const q=s=>m.querySelector(s).value.trim();
-    const np={...e,title:q("#f_title"),type:q("#f_type"),purpose:q("#f_pur"),area:q("#f_area"),village:q("#f_vill"),size:q("#f_size"),price:q("#f_price"),...(agent?{sellerName:agent.name,sellerMobile:agent.mobile,agentId:agent.id,agentName:agent.name,agentMobile:agent.mobile}:{sellerName:q("#f_sn"),sellerMobile:q("#f_sm")}),desc:q("#f_desc"),photos:ph,status:"approved",createdAt:e.createdAt||Date.now()};
+    const np={...e,title:q("#f_title"),type:q("#f_type"),purpose:q("#f_pur"),area:q("#f_area"),village:q("#f_vill"),size:q("#f_size"),price:q("#f_price"),...(agent?{sellerName:agent.name,sellerMobile:agent.mobile,agentId:agent.id,agentName:agent.name,agentMobile:agent.mobile}:{sellerName:q("#f_sn"),sellerMobile:q("#f_sm")}),desc:q("#f_desc"),photos:ph,status:agent?"pending":"approved",createdAt:e.createdAt||Date.now()};
     try{await Store.save(np)}catch(err){return toast("Save nahi hua: "+(err.code||err.message))}
-    PROPS=await Store.list();m.remove();(after||renderAdmin)();toast("Save ho gaya - website par live");
+    PROPS=await Store.list();m.remove();(after||renderAdmin)();toast(agent?"Save ho gaya - Admin approval ke baad live hogi":"Save ho gaya - website par live");
   };
 }
 function renderSettings(){
@@ -826,13 +856,11 @@ function renderSettings(){
   <label>Phone / WhatsApp Number (10 digit)</label><input id="st_phone" value="${esc(S.phone)}" maxlength="10">
   <label>Kshetra list (comma se alag karein)</label><textarea id="st_areas">${esc(S.areas.join(", "))}</textarea>
   <button class="pbtn" type="submit">Settings Save Karein</button></form>
-  ${Store.mode==="local"?`<form class="fm" id="pwForm" style="margin-top:14px"><label>Naya Admin Password</label><input id="st_pw" type="text" minlength="6" required><button class="pbtn y" type="submit">Password Badlein</button><p class="note">Local mode: data aur password sirf is browser mein hain. Sab devices par chalane ke liye Firebase jodein (index.html ke upar CONFIG).</p></form>`:""}
   <div class="fm" style="margin-top:14px"><label>Backup</label><div class="row"><button class="pbtn" id="bkExp" type="button">Export JSON</button><label class="pbtn y" style="text-align:center;margin:16px 0 0;font-size:16px;color:#10275a">Import<input id="bkImp" type="file" accept="application/json" hidden></label></div></div>`;
   $("#setForm").onsubmit=async ev=>{ev.preventDefault();
     const ph=$("#st_phone").value.replace(/\D/g,"");if(ph.length!==10)return toast("10 digit number daalein");
     const areas=$("#st_areas").value.split(",").map(s=>s.trim()).filter(Boolean);if(!areas.length)return toast("Kam se kam ek kshetra");
     S={...S,phone:ph,areas,ver:SET_VER};await Store.saveSettings(S);applySettings();toast("Settings save ho gayi")};
-  const pw=$("#pwForm");if(pw)pw.onsubmit=ev=>{ev.preventDefault();localStorage.setItem("nk_apass",$("#st_pw").value);toast("Password badal gaya")};
   $("#bkExp").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify({props:PROPS,settings:S})],{type:"application/json"}));a.download="nk-backup.json";a.click()};
   $("#bkImp").onchange=async ev=>{try{const d=JSON.parse(await ev.target.files[0].text());for(const p of d.props||[])await Store.save(p);if(d.settings){S={...S,...d.settings};await Store.saveSettings(S)}PROPS=await Store.list();applySettings();renderAdmin();toast("Import ho gaya")}catch(err){toast("File galat hai")}};
 }
@@ -840,61 +868,55 @@ function renderSettings(){
 /* ============ agents ============ */
 const AG_DOMAIN="@agent.nkproperties.in";
 let AG=null, gMode="login";
-async function hashPw(s){
-  try{if(window.crypto&&crypto.subtle){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("nk:"+s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}}catch(e){}
-  let h=5381;for(const c of "nk:"+s)h=((h<<5)+h+c.charCodeAt(0))|0;return "x"+h;
-}
+let agBusy=false;
 const Agents={
-  async list(){
-    if(Store.mode==="firebase"){const s=await fdb.collection("agents").get();return s.docs.map(d=>({...d.data(),id:d.id}))}
-    try{return JSON.parse(localStorage.getItem("nk_agents")||"[]")}catch(e){return []}
-  },
-  async put(a){
-    if(Store.mode==="firebase"){await fdb.collection("agents").doc(a.id).set(a);return}
-    const all=await this.list();const i=all.findIndex(x=>x.id===a.id);if(i>=0)all[i]=a;else all.push(a);
-    localStorage.setItem("nk_agents",JSON.stringify(all));
-  },
-  async del(id){
-    if(Store.mode==="firebase"){await fdb.collection("agents").doc(id).delete();return}
-    localStorage.setItem("nk_agents",JSON.stringify((await this.list()).filter(x=>x.id!==id)));
-  },
-  async register(name,mobile,pass,area){
-    if(Store.mode==="firebase"){
-      const cred=await fauth.createUserWithEmailAndPassword(mobile+AG_DOMAIN,pass);
-      const a={id:cred.user.uid,name,mobile,area,blocked:false,createdAt:Date.now()};
-      await fdb.collection("agents").doc(a.id).set(a);return a;
+  async list(){const s=await fdb.collection("agents").get();return s.docs.map(d=>({...d.data(),id:d.id}))},
+  async put(a){const {id,...d}=a;await fdb.collection("agents").doc(id).set(d)},
+  async del(id){await fdb.collection("agents").doc(id).delete()},
+  async register(name,mobile,pass,area,code){
+    const email=mobile+AG_DOMAIN;let cred,created=false;
+    try{cred=await fauth.createUserWithEmailAndPassword(email,pass);created=true}
+    catch(e){if(e.code!=="auth/email-already-in-use")throw e;cred=await fauth.signInWithEmailAndPassword(email,pass)}
+    const a={name,mobile,area,inviteCode:code,blocked:false,createdAt:Date.now()};
+    try{
+      // Dono ek saath; invitation galat / purana / use ho chuka ho to rules dono rok dete hain
+      const batch=fdb.batch();
+      batch.set(fdb.collection("agents").doc(cred.user.uid),a);
+      batch.update(fdb.collection("invites").doc(code),{usedBy:cred.user.uid});
+      await batch.commit();
+    }catch(e){
+      if(created){try{await cred.user.delete()}catch(x){}}
+      await fauth.signOut();throw new Error("invite");
     }
-    const all=await this.list();
-    if(all.some(x=>x.mobile===mobile))throw new Error("exists");
-    const a={id:uid(),name,mobile,area,hash:await hashPw(pass),blocked:false,createdAt:Date.now()};
-    await this.put(a);return a;
+    return {...a,id:cred.user.uid};
   },
   async login(mobile,pass){
-    if(Store.mode==="firebase"){
-      const cred=await fauth.signInWithEmailAndPassword(mobile+AG_DOMAIN,pass);
-      const d=await fdb.collection("agents").doc(cred.user.uid).get();
-      if(!d.exists){await fauth.signOut();throw new Error("Agent record nahi mila")}
-      const a={...d.data(),id:d.id};
-      if(a.blocked){await fauth.signOut();throw new Error("Aapka account band hai")}
-      return a;
-    }
-    const a=(await this.list()).find(x=>x.mobile===mobile);
-    if(!a||a.hash!==await hashPw(pass))throw new Error("Number ya password galat hai");
-    if(a.blocked)throw new Error("Aapka account band hai");
+    const cred=await fauth.signInWithEmailAndPassword(mobile+AG_DOMAIN,pass);
+    const d=await fdb.collection("agents").doc(cred.user.uid).get();
+    if(!d.exists){await fauth.signOut();throw new Error("Agent record nahi mila")}
+    const a={...d.data(),id:d.id};
+    if(a.blocked){await fauth.signOut();throw new Error("Aapka account band hai")}
     return a;
   }
 };
+/* 7 din ka, ek baar chalne wala invitation, ek hi mobile number ke liye */
+async function createInvite(mobile){
+  const code=[...crypto.getRandomValues(new Uint8Array(16))].map(x=>x.toString(16).padStart(2,"0")).join("");
+  await fdb.collection("invites").doc(code).set({mobile,usedBy:null,expiresAt:firebase.firestore.Timestamp.fromMillis(Date.now()+7*864e5)});
+  return code;
+}
 function showAgent(){
   $("#g-login").classList.toggle("hide",!!AG);
   $("#g-main").classList.toggle("hide",!AG);
   if(AG)renderAgent();else renderAgentAuth();
 }
 function renderAgentAuth(){
+  if(Store.mode!=="firebase"){$("#g-login").innerHTML=`<h2>Agent Panel</h2><p class="sub">Agent Panel abhi band hai. Online database judne ke baad chalu hoga.</p>`;return}
   const reg=gMode==="reg";
-  $("#g-login").innerHTML=`<h2>Agent Panel</h2><p class="sub">Property agents ke liye alag panel - register karein, apni properties daalein aur manage karein.</p>
-  <div class="gtabs"><button data-g="login" class="${reg?"":"on"}">Login</button><button data-g="reg" class="${reg?"on":""}">Register</button></div>
+  $("#g-login").innerHTML=`<h2>Agent Panel</h2><p class="sub">Property agents ke liye alag panel - invitation se register karein ya login karein.</p>
+  <div class="gtabs"><button data-g="login" class="${reg?"":"on"}">Login</button><button data-g="reg" class="${reg?"on":""}">Invitation se Register</button></div>
   <form class="fm" id="agForm">
-    ${reg?`<label>Aapka Naam</label><input id="g_name" required>`:""}
+    ${reg?`<label>Invitation Code (Admin se milega)</label><input id="g_code" required pattern="[0-9a-f]{32}" autocomplete="off"><label>Aapka Naam</label><input id="g_name" required>`:""}
     <label>Mobile Number</label><input id="g_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required autocomplete="username" placeholder="10 digit number">
     ${reg?`<label>Kaam ka Kshetra</label><select id="g_area">${S.areas.map(a=>`<option value="${esc(a)}">${esc(an(a))}</option>`).join("")}</select>`:""}
     <label>Password${reg?" (kam se kam 6 akshar)":""}</label><input id="g_pass" type="password" required ${reg?'minlength="6"':""} autocomplete="${reg?"new-password":"current-password"}">
@@ -904,15 +926,16 @@ function renderAgentAuth(){
   $("#agForm").onsubmit=async e=>{
     e.preventDefault();
     const mob=$("#g_mob").value.replace(/\D/g,"").slice(-10),pw=$("#g_pass").value;
+    agBusy=true;
     try{
-      AG=reg?await Agents.register($("#g_name").value.trim(),mob,pw,$("#g_area").value):await Agents.login(mob,pw);
-      try{sessionStorage.setItem("nk_agent",AG.id)}catch(x){}
+      AG=reg?await Agents.register($("#g_name").value.trim(),mob,pw,$("#g_area").value,$("#g_code").value.trim()):await Agents.login(mob,pw);
+      isAdmin=false;
       try{PROPS=await Store.list()}catch(x){}
       showAgent();toast(reg?"Register ho gaye!":"Login ho gaya");
     }catch(err){
       const c=String(err.code||"")+" "+String(err.message||"");
-      toast(c.includes("already")||c.includes("exists")?"Ye number pehle se registered hai":c.includes("weak")?"Password kam se kam 6 akshar ka rakhein":c.includes("band")?"Aapka account band hai":"Number ya password galat hai");
-    }
+      toast(c.includes("invite")?"Invitation code galat, purana ya use ho chuka hai, ya is number ka nahi hai":c.includes("already")?"Ye number pehle se registered hai":c.includes("weak")?"Password kam se kam 6 akshar ka rakhein":c.includes("band")?"Aapka account band hai":"Number ya password galat hai");
+    }finally{agBusy=false}
   };
 }
 function renderAgent(){
@@ -923,7 +946,7 @@ function renderAgent(){
   <div class="atabs"><button id="gAdd" style="background:var(--green)">➕ Nayi Property</button><button id="gOut" style="background:#d92d3a">Logout</button></div>
   <div id="g-list">${rows||`<div class="empty">Abhi koi property nahi. "Nayi Property" dabakar apni pehli property daalein.</div>`}</div>`;
   $("#gAdd").onclick=()=>propForm(null,AG,renderAgent);
-  $("#gOut").onclick=async()=>{if(fauth)await fauth.signOut();AG=null;try{sessionStorage.removeItem("nk_agent")}catch(x){}showAgent()};
+  $("#gOut").onclick=async()=>{if(fauth)await fauth.signOut();AG=null;showAgent()};
   document.querySelectorAll("#g-list .acts button").forEach(b=>b.onclick=async()=>{
     const id=b.parentElement.dataset.id,p=PROPS.find(x=>x.id===id);
     if(!p||p.agentId!==AG.id)return;
@@ -935,6 +958,14 @@ function renderAgent(){
 async function renderAgentsAdmin(){
   const list=(await Agents.list()).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
   $("#a-list").innerHTML=list.length?list.map(a=>{const n=PROPS.filter(p=>p.agentId===a.id).length;return `<div class="ar"><div class="in"><h4>🧑‍💼 ${esc(a.name)}</h4><div class="mt">📞 ${esc(a.mobile)} • 📍 ${esc(a.area||"-")}</div><div class="mt">Properties: <b>${n}</b></div><span class="st ${a.blocked?"rejected":"approved"}">${a.blocked?"blocked":"active"}</span><div class="acts" data-id="${esc(a.id)}"><button data-a="blk">${a.blocked?"✅ Unblock":"⛔ Block"}</button><button data-a="wa">💬 WhatsApp</button><button data-a="del">🗑 Delete</button></div></div></div>`}).join(""):`<div class="empty">Abhi koi agent register nahi hua.</div>`;
+  $("#a-list").insertAdjacentHTML("afterbegin",`<form class="fm" id="invForm" style="margin-bottom:14px"><label>Naye Agent ka Mobile Number</label><input id="inv_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required><button class="pbtn g" type="submit">✉ Invitation Banayein</button><div id="invOut"></div></form>`);
+  $("#invForm").onsubmit=async ev=>{ev.preventDefault();
+    const mob=$("#inv_mob").value;
+    try{const code=await createInvite(mob);
+      const msg=`NK Properties Agent invitation\nWebsite: ${location.origin}${location.pathname}#agent\nCode: ${code}\n7 din tak, sirf ek baar.`;
+      $("#invOut").innerHTML=`<p class="note" style="word-break:break-all">Code: <b>${code}</b></p><a class="pbtn g wa" style="display:block;text-align:center" target="_blank" rel="noopener" href="${esc(`https://wa.me/91${mob}?text=${encodeURIComponent(msg)}`)}">WhatsApp par bhejein</a>`;
+    }catch(err){toast("Invitation nahi bana: "+(err.code||err.message))}
+  };
   document.querySelectorAll("#a-list .acts button").forEach(b=>b.onclick=async()=>{
     const a=list.find(x=>x.id===b.parentElement.dataset.id);if(!a)return;
     if(b.dataset.a==="wa")return window.open(`https://wa.me/91${String(a.mobile).replace(/\D/g,"").slice(-10)}`,"_blank");
@@ -1036,20 +1067,19 @@ async function boot(){
   ha.firstChild.onerror=()=>{ha.innerHTML=houseSVG()};
   await Store.init();
   S=await Store.settings();PROPS=await Store.list().catch(()=>[]);
+  try{localStorage.removeItem("nk_apass");localStorage.removeItem("nk_agents");sessionStorage.removeItem("nk_admin");sessionStorage.removeItem("nk_agent")}catch(e){}
   if(Store.mode==="firebase"){fauth.onAuthStateChanged(async u=>{
-    isAdmin=false;AG=null;
+    if(agBusy)return; // register / login ke beech mein state na badlein
+    let admin=false,agent=null;
     if(u&&u.email){
-      if(u.email.endsWith(AG_DOMAIN)){try{const d=await fdb.collection("agents").doc(u.uid).get();if(d.exists&&!d.data().blocked)AG={...d.data(),id:d.id}}catch(e){}}
-      else isAdmin=u.email.endsWith("@nkproperties.in");
+      if(u.email.endsWith(AG_DOMAIN)){try{const d=await fdb.collection("agents").doc(u.uid).get();if(d.exists&&!d.data().blocked)agent={...d.data(),id:d.id}}catch(e){}}
+      else admin=await isAdminUser(u);
     }
+    isAdmin=admin;AG=agent;
     // login badalne par list dobara laao (admin ko pending bhi dikhni chahiye)
     try{PROPS=await Store.list()}catch(e){}
     const h=location.hash||"";if(h==="#admin")showAdmin();if(h==="#agent")showAgent();if(h==="#list")renderList();
   })}
-  else{
-    isAdmin=sessionStorage.getItem("nk_admin")==="1";
-    try{const id=sessionStorage.getItem("nk_agent");if(id){const a=(await Agents.list()).find(x=>x.id===id&&!x.blocked);if(a)AG=a}}catch(e){}
-  }
   initSell();applyLang();
   document.querySelectorAll(".langbar button").forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem("nk_lang",lang)}catch(e){}applyLang()});
   document.querySelectorAll("#ptabs button").forEach(b=>b.onclick=()=>{setTab(b.dataset.p);if(purpose==="sell")go("sell")});
@@ -1059,7 +1089,6 @@ async function boot(){
   document.querySelectorAll(".trust [data-go]").forEach(d=>d.onclick=()=>{fType="all";fArea="all";fPur="all";go("list")});
   $("#waTrust").onclick=()=>window.open(waLink(),"_blank");
   $("#aiBtn").onclick=openChat;
-  $("#aiBtn").onclick=()=>modal(`<h3>${t("ai_h")}</h3><p style="margin:10px 0">${t("ai_p")}</p><div class="row"><a class="pbtn g wa" style="text-align:center" target="_blank" rel="noopener" href="${waLink("Hi, I need help finding a property.")}">English</a><a class="pbtn" style="text-align:center" target="_blank" rel="noopener" href="${waLink("Namaste, mujhe property dhoondhne mein madad chahiye.")}">हिंदी</a></div>`);
   $("#mloc").onclick=()=>setTimeout(()=>$("#locSec").scrollIntoView({behavior:"smooth"}),60);
   $("#burger").onclick=e=>{e.stopPropagation();$("#menu").classList.toggle("hide")};
   document.addEventListener("click",e=>{if(!e.target.closest("#menu"))$("#menu").classList.add("hide")});
@@ -1072,7 +1101,7 @@ async function boot(){
   $("#loginForm").onsubmit=async e=>{e.preventDefault();
     try{const ok=await adminLogin($("#a_phone").value,$("#a_pass").value);
       if(!ok)return toast("Number ya password galat hai");
-      isAdmin=true;sessionStorage.setItem("nk_admin","1");showAdmin();toast("Login ho gaya")}
+      showAdmin();toast("Login ho gaya")}
     catch(err){toast("Login fail: "+(err.code||err.message))}};
   route();
 }
