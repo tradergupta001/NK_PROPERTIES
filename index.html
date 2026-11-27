@@ -9,1198 +9,1103 @@
 <style>
 :root{--navy:#071a3d;--navy2:#0a2457;--blue:#1457d6;--yellow:#ffd21f;--green:#12a33a;--card:#fff;--ink:#0d1b3a;--mut:#6b7794}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
-body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans Devanagari",sans-serif;background:#030d24;color:#fff;min-height:100vh;overflow-x:hidden}
-.app{max-width:600px;margin:0 auto;min-height:100vh;background:linear-gradient(180deg,var(--navy2),var(--navy) 60%,#051233);position:relative;padding-bottom:90px;overflow:hidden}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans Devanagari",sans-serif;background:#030d24;color:#fff;min-height:100vh}
+.app{max-width:600px;margin:0 auto;min-height:100vh;background:linear-gradient(180deg,var(--navy2),var(--navy) 60%,#051233);position:relative;padding-bottom:30px;overflow:hidden}
 button{font:inherit;cursor:pointer;border:0}
 a{color:inherit;text-decoration:none}
 .hide{display:none!important}
-
-/* Header */
-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 8px;position:relative;z-index:10}
-.logo{display:flex;align-items:center;gap:10px;min-width:0}
-.logo .mark{display:grid;place-items:center;flex:none;width:54px;height:54px;border-radius:50%;border:2px solid var(--yellow);background:linear-gradient(135deg,#1457d6,#071a3d);color:var(--yellow);font-weight:900;font-size:21px;letter-spacing:-0.5px}
-.logo .tx{line-height:1.1}
-.logo .tx b{display:block;color:var(--yellow);font-size:23px;font-weight:900;letter-spacing:.5px}
-.logo .tx i{font-size:11px;font-style:italic;opacity:.9;display:block}
-.hr{display:flex;align-items:center;gap:8px}
-.pill{border:1.5px solid #3b82f6;border-radius:30px;padding:7px 13px;font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;background:rgba(20,87,214,.2);color:#fff}
-.reg{flex:none;background:linear-gradient(180deg,#ffdc3a,#f1b800);color:#10275a;border-radius:30px;font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center;gap:5px;padding:8px 13px;white-space:nowrap}
-.burger{background:none;color:#fff;width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;gap:5px}
-.burger span{height:3.5px;background:#fff;border-radius:3px;display:block}
-.menu{position:absolute;top:72px;right:14px;background:#fff;color:var(--ink);border-radius:16px;padding:8px;z-index:40;min-width:225px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
-.menu button,.menu a{display:block;width:100%;text-align:left;background:none;padding:11px 14px;border-radius:10px;font-weight:700;color:var(--ink);font-size:15px}
-.menu button:hover,.menu a:hover{background:#eef3ff}
-
-/* Hero */
-.hero{position:relative;padding:18px 16px 24px;min-height:220px}
-.hero h1{font-size:clamp(28px,8vw,42px);line-height:1.15;font-weight:800;position:relative;z-index:2;max-width:75%}
-.hero h1 em{color:var(--yellow);font-style:normal;display:block}
-.hero p.hsub{position:relative;z-index:2;margin-top:10px;font-size:clamp(14px,4vw,18px);font-weight:600;color:#dbe6ff;line-height:1.4;max-width:78%}
-.hero .art{position:absolute;right:-10px;top:10px;width:45%;height:90%;opacity:.22;z-index:1;pointer-events:none}
-.hero .swoosh{position:absolute;left:16px;bottom:8px;width:240px;height:3px;background:linear-gradient(90deg,var(--yellow),transparent);border-radius:3px;z-index:2}
-
-/* Search Card */
-.sc{margin:6px 14px 0;background:#fff;color:var(--ink);border-radius:20px;padding:14px;box-shadow:0 0 0 2px rgba(59,130,246,.35),0 8px 28px rgba(20,87,214,.35);position:relative;z-index:3}
-.sc h2{font-size:17px;display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#10275a}
-.tabs{display:flex;gap:7px;margin-bottom:10px}
-.tabs button{flex:1;padding:10px 6px;border-radius:24px;background:#e8edf6;color:#10275a;font-weight:700;font-size:14px}
+/* header */
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 8px;position:relative;z-index:3}
+.logo{display:flex;align-items:center;gap:8px;min-width:0}
+.logo .mark{position:relative;display:block;padding-top:15px;flex:none}
+.logo .mark svg{position:absolute;left:-6px;top:0;width:calc(100% + 12px);height:22px}
+.logo .nk{display:block;font-size:44px;font-weight:900;line-height:1;letter-spacing:-2px}
+.logo .tx{line-height:1.05}
+.logo .tx b{display:block;color:var(--yellow);font-size:25px;font-weight:900;letter-spacing:.5px}
+.logo .tx i{font-size:10.5px;font-style:italic;opacity:.9}
+.hr{display:flex;align-items:center;gap:10px}
+.pill{border:1.5px solid #3b82f6;border-radius:30px;padding:8px 14px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:7px;background:rgba(20,87,214,.15);color:#fff}
+.burger{background:none;color:#fff;width:40px;height:40px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.burger span{height:4px;background:#fff;border-radius:3px;display:block}
+.menu{position:absolute;top:70px;right:12px;background:#fff;color:var(--ink);border-radius:14px;padding:6px;z-index:20;min-width:210px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.menu a{display:block;padding:12px 14px;border-radius:10px;font-weight:600}
+.menu a:hover{background:#eef3ff}
+/* hero */
+.hero{position:relative;padding:18px 16px 22px;min-height:250px}
+.hero h1{font-size:clamp(28px,8.4vw,44px);line-height:1.12;font-weight:800;position:relative;z-index:2;max-width:62%}
+.hero h1 em{color:var(--yellow);font-style:normal;display:block;white-space:nowrap}
+.hero p.hsub{position:relative;z-index:2;margin-top:12px;font-size:clamp(14px,4.2vw,20px);font-weight:600;color:#fff;line-height:1.4;max-width:70%}
+.hero .art{position:absolute;right:0;top:0;width:66%;height:100%;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 38%),linear-gradient(180deg,transparent,#000 10%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 38%),linear-gradient(180deg,transparent,#000 10%,#000 88%,transparent);mask-composite:intersect}
+.hero .art svg,.hero .art img{width:100%;height:100%;display:block}
+.hero .art img{object-fit:cover;object-position:60% center}
+.hero .swoosh{position:absolute;left:16px;bottom:8px;width:300px;height:3px;background:linear-gradient(90deg,var(--yellow),transparent);border-radius:3px;z-index:2}
+/* search card (compact) */
+.sc{margin:6px 14px 0;background:#fff;color:var(--ink);border-radius:20px;padding:12px 12px 12px;box-shadow:0 0 0 2px rgba(59,130,246,.35),0 8px 28px rgba(20,87,214,.35);position:relative;z-index:3}
+.sc h2{font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:9px;color:#10275a}
+.sc h2 svg{width:30px;height:26px}
+.tabs{display:flex;gap:7px}
+.tabs button{flex:1;padding:9px 6px;border-radius:24px;background:#e8edf6;color:#10275a;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px}
+.tabs button svg{width:18px;height:17px}
 .tabs button.on{background:var(--blue);color:#fff}
-.srow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
-.sel{border:1.5px solid #d3dbe9;border-radius:14px;padding:0 10px;background:#fff}
-.sel select{width:100%;border:0;outline:0;background:transparent;padding:10px 0;font-size:14.5px;color:#10275a;font-weight:600}
-.btn-search{width:100%;padding:12px;border-radius:24px;background:linear-gradient(180deg,#1b64e8,#0d46b4);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 12px rgba(20,87,214,.45)}
-
-/* Categories */
-.sec-h{display:flex;align-items:center;justify-content:space-between;padding:24px 14px 12px}
-.sec-h h3{font-size:clamp(20px,5.4vw,25px);font-weight:800;border-left:5px solid var(--yellow);padding-left:10px;line-height:1.15}
-.va{border:1.5px solid #3b82f6;background:transparent;color:#fff;border-radius:30px;padding:7px 14px;font-weight:600;font-size:14px}
-.cats{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 14px}
-.cat{height:96px;border-radius:18px;overflow:hidden;position:relative;border:2px solid #1f4fa8;cursor:pointer;background:linear-gradient(135deg,#12357a,#081b44);padding:12px;display:flex;align-items:flex-end}
-.cat .lb{width:100%;display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px}
-.cat .lb .ic{width:34px;height:34px;border-radius:50%;background:#fff;color:#10275a;display:grid;place-items:center;flex:none;font-size:17px}
-.cat .lb .go{margin-left:auto;width:28px;height:28px;border:1.5px solid #fff;border-radius:50%;display:grid;place-items:center;font-size:15px}
-
-/* Trust */
-.trust{margin:18px 14px 0;background:#fff;color:#10275a;border-radius:20px;display:grid;grid-template-columns:repeat(4,1fr);padding:12px 4px;box-shadow:0 0 0 2px rgba(59,130,246,.3)}
-.trust div{text-align:center;font-weight:800;font-size:14px;line-height:1.2;padding:2px 4px;border-right:1.5px solid #d3dbe9}
+.sel{margin-top:9px;border:1.5px solid #d3dbe9;border-radius:24px;padding:0 12px;display:flex;align-items:center;gap:8px;background:#fff}
+.sel svg:first-child{width:18px;height:21px}
+.sel svg:last-child{width:14px;height:9px}
+.sel select{flex:1;border:0;outline:0;background:transparent;padding:10px 0;font-size:15px;color:#444;font-family:inherit;appearance:none;-webkit-appearance:none}
+.btn-search{margin-top:9px;width:100%;padding:11px;border-radius:24px;background:linear-gradient(180deg,#1b64e8,#0d46b4);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 12px rgba(20,87,214,.45)}
+.btn-search svg{width:20px;height:20px}
+/* categories */
+.sec-h{display:flex;align-items:center;justify-content:space-between;padding:26px 14px 12px}
+.sec-h h3{font-size:clamp(20px,5.6vw,27px);font-weight:800;border-left:6px solid var(--yellow);padding-left:12px;line-height:1.1}
+.va{border:1.5px solid #3b82f6;background:transparent;color:#fff;border-radius:30px;padding:9px 16px;font-weight:600;font-size:16px}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 14px}
+.cat{height:100px;border-radius:20px;overflow:hidden;position:relative;border:2px solid #1f4fa8;cursor:pointer;background:#123}
+.cat svg.bg,.cat img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(3,13,40,.92))}
+.cat .lb{position:absolute;left:10px;right:10px;bottom:8px;z-index:2;display:flex;align-items:center;gap:8px;font-weight:700;font-size:clamp(13px,3.8vw,17px)}
+.cat .lb>span:nth-child(2){min-width:0;line-height:1.15}
+.cat .lb .ic{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.95);color:#10275a;display:grid;place-items:center;flex:none}
+.cat .lb .go{margin-left:auto;width:32px;height:32px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;font-size:17px;flex:none}
+/* trust */
+.trust{margin:16px 10px 0;background:#fff;color:#10275a;border-radius:22px;display:grid;grid-template-columns:repeat(4,1fr);padding:12px 4px;box-shadow:0 0 0 2px rgba(59,130,246,.3)}
+.trust div{text-align:center;font-weight:700;font-size:15px;line-height:1.15;padding:2px 4px;border-right:1.5px solid #d3dbe9;cursor:pointer}
 .trust div:last-child{border:0}
-.trust small{display:block;font-weight:500;font-size:11.5px;color:#41507a}
-
-/* Areas */
-.areas{display:flex;flex-wrap:wrap;gap:9px;padding:0 14px}
-.areas button{background:rgba(255,255,255,.1);border:1.5px solid #3b82f6;color:#fff;border-radius:30px;padding:9px 16px;font-weight:700;font-size:14.5px}
-.areas button.on,.areas button:hover{background:var(--yellow);color:#10275a;border-color:var(--yellow)}
-
-/* Property Grid & Cards */
-.grid{display:grid;grid-template-columns:1fr;gap:14px;padding:0 14px}
-.pc{background:#fff;color:var(--ink);border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35)}
-.pc .im{height:165px;background:linear-gradient(135deg,#1d4ed8,#0f2964);position:relative;display:grid;place-items:center;color:#fff;font-size:42px}
-.pc .im img{width:100%;height:100%;object-fit:cover;display:block}
-.tag{position:absolute;left:10px;top:10px;background:var(--blue);color:#fff;border-radius:20px;font-size:12.5px;font-weight:700;padding:4px 11px}
+.trust small{display:block;font-weight:500;font-size:12.5px;color:#41507a}
+.trust svg{width:38px;height:38px;display:block;margin:0 auto 4px}
+/* bottom bar */
+.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:600px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:12px;z-index:30;background:linear-gradient(180deg,transparent,rgba(3,13,36,.9) 40%)}
+.call{flex:0 1 270px;min-width:0;background:linear-gradient(180deg,#14b53f,#0a8a2c);border-radius:40px;display:flex;align-items:center;justify-content:center;gap:9px;padding:6px 14px;box-shadow:0 0 0 2px #3ddc66 inset}
+.call svg{width:clamp(24px,6vw,32px);height:clamp(24px,6vw,32px);flex:none}
+.call small{display:block;font-size:clamp(10px,3vw,13px);font-weight:600;line-height:1}
+.call b{white-space:nowrap;font-size:clamp(14px,4vw,21px);font-weight:800;letter-spacing:.5px;line-height:1.1}
+/* register button (top right) */
+.reg{flex:none;background:linear-gradient(180deg,#ffdc3a,#f1b800);color:#10275a;border-radius:30px;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 13px;white-space:nowrap;line-height:1.1}
+.reg svg{width:18px;height:18px;flex:none}
+/* inner pages */
+.page{padding:6px 14px 20px}
+.back{background:rgba(255,255,255,.12);color:#fff;border-radius:30px;padding:9px 16px;font-weight:600;margin:6px 0 12px}
+.page h2{font-size:26px;margin-bottom:6px}
+.page .sub{color:#b9c6e6;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+.pc{background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.pc .im{height:170px;background:#cde;position:relative}
+.pc .im img,.pc .im svg{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;left:10px;top:10px;background:var(--blue);color:#fff;border-radius:20px;font-size:13px;font-weight:700;padding:4px 12px}
 .tag.rent{background:#f59e0b}
-.tag.cat-t{left:auto;right:10px;background:rgba(7,26,61,.85)}
 .pc .bd{padding:12px 14px 14px}
-.pc h4{font-size:17.5px;line-height:1.3}
-.pc .pr{color:var(--blue);font-weight:800;font-size:19px;margin:4px 0}
-.pc .mt{color:var(--mut);font-size:13.5px;display:flex;justify-content:space-between;align-items:center}
-.empty{margin:0 14px;background:rgba(255,255,255,.08);border-radius:18px;padding:28px 16px;text-align:center;color:#c8d4f0}
-
-/* Pages (Sell, Agent, Admin) */
-.page{padding:10px 14px 24px}
-.back{background:rgba(255,255,255,.14);color:#fff;border-radius:30px;padding:8px 16px;font-weight:700;margin-bottom:12px;font-size:14px}
-.page h2{font-size:24px;margin-bottom:4px;color:var(--yellow)}
-.page .sub{color:#b9c6e6;margin-bottom:14px;font-size:14px}
-
-/* Forms */
+.pc h4{font-size:18px}
+.pc .pr{color:var(--blue);font-weight:800;font-size:20px;margin:4px 0}
+.pc .mt{color:var(--mut);font-size:14px}
+.empty{background:rgba(255,255,255,.08);border-radius:18px;padding:30px 16px;text-align:center;color:#c8d4f0}
+.chips{margin-bottom:6px}
+.chipgrp{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.chips button{background:rgba(255,255,255,.12);color:#fff;border-radius:20px;padding:8px 14px;font-weight:600;font-size:14px}
+.chips button.on{background:var(--yellow);color:#10275a}
+/* forms */
 .fm{background:#fff;color:var(--ink);border-radius:20px;padding:16px}
-.fm label{display:block;font-size:13px;font-weight:700;margin:11px 0 4px;color:#33436e}
-.fm input,.fm select,.fm textarea{width:100%;border:1.5px solid #d3dbe9;border-radius:12px;padding:11px 12px;font-size:15px;font-family:inherit;outline:none;background:#fff;color:var(--ink)}
+.fm label{display:block;font-size:13.5px;font-weight:700;margin:12px 0 5px;color:#33436e}
+.fm input,.fm select,.fm textarea{width:100%;border:1.5px solid #d3dbe9;border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;outline:none;background:#fff;color:var(--ink)}
 .fm input:focus,.fm select:focus,.fm textarea:focus{border-color:var(--blue)}
-.fm textarea{min-height:76px;resize:vertical}
+.fm textarea{min-height:80px;resize:vertical}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pbtn{margin-top:14px;width:100%;padding:13px;border-radius:30px;background:var(--blue);color:#fff;font-weight:800;font-size:16px}
+.pbtn{margin-top:16px;width:100%;padding:15px;border-radius:30px;background:var(--blue);color:#fff;font-weight:800;font-size:18px}
 .pbtn.g{background:var(--green)}.pbtn.r{background:#d92d3a}.pbtn.y{background:var(--yellow);color:#10275a}
 .photos{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.photos .ph{width:74px;height:74px;border-radius:10px;overflow:hidden;position:relative;background:#eef}
+.photos .ph{width:84px;height:84px;border-radius:12px;overflow:hidden;position:relative;background:#eef}
 .photos .ph img{width:100%;height:100%;object-fit:cover}
-.photos .ph b{position:absolute;right:2px;top:2px;background:#d92d3a;color:#fff;border-radius:50%;width:20px;height:20px;display:grid;place-items:center;font-size:12px;cursor:pointer}
-.addph{width:74px;height:74px;border:2px dashed #9db3e0;border-radius:10px;display:grid;place-items:center;color:#4a62a8;font-size:11.5px;text-align:center;cursor:pointer;font-weight:700}
-
-/* Admin & Agent Rows */
+.photos .ph b{position:absolute;right:3px;top:3px;background:#d92d3a;color:#fff;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font-size:13px;cursor:pointer}
+.addph{width:84px;height:84px;border:2px dashed #9db3e0;border-radius:12px;display:grid;place-items:center;color:#4a62a8;font-size:12px;text-align:center;cursor:pointer;font-weight:700}
+.note{font-size:12.5px;color:var(--mut);margin-top:10px}
+/* modal */
+.mo{position:fixed;inset:0;background:rgba(2,8,24,.78);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.mo .bx{background:#fff;color:var(--ink);width:100%;max-width:600px;max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:18px 16px 24px;position:relative}
+.mo .x{position:absolute;right:12px;top:10px;background:#eef2fb;color:#10275a;width:36px;height:36px;border-radius:50%;font-size:20px;font-weight:700;z-index:2}
+.mo h3{font-size:22px;margin:0 40px 8px 0}
+.gal{display:flex;gap:8px;overflow:auto;margin:10px 0}
+.gal img,.gal svg{height:190px;min-width:78%;border-radius:14px;object-fit:cover}
+.row{display:flex;gap:8px;margin-top:10px}
+.row>*{flex:1}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:10px 0;font-size:15px}
+.kv span{color:var(--mut)}
+/* admin */
 .atabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px;padding-bottom:4px}
-.atabs button{background:rgba(255,255,255,.12);color:#fff;border-radius:20px;padding:8px 14px;font-weight:700;font-size:13.5px;white-space:nowrap}
+.atabs button{background:rgba(255,255,255,.12);color:#fff;border-radius:20px;padding:9px 14px;font-weight:700;font-size:14px;white-space:nowrap}
 .atabs button.on{background:var(--yellow);color:#10275a}
-.atabs b{background:#d92d3a;color:#fff;border-radius:10px;padding:1px 6px;margin-left:4px;font-size:11px}
-.ar{background:#fff;color:var(--ink);border-radius:16px;padding:12px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
-.ar .th{width:76px;height:76px;border-radius:12px;overflow:hidden;flex:none;background:#dde;display:grid;place-items:center;font-size:28px;color:#10275a}
-.ar .th img{width:100%;height:100%;object-fit:cover}
+.atabs b{background:#d92d3a;color:#fff;border-radius:10px;padding:0 7px;margin-left:5px;font-size:12px}
+.ar{background:#fff;color:var(--ink);border-radius:16px;padding:12px;margin-bottom:12px;display:flex;gap:12px}
+.ar .th{width:84px;height:84px;border-radius:12px;overflow:hidden;flex:none;background:#dde}
+.ar .th img,.ar .th svg{width:100%;height:100%;object-fit:cover}
 .ar .in{flex:1;min-width:0}
-.ar h4{font-size:15.5px}
-.ar .mt{font-size:12.5px;color:var(--mut);margin:3px 0}
-.st{display:inline-block;border-radius:10px;padding:2px 9px;font-size:11.5px;font-weight:800}
+.ar h4{font-size:16px}
+.ar .mt{font-size:13px;color:var(--mut);margin:2px 0}
+.st{display:inline-block;border-radius:10px;padding:2px 9px;font-size:12px;font-weight:800}
 .st.pending{background:#fff1c9;color:#8a5b00}.st.approved{background:#d4f5de;color:#0c6b2a}.st.rejected{background:#fde0e2;color:#a0212d}
 .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.acts button{border-radius:10px;padding:6px 11px;font-size:12.5px;font-weight:700;background:#eef2fb;color:#10275a}
+.acts button{border-radius:10px;padding:7px 11px;font-size:13px;font-weight:700;background:#eef2fb;color:#10275a}
 .acts .ok{background:#d4f5de;color:#0c6b2a}.acts .no{background:#fde0e2;color:#a0212d}
-.awarn{background:#fff1c9;color:#6b4300;border-radius:14px;padding:11px 13px;margin-bottom:12px;font-size:13.5px;font-weight:600}
+.awarn{background:#fff1c9;color:#6b4300;border-radius:14px;padding:12px 14px;margin-bottom:12px;font-size:14px;line-height:1.45;font-weight:600}
 .awarn.ok{background:#d4f5de;color:#0c6b2a}
-.gstat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 14px}
+.toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:#10275a;color:#fff;padding:12px 20px;border-radius:30px;z-index:99;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.5);max-width:90%;text-align:center}
+.sellgrid{display:grid;grid-template-columns:1fr;gap:16px}
+.sinfo{background:#12305a;border-radius:18px;padding:22px 20px;line-height:1.5}
+.sinfo h2{color:#ffe08a;font-size:23px;line-height:1.4;margin-bottom:12px}
+.sinfo p{font-size:15px;margin-bottom:14px}
+.sinfo ul{list-style:none;margin-bottom:14px}
+.sinfo li{font-weight:600;margin:10px 0;font-size:15px}
+.sinfo li::before{content:"✓ ";color:#ffd21f;font-weight:900}
+.sform label{font-size:12.5px;color:#1a2442;margin-top:14px}
+.sform .r2 label{margin-top:14px}
+.sform input,.sform select,.sform textarea{padding:11px 12px;font-size:15px;border-radius:8px;border:1px solid #cfd6e4}
+.sform textarea{min-height:76px}
+.photos.wide{display:block}
+.photos.wide .row2{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.addph.wide{width:100%;height:auto;display:flex;align-items:center;gap:8px;justify-content:flex-start;padding:11px 14px;background:#eaf1fb;border:1.5px dashed #1f3f73;border-radius:8px;color:#10275a;font-size:14px}
+.cnt{font-size:12.5px;color:#41507a;margin-top:6px}
+.sbtn{display:flex;align-items:center;justify-content:center;gap:10px;border-radius:10px;background:linear-gradient(180deg,#25d366,#0f9a46);font-size:17px}
+@media(min-width:800px){.sellgrid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start}.sinfo{position:sticky;top:12px}}
+.chat{display:flex;flex-direction:column;gap:8px;height:48vh;min-height:240px;overflow:auto;padding:4px 2px;margin:10px 0}
+.msg{max-width:88%;padding:9px 13px;border-radius:16px;font-size:15px;line-height:1.4;white-space:pre-wrap}
+.msg.bot{background:#eef2fb;color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.me{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.mini{background:#fff;border:1.5px solid #d3dbe9;border-radius:12px;padding:8px 10px;margin-top:8px;cursor:pointer;color:var(--ink);white-space:normal}
+.mini b{display:block;font-size:14px}.mini em{font-style:normal;color:var(--blue);font-weight:800;font-size:14px}.mini span{font-size:12.5px;color:var(--mut)}
+.qchips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
+.qchips button{background:#eef2fb;color:#10275a;border-radius:16px;padding:6px 11px;font-size:13px;font-weight:700}
+.chatin{display:flex;gap:8px}
+.chatin input{flex:1;min-width:0;border:1.5px solid #d3dbe9;border-radius:24px;padding:11px 14px;font-size:16px;outline:none;color:var(--ink);font-family:inherit}
+.chatin button{background:var(--green);color:#fff;border-radius:24px;padding:0 18px;font-weight:800}
+.gtabs{display:flex;gap:8px;margin-bottom:12px}
+.gtabs button{flex:1;padding:11px;border-radius:24px;background:rgba(255,255,255,.12);color:#fff;font-weight:700}
+.gtabs button.on{background:var(--yellow);color:#10275a}
+.gstat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 12px}
 .gstat div{background:rgba(255,255,255,.1);border-radius:14px;padding:12px;text-align:center;font-size:13px}
-.gstat b{display:block;font-size:24px;color:var(--yellow)}
+.gstat b{display:block;font-size:26px;color:var(--yellow)}
+.agtag{font-size:12.5px;color:#0c6b2a;font-weight:700}
+.sub2{padding:0 14px;color:#b9c6e6;margin:-4px 0 12px}
+.areas{display:flex;flex-wrap:wrap;gap:10px;padding:0 14px}
+.areas button{background:rgba(255,255,255,.1);border:1.5px solid #3b82f6;color:#fff;border-radius:30px;padding:11px 18px;font-weight:700;font-size:16px}
+.areas button:active{background:var(--yellow);color:#10275a}
+.mapbox{margin:0 14px;background:#fff;color:var(--ink);border-radius:22px;padding:14px;box-shadow:0 0 0 2px rgba(59,130,246,.3)}
+.mapbox .sub2{color:#41507a;font-weight:700}
+.mapbox iframe{width:100%;height:240px;border:0;border-radius:14px;background:#dde}
+.cta{margin:22px 14px 0;background:linear-gradient(180deg,#0d3a8a,#0a2457);border:2px solid #1f4fa8;border-radius:22px;padding:20px 16px;text-align:center}
+.cta h3{font-size:24px;margin-bottom:6px}
+.cta p{color:#c8d4f0;margin-bottom:4px}
+.cta .pbtn{display:block;text-decoration:none}
+.ft{margin-top:26px;padding:22px 16px 10px;text-align:center;display:flex;flex-direction:column;gap:6px;color:#c8d4f0;font-size:14px;border-top:1px solid rgba(255,255,255,.12)}
+.ft b{color:var(--yellow);font-size:22px;letter-spacing:.5px}
+.ft small{opacity:.6;margin-top:6px}
+.langbar{display:flex;justify-content:flex-end;align-items:center;gap:6px;padding:0 14px 6px;position:relative;z-index:3}
+.langbar span{font-size:15px;opacity:.85}
+.langbar button{background:rgba(255,255,255,.12);color:#fff;border-radius:16px;padding:5px 12px;font-weight:700;font-size:13px;border:1px solid transparent}
+.langbar button.on{background:var(--yellow);color:#10275a}
+.langbar button:hover{border-color:#fff}
+html{scroll-behavior:smooth}
+body{overflow-x:hidden}
+.call.wa{animation:waPulseCall 2s ease-out infinite}
+.pbtn.g.wa{animation:waPulse 2s ease-out infinite}
+.wa{position:relative;overflow:hidden;transition:transform .2s ease,filter .2s ease}
+.wa:hover{transform:translateY(-3px) scale(1.04);filter:brightness(1.12) saturate(1.1)}
+.wa:active{transform:scale(.97)}
+.wa::after{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:waShine 3.2s ease-in-out infinite;pointer-events:none}
+.wa svg{animation:waShake 2.6s ease-in-out infinite;transform-origin:50% 60%}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.65)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+@keyframes waPulseCall{0%{box-shadow:0 0 0 2px #3ddc66 inset,0 0 0 0 rgba(37,211,102,.7)}70%{box-shadow:0 0 0 2px #3ddc66 inset,0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 2px #3ddc66 inset,0 0 0 0 rgba(37,211,102,0)}}
+@keyframes waShine{0%,55%{left:-70%}100%{left:130%}}
+@keyframes waShake{0%,55%,100%{transform:rotate(0) scale(1)}60%{transform:rotate(-14deg) scale(1.1)}66%{transform:rotate(12deg) scale(1.1)}72%{transform:rotate(-10deg)}78%{transform:rotate(8deg)}84%{transform:rotate(0)}}
 
-/* Modal */
-.mo{position:fixed;inset:0;background:rgba(2,8,24,.8);z-index:50;display:flex;align-items:flex-end;justify-content:center}
-.mo .bx{background:#fff;color:var(--ink);width:100%;max-width:600px;max-height:92vh;overflow:auto;border-radius:24px 24px 0 0;padding:18px 16px 24px;position:relative}
-.mo .x{position:absolute;right:12px;top:10px;background:#eef2fb;color:#10275a;width:34px;height:34px;border-radius:50%;font-size:18px;font-weight:700}
-.mo h3{font-size:20px;margin:0 36px 8px 0}
-.gal{display:flex;gap:8px;overflow:auto;margin:10px 0}
-.gal img{height:180px;min-width:75%;border-radius:14px;object-fit:cover}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:10px 0;font-size:14.5px}
-.kv span{color:var(--mut)}
-.row{display:flex;gap:8px;margin-top:12px}
-.row>*{flex:1;text-align:center}
-
-/* Bottom Bar & Toast */
-.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:600px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px;z-index:30;background:linear-gradient(180deg,transparent,rgba(3,13,36,.95) 35%)}
-.call{flex:1;background:linear-gradient(180deg,#14b53f,#0a8a2c);border-radius:40px;display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;color:#fff;font-weight:800;font-size:15px;box-shadow:0 0 0 2px #3ddc66 inset}
-.toast{position:fixed;left:50%;bottom:85px;transform:translateX(-50%);background:#10275a;border:1px solid var(--yellow);color:#fff;padding:11px 18px;border-radius:30px;z-index:99;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.6);max-width:90%;text-align:center;font-size:14px}
-.ft{margin-top:26px;padding:20px 16px 10px;text-align:center;color:#c8d4f0;font-size:13.5px;border-top:1px solid rgba(255,255,255,.12)}
-.ft b{color:var(--yellow);font-size:20px;display:block;margin-bottom:4px}
-
-@media(min-width:700px){
- .app,.bar,.mo .bx{max-width:900px}
- .cats{grid-template-columns:repeat(4,1fr)}
- .grid{grid-template-columns:repeat(2,1fr)}
+/* right-side dock */
+.dock{position:fixed;right:10px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.dk{display:flex;align-items:center;flex-direction:row-reverse;height:38px;min-width:38px;border-radius:19px;padding:0 9px;gap:0;color:#fff;font-weight:700;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.45);overflow:hidden;white-space:nowrap;transition:gap .2s,padding .2s,transform .2s,filter .2s}
+.dk svg{width:20px;height:20px;flex:none}
+.dk .lbl{max-width:0;opacity:0;overflow:hidden;transition:max-width .25s,opacity .2s}
+.dk:hover,.dk:focus-visible{gap:7px;padding:0 12px 0 11px;transform:translateX(-2px) scale(1.05);filter:brightness(1.1)}
+.dk:hover .lbl,.dk:focus-visible .lbl{max-width:220px;opacity:1}
+.dk.sell{background:linear-gradient(180deg,#1b64e8,#0d46b4)}
+.dk.agent{background:linear-gradient(180deg,#ffdc3a,#f1b800);color:#10275a}
+.dk.wa{background:linear-gradient(180deg,#25d366,#0f9a46)}
+.dk.wa{animation:waPulse 2s ease-out infinite}
+@media(prefers-reduced-motion:reduce){.wa,.wa::after,.wa svg{animation:none!important}}
+@media(max-width:480px){
+ header{padding:12px 10px 6px;gap:6px}
+ .logo{gap:5px}
+ .logo .mark{padding-top:13px}
+ .logo .mark svg{height:19px}
+ .logo .nk{font-size:32px;letter-spacing:-1px}
+ .logo .tx b{font-size:18px}
+ .logo .tx i{font-size:8px;white-space:nowrap}
+ .hr{gap:4px}
+ .reg{font-size:12.5px;padding:7px 10px;gap:4px}
+ .reg svg{width:15px;height:15px}
+ .burger{width:32px;height:32px;gap:5px}.burger span{height:3px}
+ .menu{top:60px}
+ .cat{height:92px}
+ .cat .lb{left:8px;right:8px;gap:6px}
+ .cat .lb .ic{width:28px;height:28px}.cat .lb .go{width:26px;height:26px;font-size:14px}
+ .trust div{font-size:12.5px}.trust small{font-size:10.5px}.trust svg{width:30px;height:30px}
+ .va{padding:7px 11px;font-size:14px}
 }
+@media(max-width:699px){.hero .art{width:62%}.hero h1,.hero p.hsub{max-width:62%}.pill{display:none}}
+@media(max-width:380px){.logo .tx i{display:none}.logo .nk{font-size:28px}.reg svg{display:none}}
+@media(min-width:700px){
+ .app{max-width:900px}
+ .cats{grid-template-columns:repeat(4,1fr)}
+ .cat{height:150px}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .hero{min-height:340px;padding:30px 24px}
+ .hero h1{font-size:50px;max-width:52%}
+ .hero p.hsub{font-size:22px;max-width:52%}
+ .sc{margin:6px 24px 0;padding:14px 16px 14px}
+ .sec-h,.cats,.areas,.sub2{padding-left:24px;padding-right:24px}
+ .mapbox,.cta{margin-left:24px;margin-right:24px}
+ .trust{margin:20px 24px 0}
+ .page{padding:6px 24px 24px}
+}
+@media(min-width:1000px){.app{max-width:1100px}.grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
 <div class="app" id="app">
 
-<!-- HEADER -->
 <header>
-  <a class="logo" href="#home" onclick="showView('home')">
-    <span class="mark">NK</span>
-    <span class="tx"><b>NK Properties</b><i>Tonk • Uniara • Aligarh</i></span>
+  <a class="logo" href="#home">
+    <span class="mark">
+      <svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M3 22 50 3l47 19" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><g fill="#fff"><rect x="44" y="9" width="5" height="5"/><rect x="51" y="9" width="5" height="5"/><rect x="44" y="16" width="5" height="5"/><rect x="51" y="16" width="5" height="5"/></g></svg>
+      <span class="nk">NK</span>
+    </span>
+    <span class="tx"><b>PROPERTIES</b><i>Dream • Buy • Sell • Rent • Invest</i></span>
   </a>
   <div class="hr">
-    <button class="pill" onclick="showView('sell')">+ प्रॉपर्टी डालें</button>
-    <button class="reg" onclick="showView('agent')">Agent Panel</button>
-    <button class="burger" aria-label="Menu" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </button>
+    <span class="pill"><svg width="22" height="24" viewBox="0 0 24 26"><path d="M12 1 2 5v8c0 6 4.5 10 10 12 5.5-2 10-6 10-12V5z" fill="#22c55e"/><path d="m7 13 3.5 3.5L17 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>Property Portal</span>
+    <button class="reg" id="regBtn"><svg width="30" height="30" viewBox="0 0 30 30"><circle cx="12" cy="9" r="6" fill="#10275a"/><path d="M1 28c0-8 5-11 11-11s11 3 11 11z" fill="#10275a"/><path d="M24 4v8M20 8h8" stroke="#10275a" stroke-width="3" stroke-linecap="round"/></svg><span data-i="reg_btn">Register / Login</span></button>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-  <div class="menu hide" id="navMenu">
-    <button onclick="showView('home');toggleMenu()">🏠 Home (Customer Panel)</button>
-    <button onclick="showView('sell');toggleMenu()">➕ प्रॉपर्टी बेचें / किराये पर दें</button>
-    <button onclick="showView('agent');toggleMenu()">🤝 Agent Login / Register</button>
-    <button onclick="showView('admin');toggleMenu()">🛡️ Admin Panel</button>
+  <div class="menu hide" id="menu">
+    <a href="#home" data-i="m_home">🏠 Home</a>
+    <a href="#list" data-i="m_all">🔎 Sabhi Properties</a>
+    <a href="#sell" data-i="m_sell">📝 Apni Property Daalein</a>
+    <a href="#agent" data-i="m_agent">🧑‍💼 Agent Panel</a>
+    <a href="#home" id="mloc" data-i="m_loc">📍 Hamari Location (Map)</a>
+    <a href="#admin">🔐 Admin Panel</a>
+    <a id="mwa" target="_blank" rel="noopener">💬 WhatsApp</a>
   </div>
 </header>
+<div class="langbar" role="group" aria-label="Language"><span>🌐</span><button data-l="hing">Hinglish</button><button data-l="hi">हिंदी</button><button data-l="en">English</button></div>
 
-<!-- ==================== 1. CUSTOMER PANEL (HOME) ==================== -->
-<main id="view-home">
+<!-- HOME -->
+<main id="v-home">
   <section class="hero">
-    <h1>सपनों का घर और ज़मीन <em>अब आपके बजट में</em></h1>
-    <p class="hsub">टोंक, उनियारा और अलीगढ़ में प्लॉट, मकान, दुकान व कृषि भूमि खरीदें, बेचें या किराये पर लें।</p>
+    <div class="art" id="heroArt"></div>
+    <h1><span data-i="h_t1">Find Your</span><em data-i="h_t2">Dream Property</em></h1>
+    <p class="hsub" data-i="h_sub">Buy • Sell • Rent • Invest</p>
     <div class="swoosh"></div>
   </section>
 
-  <!-- Search Card -->
   <section class="sc">
-    <h2>🔍 प्रॉपर्टी खोजें</h2>
+    <h2><svg width="46" height="40" viewBox="0 0 46 40"><path d="M3 20 23 3l20 17" fill="none" stroke="#1457d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 18v18h28V18L23 7z" fill="#1457d6"/><rect x="19" y="24" width="8" height="12" fill="#fff"/></svg><span data-i="s_title">आप क्या ढूंढ रहे हैं?</span></h2>
     <div class="tabs" id="ptabs">
-      <button class="on" data-p="all" onclick="setPurpose('all',this)">सभी</button>
-      <button data-p="buy" onclick="setPurpose('buy',this)">खरीदें (Buy)</button>
-      <button data-p="rent" onclick="setPurpose('rent',this)">किराया (Rent)</button>
+      <button class="on" data-p="buy"><svg width="26" height="24" viewBox="0 0 26 24"><path d="M2 12 13 2l11 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M5 11v11h16V11" fill="currentColor"/><rect x="11" y="15" width="4" height="7" fill="#1457d6"/></svg><span data-i="tab_buy">Buy</span></button>
+      <button data-p="rent"><svg width="28" height="24" viewBox="0 0 28 24"><path d="M2 12l6-5 5 2 5-3 8 6-7 8-3-2-3 2z" fill="#1c2f5e"/></svg><span data-i="tab_rent">Rent</span></button>
+      <button data-p="sell"><svg width="26" height="24" viewBox="0 0 26 24"><rect x="2" y="12" width="5" height="10" fill="#1c2f5e"/><rect x="10" y="7" width="5" height="15" fill="#1c2f5e"/><rect x="18" y="2" width="5" height="20" fill="#1c2f5e"/></svg><span data-i="tab_sell">Sell</span></button>
     </div>
-    <div class="srow">
-      <div class="sel">
-        <select id="fArea" onchange="renderProperties()">
-          <option value="all">📍 सभी शहर/क्षेत्र</option>
-          <option value="Tonk">टोंक (Tonk)</option>
-          <option value="Uniara">उनियारा (Uniara)</option>
-          <option value="Aligarh">अलीगढ़ (Aligarh)</option>
-          <option value="Other">अन्य क्षेत्र</option>
-        </select>
-      </div>
-      <div class="sel">
-        <select id="fCat" onchange="renderProperties()">
-          <option value="all">🏘️ सभी प्रकार</option>
-          <option value="Plot">प्लॉट (Plot)</option>
-          <option value="Makaan">मकान (House)</option>
-          <option value="Dukaan">दुकान (Shop)</option>
-          <option value="Kheti">कृषि भूमि (Land)</option>
-        </select>
-      </div>
+    <div class="sel">
+      <svg width="26" height="30" viewBox="0 0 26 30"><path d="M13 1C7 1 3 5.5 3 11c0 7.5 10 18 10 18s10-10.5 10-18C23 5.5 19 1 13 1z" fill="#444"/><circle cx="13" cy="11" r="4" fill="#fff"/></svg>
+      <select id="loc"></select>
+      <svg width="20" height="12" viewBox="0 0 20 12"><path d="m2 2 8 8 8-8" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/></svg>
     </div>
-    <button class="btn-search" onclick="renderProperties(true)">प्रॉपर्टी देखें</button>
+    <button class="btn-search" id="btnSearch"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="12" cy="12" r="8" fill="none" stroke="#fff" stroke-width="3.5"/><path d="m18 18 8 8" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/></svg><span data-i="btn_search">Search Properties</span></button>
   </section>
 
-  <!-- Categories -->
-  <div class="sec-h">
-    <h3>कैटेगरी चुनें</h3>
-    <button class="va" onclick="resetFilters()">सभी देखें</button>
-  </div>
-  <div class="cats">
-    <div class="cat" onclick="quickCat('Plot')"><div class="lb"><span class="ic">📐</span><span>प्लॉट</span><span class="go">›</span></div></div>
-    <div class="cat" onclick="quickCat('Makaan')"><div class="lb"><span class="ic">🏠</span><span>मकान</span><span class="go">›</span></div></div>
-    <div class="cat" onclick="quickCat('Dukaan')"><div class="lb"><span class="ic">🏪</span><span>दुकान</span><span class="go">›</span></div></div>
-    <div class="cat" onclick="quickCat('Kheti')"><div class="lb"><span class="ic">🌾</span><span>कृषि भूमि</span><span class="go">›</span></div></div>
-  </div>
+  <div class="sec-h"><h3 data-i="cat_h">Popular Property Categories</h3><button class="va" id="viewAll" data-i="view_all">View All →</button></div>
+  <div class="cats" id="cats"></div>
 
-  <!-- Trust Strip -->
   <div class="trust">
-    <div>100%<small>Verified</small></div>
-    <div>Zero<small>Hidden Fee</small></div>
-    <div>Direct<small>Owner Deal</small></div>
-    <div>Fast<small>Registry</small></div>
+    <div data-go="list"><svg viewBox="0 0 40 40"><path d="M20 3 6 8v11c0 9 6 15 14 18 8-3 14-9 14-18V8z" fill="#3b82f6"/><path d="m12 20 6 6 11-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg><span data-h="tr1">Verified<br>Properties</span></div>
+    <div data-go="list"><svg viewBox="0 0 40 40"><circle cx="20" cy="12" r="6" fill="#1457d6"/><circle cx="8" cy="15" r="4.5" fill="#1457d6"/><circle cx="32" cy="15" r="4.5" fill="#1457d6"/><path d="M8 34c0-8 5-12 12-12s12 4 12 12z" fill="#1457d6"/></svg><span data-h="tr2">Trusted<br>Agents</span></div>
+    <div id="aiBtn"><svg viewBox="0 0 40 40"><path d="M7 24v-5a13 13 0 0 1 26 0v5" fill="none" stroke="#1457d6" stroke-width="4"/><rect x="3" y="21" width="8" height="12" rx="4" fill="#1457d6"/><rect x="29" y="21" width="8" height="12" rx="4" fill="#1457d6"/><path d="M33 33c0 4-4 5-9 5" fill="none" stroke="#1457d6" stroke-width="3"/></svg><span data-h="tr3">AI Assistant<small>(Hindi / English)</small></span></div>
+    <div id="waTrust" class="wa"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#22c55e"/><path d="M12 29l1.8-6A9 9 0 1 1 18 28z" fill="#fff"/><path d="M16.5 15c.5 3 3.5 6 6.5 6.5l1.5-1.8-2.5-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2.5z" fill="#22c55e"/></svg><span data-h="tr4">Chat on<br>WhatsApp</span></div>
   </div>
 
-  <!-- Area Filter Pills -->
-  <div class="sec-h"><h3>प्रमुख लोकेशन</h3></div>
-  <div class="areas" id="areaPills">
-    <button class="on" onclick="quickArea('all',this)">सभी</button>
-    <button onclick="quickArea('Tonk',this)">Tonk</button>
-    <button onclick="quickArea('Uniara',this)">Uniara</button>
-    <button onclick="quickArea('Aligarh',this)">Aligarh</button>
+  <div class="sec-h"><h3 data-i="ar_h">Hamare Kshetra</h3></div>
+  <p class="sub2" data-i="ar_sub">Apna kshetra chunein, phir wahan ki properties dekhein.</p>
+  <div class="areas" id="areaChips"></div>
+
+  <div class="sec-h" id="locSec"><h3 data-i="loc_h">📍 Hamari Location</h3></div>
+  <div class="mapbox">
+    <p class="sub2" style="padding:0;margin-bottom:10px" data-i="map_sub">Tonk | Uniara | Aligarh, Rajasthan</p>
+    <iframe title="NK Properties Location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Tonk+Rajasthan+India&z=9&output=embed"></iframe>
+    <a class="pbtn" style="display:block;text-align:center" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=NK+Properties+Tonk+Rajasthan"><span data-i="map_btn">🗺️ Google Maps kholein</span></a>
   </div>
 
-  <!-- Approved Listings -->
-  <div class="sec-h">
-    <h3 id="listHeading">उपलब्ध प्रॉपर्टी</h3>
-    <span id="dbBadge" style="font-size:12px;color:#ffd21f;font-weight:700">Connecting...</span>
+  <div class="cta">
+    <h3 data-i="cta_h">Plot ya Makaan Chahiye?</h3>
+    <p data-i="cta_p">Price, size aur location ki details ke liye abhi WhatsApp par message karein.</p>
+    <a class="pbtn g wa" id="ctaWa" target="_blank" rel="noopener" data-i="cta_wa">Chat on WhatsApp</a>
+    <a class="pbtn y" href="#sell" data-i="cta_sell">Apni Property Bechein →</a>
   </div>
-  <div class="grid" id="propGrid"></div>
-  <div class="empty hide" id="emptyState">कोई प्रॉपर्टी नहीं मिली। फ़िल्टर बदलकर देखें या अपनी प्रॉपर्टी डालें।</div>
 </main>
 
-<!-- ==================== 2. CUSTOMER POST PROPERTY PAGE ==================== -->
-<section class="page hide" id="view-sell">
-  <button class="back" onclick="showView('home')">← वापस जाएं</button>
-  <h2>प्रॉपर्टी पोस्ट करें</h2>
-  <p class="sub">आपकी प्रॉपर्टी Admin वेरिफिकेशन के बाद वेबसाइट पर लाइव हो जाएगी।</p>
-  <form class="fm" onsubmit="handlePropertySubmit(event, 'customer')">
-    <label>आप क्या करना चाहते हैं? *</label>
-    <select id="sPurpose" required>
-      <option value="buy">बेचना है (For Sale)</option>
-      <option value="rent">किराये पर देना है (For Rent)</option>
-    </select>
+<!-- LIST -->
+<main id="v-list" class="page hide">
+  <button class="back" data-i="bk_home" onclick="location.hash='#home'">← Home</button>
+  <h2 id="listTitle">Properties</h2>
+  <p class="sub" id="listSub"></p>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="grid"></div>
+</main>
 
-    <div class="r2">
-      <div>
-        <label>प्रॉपर्टी का प्रकार *</label>
-        <select id="sCat" required>
-          <option value="Plot">प्लॉट (Plot)</option>
-          <option value="Makaan">मकान (House)</option>
-          <option value="Dukaan">दुकान (Shop)</option>
-          <option value="Kheti">कृषि भूमि (Land)</option>
-        </select>
-      </div>
-      <div>
-        <label>शहर / क्षेत्र *</label>
-        <select id="sArea" required>
-          <option value="Tonk">Tonk</option>
-          <option value="Uniara">Uniara</option>
-          <option value="Aligarh">Aligarh</option>
-          <option value="Other">अन्य</option>
-        </select>
-      </div>
-    </div>
-
-    <label>प्रॉपर्टी शीर्षक (Title) *</label>
-    <input id="sTitle" placeholder="उदा. 100 गज कॉर्नर प्लॉट, मेन रोड उनियारा" required>
-
-    <div class="r2">
-      <div>
-        <label>कीमत / किराया (₹) *</label>
-        <input id="sPrice" placeholder="उदा. ₹12 लाख या ₹8,000/माह" required>
-      </div>
-      <div>
-        <label>साइज़ / क्षेत्रफल *</label>
-        <input id="sSize" placeholder="उदा. 100 गज / 2 बीघा" required>
-      </div>
-    </div>
-
-    <label>पूरी लोकेशन / पता *</label>
-    <input id="sLoc" placeholder="कॉलोनी, मोहल्ला या नज़दीकी लैंडमार्क" required>
-
-    <div class="r2">
-      <div>
-        <label>आपका नाम *</label>
-        <input id="sOwner" placeholder="पूरा नाम" required>
-      </div>
-      <div>
-        <label>मोबाइल नंबर *</label>
-        <input id="sPhone" type="tel" pattern="[0-9]{10}" placeholder="10 अंकों का नंबर" required>
-      </div>
-    </div>
-
-    <label>अन्य विवरण</label>
-    <textarea id="sDesc" placeholder="रोड साइज़, पानी-बिजली, दिशा आदि की जानकारी..."></textarea>
-
-    <label>फोटो अपलोड करें (अधिकतम 3 फोटो)</label>
-    <div class="photos" id="custPhotos">
-      <label class="addph">+ फोटो चुनें<input type="file" accept="image/*" multiple hidden onchange="handleImages(this,'cust')"></label>
-    </div>
-
-    <button type="submit" class="pbtn g">प्रॉपर्टी सबमिट करें</button>
-  </form>
-</section>
-
-<!-- ==================== 3. AGENT PANEL ==================== -->
-<section class="page hide" id="view-agent">
-  <button class="back" onclick="showView('home')">← Home</button>
-  <h2>Agent Panel</h2>
-  <p class="sub">रजिस्टर्ड एजेंट यहाँ से प्रॉपर्टी जोड़ सकते हैं और स्टेटस ट्रैक कर सकते हैं।</p>
-
-  <!-- Agent Auth Box -->
-  <div id="agentAuthBox" class="fm">
-    <div class="atabs" style="margin-bottom:10px">
-      <button type="button" class="on" id="tabAgLogin" onclick="switchAgentTab('login')">Agent Login</button>
-      <button type="button" id="tabAgReg" onclick="switchAgentTab('reg')">नया एजेंट रजिस्ट्रेशन</button>
-    </div>
-
-    <!-- Login Form -->
-    <form id="agLoginForm" onsubmit="agentLogin(event)">
-      <label>ईमेल आईडी *</label>
-      <input type="email" id="agLoginEmail" placeholder="agent@example.com" required>
-      <label>पासवर्ड *</label>
-      <input type="password" id="agLoginPass" placeholder="••••••••" required>
-      <button type="submit" class="pbtn">लॉगिन करें</button>
-    </form>
-
-    <!-- Register Form -->
-    <form id="agRegForm" class="hide" onsubmit="agentRegister(event)">
-      <label>एजेंट का नाम *</label>
-      <input id="agName" placeholder="आपका पूरा नाम" required>
-      <div class="r2">
-        <div>
-          <label>मोबाइल नंबर *</label>
-          <input id="agPhone" type="tel" pattern="[0-9]{10}" placeholder="10 अंकों का नंबर" required>
-        </div>
-        <div>
-          <label>कार्य क्षेत्र *</label>
-          <select id="agArea">
-            <option value="Tonk">Tonk</option>
-            <option value="Uniara">Uniara</option>
-            <option value="Aligarh">Aligarh</option>
-          </select>
-        </div>
-      </div>
-      <label>ईमेल आईडी *</label>
-      <input type="email" id="agEmail" placeholder="agent@example.com" required>
-      <label>पासवर्ड बनाएं (कम से कम 6 अक्षर) *</label>
-      <input type="password" id="agPass" minlength="6" placeholder="पासवर्ड" required>
-      <button type="submit" class="pbtn y">रजिस्ट्रेशन सबमिट करें</button>
+<!-- SELL -->
+<main id="v-sell" class="page hide">
+  <button class="back" data-i="bk_home" onclick="location.hash='#home'">← Home</button>
+  <div class="sellgrid">
+    <aside class="sinfo">
+      <h2 data-i="s_h">Seller Panel: Apni Zameen / Makaan Daalein</h2>
+      <p data-i="s_p1">Form bharein aur photo jodein - aapki property hamare Admin Panel mein pahunchegi. Hum check karke approve karenge, uske baad wo website par dikhegi.</p>
+      <ul>
+        <li data-i="s_l1">Bilkul free listing</li>
+        <li data-i="s_l2">Plot, makaan, dukaan, krishi bhoomi sab</li>
+        <li data-i="s_l3">Photo ke saath (max 3)</li>
+        <li data-i="s_l4">Hum khud aapko call / WhatsApp karenge</li>
+      </ul>
+      <p data-i="s_p2">Admin ke approve karte hi aapki property website par dikhne lagegi.</p>
+    </aside>
+    <form class="fm sform" id="sellForm">
+      <input type="hidden" id="s_purpose" value="buy">
+      <div class="r2"><div><label data-i="f_name">Aapka Naam</label><input id="s_name" required data-ph="p_name" placeholder="Naam likhein"></div>
+      <div><label data-i="f_mob">Mobile Number</label><input id="s_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required data-ph="p_mob" placeholder="10 digit number"></div></div>
+      <div class="r2"><div><label data-i="f_type">Property Type</label><select id="s_type"></select></div>
+      <div><label data-i="f_area">Kshetra</label><select id="s_area"></select></div></div>
+      <div class="r2"><div><label data-i="f_vill">Gaon / Mohalla</label><input id="s_vill" data-ph="p_vill" placeholder="Jaise: Station Road"></div>
+      <div><label data-i="f_size">Size / Area</label><input id="s_size" data-ph="p_size" placeholder="1000 sq ft / 2 bigha"></div></div>
+      <div class="r2"><div><label data-i="f_pur">Bikri ya Kiraya</label><select id="s_pur"></select></div>
+      <div><label data-i="f_price">Aapki Expected Price</label><input id="s_price" data-ph="p_price" placeholder="Jaise: 8 lakh"></div></div>
+      <label data-i="f_desc">Anya Details</label><textarea id="s_desc" data-ph="p_desc" placeholder="Road facing, registry, paas mein kya hai..."></textarea>
+      <label data-i="f_photo">Property ki Photo</label>
+      <div class="photos wide" id="s_ph"></div>
+      <button class="pbtn g sbtn wa" type="submit"><svg width="20" height="20" viewBox="0 0 40 40"><path d="M20 3a17 17 0 0 0-14.5 25.5L3 37l8.8-2.3A17 17 0 1 0 20 3z" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M14 12c.8 6 6 11.5 12.5 13l2.2-2.8-4-1.8-1.8 1.4c-2-.9-3.8-2.7-4.7-4.7l1.4-1.8-1.8-4z" fill="#fff"/></svg><span data-i="btn_send">Property Bhejein</span></button>
+      <p class="note" data-i="s_note">Aapka mobile number sirf NK Properties ko dikhta hai, website par nahi.</p>
     </form>
   </div>
+</main>
 
-  <!-- Agent Dashboard (After Login) -->
-  <div id="agentDash" class="hide">
-    <div id="agentStatusBanner" class="awarn">स्टेटस चेक हो रहा है...</div>
-    <div class="gstat">
-      <div><b id="agTotalCount">0</b>मेरी कुल प्रॉपर्टी</div>
-      <div><b id="agApprovedCount">0</b>लाइव (Approved)</div>
-    </div>
+<!-- AGENT -->
+<main id="v-agent" class="page hide">
+  <button class="back" data-i="bk_home" onclick="location.hash='#home'">← Home</button>
+  <div id="g-login"></div>
+  <div id="g-main" class="hide"></div>
+</main>
 
-    <div id="agentPostSection" class="hide">
-      <h3 style="margin:12px 0 8px">नई प्रॉपर्टी जोड़ें (Agent)</h3>
-      <form class="fm" onsubmit="handlePropertySubmit(event, 'agent')">
-        <div class="r2">
-          <div>
-            <label>उद्देश्य *</label>
-            <select id="aPurpose">
-              <option value="buy">बेचना है (Sale)</option>
-              <option value="rent">किराया (Rent)</option>
-            </select>
-          </div>
-          <div>
-            <label>प्रकार *</label>
-            <select id="aCat">
-              <option value="Plot">प्लॉट</option>
-              <option value="Makaan">मकान</option>
-              <option value="Dukaan">दुकान</option>
-              <option value="Kheti">कृषि भूमि</option>
-            </select>
-          </div>
-        </div>
-        <div class="r2">
-          <div>
-            <label>क्षेत्र *</label>
-            <select id="aArea">
-              <option value="Tonk">Tonk</option>
-              <option value="Uniara">Uniara</option>
-              <option value="Aligarh">Aligarh</option>
-            </select>
-          </div>
-          <div>
-            <label>कीमत *</label>
-            <input id="aPrice" placeholder="उदा. ₹15 लाख" required>
-          </div>
-        </div>
-        <label>प्रॉपर्टी शीर्षक *</label>
-        <input id="aTitle" placeholder="प्रॉपर्टी का नाम व साइज" required>
-        <div class="r2">
-          <div>
-            <label>साइज़ *</label>
-            <input id="aSize" placeholder="120 गज" required>
-          </div>
-          <div>
-            <label>पता / लोकेशन *</label>
-            <input id="aLoc" placeholder="मेन रोड, टोंक" required>
-          </div>
-        </div>
-        <label>विवरण</label>
-        <textarea id="aDesc" placeholder="अतिरिक्त जानकारी..."></textarea>
-        <label>फोटो (अधिकतम 3)</label>
-        <div class="photos" id="agPhotos">
-          <label class="addph">+ फोटो<input type="file" accept="image/*" multiple hidden onchange="handleImages(this,'ag')"></label>
-        </div>
-        <button type="submit" class="pbtn g">लिस्टिंग सबमिट करें</button>
-      </form>
-    </div>
-
-    <h3 style="margin:18px 0 10px">मेरी सबमिट की गई प्रॉपर्टी</h3>
-    <div id="agentPropList"></div>
-    <button class="pbtn r" onclick="logoutUser()">लॉगआउट करें</button>
-  </div>
-</section>
-
-<!-- ==================== 4. ADMIN PANEL ==================== -->
-<section class="page hide" id="view-admin">
-  <button class="back" onclick="showView('home')">← Home</button>
-  <h2>Admin Control Panel</h2>
-  <p class="sub">प्रॉपर्टी और एजेंट्स को अप्रूव, रिजेक्ट या डिलीट करें।</p>
-
-  <!-- Admin Login -->
-  <div id="adminLoginBox" class="fm">
-    <form onsubmit="adminLogin(event)">
-      <label>Admin Email *</label>
-      <input type="email" id="admEmail" placeholder="admin@nkproperties.in" required>
-      <label>Admin Password *</label>
-      <input type="password" id="admPass" placeholder="••••••••" required>
-      <button type="submit" class="pbtn">Admin Login</button>
+<!-- ADMIN -->
+<main id="v-admin" class="page hide">
+  <button class="back" onclick="location.hash='#home'">← Website</button>
+  <div id="a-login">
+    <h2>Admin Login</h2><p class="sub">Sirf NK Properties owner ke liye.</p>
+    <form class="fm" id="loginForm">
+      <label>Mobile Number</label><input id="a_phone" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required autocomplete="username" placeholder="10 digit number">
+      <label>Password</label><input id="a_pass" type="password" required autocomplete="current-password">
+      <button class="pbtn" type="submit">Login</button>
     </form>
   </div>
-
-  <!-- Admin Dashboard -->
-  <div id="adminDash" class="hide">
-    <div class="atabs">
-      <button class="on" id="admTabPending" onclick="setAdminTab('pending',this)">Pending <b id="cntPending">0</b></button>
-      <button id="admTabApproved" onclick="setAdminTab('approved',this)">Approved <b id="cntApproved">0</b></button>
-      <button id="admTabAgents" onclick="setAdminTab('agents',this)">Agents <b id="cntAgents">0</b></button>
-      <button id="admTabLeads" onclick="setAdminTab('leads',this)">Inquiries <b id="cntLeads">0</b></button>
-    </div>
-    <div id="adminList"></div>
-    <button class="pbtn r" onclick="logoutUser()">Admin Logout</button>
+  <div id="a-main" class="hide">
+    <h2>Admin Panel</h2>
+    <div id="a-warn"></div>
+    <div class="atabs" id="atabs"></div>
+    <div id="a-list"></div>
+    <div id="a-settings" class="hide"></div>
   </div>
-</section>
+</main>
 
-<!-- FOOTER -->
 <footer class="ft">
-  <b>NK Properties</b>
-  <span>टोंक • उनियारा • अलीगढ़ (राजस्थान)</span>
-  <small>© 2026 NK Properties. All Rights Reserved.</small>
+  <b>NK PROPERTIES</b>
+  <span>Dream • Buy • Sell • Rent • Invest</span>
+  <span data-i="ft_loc">📍 Tonk | Uniara | Aligarh, Rajasthan</span>
+  <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=NK+Properties+Tonk+Rajasthan" data-i="ft_map">🗺️ Google Maps par Location dekhein</a>
+  <span>WhatsApp: <a id="ftWa" target="_blank" rel="noopener" style="font-weight:700"></a></span>
+  <a href="#admin" style="opacity:.7">Admin Login</a>
+  <small>© NK Properties. All rights reserved.</small>
 </footer>
 
-<!-- FIXED BOTTOM BAR -->
-<div class="bar">
-  <a class="call" href="tel:+919829000000">📞 कॉल करें</a>
-  <a class="call" style="background:linear-gradient(180deg,#25d366,#0f9a46)" href="https://wa.me/919829000000?text=Namaste%20NK%20Properties,%20mujhe%20property%20ki%20jankari%20chahiye." target="_blank" rel="noopener">💬 WhatsApp</a>
+<div class="dock">
+  <a class="dk sell" href="#sell" aria-label="Seller Panel"><svg viewBox="0 0 24 24"><path d="M3 12 12 4l9 8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 11v9h12v-9" fill="#fff"/><path d="M12 13v5M9.5 15.5h5" stroke="#1457d6" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl" data-i="dk_sell">Seller Panel</span></a>
+  <a class="dk agent" href="#agent" aria-label="Agent Panel"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.2" fill="#10275a"/><path d="M4 21c0-5 3.5-7.5 8-7.5s8 2.5 8 7.5z" fill="#10275a"/></svg><span class="lbl" data-i="dk_agent">Agent Panel</span></a>
+  <a class="dk wa" id="callBtn" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 48 48"><path d="M24 4a20 20 0 0 0-17 30l-3 10 10.5-3A20 20 0 1 0 24 4z" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M17 15c1 6 7 12 14 14l3-3.5-5-2-2 1.6c-2-1-4-3-5-5l1.6-2-2-5z" fill="#fff"/></svg><span class="lbl">WhatsApp <b id="phoneTxt">9785480342</b></span></a>
+</div>
 </div>
 
-<!-- PROPERTY DETAIL & INQUIRY MODAL -->
-<div class="mo hide" id="propModal" onclick="if(event.target===this)closeModal()">
-  <div class="bx">
-    <button class="x" onclick="closeModal()">✕</button>
-    <h3 id="mTitle">Property Title</h3>
-    <div style="color:var(--blue);font-weight:800;font-size:21px" id="mPrice">₹0</div>
-    <div class="gal" id="mGal"></div>
-    <div class="kv" id="mKv"></div>
-    <p id="mDesc" style="font-size:14px;color:#33436e;line-height:1.5;margin-top:8px"></p>
+<script>
+/* ============ CONFIG ============ */
+// 1) Firebase config yahan paste karein (Firebase Console > Project settings > Web app).
+//    Jab tak null hai, data sirf isi browser (localStorage) mein save hota hai
+//    (yani dusre logon ko property nahi dikhegi aur seller ki property admin tak nahi pahunchegi).
+const FIREBASE_CONFIG = null;
+// 2) Admin: code mein koi password nahi hai. Firebase Authentication mein user banayein
+//    (Email = <mobile number>@nkproperties.in) aur Firestore mein admins/<us user ki UID> document banayein.
+//    firestore.rules publish karna zaroori hai. Poore steps SETUP.md mein hain.
 
-    <div class="fm" style="background:#f4f7fd;margin-top:14px;padding:12px">
-      <strong style="font-size:14.5px;color:#10275a">इस प्रॉपर्टी के लिए पूछताछ (Inquiry) भेजें:</strong>
-      <form onsubmit="submitInquiry(event)">
-        <input type="hidden" id="inqPropId">
-        <input type="hidden" id="inqPropTitle">
-        <div class="r2">
-          <input id="inqName" placeholder="आपका नाम *" required>
-          <input id="inqPhone" type="tel" pattern="[0-9]{10}" placeholder="मोबाइल नंबर *" required>
-        </div>
-        <button type="submit" class="pbtn g" style="margin-top:10px;padding:10px;font-size:15px">कॉल बैक रिक्वेस्ट भेजें</button>
-      </form>
-    </div>
+/* ============ PHOTOS ============
+   Ye 5 photo index.html ke SAATH, usi folder mein rakhein:
+   hero.jpg  -> upar ka bada ghar (hero)
+   plot.jpg  -> Residential Plot
+   house.jpg -> House / Villa
+   agri.jpg  -> Agricultural Land
+   shop.jpg  -> Commercial Shop (optional, na ho to drawing dikhegi)
+   Photo na mile to apne aap neeche wali drawing dikhti hai. */
+const PHOTO = { hero:"hero.jpg", plot:"plot.jpg", house:"house.jpg", agri:"agri.jpg", shop:"shop.jpg" };
 
-    <div class="row">
-      <a id="mCallBtn" class="pbtn" href="tel:+919829000000">📞 डायरेक्ट कॉल</a>
-      <a id="mWaBtn" class="pbtn g" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
-    </div>
-  </div>
-</div>
+const TYPES = {
+  plot:{n:"Residential Plot"}, house:{n:"House / Villa"}, agri:{n:"Agricultural Land"}, shop:{n:"Commercial Shop"}
+};
+const TR={
+m_home:["🏠 Home","🏠 होम","🏠 Home"],
+m_all:["🔎 Sabhi Properties","🔎 सभी प्रॉपर्टी","🔎 All Properties"],
+m_sell:["📝 Apni Property Daalein","📝 अपनी प्रॉपर्टी डालें","📝 List Your Property"],
+m_loc:["📍 Hamari Location (Map)","📍 हमारी लोकेशन (मैप)","📍 Our Location (Map)"],
+h_t1:["Find Your","अपनी सपनों की","Find Your"],
+h_t2:["Dream Property","प्रॉपर्टी खोजें","Dream Property"],
+h_sub:["Buy • Sell • Rent • Invest","खरीदें • बेचें • किराया • निवेश","Buy • Sell • Rent • Invest"],
+s_title:["आप क्या ढूंढ रहे हैं?","आप क्या ढूंढ रहे हैं?","What are you looking for?"],
+tab_buy:["Buy","खरीदें","Buy"],tab_rent:["Rent","किराया","Rent"],tab_sell:["Sell","बेचें","Sell"],
+loc_ph:["जिला / शहर / गाँव चुनें","जिला / शहर / गाँव चुनें","Select district / city / village"],
+btn_search:["Search Properties","प्रॉपर्टी खोजें","Search Properties"],
+cat_h:["Popular Property Categories","लोकप्रिय प्रॉपर्टी श्रेणियाँ","Popular Property Categories"],
+view_all:["View All →","सभी देखें →","View All →"],
+ty_plot:["Residential Plot","आवासीय प्लॉट","Residential Plot"],
+ty_house:["House / Villa","मकान / विला","House / Villa"],
+ty_agri:["Agricultural Land","कृषि भूमि","Agricultural Land"],
+ty_shop:["Commercial Shop","व्यावसायिक दुकान","Commercial Shop"],
+tr1:["Verified<br>Properties","सत्यापित<br>प्रॉपर्टी","Verified<br>Properties"],
+tr2:["Trusted<br>Agents","भरोसेमंद<br>एजेंट","Trusted<br>Agents"],
+tr3:["AI Assistant<small>(Hindi / English)</small>","AI सहायक<small>(हिंदी / English)</small>","AI Assistant<small>(Hindi / English)</small>"],
+tr4:["Chat on<br>WhatsApp","WhatsApp पर<br>चैट करें","Chat on<br>WhatsApp"],
+ar_h:["Hamare Kshetra","हमारे क्षेत्र","Our Areas"],
+ar_sub:["Apna kshetra chunein, phir wahan ki properties dekhein.","अपना क्षेत्र चुनें, फिर वहाँ की प्रॉपर्टी देखें।","Choose your area to see the properties there."],
+loc_h:["📍 Hamari Location","📍 हमारी लोकेशन","📍 Our Location"],
+map_sub:["Tonk | Uniara | Aligarh, Rajasthan","टोंक | उनियारा | अलीगढ़, राजस्थान","Tonk | Uniara | Aligarh, Rajasthan"],
+map_btn:["🗺️ Google Maps kholein","🗺️ Google Maps खोलें","🗺️ Open Google Maps"],
+cta_h:["Plot ya Makaan Chahiye?","प्लॉट या मकान चाहिए?","Looking for a Plot or House?"],
+cta_p:["Price, size aur location ki details ke liye abhi WhatsApp par message karein.","कीमत, साइज़ और लोकेशन की जानकारी के लिए अभी WhatsApp पर मैसेज करें।","Message us on WhatsApp now for price, size and location details."],
+cta_wa:["Chat on WhatsApp","WhatsApp पर चैट करें","Chat on WhatsApp"],
+cta_sell:["Apni Property Bechein →","अपनी प्रॉपर्टी बेचें →","Sell Your Property →"],
+ft_loc:["📍 Tonk | Uniara | Aligarh, Rajasthan","📍 टोंक | उनियारा | अलीगढ़, राजस्थान","📍 Tonk | Uniara | Aligarh, Rajasthan"],
+ft_map:["🗺️ Google Maps par Location dekhein","🗺️ Google Maps पर लोकेशन देखें","🗺️ View location on Google Maps"],
+bar_call:["Call / WhatsApp","कॉल / WhatsApp","Call / WhatsApp"],
+reg_btn:["Register / Login","रजिस्टर / लॉगिन","Register / Login"],
+bk_home:["← Home","← होम","← Home"],
+l_all:["Sabhi Properties","सभी प्रॉपर्टी","All Properties"],
+l_cnt:["{n} property mili","{n} प्रॉपर्टी मिली","{n} properties found"],
+c_both:["Buy + Rent","खरीद + किराया","Buy + Rent"],c_buy:["Buy","खरीद","Buy"],c_rent:["Rent","किराया","Rent"],
+c_alltype:["Sabhi Prakar","सभी प्रकार","All Types"],c_allarea:["Sabhi Kshetra","सभी क्षेत्र","All Areas"],
+l_empty:["Abhi is selection mein koi property nahi hai.","अभी इस चयन में कोई प्रॉपर्टी नहीं है।","No properties here yet."],
+l_emptywa:["WhatsApp par poochein","WhatsApp पर पूछें","Ask on WhatsApp"],
+d_ask:["Price poochein","कीमत पूछें","Ask for price"],
+d_type:["Type","प्रकार","Type"],d_area:["Kshetra","क्षेत्र","Area"],d_vill:["Gaon / Mohalla","गाँव / मोहल्ला","Village / Locality"],
+d_size:["Size","साइज़","Size"],d_cat:["Category","श्रेणी","Category"],d_call:["Call","कॉल","Call"],
+s_h:["Seller Panel: Apni Zameen / Makaan Daalein","सेलर पैनल: अपनी ज़मीन / मकान डालें","Seller Panel: List Your Land / House"],
+s_p1:["Form bharein aur photo jodein - aapki property hamare Admin Panel mein pahunchegi. Hum check karke approve karenge, uske baad wo website par dikhegi.","फॉर्म भरें और फोटो जोड़ें - आपकी प्रॉपर्टी हमारे एडमिन पैनल में पहुँचेगी। हम जाँच कर अप्रूव करेंगे, उसके बाद वह वेबसाइट पर दिखेगी।","Fill in the form and add photos - your property reaches our Admin Panel. We will review and approve it, then it appears on the website."],
+s_l1:["Bilkul free listing","बिल्कुल फ्री लिस्टिंग","Completely free listing"],
+s_l2:["Plot, makaan, dukaan, krishi bhoomi sab","प्लॉट, मकान, दुकान, कृषि भूमि सब","Plots, houses, shops, farmland - all"],
+s_l3:["Photo ke saath (max 3)","फोटो के साथ (अधिकतम 3)","With photos (max 3)"],
+s_l4:["Hum khud aapko call / WhatsApp karenge","हम खुद आपको कॉल / WhatsApp करेंगे","We will call / WhatsApp you ourselves"],
+s_p2:["Admin ke approve karte hi aapki property website par dikhne lagegi.","एडमिन के अप्रूव करते ही आपकी प्रॉपर्टी वेबसाइट पर दिखने लगेगी।","Your property will appear on the website as soon as the admin approves it."],
+f_name:["Aapka Naam","आपका नाम","Your Name"],f_mob:["Mobile Number","मोबाइल नंबर","Mobile Number"],
+f_type:["Property Type","प्रॉपर्टी का प्रकार","Property Type"],f_area:["Kshetra","क्षेत्र","Area"],
+f_vill:["Gaon / Mohalla","गाँव / मोहल्ला","Village / Locality"],f_size:["Size / Area","साइज़ / क्षेत्रफल","Size / Area"],
+f_pur:["Bikri ya Kiraya","बिक्री या किराया","Sale or Rent"],
+o_buy:["Bikri (Buy)","बिक्री (Buy)","For Sale (Buy)"],o_rent:["Kiraya (Rent)","किराया (Rent)","For Rent"],
+f_price:["Aapki Expected Price","आपकी अपेक्षित कीमत","Your Expected Price"],f_desc:["Anya Details","अन्य जानकारी","Other Details"],
+f_photo:["Property ki Photo","प्रॉपर्टी की फोटो","Property Photo"],
+p_name:["Naam likhein","नाम लिखें","Enter your name"],p_mob:["10 digit number","10 अंकों का नंबर","10-digit number"],
+p_vill:["Jaise: Station Road","जैसे: स्टेशन रोड","e.g. Station Road"],p_size:["1000 sq ft / 2 bigha","1000 sq ft / 2 बीघा","1000 sq ft / 2 bigha"],
+p_price:["Jaise: 8 lakh","जैसे: 8 लाख","e.g. 8 lakh"],p_desc:["Road facing, registry, paas mein kya hai...","रोड फेसिंग, रजिस्ट्री, पास में क्या है...","Road facing, registry, what is nearby..."],
+btn_send:["Property Bhejein","प्रॉपर्टी भेजें","Submit Property"],
+s_note:["Aapka mobile number sirf NK Properties ko dikhta hai, website par nahi.","आपका मोबाइल नंबर सिर्फ NK Properties को दिखता है, वेबसाइट पर नहीं।","Your mobile number is visible only to NK Properties, not on the website."],
+pk_add:["📷 Photo jodein (max 3)","📷 फोटो जोड़ें (अधिकतम 3)","📷 Add photos (max 3)"],
+ok_h:["✅ Property bhej di gayi!","✅ प्रॉपर्टी भेज दी गई!","✅ Property submitted!"],
+ok_p:["Aapki property Admin ke paas review ke liye pahunch gayi hai. Approve hote hi wo website par dikhne lagegi. Hum aapko jald call / WhatsApp karenge.","आपकी प्रॉपर्टी एडमिन के पास रिव्यू के लिए पहुँच गई है। अप्रूव होते ही वह वेबसाइट पर दिखने लगेगी। हम आपको जल्द कॉल / WhatsApp करेंगे।","Your property has reached the Admin for review. It will appear on the website once approved. We will call / WhatsApp you soon."],
+ok_wa:["WhatsApp par bhi bhejein","WhatsApp पर भी भेजें","Also send on WhatsApp"],
+ai_h:["AI Assistant (Hindi / English)","AI सहायक (हिंदी / English)","AI Assistant (Hindi / English)"],
+ai_p:["Aap kya dhoondh rahe hain? Apni zaroorat WhatsApp par bhejein, hum turant jawab denge.","आप क्या ढूंढ रहे हैं? अपनी ज़रूरत WhatsApp पर भेजें, हम तुरंत जवाब देंगे।","What are you looking for? Send your need on WhatsApp and we will reply right away."],
+rg_h:["Register / Login","रजिस्टर / लॉगिन","Register / Login"],
+rg_p:["Property dene wale (seller) ke liye registration ki zaroorat nahi - seedha form bharein.","प्रॉपर्टी देने वाले (सेलर) के लिए रजिस्ट्रेशन की ज़रूरत नहीं - सीधे फॉर्म भरें।","Sellers do not need to register - just fill in the form."],
+rg_sell:["📝 Property Daalein","📝 प्रॉपर्टी डालें","📝 List Property"],
+rg_admin:["🔐 Admin Login","🔐 एडमिन लॉगिन","🔐 Admin Login"],
+rg_agent:["🧑‍💼 Agent Login / Register","🧑‍💼 एजेंट लॉगिन / रजिस्टर","🧑‍💼 Agent Login / Register"],
+dk_sell:["Seller Panel","सेलर पैनल","Seller Panel"],
+dk_agent:["Agent Panel","एजेंट पैनल","Agent Panel"],
+m_agent:["🧑‍💼 Agent Panel","🧑‍💼 एजेंट पैनल","🧑‍💼 Agent Panel"],
+c_ph:["Yahan likhein...","यहाँ लिखें...","Type here..."],
+c_send:["Bhejein","भेजें","Send"],
+c_chips:["Plot dikhao|Makaan kiraye par|20 lakh tak zameen|Apni property bechni hai","प्लॉट दिखाओ|मकान किराये पर|20 लाख तक जमीन|अपनी प्रॉपर्टी बेचनी है","Show plots|House for rent|Land under 20 lakh|I want to sell property"],
+c_greet:["Namaste! 👋 Main NK Properties ka AI Assistant hoon. Batayein - kaun si property chahiye (plot, makaan, dukaan, zameen), kis kshetra mein aur budget kitna hai?","नमस्ते! 👋 मैं NK Properties का AI सहायक हूँ। बताइए - कौन सी प्रॉपर्टी चाहिए (प्लॉट, मकान, दुकान, जमीन), किस क्षेत्र में और बजट कितना है?","Hello! 👋 I'm the NK Properties AI Assistant. Tell me what you're looking for (plot, house, shop, farmland), which area and your budget."],
+c_found:["Aapke liye {n} property mili:","आपके लिए {n} प्रॉपर्टी मिली:","I found {n} matching properties:"],
+c_none:["Is selection mein abhi koi property nahi hai. Kshetra ya budget badal kar poochein, ya WhatsApp par bataiye - hum aapke liye dhoondh denge.","इस चयन में अभी कोई प्रॉपर्टी नहीं है। क्षेत्र या बजट बदल कर पूछें, या WhatsApp पर बताइए - हम आपके लिए ढूंढ देंगे।","There are no matching properties right now. Try a different area or budget, or tell us on WhatsApp and we will find one for you."],
+c_sell:["Apni property bechne ke liye Seller form bharein - bilkul free hai. Admin approve karte hi wo website par lag jaati hai.","अपनी प्रॉपर्टी बेचने के लिए सेलर फॉर्म भरें - बिल्कुल फ्री है। एडमिन के अप्रूव करते ही वह वेबसाइट पर लग जाती है।","To sell your property, fill in the Seller form - it is free and goes live once the admin approves it."],
+c_agent:["Agent hain? Agent Panel mein register / login karke apni properties daal aur manage kar sakte hain.","एजेंट हैं? एजेंट पैनल में रजिस्टर / लॉगिन करके अपनी प्रॉपर्टी डाल और मैनेज कर सकते हैं।","Are you an agent? Register / log in to the Agent Panel to add and manage your properties."],
+c_contact:["Aap hamein seedha Call / WhatsApp kar sakte hain: +91 {ph}","आप हमें सीधे कॉल / WhatsApp कर सकते हैं: +91 {ph}","You can call / WhatsApp us directly at +91 {ph}"],
+c_loc:["Hamare kshetra: {areas}. Office ki location ke liye Home page par Google Maps dekhein.","हमारे क्षेत्र: {areas}। ऑफिस की लोकेशन के लिए होम पेज पर Google Maps देखें।","Our areas: {areas}. See Google Maps on the Home page for our office location."],
+c_fb:["Maaf kijiye, main samajh nahi paya. Property ka type (plot / makaan / dukaan / zameen), kshetra aur budget batayein. Jaise: 'Tonk mein 20 lakh tak plot'.","माफ़ कीजिए, मैं समझ नहीं पाया। प्रॉपर्टी का प्रकार (प्लॉट / मकान / दुकान / जमीन), क्षेत्र और बजट बताएं। जैसे: 'टोंक में 20 लाख तक प्लॉट'।","Sorry, I didn't get that. Tell me the property type (plot / house / shop / land), area and budget. For example: 'plot in Tonk under 20 lakh'."],
+c_thx:["Aapka shukriya! 🙏 Aur kuch chahiye to poochiye.","आपका शुक्रिया! 🙏 और कुछ चाहिए तो पूछिए।","You're welcome! 🙏 Ask me anything else."],
+c_wabtn:["💬 WhatsApp par baat karein","💬 WhatsApp पर बात करें","💬 Chat on WhatsApp"],
+c_allbtn:["🔎 Sabhi dekhein","🔎 सभी देखें","🔎 See all"]
+};
+const LI={hing:0,hi:1,en:2};
+let lang=(()=>{try{const v=localStorage.getItem("nk_lang");return LI[v]!==undefined?v:"hing"}catch(e){return "hing"}})();
+const t=k=>{const a=TR[k];return a?a[LI[lang]]:k};
+const tn=k=>t("ty_"+k);
+const AREA_HI={Tonk:"टोंक",Uniara:"उनियारा",Aligarh:"अलीगढ़",Jaipur:"जयपुर","Sawai Madhopur":"सवाई माधोपुर",Karwar:"करवर",Indergarh:"इंदरगढ़"};
+const an=a=>lang==="hi"&&AREA_HI[a]?AREA_HI[a]:a;
+function applyLang(){
+  document.documentElement.lang=lang==="en"?"en":"hi";
+  document.querySelectorAll("[data-i]").forEach(e=>{e.textContent=t(e.dataset.i)});
+  document.querySelectorAll("[data-h]").forEach(e=>{e.innerHTML=t(e.dataset.h)});
+  document.querySelectorAll("[data-ph]").forEach(e=>{e.placeholder=t(e.dataset.ph)});
+  document.querySelectorAll(".langbar button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
+  applySettings();renderCats();
+  photoPicker($("#s_ph"),sellPh);
+  if((location.hash||"#home")==="#list")renderList();
+}
+const SET_VER=2;
+const DEF_SETTINGS = { ver:SET_VER, phone:"9785480342", areas:["Tonk","Uniara","Aligarh","Jaipur","Sawai Madhopur","Karwar","Indergarh"] };
+const mergeSettings=o=>{o=o&&typeof o==="object"?{...o}:{};if(o.ver!==SET_VER)delete o.areas;return {...DEF_SETTINGS,...o,ver:SET_VER}};
 
-<div class="toast hide" id="toast"></div>
-</div>
+/* ============ helpers ============ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2600)}
 
-<!-- ==================== FIREBASE & APP LOGIC ==================== -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getFirestore, collection, addDoc, getDocs, getDoc, setDoc,
-  updateDoc, deleteDoc, doc, query, where, orderBy, onSnapshot
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import {
-  getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,
-  onAuthStateChanged, signOut
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+/* Database se aaya data bharose layak nahi: photo / type / status ko jaanchein */
+const PHOTO_RE=/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/]+={0,2}$/;
+const clean=p=>({...p,
+  photos:(Array.isArray(p.photos)?p.photos:[]).filter(x=>typeof x==="string"&&PHOTO_RE.test(x)).slice(0,3),
+  type:Object.prototype.hasOwnProperty.call(TYPES,p.type)?p.type:"plot",
+  purpose:p.purpose==="rent"?"rent":"buy",
+  status:["pending","approved","rejected"].includes(p.status)?p.status:"pending"});
 
-/* ===================================================================
-   STEP 1: यहाँ अपना FIREBASE CONFIG पेस्ट करें
-   =================================================================== */
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+/* ============ art (SVG fallbacks) ============ */
+function houseSVG(){return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMaxYMax meet"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27508f"/><stop offset="1" stop-color="#0c2250"/></linearGradient><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#ff9d2e"/></linearGradient></defs><rect width="400" height="260" fill="url(#sk)"/><path d="M0 235h400v25H0z" fill="#12361f"/><ellipse cx="40" cy="190" rx="38" ry="55" fill="#0d3a22"/><ellipse cx="385" cy="170" rx="30" ry="70" fill="#0d3a22"/><rect x="80" y="130" width="260" height="105" fill="#e9edf5"/><rect x="60" y="62" width="150" height="76" fill="#cfd6e4"/><rect x="60" y="56" width="165" height="10" fill="#3a3f4a"/><rect x="210" y="40" width="40" height="95" fill="#8a5a3c"/><rect x="215" y="115" width="140" height="10" fill="#2d323d"/><rect x="95" y="145" width="45" height="75" fill="url(#gl)"/><rect x="150" y="145" width="45" height="75" fill="url(#gl)"/><rect x="265" y="140" width="62" height="80" fill="url(#gl)"/><rect x="85" y="75" width="40" height="50" fill="url(#gl)"/><rect x="135" y="75" width="40" height="50" fill="url(#gl)"/><rect x="85" y="132" width="250" height="5" fill="#2d323d"/></svg>`}
+function catSVG(t){
+ const m={
+ plot:`<rect width="300" height="120" fill="#7fb7e6"/><path d="M0 52h300v68H0z" fill="#5fae45"/><path d="M0 62 120 52 300 70M20 120 110 58M150 120 190 56M260 120 240 60" stroke="#e7d968" stroke-width="2.5" fill="none"/>`,
+ house:`<rect width="300" height="120" fill="#6fa8dc"/><rect x="110" y="30" width="110" height="80" fill="#e9edf5"/><rect x="90" y="48" width="70" height="36" fill="#c8cfdd"/><rect x="125" y="44" width="28" height="36" fill="#ffc261"/><rect x="170" y="44" width="40" height="36" fill="#ffc261"/><rect x="0" y="100" width="300" height="20" fill="#2f6b34"/>`,
+ agri:`<rect width="300" height="120" fill="#f5a35a"/><circle cx="150" cy="58" r="22" fill="#ffe29a"/><rect y="62" width="300" height="58" fill="#3f9a3a"/><path d="M150 62 20 120M150 62 80 120M150 62 150 120M150 62 220 120M150 62 280 120" stroke="#7fd25a" stroke-width="5"/>`,
+ shop:`<rect width="300" height="120" fill="#8fc0ee"/><rect x="95" y="20" width="120" height="90" fill="#24467f"/><g fill="#7ec3ff"><rect x="102" y="28" width="26" height="28"/><rect x="134" y="28" width="26" height="28"/><rect x="166" y="28" width="26" height="28"/><rect x="102" y="62" width="26" height="28"/><rect x="134" y="62" width="26" height="28"/><rect x="166" y="62" width="26" height="28"/></g><rect x="40" y="55" width="55" height="55" fill="#d4d9e3"/><rect y="105" width="300" height="15" fill="#3f7a3a"/>`};
+ return `<svg class="bg" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice">${m[t]||m.house}</svg>`;
+}
+/* photo (jpg) dikhao; na mile to drawing */
+function catFB(el,k,keepBg){const h=catSVG(k);el.outerHTML=keepBg?h:h.replace('class="bg"','')}
+function typeImg(k,bg){return `<img ${bg?'class="bg" ':''}src="${PHOTO[k]||""}" alt="" loading="lazy" onerror="catFB(this,'${k}',${bg?1:0})">`}
+const catIcons={
+ plot:'<svg width="18" height="20" viewBox="0 0 26 30"><path d="M13 1C7 1 3 5.5 3 11c0 7.5 10 18 10 18s10-10.5 10-18C23 5.5 19 1 13 1z" fill="#10275a"/><circle cx="13" cy="11" r="4" fill="#fff"/></svg>',
+ house:'<svg width="20" height="18" viewBox="0 0 26 24"><path d="M2 12 13 2l11 10" fill="none" stroke="#10275a" stroke-width="3"/><path d="M5 11v11h16V11" fill="#10275a"/></svg>',
+ agri:'<svg width="18" height="20" viewBox="0 0 20 24"><path d="M10 23V8M10 8C6 8 4 5 4 2c4 0 6 2 6 6zm0 0c4 0 6-3 6-6-4 0-6 2-6 6zM10 16c-4 0-6-3-6-6 4 0 6 2 6 6zm0 0c4 0 6-3 6-6-4 0-6 2-6 6z" fill="#10275a" stroke="#10275a" stroke-width="1.5"/></svg>',
+ shop:'<svg width="18" height="20" viewBox="0 0 22 24"><path d="M2 8h18l-1 14H3z" fill="#10275a"/><path d="M7 8V6a4 4 0 0 1 8 0v2" fill="none" stroke="#10275a" stroke-width="2.5"/></svg>'
 };
 
-// Admin का ईमेल यहाँ सेट करें (Firebase Auth में इसी ईमेल से यूज़र बनाएं)
-const ADMIN_EMAIL = "admin@nkproperties.in";
-
-/* ===================================================================
-   STATE & DATABASE INITIALIZATION (Firebase + Local Fallback)
-   =================================================================== */
-const isFirebaseConfigured = firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY";
-let db = null, auth = null;
-
-let state = {
-  properties: [],
-  agents: [],
-  leads: [],
-  purpose: "all",
-  adminTab: "pending",
-  currentUser: null,
-  currentAgentProfile: null,
-  tempPhotos: { cust: [], ag: [] }
-};
-
-// Sample data अगर डेटाबेस खाली हो या Firebase सेटअप न हुआ हो
-const DEMO_PROPERTIES = [
-  {
-    id: "demo1",
-    title: "150 गज आवासीय प्लॉट, जयपुर रोड टोंक",
-    purpose: "buy",
-    category: "Plot",
-    area: "Tonk",
-    price: "₹18.5 लाख",
-    size: "150 गज",
-    location: "जयपुर-कोटा हाईवे के पास, टोंक",
-    ownerName: "NK Properties Office",
-    phone: "9829000000",
-    description: "30 फीट चौड़ी रोड, पक्की रजिस्ट्री व दाखिल-खारिज उपलब्ध।",
-    photos: [],
-    status: "approved",
-    role: "admin",
-    createdAt: Date.now() - 86400000
+/* ============ data layer ============ */
+let fb=null, fdb=null, fauth=null;
+function loadScript(src){return new Promise((res,rej)=>{const t=document.createElement("script");t.src=src;t.onload=res;t.onerror=rej;document.head.appendChild(t)})}
+async function loadFirebase(){const b="https://www.gstatic.com/firebasejs/10.12.2/";await loadScript(b+"firebase-app-compat.js");await Promise.all([loadScript(b+"firebase-firestore-compat.js"),loadScript(b+"firebase-auth-compat.js")])}
+const Store = {
+  mode:"local",
+  async init(){
+    if(FIREBASE_CONFIG){
+      try{await loadFirebase();firebase.initializeApp(FIREBASE_CONFIG);fdb=firebase.firestore();fauth=firebase.auth();this.mode="firebase"}catch(e){console.warn(e);toast("Firebase connect nahi hua")}
+    }
   },
-  {
-    id: "demo2",
-    title: "नया बना 2 BHK मकान, उनियारा",
-    purpose: "buy",
-    category: "Makaan",
-    area: "Uniara",
-    price: "₹24 लाख",
-    size: "100 गज",
-    location: "आदर्श नगर कॉलोनी, उनियारा",
-    ownerName: "राजेश शर्मा (Agent)",
-    phone: "9829000000",
-    description: "मॉड्यूलर किचन, कार पार्किंग व पानी की टंकी सहित।",
-    photos: [],
-    status: "approved",
-    role: "agent",
-    createdAt: Date.now() - 43200000
+  async list(){
+    if(this.mode==="firebase"){
+      // Rules filter nahi karte: har query wahi maange jiski permission hai.
+      // Seller naam/mobile alag "propertyPrivate" collection mein hai.
+      const col=fdb.collection("properties"),priv=fdb.collection("propertyPrivate");
+      const rows=s=>s.docs.map(d=>({...d.data(),id:d.id}));
+      if(isAdmin){
+        const [a,b]=await Promise.all([col.get(),priv.get()]);
+        const m={};b.docs.forEach(d=>m[d.id]=d.data());
+        return rows(a).map(p=>clean({...p,...(m[p.id]||{})}));
+      }
+      const all=rows(await col.where("status","==","approved").get());
+      if(AG){const own=rows(await col.where("agentId","==",AG.id).get());own.forEach(p=>{const i=all.findIndex(x=>x.id===p.id);if(i<0)all.push(p);else all[i]=p})}
+      return all.map(clean);
+    }
+    // Bina Firebase: sirf dekhne ke liye
+    try{const v=JSON.parse(localStorage.getItem("nk_props")||"null");if(Array.isArray(v))return v.map(p=>{const c=clean(p);delete c.sellerName;delete c.sellerMobile;return c})}catch(e){}
+    return seedData();
   },
-  {
-    id: "demo3",
-    title: "मेन मार्केट शोरूम / दुकान किराये के लिए",
-    purpose: "rent",
-    category: "Dukaan",
-    area: "Aligarh",
-    price: "₹9,000 / माह",
-    size: "12x25 फीट",
-    location: "बस स्टैंड रोड, अलीगढ़",
-    ownerName: "NK Properties Office",
-    phone: "9829000000",
-    description: "बैंक, ऑफिस या शोरूम के लिए उत्तम लोकेशन।",
-    photos: [],
-    status: "approved",
-    role: "admin",
-    createdAt: Date.now()
-  }
-];
-
-function loadLocalFallback() {
-  state.properties = JSON.parse(localStorage.getItem("nk_props") || "null") || DEMO_PROPERTIES;
-  state.agents = JSON.parse(localStorage.getItem("nk_agents") || "[]");
-  state.leads = JSON.parse(localStorage.getItem("nk_leads") || "[]");
-  document.getElementById("dbBadge").textContent = "⚡ Local Demo Mode";
-  renderProperties();
-}
-
-function saveLocalFallback() {
-  localStorage.setItem("nk_props", JSON.stringify(state.properties));
-  localStorage.setItem("nk_agents", JSON.stringify(state.agents));
-  localStorage.setItem("nk_leads", JSON.stringify(state.leads));
-}
-
-if (isFirebaseConfigured) {
-  try {
-    const app = initializeApp(firebaseConfig);
-    db = getFirestore(app);
-    auth = getAuth(app);
-    document.getElementById("dbBadge").textContent = "🟢 Online DB Connected";
-
-    // Realtime Listener: Properties
-    onSnapshot(query(collection(db, "properties"), orderBy("createdAt", "desc")), (snap) => {
-      state.properties = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      renderProperties();
-      if (state.currentUser) {
-        renderAgentDashboard();
-        renderAdminDashboard();
-      }
-    });
-
-    // Realtime Listener: Agents
-    onSnapshot(collection(db, "agents"), (snap) => {
-      state.agents = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      if (state.currentUser) {
-        renderAgentDashboard();
-        renderAdminDashboard();
-      }
-    });
-
-    // Realtime Listener: Leads
-    onSnapshot(query(collection(db, "leads"), orderBy("createdAt", "desc")), (snap) => {
-      state.leads = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      if (state.currentUser) renderAdminDashboard();
-    });
-
-    // Auth State Listener
-    onAuthStateChanged(auth, async (user) => {
-      state.currentUser = user;
-      if (user) {
-        if (user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
-          document.getElementById("adminLoginBox").classList.add("hide");
-          document.getElementById("adminDash").classList.remove("hide");
-          renderAdminDashboard();
-        } else {
-          const agSnap = await getDoc(doc(db, "agents", user.uid));
-          state.currentAgentProfile = agSnap.exists() ? { id: agSnap.id, ...agSnap.data() } : null;
-          document.getElementById("agentAuthBox").classList.add("hide");
-          document.getElementById("agentDash").classList.remove("hide");
-          renderAgentDashboard();
-        }
-      } else {
-        document.getElementById("adminLoginBox").classList.remove("hide");
-        document.getElementById("adminDash").classList.add("hide");
-        document.getElementById("agentAuthBox").classList.remove("hide");
-        document.getElementById("agentDash").classList.add("hide");
-      }
-    });
-  } catch (err) {
-    console.error("Firebase init error:", err);
-    loadLocalFallback();
-  }
-} else {
-  loadLocalFallback();
-}
-
-/* ===================================================================
-   UI NAVIGATION & HELPERS
-   =================================================================== */
-window.showView = (name) => {
-  ["home", "sell", "agent", "admin"].forEach(v => {
-    document.getElementById("view-" + v).classList.toggle("hide", v !== name);
-  });
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
-window.toggleMenu = () => {
-  document.getElementById("navMenu").classList.toggle("hide");
-};
-
-window.toast = (msg) => {
-  const el = document.getElementById("toast");
-  el.textContent = msg;
-  el.classList.remove("hide");
-  clearTimeout(window._tTimer);
-  window._tTimer = setTimeout(() => el.classList.add("hide"), 3200);
-};
-
-// Image Compressor (Base64 under ~150KB so Firestore doc limit never exceeds)
-window.handleImages = (input, target) => {
-  const files = Array.from(input.files).slice(0, 3 - state.tempPhotos[target].length);
-  files.forEach(file => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const maxW = 720;
-        const scale = Math.min(1, maxW / img.width);
-        canvas.width = img.width * scale;
-        canvas.height = img.height * scale;
-        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-        state.tempPhotos[target].push(canvas.toDataURL("image/jpeg", 0.65));
-        renderPhotoThumbs(target);
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
-  input.value = "";
-};
-
-function renderPhotoThumbs(target) {
-  const container = document.getElementById(target === "cust" ? "custPhotos" : "agPhotos");
-  const addBtn = container.querySelector(".addph");
-  container.querySelectorAll(".ph").forEach(el => el.remove());
-  state.tempPhotos[target].forEach((src, idx) => {
-    const div = document.createElement("div");
-    div.className = "ph";
-    div.innerHTML = `<img src="${src}"><b onclick="removePhoto('${target}',${idx})">×</b>`;
-    container.insertBefore(div, addBtn);
-  });
-}
-
-window.removePhoto = (target, idx) => {
-  state.tempPhotos[target].splice(idx, 1);
-  renderPhotoThumbs(target);
-};
-
-/* ===================================================================
-   CUSTOMER PANEL: SEARCH, FILTER & RENDER
-   =================================================================== */
-window.setPurpose = (p, btn) => {
-  state.purpose = p;
-  document.querySelectorAll("#ptabs button").forEach(b => b.classList.remove("on"));
-  btn.classList.add("on");
-  renderProperties();
-};
-
-window.quickCat = (cat) => {
-  document.getElementById("fCat").value = cat;
-  renderProperties(true);
-};
-
-window.quickArea = (area, btn) => {
-  document.getElementById("fArea").value = area;
-  document.querySelectorAll("#areaPills button").forEach(b => b.classList.remove("on"));
-  if (btn) btn.classList.add("on");
-  renderProperties(true);
-};
-
-window.resetFilters = () => {
-  state.purpose = "all";
-  document.querySelectorAll("#ptabs button").forEach((b, i) => b.classList.toggle("on", i === 0));
-  document.getElementById("fArea").value = "all";
-  document.getElementById("fCat").value = "all";
-  renderProperties();
-};
-
-window.renderProperties = (scrollToResults = false) => {
-  const area = document.getElementById("fArea").value;
-  const cat = document.getElementById("fCat").value;
-
-  const filtered = state.properties.filter(p => {
-    if (p.status !== "approved") return false;
-    if (state.purpose !== "all" && p.purpose !== state.purpose) return false;
-    if (area !== "all" && p.area !== area) return false;
-    if (cat !== "all" && p.category !== cat) return false;
-    return true;
-  });
-
-  const grid = document.getElementById("propGrid");
-  const empty = document.getElementById("emptyState");
-  document.getElementById("listHeading").textContent = `उपलब्ध प्रॉपर्टी (${filtered.length})`;
-
-  if (!filtered.length) {
-    grid.innerHTML = "";
-    empty.classList.remove("hide");
-  } else {
-    empty.classList.add("hide");
-    grid.innerHTML = filtered.map(p => `
-      <article class="pc" onclick="openModal('${p.id}')">
-        <div class="im">
-          ${p.photos && p.photos[0] ? `<img src="${p.photos[0]}" alt="${p.title}">` : `<span>${p.category === 'Plot' ? '📐' : p.category === 'Makaan' ? '🏠' : p.category === 'Dukaan' ? '🏪' : '🌾'}</span>`}
-          <span class="tag ${p.purpose === 'rent' ? 'rent' : ''}">${p.purpose === 'rent' ? 'किराया' : 'बिक्री'}</span>
-          <span class="tag cat-t">${p.category}</span>
-        </div>
-        <div class="bd">
-          <h4>${p.title}</h4>
-          <div class="pr">${p.price}</div>
-          <div class="mt">
-            <span>📍 ${p.area} • ${p.size}</span>
-            <span style="color:#1457d6;font-weight:700">डिटेल देखें ›</span>
-          </div>
-        </div>
-      </article>
-    `).join("");
-  }
-
-  if (scrollToResults) {
-    document.getElementById("listHeading").scrollIntoView({ behavior: "smooth" });
+  async save(p){
+    if(this.mode!=="firebase")throw new Error("Online database juda nahi hai");
+    const isNew=!p.id;p.id=p.id||fdb.collection("properties").doc().id;
+    const {id,sellerName,sellerMobile,...pub}=clean(p);
+    const batch=fdb.batch();
+    batch.set(fdb.collection("properties").doc(id),pub);
+    // Naye record ya admin ke edit par hi private jaankari likhein
+    if(isNew||isAdmin||sellerMobile!==undefined)batch.set(fdb.collection("propertyPrivate").doc(id),{sellerName:sellerName||"",sellerMobile:sellerMobile||""});
+    await batch.commit();return p;
+  },
+  async remove(id){
+    if(this.mode!=="firebase")throw new Error("Online database juda nahi hai");
+    const batch=fdb.batch();
+    batch.delete(fdb.collection("properties").doc(id));
+    batch.delete(fdb.collection("propertyPrivate").doc(id));
+    await batch.commit();
+  },
+  async settings(){
+    if(this.mode==="firebase"){try{const d=await fdb.collection("settings").doc("main").get();if(d.exists)return mergeSettings(d.data())}catch(e){}return {...DEF_SETTINGS}}
+    try{return mergeSettings(JSON.parse(localStorage.getItem("nk_set")||"{}"))}catch(e){return {...DEF_SETTINGS}}
+  },
+  async saveSettings(s){
+    if(this.mode==="firebase"){await fdb.collection("settings").doc("main").set(s);return}
+    throw new Error("Online database juda nahi hai");
   }
 };
+function seedData(){
+  const n=Date.now();
+  const mk=(i,title,type,area,village,size,price,purpose)=>({id:"demo"+i,title,type,purpose,area,village,size,price,desc:"Demo property - admin panel se delete ya edit karein.",photos:[],sellerName:"Demo",sellerMobile:"9785480342",status:"approved",createdAt:n-i*1000});
+  return [
+    mk(1,"Main road par Residential Plot","plot","Tonk","Civil Lines","150 gaj","₹ 18 Lakh","buy"),
+    mk(2,"2 BHK Makaan","house","Uniara","Ward 5","1200 sq ft","₹ 28 Lakh","buy"),
+    mk(3,"Upjaau Krishi Bhoomi","agri","Aligarh","Aligarh Gaon","2 Bigha","₹ 9 Lakh / Bigha","buy"),
+    mk(4,"Market mein Dukaan","shop","Tonk","Bada Bazar","12x20 ft","₹ 6,000 / mahina","rent")
+  ];
+}
 
-/* ===================================================================
-   PROPERTY DETAIL MODAL & INQUIRY
-   =================================================================== */
-window.openModal = (id) => {
-  const p = state.properties.find(x => x.id === id);
-  if (!p) return;
-  document.getElementById("mTitle").textContent = p.title;
-  document.getElementById("mPrice").textContent = p.price;
-  document.getElementById("mDesc").textContent = p.description || "";
-  document.getElementById("inqPropId").value = p.id;
-  document.getElementById("inqPropTitle").value = p.title;
+/* ============ state ============ */
+let S={...DEF_SETTINGS}, PROPS=[], purpose="buy", fType="all", fArea="all", isAdmin=false, aTab="all", fPur="all";
+const waNum=()=>"91"+S.phone.replace(/\D/g,"").slice(-10);
+const waLink=t=>`https://wa.me/${waNum()}?text=${encodeURIComponent(t||"Namaste, mujhe NK Properties se property ki jaankari chahiye.")}`;
 
-  const gal = document.getElementById("mGal");
-  gal.innerHTML = (p.photos && p.photos.length)
-    ? p.photos.map(src => `<img src="${src}">`).join("")
-    : "";
+function applySettings(){
+  $("#phoneTxt").textContent=S.phone;
+  $("#callBtn").href=waLink();
+  $("#mwa").href=waLink();
+  $("#ctaWa").href=waLink("Namaste, mujhe plot / makaan ki jaankari chahiye.");
+  $("#ftWa").href=waLink();$("#ftWa").textContent="+91 "+S.phone.slice(0,5)+" "+S.phone.slice(5);
+  $("#areaChips").innerHTML=S.areas.map(a=>`<button data-a="${esc(a)}">📍 ${esc(an(a))}</button>`).join("");
+  document.querySelectorAll("#areaChips button").forEach(b=>b.onclick=()=>{fPur="all";fType="all";fArea=b.dataset.a;go("list")});
+  const opts=`<option value="all">${t("loc_ph")}</option>`+S.areas.map(a=>`<option value="${esc(a)}">${esc(an(a))}</option>`).join("");
+  const cur=$("#loc").value;$("#loc").innerHTML=opts;if(S.areas.includes(cur))$("#loc").value=cur;
+  {const c=$("#s_area").value;$("#s_area").innerHTML=S.areas.map(a=>`<option value="${esc(a)}">${esc(an(a))}</option>`).join("");if(S.areas.includes(c))$("#s_area").value=c}
+  {const c=$("#s_type").value;$("#s_type").innerHTML=Object.keys(TYPES).map(k=>`<option value="${k}">${tn(k)}</option>`).join("");if(TYPES[c])$("#s_type").value=c}
+  {const c=$("#s_pur").value||"buy";$("#s_pur").innerHTML=`<option value="buy">${t("o_buy")}</option><option value="rent">${t("o_rent")}</option>`;$("#s_pur").value=c}
+}
 
-  document.getElementById("mKv").innerHTML = `
-    <span>प्रकार:</span><b>${p.category} (${p.purpose === 'rent' ? 'किराया' : 'बिक्री'})</b>
-    <span>क्षेत्र:</span><b>${p.area}</b>
-    <span>लोकेशन:</span><b>${p.location}</b>
-    <span>साइज़:</span><b>${p.size}</b>
-    <span>पोस्टकर्ता:</span><b>${p.ownerName}</b>
-  `;
+/* ============ render ============ */
+function renderCats(){
+  $("#cats").innerHTML=Object.entries(TYPES).map(([k,v])=>`<div class="cat" data-t="${k}">${typeImg(k,true)}<div class="lb"><span class="ic">${catIcons[k]}</span><span>${tn(k)}</span><span class="go">›</span></div></div>`).join("");
+  document.querySelectorAll(".cat").forEach(c=>c.onclick=()=>{fType=c.dataset.t;fArea="all";fPur="all";go("list")});
+}
+function cardHTML(p){
+  const img=p.photos&&p.photos[0]?`<img src="${p.photos[0]}" alt="">`:typeImg(p.type,false);
+  return `<div class="pc" data-id="${esc(p.id)}"><div class="im">${img}<span class="tag ${p.purpose==="rent"?"rent":""}">${p.purpose==="rent"?t("c_rent"):t("c_buy")}</span></div><div class="bd"><h4>${esc(p.title||TYPES[p.type]?.n)}</h4><div class="pr">${esc(p.price||t("d_ask"))}</div><div class="mt">📍 ${esc(p.village?p.village+", ":"")}${esc(an(p.area))} &nbsp;•&nbsp; ${esc(p.size||"")}</div>${p.agentName?`<div class="mt agtag">🧑‍💼 Agent: ${esc(p.agentName)}</div>`:""}</div></div>`;
+}
+function renderList(){
+  const pub=PROPS.filter(p=>p.status==="approved");
+  let rows=pub.filter(p=>(fType==="all"||p.type===fType)&&(fArea==="all"||p.area===fArea)&&(fPur==="all"||p.purpose===fPur));
+  rows.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+  $("#listTitle").textContent=(fType==="all"?t("l_all"):tn(fType))+(fPur==="rent"?" ("+t("c_rent")+")":fPur==="buy"?" ("+t("c_buy")+")":"");
+  $("#listSub").textContent=t("l_cnt").replace("{n}",rows.length)+(fArea!=="all"?" - "+an(fArea):"");
+  const grp=(attr,cur,items)=>`<div class="chipgrp">${items.map(([k,n])=>`<button data-${attr}="${esc(k)}" class="${cur===k?"on":""}">${esc(n)}</button>`).join("")}</div>`;
+  $("#chips").innerHTML=grp("p",fPur,[["all",t("c_both")],["buy",t("c_buy")],["rent",t("c_rent")]])+
+    grp("t",fType,[["all",t("c_alltype")],...Object.keys(TYPES).map(k=>[k,tn(k)])])+
+    grp("a",fArea,[["all",t("c_allarea")],...S.areas.map(a=>[a,an(a)])]);
+  document.querySelectorAll("#chips button").forEach(b=>b.onclick=()=>{
+    if(b.dataset.p!==undefined)fPur=b.dataset.p;else if(b.dataset.t!==undefined)fType=b.dataset.t;else fArea=b.dataset.a;
+    renderList();
+  });
+  $("#grid").innerHTML=rows.length?rows.map(cardHTML).join(""):`<div class="empty" style="grid-column:1/-1">${t("l_empty")}<br><br><button class="pbtn g wa" style="max-width:260px;margin-left:auto;margin-right:auto" onclick="window.open('${waLink("Mujhe property chahiye")}')">${t("l_emptywa")}</button></div>`;
+  document.querySelectorAll("#grid .pc").forEach(c=>c.onclick=()=>openDetail(c.dataset.id));
+}
+function modal(html){
+  const m=document.createElement("div");m.className="mo";m.innerHTML=`<div class="bx"><button class="x">×</button>${html}</div>`;
+  m.onclick=e=>{if(e.target===m)m.remove()};m.querySelector(".x").onclick=()=>m.remove();document.body.appendChild(m);return m;
+}
+function openDetail(id){
+  const p=PROPS.find(x=>x.id===id);if(!p)return;
+  const gal=p.photos&&p.photos.length?p.photos.map(s=>`<img src="${s}" alt="">`).join(""):typeImg(p.type,false);
+  const msg=`Namaste, mujhe ye property chahiye: ${p.title} (${p.village||""} ${p.area}) - ${p.price||""}`;
+  const num=p.agentMobile?"91"+String(p.agentMobile).replace(/\D/g,"").slice(-10):waNum();
+  modal(`<h3>${esc(p.title)}</h3><div class="gal">${gal}</div><div class="pr" style="color:#1457d6;font-weight:800;font-size:22px">${esc(p.price||t("d_ask"))}</div>
+  <div class="kv"><span>${t("d_type")}</span><b>${tn(p.type)}</b><span>${t("d_area")}</span><b>${esc(an(p.area))}</b><span>${t("d_vill")}</span><b>${esc(p.village||"-")}</b><span>${t("d_size")}</span><b>${esc(p.size||"-")}</b><span>${t("d_cat")}</span><b>${p.purpose==="rent"?t("c_rent"):t("c_buy")}</b></div>
+  <p style="white-space:pre-wrap">${esc(p.desc||"")}</p>${p.agentName?`<p class="agtag" style="margin-top:8px">🧑‍💼 Agent: ${esc(p.agentName)}</p>`:""}
+  <div class="row"><a class="pbtn g wa" style="text-align:center" target="_blank" rel="noopener" href="https://wa.me/${num}?text=${encodeURIComponent(msg)}">WhatsApp</a><a class="pbtn" style="text-align:center" href="tel:+${num}">${t("d_call")}</a></div>`);
+}
 
-  const phone = p.phone || "9829000000";
-  document.getElementById("mCallBtn").href = `tel:+91${phone}`;
-  document.getElementById("mWaBtn").href = `https://wa.me/91${phone}?text=${encodeURIComponent("Namaste, mujhe is property me ruchi hai: " + p.title + " (" + p.area + ")")}`;
+/* ============ photos ============ */
+function compress(file,max=800,q=.6){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();r.onerror=rej;
+    r.onload=()=>{const im=new Image();im.onerror=rej;im.onload=()=>{
+      const k=Math.min(1,max/Math.max(im.width,im.height));const c=document.createElement("canvas");
+      c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",q))};im.src=r.result};
+    r.readAsDataURL(file);
+  });
+}
+function photoPicker(box,arr){
+  if(box.classList.contains("wide"))return widePicker(box,arr);
+  function draw(){
+    box.innerHTML=arr.map((s,i)=>`<div class="ph"><img src="${s}"><b data-i="${i}">×</b></div>`).join("")+(arr.length<3?`<label class="addph">📷 Photo jodein<br>${arr.length}/3<input type="file" accept="image/*" multiple hidden></label>`:"");
+    box.querySelectorAll("b").forEach(b=>b.onclick=()=>{arr.splice(+b.dataset.i,1);draw()});
+    const inp=box.querySelector("input");
+    if(inp)inp.onchange=async()=>{for(const f of [...inp.files].slice(0,3-arr.length)){try{arr.push(await compress(f))}catch(e){toast("Photo load nahi hui")}}draw()};
+  }
+  draw();
+}
+function widePicker(box,arr){
+  function draw(){
+    box.innerHTML=(arr.length?`<div class="row2">${arr.map((s,i)=>`<div class="ph"><img src="${s}"><b data-i="${i}">×</b></div>`).join("")}</div>`:"")+
+      (arr.length<3?`<label class="addph wide">${t("pk_add")}<input type="file" accept="image/*" multiple hidden></label>`:"")+`<div class="cnt">${arr.length}/3</div>`;
+    box.querySelectorAll("b").forEach(b=>b.onclick=()=>{arr.splice(+b.dataset.i,1);draw()});
+    const inp=box.querySelector("input");
+    if(inp)inp.onchange=async()=>{for(const f of [...inp.files].slice(0,3-arr.length)){try{arr.push(await compress(f))}catch(e){toast("Photo load nahi hui")}}draw()};
+  }
+  draw();
+}
 
-  document.getElementById("propModal").classList.remove("hide");
-};
-
-window.closeModal = () => {
-  document.getElementById("propModal").classList.add("hide");
-};
-
-window.submitInquiry = async (e) => {
-  e.preventDefault();
-  const lead = {
-    propId: document.getElementById("inqPropId").value,
-    propTitle: document.getElementById("inqPropTitle").value,
-    name: document.getElementById("inqName").value.trim(),
-    phone: document.getElementById("inqPhone").value.trim(),
-    createdAt: Date.now()
+/* ============ sell form ============ */
+const sellPh=[];
+function initSell(){
+  photoPicker($("#s_ph"),sellPh);
+  $("#sellForm").onsubmit=async e=>{
+    e.preventDefault();
+    // Seller ki property pehle "pending" mein jaati hai. Admin approve kare tabhi website par dikhti hai.
+    const p={title:`${TYPES[$("#s_type").value].n} - ${$("#s_area").value}`,type:$("#s_type").value,purpose:$("#s_pur").value||"buy",area:$("#s_area").value,village:$("#s_vill").value.trim(),size:$("#s_size").value.trim(),price:$("#s_price").value.trim(),desc:$("#s_desc").value.trim(),photos:[...sellPh],sellerName:$("#s_name").value.trim(),sellerMobile:$("#s_mob").value.trim(),status:"pending",createdAt:Date.now()};
+    if(Store.mode!=="firebase"){
+      // Database nahi hai to jhootha "bhej diya" na dikhayein; WhatsApp se bhejein
+      modal(`<h3>Online form abhi chalu nahi hai</h3><p style="margin:8px 0 4px">Aapki jaankari abhi bheji nahi gayi hai. Neeche button dabakar WhatsApp par bhejein, photo bhi wahin jodein.</p><a class="pbtn g wa" style="display:block;text-align:center" target="_blank" rel="noopener" href="${esc(waLink(`Namaste, meri property: ${p.title}, ${p.village}, ${p.size}, ${p.price}. ${p.desc} Naam: ${p.sellerName}, Mobile: ${p.sellerMobile}`))}">WhatsApp par bhejein</a>`);
+      return;
+    }
+    try{await Store.save(p)}catch(err){return toast("Save nahi hua, dobara try karein")}
+    try{PROPS=await Store.list()}catch(err){}
+    e.target.reset();sellPh.length=0;photoPicker($("#s_ph"),sellPh);applySettings();
+    location.hash="#home";
+    modal(`<h3>${t("ok_h")}</h3><p style="margin:8px 0 4px">${t("ok_p")}</p><a class="pbtn g wa" style="display:block;text-align:center;text-decoration:none" target="_blank" rel="noopener" href="${waLink(`Namaste, maine NK Properties par apni ${p.title} (${p.size}) bheji hai. Naam: ${p.sellerName}`)}">${t("ok_wa")}</a>`);
   };
+}
 
-  if (isFirebaseConfigured && db) {
-    await addDoc(collection(db, "leads"), lead);
-  } else {
-    state.leads.unshift({ id: "l_" + Date.now(), ...lead });
-    saveLocalFallback();
+/* ============ admin ============ */
+async function isAdminUser(u){
+  if(!u)return false;
+  try{return (await fdb.collection("admins").doc(u.uid).get()).exists}catch(e){return false}
+}
+async function adminLogin(phone,pass){
+  if(Store.mode!=="firebase")throw new Error("Admin login ke liye Firebase jodna zaroori hai");
+  phone=String(phone).replace(/\D/g,"").slice(-10);
+  const cred=await fauth.signInWithEmailAndPassword(phone+"@nkproperties.in",pass);
+  if(!await isAdminUser(cred.user)){await fauth.signOut();return false}
+  isAdmin=true;AG=null;return true;
+}
+let adminOpened=false;
+async function showAdmin(){
+  $("#a-login").classList.toggle("hide",isAdmin);
+  $("#a-main").classList.toggle("hide",!isAdmin);
+  if(isAdmin){
+    // Admin khulte hi nayi (pending) properties ka list taza karke dikhao
+    try{PROPS=await Store.list()}catch(e){}
+    if(!adminOpened){adminOpened=true;if(PROPS.some(p=>p.status==="pending"))aTab="pending"}
+    renderAdmin();
   }
-  e.target.reset();
-  closeModal();
-  toast("✅ आपकी पूछताछ दर्ज हो गई है! जल्द संपर्क किया जाएगा।");
-};
-
-/* ===================================================================
-   SUBMIT PROPERTY (CUSTOMER & AGENT)
-   =================================================================== */
-window.handlePropertySubmit = async (e, role) => {
-  e.preventDefault();
-  const isAg = role === "agent";
-
-  if (isAg && (!state.currentAgentProfile || state.currentAgentProfile.status !== "approved")) {
-    toast("⚠️ आपका एजेंट अकाउंट अभी Admin द्वारा अप्रूव नहीं हुआ है।");
-    return;
-  }
-
-  const payload = {
-    purpose: document.getElementById(isAg ? "aPurpose" : "sPurpose").value,
-    category: document.getElementById(isAg ? "aCat" : "sCat").value,
-    area: document.getElementById(isAg ? "aArea" : "sArea").value,
-    title: document.getElementById(isAg ? "aTitle" : "sTitle").value.trim(),
-    price: document.getElementById(isAg ? "aPrice" : "sPrice").value.trim(),
-    size: document.getElementById(isAg ? "aSize" : "sSize").value.trim(),
-    location: document.getElementById(isAg ? "aLoc" : "sLoc").value.trim(),
-    description: document.getElementById(isAg ? "aDesc" : "sDesc").value.trim(),
-    ownerName: isAg ? `${state.currentAgentProfile.name} (Agent)` : document.getElementById("sOwner").value.trim(),
-    phone: isAg ? state.currentAgentProfile.phone : document.getElementById("sPhone").value.trim(),
-    photos: [...state.tempPhotos[isAg ? "ag" : "cust"]],
-    role: role,
-    addedBy: isAg ? state.currentUser.uid : "customer",
-    status: "pending",
-    createdAt: Date.now()
+}
+function renderAdmin(){
+  const cnt=s=>PROPS.filter(p=>p.status===s).length;
+  $("#a-warn").innerHTML=`<div class="awarn ok">✅ Online database juda hai. Seller ki property pehle yahan <b>Pending</b> mein aati hai; Approve karte hi website par dikhti hai.</div>`;
+  const tabs=[["all","All",0],["pending","Pending",cnt("pending")],["approved","Live",0],["rejected","Rejected",0],["agents","👥 Agents",0],["settings","⚙ Settings",0]];
+  $("#atabs").innerHTML=tabs.map(([k,n,c])=>`<button data-k="${k}" class="${aTab===k?"on":""}">${n}${c?`<b>${c}</b>`:""}</button>`).join("")+`<button id="addNew" style="background:var(--green)">➕ Nayi Property</button><button id="logoutBtn" style="background:#d92d3a">Logout</button>`;
+  document.querySelectorAll("#atabs button[data-k]").forEach(b=>b.onclick=()=>{aTab=b.dataset.k;renderAdmin()});
+  $("#addNew").onclick=()=>propForm();
+  $("#logoutBtn").onclick=async()=>{if(fauth)await fauth.signOut();isAdmin=false;adminOpened=false;try{PROPS=await Store.list()}catch(e){}showAdmin()};
+  const isSet=aTab==="settings";
+  $("#a-list").classList.toggle("hide",isSet);$("#a-settings").classList.toggle("hide",!isSet);
+  if(isSet)return renderSettings();
+  if(aTab==="agents")return renderAgentsAdmin();
+  const rows=PROPS.filter(p=>aTab==="all"||p.status===aTab).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+  $("#a-list").innerHTML=rows.length?rows.map(p=>`<div class="ar"><div class="th">${p.photos&&p.photos[0]?`<img src="${p.photos[0]}">`:typeImg(p.type,false)}</div><div class="in"><h4>${esc(p.title)}</h4><div class="mt">${TYPES[p.type]?.n} • ${p.purpose==="rent"?"Rent":"Buy"} • ${esc(p.area)} ${esc(p.village||"")}</div><div class="mt">${esc(p.size||"")} • <b>${esc(p.price||"")}</b></div><div class="mt">👤 ${esc(p.sellerName||"-")} ${esc(p.sellerMobile||"")}</div><span class="st ${p.status}">${p.status}</span>
+  <div class="acts" data-id="${esc(p.id)}">${p.status!=="approved"?'<button class="ok" data-a="ok">✅ Approve</button>':""}${p.status!=="rejected"?'<button class="no" data-a="no">Reject</button>':""}<button data-a="edit">✏ Edit</button><button data-a="del">🗑 Delete</button>${p.sellerMobile?`<button data-a="wa">💬 Seller</button>`:""}</div></div></div>`).join(""):`<div class="empty">Koi property nahi.</div>`;
+  document.querySelectorAll("#a-list .acts button").forEach(b=>b.onclick=async()=>{
+    const id=b.parentElement.dataset.id,p=PROPS.find(x=>x.id===id),a=b.dataset.a;
+    if(a==="edit")return propForm(p);
+    if(a==="wa")return window.open(`https://wa.me/91${p.sellerMobile.replace(/\D/g,"").slice(-10)}?text=${encodeURIComponent("Namaste "+(p.sellerName||"")+", NK Properties se bol rahe hain, aapki property ke baare mein.")}`,"_blank");
+    try{
+      if(a==="del"){if(!confirm("Pakka delete karein?"))return;await Store.remove(id)}
+      else{p.status=a==="ok"?"approved":"rejected";await Store.save(p)}
+      PROPS=await Store.list();renderAdmin();toast(a==="ok"?"Approve ho gayi - ab website par live hai":"Ho gaya");
+    }catch(err){toast("Nahi hua: "+(err.code||err.message))}
+  });
+}
+function propForm(p,agent,after){
+  const e=p||{type:"plot",purpose:"buy",area:S.areas[0],photos:[]};const ph=[...(e.photos||[])];
+  const m=modal(`<h3>${p?"Property Edit":"Nayi Property Jodein"}</h3><form class="fm" style="padding:0">
+  <label>Website par Title</label><input id="f_title" required value="${esc(e.title||"")}">
+  <div class="r2"><div><label>Type</label><select id="f_type">${Object.entries(TYPES).map(([k,v])=>`<option value="${k}" ${e.type===k?"selected":""}>${v.n}</option>`).join("")}</select></div>
+  <div><label>Category</label><select id="f_pur"><option value="buy" ${e.purpose==="buy"?"selected":""}>Buy (Bikri)</option><option value="rent" ${e.purpose==="rent"?"selected":""}>Rent (Kiraya)</option></select></div></div>
+  <div class="r2"><div><label>Kshetra</label><select id="f_area">${S.areas.map(a=>`<option ${e.area===a?"selected":""}>${esc(a)}</option>`).join("")}</select></div>
+  <div><label>Gaon / Mohalla</label><input id="f_vill" value="${esc(e.village||"")}"></div></div>
+  <div class="r2"><div><label>Size</label><input id="f_size" value="${esc(e.size||"")}"></div><div><label>Price (website par)</label><input id="f_price" value="${esc(e.price||"")}"></div></div>
+  ${agent?"":`<div class="r2"><div><label>Seller Naam</label><input id="f_sn" value="${esc(e.sellerName||"")}"></div><div><label>Seller Mobile</label><input id="f_sm" type="tel" value="${esc(e.sellerMobile||"")}"></div></div>`}
+  <label>Description</label><textarea id="f_desc">${esc(e.desc||"")}</textarea>
+  <label>Photos (max 3)</label><div class="photos" id="f_ph"></div>
+  <button class="pbtn g" type="submit">${agent?"📨 Approval ke liye bhejein":"✅ Website par Lagayein"}</button></form>`);
+  photoPicker(m.querySelector("#f_ph"),ph);
+  m.querySelector("form").onsubmit=async ev=>{
+    ev.preventDefault();const q=s=>m.querySelector(s).value.trim();
+    const np={...e,title:q("#f_title"),type:q("#f_type"),purpose:q("#f_pur"),area:q("#f_area"),village:q("#f_vill"),size:q("#f_size"),price:q("#f_price"),...(agent?{sellerName:agent.name,sellerMobile:agent.mobile,agentId:agent.id,agentName:agent.name,agentMobile:agent.mobile}:{sellerName:q("#f_sn"),sellerMobile:q("#f_sm")}),desc:q("#f_desc"),photos:ph,status:agent?"pending":"approved",createdAt:e.createdAt||Date.now()};
+    try{await Store.save(np)}catch(err){return toast("Save nahi hua: "+(err.code||err.message))}
+    PROPS=await Store.list();m.remove();(after||renderAdmin)();toast(agent?"Save ho gaya - Admin approval ke baad live hogi":"Save ho gaya - website par live");
   };
-
-  if (isFirebaseConfigured && db) {
-    await addDoc(collection(db, "properties"), payload);
-  } else {
-    state.properties.unshift({ id: "p_" + Date.now(), ...payload });
-    saveLocalFallback();
-    if (isAg) renderAgentDashboard();
-  }
-
-  e.target.reset();
-  state.tempPhotos[isAg ? "ag" : "cust"] = [];
-  renderPhotoThumbs(isAg ? "ag" : "cust");
-  toast("✅ प्रॉपर्टी सबमिट हो गई! Admin अप्रूवल के बाद लाइव होगी।");
-  if (!isAg) showView("home");
-};
-
-/* ===================================================================
-   AGENT PANEL: REGISTER, LOGIN & DASHBOARD
-   =================================================================== */
-window.switchAgentTab = (tab) => {
-  document.getElementById("tabAgLogin").classList.toggle("on", tab === "login");
-  document.getElementById("tabAgReg").classList.toggle("on", tab === "reg");
-  document.getElementById("agLoginForm").classList.toggle("hide", tab !== "login");
-  document.getElementById("agRegForm").classList.toggle("hide", tab !== "reg");
-};
-
-window.agentRegister = async (e) => {
-  e.preventDefault();
-  const name = document.getElementById("agName").value.trim();
-  const phone = document.getElementById("agPhone").value.trim();
-  const area = document.getElementById("agArea").value;
-  const email = document.getElementById("agEmail").value.trim();
-  const pass = document.getElementById("agPass").value;
-
-  if (isFirebaseConfigured && auth && db) {
-    try {
-      const cred = await createUserWithEmailAndPassword(auth, email, pass);
-      await setDoc(doc(db, "agents", cred.user.uid), {
-        uid: cred.user.uid,
-        name, phone, area, email,
-        status: "pending",
-        createdAt: Date.now()
-      });
-      toast("✅ एजेंट रजिस्ट्रेशन सफल! Admin अप्रूवल का इंतज़ार करें।");
-    } catch (err) {
-      toast("❌ Error: " + err.message);
-    }
-  } else {
-    const uid = "ag_" + Date.now();
-    const profile = { id: uid, uid, name, phone, area, email, status: "pending" };
-    state.agents.push(profile);
-    saveLocalFallback();
-    state.currentUser = { uid, email };
-    state.currentAgentProfile = profile;
-    document.getElementById("agentAuthBox").classList.add("hide");
-    document.getElementById("agentDash").classList.remove("hide");
-    renderAgentDashboard();
-    toast("✅ Demo Mode: एजेंट रजिस्टर हो गया (Admin से अप्रूव करें)।");
-  }
-};
-
-window.agentLogin = async (e) => {
-  e.preventDefault();
-  const email = document.getElementById("agLoginEmail").value.trim();
-  const pass = document.getElementById("agLoginPass").value;
-
-  if (isFirebaseConfigured && auth) {
-    try {
-      await signInWithEmailAndPassword(auth, email, pass);
-      toast("✅ Agent Login सफल!");
-    } catch (err) {
-      toast("❌ गलत ईमेल या पासवर्ड");
-    }
-  } else {
-    const found = state.agents.find(a => a.email === email);
-    if (!found) return toast("❌ पहले नया एजेंट रजिस्ट्रेशन करें");
-    state.currentUser = { uid: found.uid, email };
-    state.currentAgentProfile = found;
-    document.getElementById("agentAuthBox").classList.add("hide");
-    document.getElementById("agentDash").classList.remove("hide");
-    renderAgentDashboard();
-    toast("✅ Demo Agent Login सफल!");
-  }
-};
-
-function renderAgentDashboard() {
-  if (!state.currentUser) return;
-  // Refresh profile from state.agents
-  const fresh = state.agents.find(a => a.uid === state.currentUser.uid || a.id === state.currentUser.uid);
-  if (fresh) state.currentAgentProfile = fresh;
-
-  const prof = state.currentAgentProfile;
-  const banner = document.getElementById("agentStatusBanner");
-  const postSec = document.getElementById("agentPostSection");
-
-  if (!prof) {
-    banner.className = "awarn";
-    banner.textContent = "एजेंट प्रोफ़ाइल नहीं मिली।";
-    postSec.classList.add("hide");
-    return;
-  }
-
-  if (prof.status === "approved") {
-    banner.className = "awarn ok";
-    banner.textContent = `✅ नमस्ते ${prof.name}! आपका एजेंट अकाउंट वेरिफाइड है। आप नई प्रॉपर्टी डाल सकते हैं।`;
-    postSec.classList.remove("hide");
-  } else if (prof.status === "rejected") {
-    banner.className = "awarn";
-    banner.textContent = `❌ क्षमा करें ${prof.name}, आपका एजेंट आवेदन रिजेक्ट कर दिया गया है।`;
-    postSec.classList.add("hide");
-  } else {
-    banner.className = "awarn";
-    banner.textContent = `⏳ नमस्ते ${prof.name}, आपका एजेंट अकाउंट Admin अप्रूवल के लिए Pending है।`;
-    postSec.classList.add("hide");
-  }
-
-  const myProps = state.properties.filter(p => p.addedBy === state.currentUser.uid);
-  document.getElementById("agTotalCount").textContent = myProps.length;
-  document.getElementById("agApprovedCount").textContent = myProps.filter(p => p.status === "approved").length;
-
-  const listEl = document.getElementById("agentPropList");
-  listEl.innerHTML = myProps.length ? myProps.map(p => `
-    <div class="ar">
-      <div class="th">${p.photos && p.photos[0] ? `<img src="${p.photos[0]}">` : '🏠'}</div>
-      <div class="in">
-        <h4>${p.title}</h4>
-        <div class="mt">${p.area} • ${p.price} • ${p.size}</div>
-        <span class="st ${p.status}">${p.status.toUpperCase()}</span>
-      </div>
-    </div>
-  `).join("") : `<div class="empty">आपने अभी तक कोई प्रॉपर्टी नहीं डाली है।</div>`;
+}
+function renderSettings(){
+  $("#a-settings").innerHTML=`<form class="fm" id="setForm">
+  <label>Phone / WhatsApp Number (10 digit)</label><input id="st_phone" value="${esc(S.phone)}" maxlength="10">
+  <label>Kshetra list (comma se alag karein)</label><textarea id="st_areas">${esc(S.areas.join(", "))}</textarea>
+  <button class="pbtn" type="submit">Settings Save Karein</button></form>
+  <div class="fm" style="margin-top:14px"><label>Backup</label><div class="row"><button class="pbtn" id="bkExp" type="button">Export JSON</button><label class="pbtn y" style="text-align:center;margin:16px 0 0;font-size:16px;color:#10275a">Import<input id="bkImp" type="file" accept="application/json" hidden></label></div></div>`;
+  $("#setForm").onsubmit=async ev=>{ev.preventDefault();
+    const ph=$("#st_phone").value.replace(/\D/g,"");if(ph.length!==10)return toast("10 digit number daalein");
+    const areas=$("#st_areas").value.split(",").map(s=>s.trim()).filter(Boolean);if(!areas.length)return toast("Kam se kam ek kshetra");
+    S={...S,phone:ph,areas,ver:SET_VER};await Store.saveSettings(S);applySettings();toast("Settings save ho gayi")};
+  $("#bkExp").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify({props:PROPS,settings:S})],{type:"application/json"}));a.download="nk-backup.json";a.click()};
+  $("#bkImp").onchange=async ev=>{try{const d=JSON.parse(await ev.target.files[0].text());for(const p of d.props||[])await Store.save(p);if(d.settings){S={...S,...d.settings};await Store.saveSettings(S)}PROPS=await Store.list();applySettings();renderAdmin();toast("Import ho gaya")}catch(err){toast("File galat hai")}};
 }
 
-/* ===================================================================
-   ADMIN PANEL: LOGIN, APPROVE / REJECT / DELETE
-   =================================================================== */
-window.adminLogin = async (e) => {
-  e.preventDefault();
-  const email = document.getElementById("admEmail").value.trim();
-  const pass = document.getElementById("admPass").value;
-
-  if (isFirebaseConfigured && auth) {
-    if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
-      return toast("❌ यह Admin ईमेल नहीं है!");
+/* ============ agents ============ */
+const AG_DOMAIN="@agent.nkproperties.in";
+let AG=null, gMode="login";
+let agBusy=false;
+const Agents={
+  async list(){const s=await fdb.collection("agents").get();return s.docs.map(d=>({...d.data(),id:d.id}))},
+  async put(a){const {id,...d}=a;await fdb.collection("agents").doc(id).set(d)},
+  async del(id){await fdb.collection("agents").doc(id).delete()},
+  async register(name,mobile,pass,area,code){
+    const email=mobile+AG_DOMAIN;let cred,created=false;
+    try{cred=await fauth.createUserWithEmailAndPassword(email,pass);created=true}
+    catch(e){if(e.code!=="auth/email-already-in-use")throw e;cred=await fauth.signInWithEmailAndPassword(email,pass)}
+    const a={name,mobile,area,inviteCode:code,blocked:false,createdAt:Date.now()};
+    try{
+      // Dono ek saath; invitation galat / purana / use ho chuka ho to rules dono rok dete hain
+      const batch=fdb.batch();
+      batch.set(fdb.collection("agents").doc(cred.user.uid),a);
+      batch.update(fdb.collection("invites").doc(code),{usedBy:cred.user.uid});
+      await batch.commit();
+    }catch(e){
+      if(created){try{await cred.user.delete()}catch(x){}}
+      await fauth.signOut();throw new Error("invite");
     }
-    try {
-      await signInWithEmailAndPassword(auth, email, pass);
-      toast("✅ Admin Login सफल!");
-    } catch (err) {
-      toast("❌ Admin Login विफल: " + err.message);
-    }
-  } else {
-    // Demo mode login
-    state.currentUser = { uid: "admin", email: ADMIN_EMAIL };
-    document.getElementById("adminLoginBox").classList.add("hide");
-    document.getElementById("adminDash").classList.remove("hide");
-    renderAdminDashboard();
-    toast("✅ Demo Admin Panel चालू!");
+    return {...a,id:cred.user.uid};
+  },
+  async login(mobile,pass){
+    const cred=await fauth.signInWithEmailAndPassword(mobile+AG_DOMAIN,pass);
+    const d=await fdb.collection("agents").doc(cred.user.uid).get();
+    if(!d.exists){await fauth.signOut();throw new Error("Agent record nahi mila")}
+    const a={...d.data(),id:d.id};
+    if(a.blocked){await fauth.signOut();throw new Error("Aapka account band hai")}
+    return a;
   }
 };
-
-window.setAdminTab = (tab, btn) => {
-  state.adminTab = tab;
-  document.querySelectorAll(".atabs button").forEach(b => b.classList.remove("on"));
-  btn.classList.add("on");
-  renderAdminDashboard();
-};
-
-function renderAdminDashboard() {
-  const pending = state.properties.filter(p => p.status === "pending");
-  const approved = state.properties.filter(p => p.status === "approved");
-
-  document.getElementById("cntPending").textContent = pending.length;
-  document.getElementById("cntApproved").textContent = approved.length;
-  document.getElementById("cntAgents").textContent = state.agents.length;
-  document.getElementById("cntLeads").textContent = state.leads.length;
-
-  const box = document.getElementById("adminList");
-
-  if (state.adminTab === "pending" || state.adminTab === "approved") {
-    const items = state.adminTab === "pending" ? pending : approved;
-    box.innerHTML = items.length ? items.map(p => `
-      <div class="ar">
-        <div class="th">${p.photos && p.photos[0] ? `<img src="${p.photos[0]}">` : '🏢'}</div>
-        <div class="in">
-          <h4>${p.title}</h4>
-          <div class="mt">📍 ${p.area} • ${p.price} • ${p.size}</div>
-          <div class="mt">👤 ${p.ownerName} (${p.phone}) [${p.role}]</div>
-          <span class="st ${p.status}">${p.status}</span>
-          <div class="acts">
-            ${p.status !== 'approved' ? `<button class="ok" onclick="updatePropStatus('${p.id}','approved')">✓ Approve</button>` : ''}
-            ${p.status !== 'rejected' ? `<button class="no" onclick="updatePropStatus('${p.id}','rejected')">✕ Reject</button>` : ''}
-            <button class="no" onclick="deleteProp('${p.id}')">🗑️ Delete</button>
-          </div>
-        </div>
-      </div>
-    `).join("") : `<div class="empty">इस सेक्शन में कोई रिकॉर्ड नहीं है।</div>`;
-  } else if (state.adminTab === "agents") {
-    box.innerHTML = state.agents.length ? state.agents.map(a => `
-      <div class="ar">
-        <div class="th">🤝</div>
-        <div class="in">
-          <h4>${a.name} (${a.area})</h4>
-          <div class="mt">📞 ${a.phone} • ✉️ ${a.email}</div>
-          <span class="st ${a.status}">${a.status}</span>
-          <div class="acts">
-            ${a.status !== 'approved' ? `<button class="ok" onclick="updateAgentStatus('${a.id}','approved')">✓ Approve Agent</button>` : ''}
-            ${a.status !== 'rejected' ? `<button class="no" onclick="updateAgentStatus('${a.id}','rejected')">✕ Reject</button>` : ''}
-          </div>
-        </div>
-      </div>
-    `).join("") : `<div class="empty">अभी कोई एजेंट रजिस्टर नहीं हुआ है।</div>`;
-  } else if (state.adminTab === "leads") {
-    box.innerHTML = state.leads.length ? state.leads.map(l => `
-      <div class="ar">
-        <div class="th">📩</div>
-        <div class="in">
-          <h4>${l.name} — <a href="tel:+91${l.phone}" style="color:#1457d6">${l.phone}</a></h4>
-          <div class="mt">प्रॉपर्टी: <b>${l.propTitle}</b></div>
-          <div class="mt">${new Date(l.createdAt).toLocaleString('hi-IN')}</div>
-        </div>
-      </div>
-    `).join("") : `<div class="empty">अभी कोई पूछताछ (Inquiry) नहीं आई है।</div>`;
-  }
+/* 7 din ka, ek baar chalne wala invitation, ek hi mobile number ke liye */
+async function createInvite(mobile){
+  const code=[...crypto.getRandomValues(new Uint8Array(16))].map(x=>x.toString(16).padStart(2,"0")).join("");
+  await fdb.collection("invites").doc(code).set({mobile,usedBy:null,expiresAt:firebase.firestore.Timestamp.fromMillis(Date.now()+7*864e5)});
+  return code;
+}
+function showAgent(){
+  $("#g-login").classList.toggle("hide",!!AG);
+  $("#g-main").classList.toggle("hide",!AG);
+  if(AG)renderAgent();else renderAgentAuth();
+}
+function renderAgentAuth(){
+  if(Store.mode!=="firebase"){$("#g-login").innerHTML=`<h2>Agent Panel</h2><p class="sub">Agent Panel abhi band hai. Online database judne ke baad chalu hoga.</p>`;return}
+  const reg=gMode==="reg";
+  $("#g-login").innerHTML=`<h2>Agent Panel</h2><p class="sub">Property agents ke liye alag panel - invitation se register karein ya login karein.</p>
+  <div class="gtabs"><button data-g="login" class="${reg?"":"on"}">Login</button><button data-g="reg" class="${reg?"on":""}">Invitation se Register</button></div>
+  <form class="fm" id="agForm">
+    ${reg?`<label>Invitation Code (Admin se milega)</label><input id="g_code" required pattern="[0-9a-f]{32}" autocomplete="off"><label>Aapka Naam</label><input id="g_name" required>`:""}
+    <label>Mobile Number</label><input id="g_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required autocomplete="username" placeholder="10 digit number">
+    ${reg?`<label>Kaam ka Kshetra</label><select id="g_area">${S.areas.map(a=>`<option value="${esc(a)}">${esc(an(a))}</option>`).join("")}</select>`:""}
+    <label>Password${reg?" (kam se kam 6 akshar)":""}</label><input id="g_pass" type="password" required ${reg?'minlength="6"':""} autocomplete="${reg?"new-password":"current-password"}">
+    <button class="pbtn ${reg?"g":""}" type="submit">${reg?"Register Karein":"Login"}</button>
+  </form>`;
+  document.querySelectorAll("#g-login [data-g]").forEach(b=>b.onclick=()=>{gMode=b.dataset.g;renderAgentAuth()});
+  $("#agForm").onsubmit=async e=>{
+    e.preventDefault();
+    const mob=$("#g_mob").value.replace(/\D/g,"").slice(-10),pw=$("#g_pass").value;
+    agBusy=true;
+    try{
+      AG=reg?await Agents.register($("#g_name").value.trim(),mob,pw,$("#g_area").value,$("#g_code").value.trim()):await Agents.login(mob,pw);
+      isAdmin=false;
+      try{PROPS=await Store.list()}catch(x){}
+      showAgent();toast(reg?"Register ho gaye!":"Login ho gaya");
+    }catch(err){
+      const c=String(err.code||"")+" "+String(err.message||"");
+      toast(c.includes("invite")?"Invitation code galat, purana ya use ho chuka hai, ya is number ka nahi hai":c.includes("already")?"Ye number pehle se registered hai":c.includes("weak")?"Password kam se kam 6 akshar ka rakhein":c.includes("band")?"Aapka account band hai":"Number ya password galat hai");
+    }finally{agBusy=false}
+  };
+}
+function renderAgent(){
+  const mine=PROPS.filter(p=>p.agentId===AG.id).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+  const rows=mine.map(p=>`<div class="ar"><div class="th">${p.photos&&p.photos[0]?`<img src="${p.photos[0]}">`:typeImg(p.type,false)}</div><div class="in"><h4>${esc(p.title)}</h4><div class="mt">${TYPES[p.type]?.n} • ${p.purpose==="rent"?"Rent":"Buy"} • ${esc(p.area)} ${esc(p.village||"")}</div><div class="mt">${esc(p.size||"")} • <b>${esc(p.price||"")}</b></div><span class="st ${p.status}">${p.status}</span><div class="acts" data-id="${esc(p.id)}"><button data-a="edit">✏ Edit</button><button data-a="del">🗑 Delete</button></div></div></div>`).join("");
+  $("#g-main").innerHTML=`<h2>Namaste, ${esc(AG.name)} 👋</h2><p class="sub">📞 ${esc(AG.mobile)} • 📍 ${esc(an(AG.area||""))}</p>
+  <div class="gstat"><div><b>${mine.length}</b>Meri Properties</div><div><b>${mine.filter(p=>p.status==="approved").length}</b>Website par Live</div></div>
+  <div class="atabs"><button id="gAdd" style="background:var(--green)">➕ Nayi Property</button><button id="gOut" style="background:#d92d3a">Logout</button></div>
+  <div id="g-list">${rows||`<div class="empty">Abhi koi property nahi. "Nayi Property" dabakar apni pehli property daalein.</div>`}</div>`;
+  $("#gAdd").onclick=()=>propForm(null,AG,renderAgent);
+  $("#gOut").onclick=async()=>{if(fauth)await fauth.signOut();AG=null;showAgent()};
+  document.querySelectorAll("#g-list .acts button").forEach(b=>b.onclick=async()=>{
+    const id=b.parentElement.dataset.id,p=PROPS.find(x=>x.id===id);
+    if(!p||p.agentId!==AG.id)return;
+    if(b.dataset.a==="edit")return propForm(p,AG,renderAgent);
+    if(!confirm("Pakka delete karein?"))return;
+    await Store.remove(id);PROPS=await Store.list();renderAgent();toast("Delete ho gaya");
+  });
+}
+async function renderAgentsAdmin(){
+  const list=(await Agents.list()).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+  $("#a-list").innerHTML=list.length?list.map(a=>{const n=PROPS.filter(p=>p.agentId===a.id).length;return `<div class="ar"><div class="in"><h4>🧑‍💼 ${esc(a.name)}</h4><div class="mt">📞 ${esc(a.mobile)} • 📍 ${esc(a.area||"-")}</div><div class="mt">Properties: <b>${n}</b></div><span class="st ${a.blocked?"rejected":"approved"}">${a.blocked?"blocked":"active"}</span><div class="acts" data-id="${esc(a.id)}"><button data-a="blk">${a.blocked?"✅ Unblock":"⛔ Block"}</button><button data-a="wa">💬 WhatsApp</button><button data-a="del">🗑 Delete</button></div></div></div>`}).join(""):`<div class="empty">Abhi koi agent register nahi hua.</div>`;
+  $("#a-list").insertAdjacentHTML("afterbegin",`<form class="fm" id="invForm" style="margin-bottom:14px"><label>Naye Agent ka Mobile Number</label><input id="inv_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required><button class="pbtn g" type="submit">✉ Invitation Banayein</button><div id="invOut"></div></form>`);
+  $("#invForm").onsubmit=async ev=>{ev.preventDefault();
+    const mob=$("#inv_mob").value;
+    try{const code=await createInvite(mob);
+      const msg=`NK Properties Agent invitation\nWebsite: ${location.origin}${location.pathname}#agent\nCode: ${code}\n7 din tak, sirf ek baar.`;
+      $("#invOut").innerHTML=`<p class="note" style="word-break:break-all">Code: <b>${code}</b></p><a class="pbtn g wa" style="display:block;text-align:center" target="_blank" rel="noopener" href="${esc(`https://wa.me/91${mob}?text=${encodeURIComponent(msg)}`)}">WhatsApp par bhejein</a>`;
+    }catch(err){toast("Invitation nahi bana: "+(err.code||err.message))}
+  };
+  document.querySelectorAll("#a-list .acts button").forEach(b=>b.onclick=async()=>{
+    const a=list.find(x=>x.id===b.parentElement.dataset.id);if(!a)return;
+    if(b.dataset.a==="wa")return window.open(`https://wa.me/91${String(a.mobile).replace(/\D/g,"").slice(-10)}`,"_blank");
+    if(b.dataset.a==="del"){if(!confirm("Agent delete karein?"))return;await Agents.del(a.id)}
+    else{a.blocked=!a.blocked;await Agents.put(a)}
+    renderAgentsAdmin();toast("Ho gaya");
+  });
 }
 
-window.updatePropStatus = async (id, status) => {
-  if (isFirebaseConfigured && db) {
-    await updateDoc(doc(db, "properties", id), { status });
-  } else {
-    const item = state.properties.find(p => p.id === id);
-    if (item) item.status = status;
-    saveLocalFallback();
-    renderProperties();
-    renderAdminDashboard();
-  }
-  toast(`प्रॉपर्टी का स्टेटस "${status}" कर दिया गया।`);
+/* ============ AI assistant (rule based, offline) ============ */
+const CH={
+  type:{plot:["plot","प्लॉट","प्लाट"],house:["makaan","makan","ghar","house","villa","flat","bhk","मकान","घर","विला"],agri:["zameen","zamin","jamin","khet","krishi","agri","farm","land","bigha","bhoomi","bhumi","ज़मीन","जमीन","खेत","कृषि","भूमि","बीघा"],shop:["dukaan","dukan","shop","commercial","store","godown","दुकान"]},
+  rent:["kiraya","kiraye","rent","किराया","किराए","किराये"],
+  buy:["kharid","khareed","buy","purchase","for sale","खरीद"],
+  alias:{Uniara:["uniyara","uniara","उनियारा"],Aligarh:["aligarh","alighar","अलीगढ़","अलीगढ"],Tonk:["tonk","टोंक"],Jaipur:["jaipur","जयपुर"],"Sawai Madhopur":["sawai","madhopur","सवाई"],Karwar:["karwar","करवर"],Indergarh:["indergarh","इंदरगढ़","इंदरगढ"]}
 };
+const normD=s=>String(s).replace(/[०-९]/g,c=>"०१२३४५६७८९".indexOf(c));
+const UNIT_RE="(crore|cr|करोड़|करोड|lakhs?|lacs?|lac|लाख|hazaar|hazar|हजार|हज़ार|thousand|k)(?![a-z])";
+const unitMult=u=>{u=u.toLowerCase();if(/^(crore|cr|करोड़|करोड)$/.test(u))return 1e7;if(/^(lakhs?|lacs?|lac|लाख)$/.test(u))return 1e5;return 1e3};
+function amtFrom(s,needUnit){
+  s=normD(s).replace(/,/g,"");
+  let m=s.match(new RegExp("(\\d+(?:\\.\\d+)?)\\s*"+UNIT_RE,"i"));
+  if(m)return parseFloat(m[1])*unitMult(m[2]);
+  if(needUnit){m=s.match(/\d{5,}/);return m?parseInt(m[0],10):null}
+  m=s.match(/\d+(?:\.\d+)?/);return m?parseFloat(m[0]):null;
+}
+function findArea(x){return S.areas.find(a=>[a.toLowerCase(),...(CH.alias[a]||[])].some(w=>x.includes(w)))}
+function chatReply(text,rl){
+  const T=k=>TR[k][LI[rl]];
+  const x=normD(text).toLowerCase();
+  const has=l=>l.some(w=>x.includes(w));
+  const wa=(msg)=>({k:"wa",label:T("c_wabtn"),wa:msg});
+  if(/(bech|bikwa|\bsell\b|बेच)/.test(x))return {text:T("c_sell"),acts:[{k:"sell",label:TR.rg_sell[LI[rl]]}]};
+  if(/(agent|एजेंट|ejent)/.test(x))return {text:T("c_agent"),acts:[{k:"agent",label:TR.m_agent[LI[rl]]}]};
+  const ty=Object.keys(CH.type).find(k=>has(CH.type[k]));
+  const pu=has(CH.rent)?"rent":has(CH.buy)?"buy":null;
+  const ar=findArea(x);
+  const bud=amtFrom(x,true);
+  const wantsList=/(property|dikhao|dikha|show|chahiye|dhoond|find|batao|प्रॉपर्टी|दिखाओ|चाहिए|खोज|list)/.test(x);
+  const search=()=>{
+    const up=/(above|se zyada|se jyada|se upar|से ज्यादा|से ज़्यादा|ऊपर|से अधिक)/.test(x);
+    const rows=PROPS.filter(p=>p.status==="approved"&&(!ty||p.type===ty)&&(!pu||p.purpose===pu)&&(!ar||p.area===ar)&&(()=>{if(!bud)return true;const pv=amtFrom(p.price||"",false);return pv==null||(up?pv>=bud:pv<=bud)})()).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    if(!rows.length)return {text:T("c_none"),acts:[wa("Mujhe property chahiye: "+text)]};
+    const acts=[];
+    if(rows.length>4)acts.push({k:"list",label:T("c_allbtn"),f:{t:ty||"all",a:ar||"all",p:pu||"all"}});
+    acts.push(wa("Mujhe property chahiye: "+text));
+    return {text:T("c_found").replace("{n}",rows.length),props:rows.slice(0,4),acts};
+  };
+  if(ty||pu||bud)return search();
+  if(/(call|phone|number|whatsapp|contact|sampark|संपर्क|नंबर|फोन|कॉल)/.test(x))return {text:T("c_contact").replace("{ph}",S.phone),acts:[wa()]};
+  if(!ar&&/(kahan|kahaan|address|location|office|map|कहाँ|कहां|पता|लोकेशन)/.test(x))return {text:T("c_loc").replace("{areas}",S.areas.map(an).join(", "))};
+  if(ar||wantsList)return search();
+  if(/^\s*(hi+|hello|hey|namaste|namaskar|ram ram|नमस्ते|नमस्कार)(?![a-z])/i.test(x))return {text:T("c_greet")};
+  if(/(thanks|thank|shukriya|dhanyavad|धन्यवाद|शुक्रिया)/.test(x))return {text:T("c_thx")};
+  return {text:T("c_fb"),acts:[wa(text)]};
+}
+function openChat(){
+  const m=modal(`<h3>🤖 ${t("ai_h")}</h3><div class="chat" id="chatBox"></div><div class="qchips" id="qch"></div><form class="chatin" id="chatForm"><input id="chatIn" autocomplete="off" placeholder="${esc(t("c_ph"))}"><button type="submit">${t("c_send")}</button></form>`);
+  const box=m.querySelector("#chatBox"),inp=m.querySelector("#chatIn");
+  const say=(who,html)=>{const d=document.createElement("div");d.className="msg "+who;d.innerHTML=html;box.appendChild(d);box.scrollTop=box.scrollHeight;return d};
+  const botSay=r=>{
+    const d=say("bot",esc(r.text));
+    (r.props||[]).forEach(p=>{const c=document.createElement("div");c.className="mini";c.innerHTML=`<b>${esc(p.title)}</b><em>${esc(p.price||t("d_ask"))}</em><br><span>📍 ${esc(p.village?p.village+", ":"")}${esc(an(p.area))} • ${p.purpose==="rent"?t("c_rent"):t("c_buy")}${p.size?" • "+esc(p.size):""}</span>`;c.onclick=()=>openDetail(p.id);d.appendChild(c)});
+    (r.acts||[]).forEach(a=>{const b=document.createElement("button");b.type="button";b.className="pbtn"+(a.k==="wa"?" g":"");b.style.cssText="margin-top:8px;padding:10px;font-size:15px";b.textContent=a.label;
+      b.onclick=()=>{
+        if(a.k==="wa")return window.open(waLink(a.wa),"_blank");
+        m.remove();
+        if(a.k==="list"){fType=a.f.t;fArea=a.f.a;fPur=a.f.p}
+        go(a.k==="agent"?"agent":a.k==="sell"?"sell":"list");
+      };d.appendChild(b)});
+    box.scrollTop=box.scrollHeight;
+  };
+  const send=txt=>{txt=String(txt).trim();if(!txt)return;say("me",esc(txt));inp.value="";const rl=(/[\u0900-\u097F]/.test(txt)&&lang==="hing")?"hi":lang;setTimeout(()=>botSay(chatReply(txt,rl)),300)};
+  m.querySelector("#chatForm").onsubmit=e=>{e.preventDefault();send(inp.value)};
+  botSay({text:t("c_greet")});
+  m.querySelector("#qch").innerHTML=t("c_chips").split("|").map(s=>`<button type="button">${esc(s)}</button>`).join("");
+  m.querySelectorAll("#qch button").forEach(b=>b.onclick=()=>send(b.textContent));
+}
 
-window.deleteProp = async (id) => {
-  if (!confirm("क्या आप वाकई इस प्रॉपर्टी को डिलीट करना चाहते हैं?")) return;
-  if (isFirebaseConfigured && db) {
-    await deleteDoc(doc(db, "properties", id));
-  } else {
-    state.properties = state.properties.filter(p => p.id !== id);
-    saveLocalFallback();
-    renderProperties();
-    renderAdminDashboard();
-  }
-  toast("🗑️ प्रॉपर्टी डिलीट कर दी गई।");
-};
+/* ============ routing ============ */
+function go(h){if(location.hash==="#"+h)route();else location.hash="#"+h}
+function setTab(p){purpose=p;document.querySelectorAll("#ptabs button").forEach(x=>x.classList.toggle("on",x.dataset.p===p))}
+function route(){
+  const h=(location.hash||"#home").slice(1);
+  ["home","list","sell","admin","agent"].forEach(v=>$("#v-"+v).classList.toggle("hide",v!==h));
+  $("#menu").classList.add("hide");
+  if(h==="home"&&purpose==="sell")setTab("buy");
+  window.scrollTo(0,0);
+  if(h==="list")renderList();
+  if(h==="admin")showAdmin();
+  if(h==="agent")showAgent();
+  if(!["home","list","sell","admin","agent"].includes(h))location.hash="#home";
+}
+window.addEventListener("hashchange",route);
 
-window.updateAgentStatus = async (id, status) => {
-  if (isFirebaseConfigured && db) {
-    await updateDoc(doc(db, "agents", id), { status });
-  } else {
-    const ag = state.agents.find(a => a.id === id);
-    if (ag) ag.status = status;
-    saveLocalFallback();
-    renderAdminDashboard();
-  }
-  toast(`एजेंट स्टेटस "${status}" अपडेट हो गया।`);
-};
-
-window.logoutUser = async () => {
-  if (isFirebaseConfigured && auth) {
-    await signOut(auth);
-  } else {
-    state.currentUser = null;
-    state.currentAgentProfile = null;
-    document.getElementById("adminLoginBox").classList.remove("hide");
-    document.getElementById("adminDash").classList.add("hide");
-    document.getElementById("agentAuthBox").classList.remove("hide");
-    document.getElementById("agentDash").classList.add("hide");
-  }
-  showView("home");
-  toast("लॉगआउट हो गया।");
-};
+/* ============ boot ============ */
+async function boot(){
+  const ha=$("#heroArt");ha.innerHTML=`<img src="${PHOTO.hero}" alt="NK Properties">`;
+  ha.firstChild.onerror=()=>{ha.innerHTML=houseSVG()};
+  await Store.init();
+  S=await Store.settings();PROPS=await Store.list().catch(()=>[]);
+  try{localStorage.removeItem("nk_apass");localStorage.removeItem("nk_agents");sessionStorage.removeItem("nk_admin");sessionStorage.removeItem("nk_agent")}catch(e){}
+  if(Store.mode==="firebase"){fauth.onAuthStateChanged(async u=>{
+    if(agBusy)return; // register / login ke beech mein state na badlein
+    let admin=false,agent=null;
+    if(u&&u.email){
+      if(u.email.endsWith(AG_DOMAIN)){try{const d=await fdb.collection("agents").doc(u.uid).get();if(d.exists&&!d.data().blocked)agent={...d.data(),id:d.id}}catch(e){}}
+      else admin=await isAdminUser(u);
+    }
+    isAdmin=admin;AG=agent;
+    // login badalne par list dobara laao (admin ko pending bhi dikhni chahiye)
+    try{PROPS=await Store.list()}catch(e){}
+    const h=location.hash||"";if(h==="#admin")showAdmin();if(h==="#agent")showAgent();if(h==="#list")renderList();
+  })}
+  initSell();applyLang();
+  document.querySelectorAll(".langbar button").forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem("nk_lang",lang)}catch(e){}applyLang()});
+  document.querySelectorAll("#ptabs button").forEach(b=>b.onclick=()=>{setTab(b.dataset.p);if(purpose==="sell")go("sell")});
+  document.querySelectorAll('#menu a[href="#list"]').forEach(a=>a.onclick=e=>{e.preventDefault();fType="all";fArea="all";fPur="all";go("list")});
+  $("#btnSearch").onclick=()=>{if(purpose==="sell")return go("sell");fType="all";fArea=$("#loc").value||"all";fPur=purpose;go("list")};
+  $("#viewAll").onclick=()=>{fType="all";fArea="all";fPur="all";go("list")};
+  document.querySelectorAll(".trust [data-go]").forEach(d=>d.onclick=()=>{fType="all";fArea="all";fPur="all";go("list")});
+  $("#waTrust").onclick=()=>window.open(waLink(),"_blank");
+  $("#aiBtn").onclick=openChat;
+  $("#mloc").onclick=()=>setTimeout(()=>$("#locSec").scrollIntoView({behavior:"smooth"}),60);
+  $("#burger").onclick=e=>{e.stopPropagation();$("#menu").classList.toggle("hide")};
+  document.addEventListener("click",e=>{if(!e.target.closest("#menu"))$("#menu").classList.add("hide")});
+  $("#regBtn").onclick=()=>modal(`<h3>${t("rg_h")}</h3><p style="margin:8px 0 4px;color:#6b7794">${t("rg_p")}</p><div class="row" style="flex-direction:column"><button class="pbtn" id="mSell" style="margin-top:6px">${t("rg_sell")}</button><button class="pbtn g" id="mAgent" style="margin-top:6px">${t("rg_agent")}</button><button class="pbtn y" id="mAdm" style="margin-top:6px">${t("rg_admin")}</button></div>`);
+  document.body.addEventListener("click",e=>{
+    if(e.target.id==="mSell"){document.querySelector(".mo")?.remove();go("sell")}
+    if(e.target.id==="mAdm"){document.querySelector(".mo")?.remove();go("admin")}
+    if(e.target.id==="mAgent"){document.querySelector(".mo")?.remove();go("agent")}
+  });
+  $("#loginForm").onsubmit=async e=>{e.preventDefault();
+    try{const ok=await adminLogin($("#a_phone").value,$("#a_pass").value);
+      if(!ok)return toast("Number ya password galat hai");
+      showAdmin();toast("Login ho gaya")}
+    catch(err){toast("Login fail: "+(err.code||err.message))}};
+  route();
+}
+boot();
 </script>
 </body>
 </html>
