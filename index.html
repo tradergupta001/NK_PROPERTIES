@@ -37,7 +37,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .hero h1{font-size:clamp(28px,8vw,42px);line-height:1.15;font-weight:800;position:relative;z-index:2;max-width:75%}
 .hero h1 em{color:var(--yellow);font-style:normal;display:block}
 .hero p.hsub{position:relative;z-index:2;margin-top:10px;font-size:clamp(14px,4vw,18px);font-weight:600;color:#dbe6ff;line-height:1.4;max-width:78%}
-.hero .art{position:absolute;right:-10px;top:10px;width:45%;height:90%;opacity:.22;z-index:1;pointer-events:none}
 .hero .swoosh{position:absolute;left:16px;bottom:8px;width:240px;height:3px;background:linear-gradient(90deg,var(--yellow),transparent);border-radius:3px;z-index:2}
 
 /* Search Card */
@@ -93,7 +92,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .page .sub{color:#b9c6e6;margin-bottom:14px;font-size:14px}
 
 /* Forms */
-.fm{background:#fff;color:var(--ink);border-radius:20px;padding:16px}
+.fm{background:#fff;color:var(--ink);border-radius:20px;padding:16px;margin-bottom:14px}
 .fm label{display:block;font-size:13px;font-weight:700;margin:11px 0 4px;color:#33436e}
 .fm input,.fm select,.fm textarea{width:100%;border:1.5px solid #d3dbe9;border-radius:12px;padding:11px 12px;font-size:15px;font-family:inherit;outline:none;background:#fff;color:var(--ink)}
 .fm input:focus,.fm select:focus,.fm textarea:focus{border-color:var(--blue)}
@@ -119,12 +118,11 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .ar h4{font-size:15.5px}
 .ar .mt{font-size:12.5px;color:var(--mut);margin:3px 0}
 .st{display:inline-block;border-radius:10px;padding:2px 9px;font-size:11.5px;font-weight:800}
-.st.pending{background:#fff1c9;color:#8a5b00}.st.approved{background:#d4f5de;color:#0c6b2a}.st.rejected{background:#fde0e2;color:#a0212d}
+.st.approved{background:#d4f5de;color:#0c6b2a}.st.hidden{background:#fff1c9;color:#8a5b00}
 .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .acts button{border-radius:10px;padding:6px 11px;font-size:12.5px;font-weight:700;background:#eef2fb;color:#10275a}
 .acts .ok{background:#d4f5de;color:#0c6b2a}.acts .no{background:#fde0e2;color:#a0212d}
-.awarn{background:#fff1c9;color:#6b4300;border-radius:14px;padding:11px 13px;margin-bottom:12px;font-size:13.5px;font-weight:600}
-.awarn.ok{background:#d4f5de;color:#0c6b2a}
+.awarn{background:#d4f5de;color:#0c6b2a;border-radius:14px;padding:11px 13px;margin-bottom:12px;font-size:13.5px;font-weight:600}
 .gstat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 14px}
 .gstat div{background:rgba(255,255,255,.1);border-radius:14px;padding:12px;text-align:center;font-size:13px}
 .gstat b{display:block;font-size:24px;color:var(--yellow)}
@@ -232,7 +230,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 
   <!-- Trust Strip -->
   <div class="trust">
-    <div>100%<small>Verified</small></div>
+    <div>100%<small>Direct Post</small></div>
     <div>Zero<small>Hidden Fee</small></div>
     <div>Direct<small>Owner Deal</small></div>
     <div>Fast<small>Registry</small></div>
@@ -247,7 +245,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
     <button onclick="quickArea('Aligarh',this)">Aligarh</button>
   </div>
 
-  <!-- Approved Listings -->
+  <!-- Live Listings -->
   <div class="sec-h">
     <h3 id="listHeading">उपलब्ध प्रॉपर्टी</h3>
     <span id="dbBadge" style="font-size:12px;color:#ffd21f;font-weight:700">Connecting...</span>
@@ -256,12 +254,12 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
   <div class="empty hide" id="emptyState">कोई प्रॉपर्टी नहीं मिली। फ़िल्टर बदलकर देखें या अपनी प्रॉपर्टी डालें।</div>
 </main>
 
-<!-- ==================== 2. CUSTOMER POST PROPERTY PAGE ==================== -->
+<!-- ==================== 2. SELLER / CUSTOMER POST PROPERTY PAGE ==================== -->
 <section class="page hide" id="view-sell">
   <button class="back" onclick="showView('home')">← वापस जाएं</button>
-  <h2>प्रॉपर्टी पोस्ट करें</h2>
-  <p class="sub">आपकी प्रॉपर्टी Admin वेरिफिकेशन के बाद वेबसाइट पर लाइव हो जाएगी।</p>
-  <form class="fm" onsubmit="handlePropertySubmit(event, 'customer')">
+  <h2>प्रॉपर्टी पोस्ट करें (Direct Live)</h2>
+  <p class="sub">फॉर्म भरते ही आपकी प्रॉपर्टी तुरंत वेबसाइट पर लाइव हो जाएगी।</p>
+  <form class="fm" onsubmit="handlePropertySubmit(event, 'seller')">
     <label>आप क्या करना चाहते हैं? *</label>
     <select id="sPurpose" required>
       <option value="buy">बेचना है (For Sale)</option>
@@ -325,7 +323,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
       <label class="addph">+ फोटो चुनें<input type="file" accept="image/*" multiple hidden onchange="handleImages(this,'cust')"></label>
     </div>
 
-    <button type="submit" class="pbtn g">प्रॉपर्टी सबमिट करें</button>
+    <button type="submit" class="pbtn g">🚀 प्रॉपर्टी लाइव करें</button>
   </form>
 </section>
 
@@ -333,16 +331,14 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 <section class="page hide" id="view-agent">
   <button class="back" onclick="showView('home')">← Home</button>
   <h2>Agent Panel</h2>
-  <p class="sub">रजिस्टर्ड एजेंट यहाँ से प्रॉपर्टी जोड़ सकते हैं और स्टेटस ट्रैक कर सकते हैं।</p>
+  <p class="sub">रजिस्टर्ड एजेंट यहाँ से अपनी प्रॉपर्टी डायरेक्ट लाइव कर सकते हैं।</p>
 
-  <!-- Agent Auth Box -->
   <div id="agentAuthBox" class="fm">
     <div class="atabs" style="margin-bottom:10px">
       <button type="button" class="on" id="tabAgLogin" onclick="switchAgentTab('login')">Agent Login</button>
       <button type="button" id="tabAgReg" onclick="switchAgentTab('reg')">नया एजेंट रजिस्ट्रेशन</button>
     </div>
 
-    <!-- Login Form -->
     <form id="agLoginForm" onsubmit="agentLogin(event)">
       <label>ईमेल आईडी *</label>
       <input type="email" id="agLoginEmail" placeholder="agent@example.com" required>
@@ -351,7 +347,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
       <button type="submit" class="pbtn">लॉगिन करें</button>
     </form>
 
-    <!-- Register Form -->
     <form id="agRegForm" class="hide" onsubmit="agentRegister(event)">
       <label>एजेंट का नाम *</label>
       <input id="agName" placeholder="आपका पूरा नाम" required>
@@ -373,20 +368,19 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
       <input type="email" id="agEmail" placeholder="agent@example.com" required>
       <label>पासवर्ड बनाएं (कम से कम 6 अक्षर) *</label>
       <input type="password" id="agPass" minlength="6" placeholder="पासवर्ड" required>
-      <button type="submit" class="pbtn y">रजिस्ट्रेशन सबमिट करें</button>
+      <button type="submit" class="pbtn y">रजिस्टर करें और चालू करें</button>
     </form>
   </div>
 
-  <!-- Agent Dashboard (After Login) -->
   <div id="agentDash" class="hide">
-    <div id="agentStatusBanner" class="awarn">स्टेटस चेक हो रहा है...</div>
+    <div id="agentStatusBanner" class="awarn">✅ Agent Panel Active</div>
     <div class="gstat">
       <div><b id="agTotalCount">0</b>मेरी कुल प्रॉपर्टी</div>
-      <div><b id="agApprovedCount">0</b>लाइव (Approved)</div>
+      <div><b id="agApprovedCount">0</b>वेबसाइट पर लाइव</div>
     </div>
 
-    <div id="agentPostSection" class="hide">
-      <h3 style="margin:12px 0 8px">नई प्रॉपर्टी जोड़ें (Agent)</h3>
+    <div id="agentPostSection">
+      <h3 style="margin:12px 0 8px">नई प्रॉपर्टी जोड़ें (Direct Live)</h3>
       <form class="fm" onsubmit="handlePropertySubmit(event, 'agent')">
         <div class="r2">
           <div>
@@ -438,23 +432,22 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
         <div class="photos" id="agPhotos">
           <label class="addph">+ फोटो<input type="file" accept="image/*" multiple hidden onchange="handleImages(this,'ag')"></label>
         </div>
-        <button type="submit" class="pbtn g">लिस्टिंग सबमिट करें</button>
+        <button type="submit" class="pbtn g">🚀 प्रॉपर्टी लाइव करें</button>
       </form>
     </div>
 
-    <h3 style="margin:18px 0 10px">मेरी सबमिट की गई प्रॉपर्टी</h3>
+    <h3 style="margin:18px 0 10px">मेरी प्रॉपर्टी लिस्ट</h3>
     <div id="agentPropList"></div>
     <button class="pbtn r" onclick="logoutUser()">लॉगआउट करें</button>
   </div>
 </section>
 
-<!-- ==================== 4. ADMIN PANEL ==================== -->
+<!-- ==================== 4. ADMIN PANEL (SIRF AAPKE LIYE) ==================== -->
 <section class="page hide" id="view-admin">
   <button class="back" onclick="showView('home')">← Home</button>
   <h2>Admin Control Panel</h2>
-  <p class="sub">प्रॉपर्टी और एजेंट्स को अप्रूव, रिजेक्ट या डिलीट करें।</p>
+  <p class="sub">यहाँ से आप खुद प्रॉपर्टी जोड़ सकते हैं और वेबसाइट की सभी प्रॉपर्टी व पूछताछ मैनेज कर सकते हैं।</p>
 
-  <!-- Admin Login -->
   <div id="adminLoginBox" class="fm">
     <form onsubmit="adminLogin(event)">
       <label>Admin Email *</label>
@@ -465,15 +458,84 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
     </form>
   </div>
 
-  <!-- Admin Dashboard -->
   <div id="adminDash" class="hide">
     <div class="atabs">
-      <button class="on" id="admTabPending" onclick="setAdminTab('pending',this)">Pending <b id="cntPending">0</b></button>
-      <button id="admTabApproved" onclick="setAdminTab('approved',this)">Approved <b id="cntApproved">0</b></button>
+      <button class="on" id="admTabAdd" onclick="setAdminTab('add',this)">➕ प्रॉपर्टी जोड़ें</button>
+      <button id="admTabApproved" onclick="setAdminTab('approved',this)">Live <b id="cntApproved">0</b></button>
+      <button id="admTabHidden" onclick="setAdminTab('hidden',this)">Hidden <b id="cntHidden">0</b></button>
       <button id="admTabAgents" onclick="setAdminTab('agents',this)">Agents <b id="cntAgents">0</b></button>
       <button id="admTabLeads" onclick="setAdminTab('leads',this)">Inquiries <b id="cntLeads">0</b></button>
     </div>
-    <div id="adminList"></div>
+
+    <div id="adminAddBox" class="fm">
+      <h3 style="margin-bottom:6px;color:#10275a">Admin: नई प्रॉपर्टी सीधे वेबसाइट पर डालें</h3>
+      <form onsubmit="handlePropertySubmit(event, 'admin')">
+        <div class="r2">
+          <div>
+            <label>उद्देश्य *</label>
+            <select id="admPurpose">
+              <option value="buy">बेचना है (For Sale)</option>
+              <option value="rent">किराया (For Rent)</option>
+            </select>
+          </div>
+          <div>
+            <label>प्रकार *</label>
+            <select id="admCat">
+              <option value="Plot">प्लॉट (Plot)</option>
+              <option value="Makaan">मकान (House)</option>
+              <option value="Dukaan">दुकान (Shop)</option>
+              <option value="Kheti">कृषि भूमि (Land)</option>
+            </select>
+          </div>
+        </div>
+        <div class="r2">
+          <div>
+            <label>क्षेत्र *</label>
+            <select id="admArea">
+              <option value="Tonk">Tonk</option>
+              <option value="Uniara">Uniara</option>
+              <option value="Aligarh">Aligarh</option>
+              <option value="Other">अन्य</option>
+            </select>
+          </div>
+          <div>
+            <label>कीमत / किराया *</label>
+            <input id="admPrice" placeholder="उदा. ₹20 लाख" required>
+          </div>
+        </div>
+        <label>प्रॉपर्टी शीर्षक (Title) *</label>
+        <input id="admTitle" placeholder="उदा. 200 गज मेन रोड प्लॉट, टोंक" required>
+        <div class="r2">
+          <div>
+            <label>साइज़ *</label>
+            <input id="admSize" placeholder="200 गज / 5 बीघा" required>
+          </div>
+          <div>
+            <label>लोकेशन / पता *</label>
+            <input id="admLoc" placeholder="जयपुर रोड, टोंक" required>
+          </div>
+        </div>
+        <div class="r2">
+          <div>
+            <label>संपर्क नाम *</label>
+            <input id="admOwner" value="NK Properties Office" required>
+          </div>
+          <div>
+            <label>मोबाइल नंबर *</label>
+            <input id="admPhone" type="tel" pattern="[0-9]{10}" value="9829000000" required>
+          </div>
+        </div>
+        <label>विवरण</label>
+        <textarea id="admDesc" placeholder="रोड साइज़, सुविधाएं, रजिस्ट्री डिटेल..."></textarea>
+        <label>फोटो अपलोड करें (अधिकतम 3)</label>
+        <div class="photos" id="admPhotos">
+          <label class="addph">+ फोटो<input type="file" accept="image/*" multiple hidden onchange="handleImages(this,'adm')"></label>
+        </div>
+        <button type="submit" class="pbtn g">🚀 सीधे वेबसाइट पर लाइव करें</button>
+      </form>
+    </div>
+
+    <div id="adminList" class="hide"></div>
     <button class="pbtn r" onclick="logoutUser()">Admin Logout</button>
   </div>
 </section>
@@ -528,8 +590,8 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
-  getFirestore, collection, addDoc, getDocs, getDoc, setDoc,
-  updateDoc, deleteDoc, doc, query, where, orderBy, onSnapshot
+  getFirestore, collection, addDoc, getDoc, setDoc,
+  updateDoc, deleteDoc, doc, query, orderBy, onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import {
   getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,
@@ -548,11 +610,11 @@ const firebaseConfig = {
   appId: "YOUR_APP_ID"
 };
 
-// Admin का ईमेल यहाँ सेट करें (Firebase Auth में इसी ईमेल से यूज़र बनाएं)
+// Admin का ईमेल यहाँ सेट करें
 const ADMIN_EMAIL = "admin@nkproperties.in";
 
 /* ===================================================================
-   STATE & DATABASE INITIALIZATION (Firebase + Local Fallback)
+   STATE & DATABASE INITIALIZATION
    =================================================================== */
 const isFirebaseConfigured = firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY";
 let db = null, auth = null;
@@ -562,13 +624,12 @@ let state = {
   agents: [],
   leads: [],
   purpose: "all",
-  adminTab: "pending",
+  adminTab: "add",
   currentUser: null,
   currentAgentProfile: null,
-  tempPhotos: { cust: [], ag: [] }
+  tempPhotos: { cust: [], ag: [], adm: [] }
 };
 
-// Sample data अगर डेटाबेस खाली हो या Firebase सेटअप न हुआ हो
 const DEMO_PROPERTIES = [
   {
     id: "demo1",
@@ -613,269 +674,3 @@ const DEMO_PROPERTIES = [
     price: "₹9,000 / माह",
     size: "12x25 फीट",
     location: "बस स्टैंड रोड, अलीगढ़",
-    ownerName: "NK Properties Office",
-    phone: "9829000000",
-    description: "बैंक, ऑफिस या शोरूम के लिए उत्तम लोकेशन।",
-    photos: [],
-    status: "approved",
-    role: "admin",
-    createdAt: Date.now()
-  }
-];
-
-function loadLocalFallback() {
-  state.properties = JSON.parse(localStorage.getItem("nk_props") || "null") || DEMO_PROPERTIES;
-  state.agents = JSON.parse(localStorage.getItem("nk_agents") || "[]");
-  state.leads = JSON.parse(localStorage.getItem("nk_leads") || "[]");
-  document.getElementById("dbBadge").textContent = "⚡ Local Demo Mode";
-  renderProperties();
-}
-
-function saveLocalFallback() {
-  localStorage.setItem("nk_props", JSON.stringify(state.properties));
-  localStorage.setItem("nk_agents", JSON.stringify(state.agents));
-  localStorage.setItem("nk_leads", JSON.stringify(state.leads));
-}
-
-if (isFirebaseConfigured) {
-  try {
-    const app = initializeApp(firebaseConfig);
-    db = getFirestore(app);
-    auth = getAuth(app);
-    document.getElementById("dbBadge").textContent = "🟢 Online DB Connected";
-
-    // Realtime Listener: Properties
-    onSnapshot(query(collection(db, "properties"), orderBy("createdAt", "desc")), (snap) => {
-      state.properties = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      renderProperties();
-      if (state.currentUser) {
-        renderAgentDashboard();
-        renderAdminDashboard();
-      }
-    });
-
-    // Realtime Listener: Agents
-    onSnapshot(collection(db, "agents"), (snap) => {
-      state.agents = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      if (state.currentUser) {
-        renderAgentDashboard();
-        renderAdminDashboard();
-      }
-    });
-
-    // Realtime Listener: Leads
-    onSnapshot(query(collection(db, "leads"), orderBy("createdAt", "desc")), (snap) => {
-      state.leads = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      if (state.currentUser) renderAdminDashboard();
-    });
-
-    // Auth State Listener
-    onAuthStateChanged(auth, async (user) => {
-      state.currentUser = user;
-      if (user) {
-        if (user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
-          document.getElementById("adminLoginBox").classList.add("hide");
-          document.getElementById("adminDash").classList.remove("hide");
-          renderAdminDashboard();
-        } else {
-          const agSnap = await getDoc(doc(db, "agents", user.uid));
-          state.currentAgentProfile = agSnap.exists() ? { id: agSnap.id, ...agSnap.data() } : null;
-          document.getElementById("agentAuthBox").classList.add("hide");
-          document.getElementById("agentDash").classList.remove("hide");
-          renderAgentDashboard();
-        }
-      } else {
-        document.getElementById("adminLoginBox").classList.remove("hide");
-        document.getElementById("adminDash").classList.add("hide");
-        document.getElementById("agentAuthBox").classList.remove("hide");
-        document.getElementById("agentDash").classList.add("hide");
-      }
-    });
-  } catch (err) {
-    console.error("Firebase init error:", err);
-    loadLocalFallback();
-  }
-} else {
-  loadLocalFallback();
-}
-
-/* ===================================================================
-   UI NAVIGATION & HELPERS
-   =================================================================== */
-window.showView = (name) => {
-  ["home", "sell", "agent", "admin"].forEach(v => {
-    document.getElementById("view-" + v).classList.toggle("hide", v !== name);
-  });
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
-window.toggleMenu = () => {
-  document.getElementById("navMenu").classList.toggle("hide");
-};
-
-window.toast = (msg) => {
-  const el = document.getElementById("toast");
-  el.textContent = msg;
-  el.classList.remove("hide");
-  clearTimeout(window._tTimer);
-  window._tTimer = setTimeout(() => el.classList.add("hide"), 3200);
-};
-
-// Image Compressor (Base64 under ~150KB so Firestore doc limit never exceeds)
-window.handleImages = (input, target) => {
-  const files = Array.from(input.files).slice(0, 3 - state.tempPhotos[target].length);
-  files.forEach(file => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const maxW = 720;
-        const scale = Math.min(1, maxW / img.width);
-        canvas.width = img.width * scale;
-        canvas.height = img.height * scale;
-        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-        state.tempPhotos[target].push(canvas.toDataURL("image/jpeg", 0.65));
-        renderPhotoThumbs(target);
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
-  input.value = "";
-};
-
-function renderPhotoThumbs(target) {
-  const container = document.getElementById(target === "cust" ? "custPhotos" : "agPhotos");
-  const addBtn = container.querySelector(".addph");
-  container.querySelectorAll(".ph").forEach(el => el.remove());
-  state.tempPhotos[target].forEach((src, idx) => {
-    const div = document.createElement("div");
-    div.className = "ph";
-    div.innerHTML = `<img src="${src}"><b onclick="removePhoto('${target}',${idx})">×</b>`;
-    container.insertBefore(div, addBtn);
-  });
-}
-
-window.removePhoto = (target, idx) => {
-  state.tempPhotos[target].splice(idx, 1);
-  renderPhotoThumbs(target);
-};
-
-/* ===================================================================
-   CUSTOMER PANEL: SEARCH, FILTER & RENDER
-   =================================================================== */
-window.setPurpose = (p, btn) => {
-  state.purpose = p;
-  document.querySelectorAll("#ptabs button").forEach(b => b.classList.remove("on"));
-  btn.classList.add("on");
-  renderProperties();
-};
-
-window.quickCat = (cat) => {
-  document.getElementById("fCat").value = cat;
-  renderProperties(true);
-};
-
-window.quickArea = (area, btn) => {
-  document.getElementById("fArea").value = area;
-  document.querySelectorAll("#areaPills button").forEach(b => b.classList.remove("on"));
-  if (btn) btn.classList.add("on");
-  renderProperties(true);
-};
-
-window.resetFilters = () => {
-  state.purpose = "all";
-  document.querySelectorAll("#ptabs button").forEach((b, i) => b.classList.toggle("on", i === 0));
-  document.getElementById("fArea").value = "all";
-  document.getElementById("fCat").value = "all";
-  renderProperties();
-};
-
-window.renderProperties = (scrollToResults = false) => {
-  const area = document.getElementById("fArea").value;
-  const cat = document.getElementById("fCat").value;
-
-  const filtered = state.properties.filter(p => {
-    if (p.status !== "approved") return false;
-    if (state.purpose !== "all" && p.purpose !== state.purpose) return false;
-    if (area !== "all" && p.area !== area) return false;
-    if (cat !== "all" && p.category !== cat) return false;
-    return true;
-  });
-
-  const grid = document.getElementById("propGrid");
-  const empty = document.getElementById("emptyState");
-  document.getElementById("listHeading").textContent = `उपलब्ध प्रॉपर्टी (${filtered.length})`;
-
-  if (!filtered.length) {
-    grid.innerHTML = "";
-    empty.classList.remove("hide");
-  } else {
-    empty.classList.add("hide");
-    grid.innerHTML = filtered.map(p => `
-      <article class="pc" onclick="openModal('${p.id}')">
-        <div class="im">
-          ${p.photos && p.photos[0] ? `<img src="${p.photos[0]}" alt="${p.title}">` : `<span>${p.category === 'Plot' ? '📐' : p.category === 'Makaan' ? '🏠' : p.category === 'Dukaan' ? '🏪' : '🌾'}</span>`}
-          <span class="tag ${p.purpose === 'rent' ? 'rent' : ''}">${p.purpose === 'rent' ? 'किराया' : 'बिक्री'}</span>
-          <span class="tag cat-t">${p.category}</span>
-        </div>
-        <div class="bd">
-          <h4>${p.title}</h4>
-          <div class="pr">${p.price}</div>
-          <div class="mt">
-            <span>📍 ${p.area} • ${p.size}</span>
-            <span style="color:#1457d6;font-weight:700">डिटेल देखें ›</span>
-          </div>
-        </div>
-      </article>
-    `).join("");
-  }
-
-  if (scrollToResults) {
-    document.getElementById("listHeading").scrollIntoView({ behavior: "smooth" });
-  }
-};
-
-/* ===================================================================
-   PROPERTY DETAIL MODAL & INQUIRY
-   =================================================================== */
-window.openModal = (id) => {
-  const p = state.properties.find(x => x.id === id);
-  if (!p) return;
-  document.getElementById("mTitle").textContent = p.title;
-  document.getElementById("mPrice").textContent = p.price;
-  document.getElementById("mDesc").textContent = p.description || "";
-  document.getElementById("inqPropId").value = p.id;
-  document.getElementById("inqPropTitle").value = p.title;
-
-  const gal = document.getElementById("mGal");
-  gal.innerHTML = (p.photos && p.photos.length)
-    ? p.photos.map(src => `<img src="${src}">`).join("")
-    : "";
-
-  document.getElementById("mKv").innerHTML = `
-    <span>प्रकार:</span><b>${p.category} (${p.purpose === 'rent' ? 'किराया' : 'बिक्री'})</b>
-    <span>क्षेत्र:</span><b>${p.area}</b>
-    <span>लोकेशन:</span><b>${p.location}</b>
-    <span>साइज़:</span><b>${p.size}</b>
-    <span>पोस्टकर्ता:</span><b>${p.ownerName}</b>
-  `;
-
-  const phone = p.phone || "9829000000";
-  document.getElementById("mCallBtn").href = `tel:+91${phone}`;
-  document.getElementById("mWaBtn").href = `https://wa.me/91${phone}?text=${encodeURIComponent("Namaste, mujhe is property me ruchi hai: " + p.title + " (" + p.area + ")")}`;
-
-  document.getElementById("propModal").classList.remove("hide");
-};
-
-window.closeModal = () => {
-  document.getElementById("propModal").classList.add("hide");
-};
-
-window.submitInquiry = async (e) => {
-  e.preventDefault();
-  const lead = {
-    propId: document.getElementById("inqPropId").value,
-    propTitle: document.getElementById("inqPropTitle").value,
-    name: document.getElementById("inqName
