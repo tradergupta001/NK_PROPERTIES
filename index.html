@@ -10,7 +10,7 @@
 :root{--navy:#071a3d;--navy2:#0a2457;--blue:#1457d6;--yellow:#ffd21f;--green:#12a33a;--card:#fff;--ink:#0d1b3a;--mut:#6b7794}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans Devanagari",sans-serif;background:#030d24;color:#fff;min-height:100vh}
-.app{max-width:600px;margin:0 auto;min-height:100vh;background:linear-gradient(180deg,var(--navy2),var(--navy) 60%,#051233);position:relative;padding-bottom:84px;overflow-x:hidden}
+.app{max-width:600px;margin:0 auto;min-height:100vh;background:linear-gradient(180deg,var(--navy2),var(--navy) 60%,#051233);position:relative;padding-bottom:84px;overflow:hidden}
 button{font:inherit;cursor:pointer;border:0}
 a{color:inherit;text-decoration:none}
 .hide{display:none!important}
@@ -31,26 +31,34 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .menu a{display:block;padding:12px 14px;border-radius:10px;font-weight:600}
 .menu a:hover{background:#eef3ff}
 /* hero */
-.hero{position:relative;padding:18px 16px 22px;min-height:220px}
-.hero h1{font-size:clamp(28px,8.4vw,44px);line-height:1.12;font-weight:800;position:relative;z-index:2;max-width:65%}
-.hero h1 em{color:var(--yellow);font-style:normal;display:block}
-.hero p.hsub{position:relative;z-index:2;margin-top:12px;font-size:clamp(14px,4.2vw,20px);font-weight:600;color:#fff;line-height:1.4;max-width:75%}
+.hero{position:relative;padding:18px 16px 22px;min-height:250px}
+.hero h1{font-size:clamp(28px,8.4vw,44px);line-height:1.12;font-weight:800;position:relative;z-index:2;max-width:62%}
+.hero h1 em{color:var(--yellow);font-style:normal;display:block;white-space:nowrap}
+.hero p.hsub{position:relative;z-index:2;margin-top:12px;font-size:clamp(14px,4.2vw,20px);font-weight:600;color:#fff;line-height:1.4;max-width:70%}
+.hero .art{position:absolute;right:0;top:0;width:66%;height:100%;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 38%),linear-gradient(180deg,transparent,#000 10%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 38%),linear-gradient(180deg,transparent,#000 10%,#000 88%,transparent);mask-composite:intersect}
+.hero .art svg,.hero .art img{width:100%;height:100%;display:block}
+.hero .art img{object-fit:cover;object-position:60% center}
 .hero .swoosh{position:absolute;left:16px;bottom:8px;width:300px;height:3px;background:linear-gradient(90deg,var(--yellow),transparent);border-radius:3px;z-index:2}
-/* search card */
+/* search card (compact) */
 .sc{margin:6px 14px 0;background:#fff;color:var(--ink);border-radius:20px;padding:12px;box-shadow:0 0 0 2px rgba(59,130,246,.35),0 8px 28px rgba(20,87,214,.35);position:relative;z-index:3}
 .sc h2{font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:9px;color:#10275a}
+.sc h2 svg{width:30px;height:26px}
 .tabs{display:flex;gap:7px}
 .tabs button{flex:1;padding:9px 6px;border-radius:24px;background:#e8edf6;color:#10275a;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px}
+.tabs button svg{width:18px;height:17px}
 .tabs button.on{background:var(--blue);color:#fff}
 .sel{margin-top:9px;border:1.5px solid #d3dbe9;border-radius:24px;padding:0 12px;display:flex;align-items:center;gap:8px;background:#fff}
-.sel select{flex:1;border:0;outline:0;background:transparent;padding:10px 0;font-size:15px;color:#10275a;font-family:inherit}
+.sel svg:first-child{width:18px;height:21px}
+.sel svg:last-child{width:14px;height:9px}
+.sel select{flex:1;border:0;outline:0;background:transparent;padding:10px 0;font-size:15px;color:#10275a;font-family:inherit;appearance:none;-webkit-appearance:none}
 .btn-search{margin-top:9px;width:100%;padding:11px;border-radius:24px;background:linear-gradient(180deg,#1b64e8,#0d46b4);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 12px rgba(20,87,214,.45)}
+.btn-search svg{width:20px;height:20px}
 /* categories */
 .sec-h{display:flex;align-items:center;justify-content:space-between;padding:26px 14px 12px}
 .sec-h h3{font-size:clamp(20px,5.6vw,27px);font-weight:800;border-left:6px solid var(--yellow);padding-left:12px;line-height:1.1}
 .va{border:1.5px solid #3b82f6;background:transparent;color:#fff;border-radius:30px;padding:9px 16px;font-weight:600;font-size:16px}
 .cats{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 14px}
-.cat{height:100px;border-radius:20px;overflow:hidden;position:relative;border:2px solid #1f4fa8;cursor:pointer;background:linear-gradient(135deg,#1457d6,#071a3d)}
+.cat{height:100px;border-radius:20px;overflow:hidden;position:relative;border:2px solid #1f4fa8;cursor:pointer;background:linear-gradient(135deg,#1d4ed8,#091e4a)}
 .cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(3,13,40,.92))}
 .cat .lb{position:absolute;left:10px;right:10px;bottom:8px;z-index:2;display:flex;align-items:center;gap:8px;font-weight:700;font-size:clamp(13px,3.8vw,17px)}
 .cat .lb>span:nth-child(2){min-width:0;line-height:1.15}
@@ -61,12 +69,15 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .trust div{text-align:center;font-weight:700;font-size:15px;line-height:1.15;padding:2px 4px;border-right:1.5px solid #d3dbe9;cursor:pointer}
 .trust div:last-child{border:0}
 .trust small{display:block;font-weight:500;font-size:12.5px;color:#41507a}
+.trust svg{width:38px;height:38px;display:block;margin:0 auto 4px}
 /* bottom bar */
-.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:600px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:12px;z-index:30;background:linear-gradient(180deg,transparent,rgba(3,13,36,.92) 40%)}
-.call{flex:0 1 280px;background:linear-gradient(180deg,#14b53f,#0a8a2c);border-radius:40px;display:flex;align-items:center;justify-content:center;gap:9px;padding:8px 16px;box-shadow:0 0 0 2px #3ddc66 inset}
-.call small{display:block;font-size:12px;font-weight:600;line-height:1}
-.call b{font-size:18px;font-weight:800;letter-spacing:.5px;line-height:1.1}
-.reg{flex:none;background:linear-gradient(180deg,#ffdc3a,#f1b800);color:#10275a;border-radius:30px;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 13px;white-space:nowrap}
+.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:600px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:12px;z-index:30;background:linear-gradient(180deg,transparent,rgba(3,13,36,.9) 40%)}
+.call{flex:0 1 270px;min-width:0;background:linear-gradient(180deg,#14b53f,#0a8a2c);border-radius:40px;display:flex;align-items:center;justify-content:center;gap:9px;padding:6px 14px;box-shadow:0 0 0 2px #3ddc66 inset}
+.call svg{width:clamp(24px,6vw,32px);height:clamp(24px,6vw,32px);flex:none}
+.call small{display:block;font-size:clamp(10px,3vw,13px);font-weight:600;line-height:1}
+.call b{white-space:nowrap;font-size:clamp(14px,4vw,21px);font-weight:800;letter-spacing:.5px;line-height:1.1}
+.reg{flex:none;background:linear-gradient(180deg,#ffdc3a,#f1b800);color:#10275a;border-radius:30px;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 13px;white-space:nowrap;line-height:1.1}
+.reg svg{width:18px;height:18px;flex:none}
 /* inner pages */
 .page{padding:6px 14px 20px}
 .back{background:rgba(255,255,255,.12);color:#fff;border-radius:30px;padding:9px 16px;font-weight:600;margin:6px 0 12px}
@@ -75,7 +86,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .grid{display:grid;grid-template-columns:1fr;gap:14px}
 .pc{background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35)}
 .pc .im{height:170px;background:linear-gradient(135deg,#1d4ed8,#0f172a);position:relative;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px}
-.pc .im img{width:100%;height:100%;object-fit:cover;display:block}
+.pc .im img,.pc .im svg{width:100%;height:100%;object-fit:cover;display:block}
 .tag{position:absolute;left:10px;top:10px;background:var(--blue);color:#fff;border-radius:20px;font-size:13px;font-weight:700;padding:4px 12px}
 .tag.rent{background:#f59e0b}
 .pc .bd{padding:12px 14px 14px}
@@ -94,7 +105,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .fm input:focus,.fm select:focus,.fm textarea:focus{border-color:var(--blue)}
 .fm textarea{min-height:80px;resize:vertical}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pbtn{margin-top:16px;width:100%;padding:14px;border-radius:30px;background:var(--blue);color:#fff;font-weight:800;font-size:17px}
+.pbtn{margin-top:16px;width:100%;padding:15px;border-radius:30px;background:var(--blue);color:#fff;font-weight:800;font-size:18px}
 .pbtn.g{background:var(--green)}.pbtn.r{background:#d92d3a}.pbtn.y{background:var(--yellow);color:#10275a}
 .photos{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
 .photos .ph{width:84px;height:84px;border-radius:12px;overflow:hidden;position:relative;background:#eef}
@@ -103,8 +114,8 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .addph{width:84px;height:84px;border:2px dashed #9db3e0;border-radius:12px;display:grid;place-items:center;color:#4a62a8;font-size:12px;text-align:center;cursor:pointer;font-weight:700}
 .note{font-size:12.5px;color:var(--mut);margin-top:10px}
 /* modal */
-.mo{position:fixed;inset:0;background:rgba(2,8,24,.78);z-index:50;display:flex;align-items:center;justify-content:center;padding:14px}
-.mo .bx{background:#fff;color:var(--ink);width:100%;max-width:520px;max-height:90vh;overflow:auto;border-radius:22px;padding:18px 16px 22px;position:relative}
+.mo{position:fixed;inset:0;background:rgba(2,8,24,.78);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.mo .bx{background:#fff;color:var(--ink);width:100%;max-width:600px;max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:18px 16px 24px;position:relative}
 .mo .x{position:absolute;right:12px;top:10px;background:#eef2fb;color:#10275a;width:36px;height:36px;border-radius:50%;font-size:20px;font-weight:700;z-index:2}
 .mo h3{font-size:22px;margin:0 40px 8px 0}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:10px 0;font-size:15px}
@@ -116,7 +127,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .atabs b{background:#d92d3a;color:#fff;border-radius:10px;padding:0 7px;margin-left:5px;font-size:12px}
 .ar{background:#fff;color:var(--ink);border-radius:16px;padding:12px;margin-bottom:12px;display:flex;gap:12px}
 .ar .th{width:84px;height:84px;border-radius:12px;overflow:hidden;flex:none;background:#1e3a8a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;text-align:center}
-.ar .th img{width:100%;height:100%;object-fit:cover}
+.ar .th img,.ar .th svg{width:100%;height:100%;object-fit:cover}
 .ar .in{flex:1;min-width:0}
 .ar h4{font-size:16px}
 .ar .mt{font-size:13px;color:var(--mut);margin:2px 0}
@@ -125,8 +136,9 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .acts button{border-radius:10px;padding:7px 11px;font-size:13px;font-weight:700;background:#eef2fb;color:#10275a}
 .acts .ok{background:#d4f5de;color:#0c6b2a}.acts .no{background:#fde0e2;color:#a0212d}
-.awarn{background:#d4f5de;color:#0c6b2a;border-radius:14px;padding:12px 14px;margin-bottom:12px;font-size:14px;line-height:1.45;font-weight:600}
-.toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:#10275a;color:#fff;border:1px solid #3b82f6;padding:12px 20px;border-radius:30px;z-index:99;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.5);max-width:90%;text-align:center}
+.awarn{background:#fff1c9;color:#6b4300;border-radius:14px;padding:12px 14px;margin-bottom:12px;font-size:14px;line-height:1.45;font-weight:600}
+.awarn.ok{background:#d4f5de;color:#0c6b2a}
+.toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:#10275a;color:#fff;padding:12px 20px;border-radius:30px;z-index:99;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.5);max-width:90%;text-align:center}
 .sellgrid{display:grid;grid-template-columns:1fr;gap:16px}
 .sinfo{background:#12305a;border-radius:18px;padding:22px 20px;line-height:1.5}
 .sinfo h2{color:#ffe08a;font-size:23px;line-height:1.4;margin-bottom:12px}
@@ -134,6 +146,10 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .sinfo ul{list-style:none;margin-bottom:14px}
 .sinfo li{font-weight:600;margin:10px 0;font-size:15px}
 .sinfo li::before{content:"✓ ";color:#ffd21f;font-weight:900}
+.sform label{font-size:12.5px;color:#1a2442;margin-top:14px}
+.sform .r2 label{margin-top:14px}
+.sform input,.sform select,.sform textarea{padding:11px 12px;font-size:15px;border-radius:8px;border:1px solid #cfd6e4}
+.sform textarea{min-height:76px}
 .photos.wide{display:block}
 .photos.wide .row2{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
 .addph.wide{width:100%;height:auto;display:flex;align-items:center;gap:8px;justify-content:flex-start;padding:11px 14px;background:#eaf1fb;border:1.5px dashed #1f3f73;border-radius:8px;color:#10275a;font-size:14px}
@@ -144,23 +160,52 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .areas button{background:rgba(255,255,255,.1);border:1.5px solid #3b82f6;color:#fff;border-radius:30px;padding:11px 18px;font-weight:700;font-size:16px}
 .cta{margin:22px 14px 0;background:linear-gradient(180deg,#0d3a8a,#0a2457);border:2px solid #1f4fa8;border-radius:22px;padding:20px 16px;text-align:center}
 .cta h3{font-size:24px;margin-bottom:6px}
-.cta p{color:#c8d4f0;margin-bottom:8px}
-.cta .pbtn{display:block}
-.langbar{display:flex;justify-content:flex-end;align-items:center;gap:6px;padding:0 14px 6px}
-.langbar button{background:rgba(255,255,255,.12);color:#fff;border-radius:16px;padding:5px 12px;font-weight:700;font-size:13px}
+.cta p{color:#c8d4f0;margin-bottom:4px}
+.cta .pbtn{display:block;text-decoration:none}
+.langbar{display:flex;justify-content:flex-end;align-items:center;gap:6px;padding:0 14px 6px;position:relative;z-index:3}
+.langbar span{font-size:15px;opacity:.85}
+.langbar button{background:rgba(255,255,255,.12);color:#fff;border-radius:16px;padding:5px 12px;font-weight:700;font-size:13px;border:1px solid transparent}
 .langbar button.on{background:var(--yellow);color:#10275a}
+html{scroll-behavior:smooth}
+body{overflow-x:hidden}
+@media(max-width:480px){
+ header{padding:12px 10px 6px;gap:6px}
+ .logo{gap:5px}
+ .logo .mark{padding-top:13px}
+ .logo .mark svg{height:19px}
+ .logo .nk{font-size:32px;letter-spacing:-1px}
+ .logo .tx b{font-size:18px}
+ .logo .tx i{font-size:8px;white-space:nowrap}
+ .hr{gap:4px}
+ .reg{font-size:12.5px;padding:7px 10px;gap:4px}
+ .reg svg{width:15px;height:15px}
+ .burger{width:32px;height:32px;gap:5px}.burger span{height:3px}
+ .menu{top:60px}
+ .cat{height:92px}
+ .cat .lb{left:8px;right:8px;gap:6px}
+ .cat .lb .ic{width:28px;height:28px}.cat .lb .go{width:26px;height:26px;font-size:14px}
+ .trust div{font-size:12.5px}.trust small{font-size:10.5px}.trust svg{width:30px;height:30px}
+ .va{padding:7px 11px;font-size:14px}
+}
+@media(max-width:699px){.hero .art{width:62%}.hero h1,.hero p.hsub{max-width:62%}.pill{display:none}}
+@media(max-width:380px){.logo .tx i{display:none}.logo .nk{font-size:28px}.reg svg{display:none}}
 @media(min-width:700px){
  .app{max-width:900px}
  .cats{grid-template-columns:repeat(4,1fr)}
- .cat{height:130px}
+ .cat{height:150px}
  .grid{grid-template-columns:repeat(2,1fr)}
+ .hero{min-height:340px;padding:30px 24px}
+ .hero h1{font-size:50px;max-width:52%}
+ .hero p.hsub{font-size:22px;max-width:52%}
+ .sc{margin:6px 24px 0;padding:14px 16px 14px}
+ .sec-h,.cats,.areas,.sub2{padding-left:24px;padding-right:24px}
+ .cta{margin-left:24px;margin-right:24px}
+ .trust{margin:20px 24px 0}
+ .page{padding:6px 24px 24px}
  .sellgrid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start}
+ .sinfo{position:sticky;top:12px}
 }
-@media(max-width:480px){
- .pill{display:none}
- .logo .nk{font-size:32px}
- .logo .tx b{font-size:18px}
-}
+@media(min-width:1000px){.app{max-width:1100px}.grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
@@ -169,14 +214,14 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 <header>
   <a class="logo" href="#home">
     <span class="mark">
-      <svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M3 22 50 3l47 19" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M3 22 50 3l47 19" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><g fill="#fff"><rect x="44" y="9" width="5" height="5"/><rect x="51" y="9" width="5" height="5"/><rect x="44" y="16" width="5" height="5"/><rect x="51" y="16" width="5" height="5"/></g></svg>
       <span class="nk">NK</span>
     </span>
     <span class="tx"><b>PROPERTIES</b><i>Dream • Buy • Sell • Rent • Invest</i></span>
   </a>
   <div class="hr">
-    <span class="pill">Property Portal</span>
-    <button class="reg" id="regBtn"><span>Register / Login</span></button>
+    <span class="pill"><svg width="22" height="24" viewBox="0 0 24 26"><path d="M12 1 2 5v8c0 6 4.5 10 10 12 5.5-2 10-6 10-12V5z" fill="#22c55e"/><path d="m7 13 3.5 3.5L17 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>Property Portal</span>
+    <button class="reg" id="regBtn"><svg width="30" height="30" viewBox="0 0 30 30"><circle cx="12" cy="9" r="6" fill="#10275a"/><path d="M1 28c0-8 5-11 11-11s11 3 11 11z" fill="#10275a"/><path d="M24 4v8M20 8h8" stroke="#10275a" stroke-width="3" stroke-linecap="round"/></svg><span>Register / Login</span></button>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="menu hide" id="menu">
@@ -198,724 +243,5 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 <!-- HOME -->
 <main id="v-home">
   <section class="sc">
-    <h2><span>🏠 Aap kya dhundh rahe hain?</span></h2>
+    <h2><svg width="46" height="40" viewBox="0 0 46 40"><path d="M3 20 23 3l20 17" fill="none" stroke="#1457d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 18v18h28V18L23 7z" fill="#1457d6"/><rect x="19" y="24" width="8" height="12" fill="#fff"/></svg><span>Aap kya dhundh rahe hain?</span></h2>
     <div class="tabs" id="ptabs">
-      <button class="on" data-p="buy">Buy</button>
-      <button data-p="rent">Rent</button>
-      <button data-p="sell">Sell</button>
-    </div>
-    <div class="sel">
-      <span>📍</span>
-      <select id="loc"></select>
-    </div>
-    <button class="btn-search" id="btnSearch"><span>🔍 Search Properties</span></button>
-  </section>
-
-  <section class="hero">
-    <h1>Find Your <em>Dream Property</em></h1>
-    <p class="hsub">Buy • Sell • Rent • Invest</p>
-    <div class="swoosh"></div>
-  </section>
-
-  <div class="sec-h"><h3>Popular Property Categories</h3><button class="va" id="viewAll">View All →</button></div>
-  <div class="cats" id="cats"></div>
-
-  <div class="trust">
-    <div data-go="list">🛡️<span>Verified<br>Properties</span></div>
-    <div data-go="list">👥<span>Trusted<br>Agents</span></div>
-    <div id="sellQuick">📝<span>Free<br>Listing</span></div>
-    <div id="adminQuick">🔐<span>Admin<br>Panel</span></div>
-  </div>
-
-  <div class="sec-h"><h3>Hamare Kshetra</h3></div>
-  <p class="sub2">Apna kshetra chunein, phir wahan ki properties dekhein.</p>
-  <div class="areas" id="areaChips"></div>
-
-  <div class="cta">
-    <h3>Plot ya Makaan Chahiye ya Bechna Hai?</h3>
-    <p>Apni property daalein ya approved properties turant dekhein.</p>
-    <a class="pbtn g" href="#sell">+ Apni Property Daalein</a>
-    <a class="pbtn y" href="#list">Sabhi Live Properties Dekhein →</a>
-  </div>
-</main>
-
-<!-- LIST -->
-<main id="v-list" class="page hide">
-  <button class="back" onclick="location.hash='#home'">← Home</button>
-  <h2 id="listTitle">Live Properties</h2>
-  <p class="sub" id="listSub"></p>
-  <div class="chips" id="chips"></div>
-  <div class="grid" id="grid"></div>
-</main>
-
-<!-- SELL -->
-<main id="v-sell" class="page hide">
-  <button class="back" onclick="location.hash='#home'">← Home</button>
-  <div class="sellgrid">
-    <aside class="sinfo">
-      <h2>Seller Panel: Apni Zameen / Makaan Daalein</h2>
-      <p>Form bharein aur photo jodein. Aapki property save hokar Admin Panel mein jati hai—aur yahin se aap chahein toh turant live bhi kar sakte hain ya Admin approve karega.</p>
-      <ul>
-        <li>Bilkul free listing</li>
-        <li>Plot, makaan, dukaan, krishi bhoomi sab</li>
-        <li>Photo ke saath (max 3)</li>
-        <li>Turant live / Admin approval support</li>
-      </ul>
-    </aside>
-    <form class="fm sform" id="sellForm">
-      <div class="r2">
-        <div><label>Aapka Naam</label><input id="s_name" required placeholder="Naam likhein"></div>
-        <div><label>Mobile Number</label><input id="s_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required placeholder="10 digit number"></div>
-      </div>
-      <div class="r2">
-        <div><label>Property Type</label><select id="s_type"></select></div>
-        <div><label>Kshetra</label><select id="s_area"></select></div>
-      </div>
-      <div class="r2">
-        <div><label>Gaon / Mohalla</label><input id="s_vill" placeholder="Jaise: Station Road"></div>
-        <div><label>Size / Area</label><input id="s_size" placeholder="1000 sq ft / 2 bigha"></div>
-      </div>
-      <div class="r2">
-        <div><label>Bikri ya Kiraya</label><select id="s_pur"><option value="buy">Bikri (Buy)</option><option value="rent">Kiraya (Rent)</option></select></div>
-        <div><label>Aapki Expected Price</label><input id="s_price" placeholder="Jaise: 8 lakh"></div>
-      </div>
-      <label>Anya Details</label>
-      <textarea id="s_desc" placeholder="Road facing, registry, paas mein kya hai..."></textarea>
-      <label>Property ki Photo</label>
-      <div class="photos wide" id="s_ph"></div>
-      <button class="pbtn g sbtn" type="submit">Property Bhejein</button>
-      <p class="note">Submit ke baad property Admin Panel mein aati hai; approve hote hi website par live dikhti hai.</p>
-    </form>
-  </div>
-</main>
-
-<!-- AGENT -->
-<main id="v-agent" class="page hide">
-  <button class="back" onclick="location.hash='#home'">← Home</button>
-  <div id="g-login">
-    <h2>Agent Panel</h2>
-    <p class="sub">Apna naam aur mobile number daal kar login karein.</p>
-    <form class="fm" id="agentLoginForm">
-      <label>Agent Naam</label><input id="ag_name" required placeholder="Aapka naam">
-      <label>Mobile Number</label><input id="ag_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required placeholder="10 digit number">
-      <button class="pbtn" type="submit">Agent Login</button>
-    </form>
-  </div>
-  <div id="g-main" class="hide"></div>
-</main>
-
-<!-- ADMIN -->
-<main id="v-admin" class="page hide">
-  <button class="back" onclick="location.hash='#home'">← Website</button>
-  <div id="a-login">
-    <h2>Admin Login</h2>
-    <p class="sub">Demo / Local Admin access ke liye koi bhi 10-digit mobile aur password daalein.</p>
-    <form class="fm" id="loginForm">
-      <label>Mobile Number</label><input id="a_phone" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required autocomplete="username" placeholder="10 digit number">
-      <label>Password</label><input id="a_pass" type="password" required autocomplete="current-password" placeholder="Password">
-      <button class="pbtn" type="submit">Login</button>
-    </form>
-  </div>
-  <div id="a-main" class="hide"></div>
-</main>
-
-<!-- BOTTOM BAR -->
-<div class="bar">
-  <a class="call" href="tel:9999999999">
-    <span>📞</span>
-    <div><small>Direct Call</small><b>NK Properties</b></div>
-  </a>
-</div>
-
-<!-- MODAL -->
-<div class="mo hide" id="modal">
-  <div class="bx">
-    <button class="x" id="mClose" aria-label="Close">×</button>
-    <div id="mBody"></div>
-  </div>
-</div>
-
-<div class="toast hide" id="toast"></div>
-</div>
-
-<script>
-const STORAGE_KEY = "nk_properties_v1";
-const AREAS = ["Tonk", "Uniara", "Aligarh"];
-const TYPES = [
-  { id: "plot", label: "Residential Plot", icon: "📐" },
-  { id: "house", label: "Makaan / House", icon: "🏡" },
-  { id: "shop", label: "Dukaan / Commercial", icon: "🏪" },
-  { id: "agri", label: "Krishi Bhoomi", icon: "🌾" }
-];
-
-const SEED_PROPERTIES = [
-  {
-    id: "p1",
-    title: "Residential Plot - Station Road",
-    type: "plot",
-    area: "Tonk",
-    village: "Station Road",
-    size: "1200 sq ft",
-    purpose: "buy",
-    price: "12.5 Lakh",
-    desc: "30 ft road facing, clear registry, market ke paas.",
-    ownerName: "Ramesh Sharma",
-    ownerMob: "9829000001",
-    status: "approved",
-    photos: [],
-    createdAt: Date.now() - 86400000 * 2
-  },
-  {
-    id: "p2",
-    title: "2 BHK Makaan Kiraye Ke Liye",
-    type: "house",
-    area: "Uniara",
-    village: "Bus Stand Area",
-    size: "1100 sq ft",
-    purpose: "rent",
-    price: "6,500 / mahina",
-    desc: "Pani aur bijli ki poori suvidha, family ke liye best.",
-    ownerName: "Suresh Verma",
-    ownerMob: "9829000002",
-    status: "approved",
-    photos: [],
-    createdAt: Date.now() - 86400000
-  }
-];
-
-function loadProps() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_PROPERTIES));
-      return [...SEED_PROPERTIES];
-    }
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [...SEED_PROPERTIES];
-  } catch (e) {
-    return [...SEED_PROPERTIES];
-  }
-}
-
-function saveProps(list) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-}
-
-let props = loadProps();
-let isAdminLoggedIn = false;
-let adminTab = "pending";
-let currentAgent = null;
-let filterState = { purpose: "buy", area: "", type: "" };
-let sellerPhotos = [];
-let adminPhotos = [];
-
-const $ = (s) => document.querySelector(s);
-const $$ = (s) => Array.from(document.querySelectorAll(s));
-
-function toast(msg) {
-  const el = $("#toast");
-  el.textContent = msg;
-  el.classList.remove("hide");
-  clearTimeout(toast._t);
-  toast._t = setTimeout(() => el.classList.add("hide"), 2800);
-}
-
-function typeLabel(id) {
-  return (TYPES.find((t) => t.id === id) || {}).label || id;
-}
-
-function populateSelects() {
-  $("#loc").innerHTML = `<option value="">Sabhi Kshetra (All Areas)</option>` + AREAS.map((a) => `<option value="${a}">${a}</option>`).join("");
-  $("#s_area").innerHTML = AREAS.map((a) => `<option value="${a}">${a}</option>`).join("");
-  $("#s_type").innerHTML = TYPES.map((t) => `<option value="${t.id}">${t.label}</option>`).join("");
-}
-
-function renderHome() {
-  $("#cats").innerHTML = TYPES.map((t) => `
-    <div class="cat" data-type="${t.id}">
-      <div class="lb">
-        <span class="ic">${t.icon}</span>
-        <span>${t.label}</span>
-        <span class="go">›</span>
-      </div>
-    </div>
-  `).join("");
-
-  $$("#cats .cat").forEach((el) => {
-    el.onclick = () => {
-      filterState = { purpose: "", area: "", type: el.dataset.type };
-      location.hash = "#list";
-      renderList();
-    };
-  });
-
-  $("#areaChips").innerHTML = AREAS.map((a) => `<button data-a="${a}">📍 ${a}</button>`).join("");
-  $$("#areaChips button").forEach((b) => {
-    b.onclick = () => {
-      filterState = { purpose: "", area: b.dataset.a, type: "" };
-      location.hash = "#list";
-      renderList();
-    };
-  });
-}
-
-function renderList() {
-  props = loadProps();
-  const approved = props.filter((p) => p.status === "approved");
-
-  let filtered = approved.filter((p) => {
-    if (filterState.purpose && p.purpose !== filterState.purpose) return false;
-    if (filterState.area && p.area !== filterState.area) return false;
-    if (filterState.type && p.type !== filterState.type) return false;
-    return true;
-  });
-
-  const parts = [];
-  if (filterState.purpose) parts.push(filterState.purpose === "rent" ? "Kiraya (Rent)" : "Bikri (Buy)");
-  if (filterState.type) parts.push(typeLabel(filterState.type));
-  if (filterState.area) parts.push(filterState.area);
-
-  $("#listTitle").textContent = parts.length ? `${parts.join(" • ")} Properties` : "Sabhi Live Properties";
-  $("#listSub").textContent = `${filtered.length} approved property mili (Kul live: ${approved.length})`;
-
-  $("#chips").innerHTML = `
-    <div class="chipgrp">
-      <button class="${!filterState.purpose ? "on" : ""}" data-fp="">Sabhi</button>
-      <button class="${filterState.purpose === "buy" ? "on" : ""}" data-fp="buy">Buy</button>
-      <button class="${filterState.purpose === "rent" ? "on" : ""}" data-fp="rent">Rent</button>
-    </div>
-    <div class="chipgrp">
-      <button class="${!filterState.area ? "on" : ""}" data-fa="">Sabhi Area</button>
-      ${AREAS.map((a) => `<button class="${filterState.area === a ? "on" : ""}" data-fa="${a}">${a}</button>`).join("")}
-    </div>
-  `;
-
-  $$("#chips [data-fp]").forEach((b) => {
-    b.onclick = () => { filterState.purpose = b.dataset.fp; renderList(); };
-  });
-  $$("#chips [data-fa]").forEach((b) => {
-    b.onclick = () => { filterState.area = b.dataset.fa; renderList(); };
-  });
-
-  if (!filtered.length) {
-    $("#grid").innerHTML = `<div class="empty">Is filter mein abhi koi live property nahi hai.<br><br><button class="va" onclick="filterState={purpose:'',area:'',type:''};renderList()">Sabhi Live Properties Dekhein</button></div>`;
-    return;
-  }
-
-  $("#grid").innerHTML = filtered.map((p) => `
-    <article class="pc" data-id="${p.id}">
-      <div class="im">
-        ${p.photos && p.photos[0] ? `<img src="${p.photos[0]}" alt="${p.title}">` : `<span>${typeLabel(p.type)}</span>`}
-        <span class="tag ${p.purpose === "rent" ? "rent" : ""}">${p.purpose === "rent" ? "RENT" : "FOR SALE"}</span>
-      </div>
-      <div class="bd">
-        <h4>${p.title}</h4>
-        <div class="pr">₹ ${p.price || "Price on Call"}</div>
-        <div class="mt">📍 ${p.area}${p.village ? " • " + p.village : ""} ${p.size ? "• " + p.size : ""}</div>
-      </div>
-    </article>
-  `).join("");
-
-  $$("#grid .pc").forEach((card) => {
-    card.onclick = () => openPropertyModal(card.dataset.id);
-  });
-}
-
-function openPropertyModal(id) {
-  const p = props.find((x) => x.id === id);
-  if (!p) return;
-  $("#mBody").innerHTML = `
-    <h3>${p.title}</h3>
-    ${p.photos && p.photos[0] ? `<img src="${p.photos[0]}" alt="${p.title}" style="width:100%;max-height:220px;object-fit:cover;border-radius:14px;margin-bottom:10px">` : ""}
-    <div class="kv">
-      <span>Price:</span><b>₹ ${p.price || "Contact"}</b>
-      <span>Type:</span><b>${typeLabel(p.type)}</b>
-      <span>Kshetra:</span><b>${p.area}${p.village ? " (" + p.village + ")" : ""}</b>
-      <span>Size:</span><b>${p.size || "-"}</b>
-      <span>Purpose:</span><b>${p.purpose === "rent" ? "Rent" : "Buy / Sale"}</b>
-      <span>Status:</span><b>${p.status.toUpperCase()}</b>
-    </div>
-    <p style="margin:10px 0;color:#33436e">${p.desc || "Anya details ke liye sampark karein."}</p>
-    <button class="pbtn g" onclick="location.hash='#sell';closeModal()">Apni Property Daalein</button>
-  `;
-  $("#modal").classList.remove("hide");
-}
-
-function closeModal() {
-  $("#modal").classList.add("hide");
-}
-
-function readFilesToDataUrls(files, targetArr, maxCount, onDone) {
-  const remaining = maxCount - targetArr.length;
-  const picked = Array.from(files).slice(0, Math.max(0, remaining));
-  if (!picked.length) {
-    toast(`Maximum ${maxCount} photos allowed hain.`);
-    return;
-  }
-  let done = 0;
-  picked.forEach((file) => {
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      targetArr.push(ev.target.result);
-      done++;
-      if (done === picked.length) onDone();
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-function renderSellerPhotoBox() {
-  $("#s_ph").innerHTML = `
-    <div class="row2">
-      ${sellerPhotos.map((src, i) => `
-        <div class="ph"><img src="${src}" alt="photo"><b data-rm="${i}">×</b></div>
-      `).join("")}
-    </div>
-    ${sellerPhotos.length < 3 ? `<label class="addph wide">📷 Photo jodein (max 3)<input type="file" accept="image/*" multiple style="display:none" id="s_file"></label>` : ""}
-    <div class="cnt">${sellerPhotos.length}/3 photos selected</div>
-  `;
-  $$("#s_ph [data-rm]").forEach((b) => {
-    b.onclick = () => {
-      sellerPhotos.splice(Number(b.dataset.rm), 1);
-      renderSellerPhotoBox();
-    };
-  });
-  const inp = $("#s_file");
-  if (inp) {
-    inp.onchange = (e) => readFilesToDataUrls(e.target.files, sellerPhotos, 3, renderSellerPhotoBox);
-  }
-}
-
-$("#sellForm").onsubmit = (e) => {
-  e.preventDefault();
-  const name = $("#s_name").value.trim();
-  const mob = $("#s_mob").value.trim();
-  const type = $("#s_type").value;
-  const area = $("#s_area").value;
-  const vill = $("#s_vill").value.trim();
-  const size = $("#s_size").value.trim();
-  const purpose = $("#s_pur").value;
-  const price = $("#s_price").value.trim();
-  const desc = $("#s_desc").value.trim();
-
-  if (!name || !/^[0-9]{10}$/.test(mob)) {
-    toast("Sahi naam aur 10-digit mobile number daalein.");
-    return;
-  }
-
-  props = loadProps();
-  const newProp = {
-    id: "prop_" + Date.now(),
-    title: `${typeLabel(type)}${vill ? " - " + vill : ""} (${area})`,
-    type,
-    area,
-    village: vill,
-    size,
-    purpose,
-    price: price || "Price on Call",
-    desc,
-    ownerName: name,
-    ownerMob: mob,
-    status: "pending",
-    photos: [...sellerPhotos],
-    createdAt: Date.now()
-  };
-
-  props.unshift(newProp);
-  saveProps(props);
-
-  e.target.reset();
-  sellerPhotos = [];
-  renderSellerPhotoBox();
-  if (isAdminLoggedIn) renderAdminPanel();
-
-  toast("Property save ho gayi! Admin Panel mein 'Pending' mein aayi hai—wahan se Approve karte hi live hogi.");
-};
-
-function renderAdminPanel() {
-  if (!isAdminLoggedIn) {
-    $("#a-login").classList.remove("hide");
-    $("#a-main").classList.add("hide");
-    return;
-  }
-  $("#a-login").classList.add("hide");
-  $("#a-main").classList.remove("hide");
-
-  props = loadProps();
-  const pendingCount = props.filter((p) => p.status === "pending").length;
-  const approvedCount = props.filter((p) => p.status === "approved").length;
-
-  const listToShow = adminTab === "all"
-    ? props
-    : adminTab === "add"
-      ? []
-      : props.filter((p) => p.status === adminTab);
-
-  $("#a-main").innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px">
-      <h2>Admin Panel</h2>
-      <button class="va" id="adminLogout">Logout</button>
-    </div>
-    <div class="awarn">Live Website par abhi <b>${approvedCount}</b> properties dikh rahi hain aur <b>${pendingCount}</b> pending hain.</div>
-    <div class="atabs">
-      <button class="${adminTab === "pending" ? "on" : ""}" data-at="pending">Pending<b>${pendingCount}</b></button>
-      <button class="${adminTab === "approved" ? "on" : ""}" data-at="approved">Approved (Live)<b>${approvedCount}</b></button>
-      <button class="${adminTab === "all" ? "on" : ""}" data-at="all">Sabhi<b>${props.length}</b></button>
-      <button class="${adminTab === "add" ? "on" : ""}" data-at="add">+ Direct Live Property Add</button>
-    </div>
-    <div id="adminBody"></div>
-  `;
-
-  $("#adminLogout").onclick = () => {
-    isAdminLoggedIn = false;
-    renderAdminPanel();
-  };
-
-  $$(".atabs [data-at]").forEach((b) => {
-    b.onclick = () => {
-      adminTab = b.dataset.at;
-      renderAdminPanel();
-    };
-  });
-
-  if (adminTab === "add") {
-    $("#adminBody").innerHTML = `
-      <form class="fm" id="adminAddForm">
-        <h3 style="margin-bottom:8px">Direct Live Property Add Karein</h3>
-        <div class="r2">
-          <div><label>Title / Heading</label><input id="ad_title" required placeholder="Jaise: Main Road Plot"></div>
-          <div><label>Price</label><input id="ad_price" required placeholder="Jaise: 15 Lakh"></div>
-        </div>
-        <div class="r2">
-          <div><label>Type</label><select id="ad_type">${TYPES.map((t) => `<option value="${t.id}">${t.label}</option>`).join("")}</select></div>
-          <div><label>Kshetra</label><select id="ad_area">${AREAS.map((a) => `<option value="${a}">${a}</option>`).join("")}</select></div>
-        </div>
-        <div class="r2">
-          <div><label>Gaon / Mohalla</label><input id="ad_vill" placeholder="Mohalla / Area"></div>
-          <div><label>Size</label><input id="ad_size" placeholder="1000 sq ft"></div>
-        </div>
-        <label>Purpose</label>
-        <select id="ad_pur"><option value="buy">Buy / Sale</option><option value="rent">Rent</option></select>
-        <label>Details</label>
-        <textarea id="ad_desc" placeholder="Property ki detail likhein..."></textarea>
-        <label>Photo (max 3)</label>
-        <div class="photos" id="ad_ph"></div>
-        <button class="pbtn g" type="submit">Approve & Publish Live Now</button>
-      </form>
-    `;
-    renderAdminPhotoBox();
-
-    $("#adminAddForm").onsubmit = (e) => {
-      e.preventDefault();
-      props = loadProps();
-      const item = {
-        id: "prop_" + Date.now(),
-        title: $("#ad_title").value.trim(),
-        price: $("#ad_price").value.trim(),
-        type: $("#ad_type").value,
-        area: $("#ad_area").value,
-        village: $("#ad_vill").value.trim(),
-        size: $("#ad_size").value.trim(),
-        purpose: $("#ad_pur").value,
-        desc: $("#ad_desc").value.trim(),
-        ownerName: "Admin",
-        ownerMob: $("#a_phone").value.trim() || "9999999999",
-        status: "approved",
-        photos: [...adminPhotos],
-        createdAt: Date.now()
-      };
-      props.unshift(item);
-      saveProps(props);
-      adminPhotos = [];
-      adminTab = "approved";
-      renderAdminPanel();
-      toast("Property approve hokar website par LIVE ho gayi!");
-    };
-    return;
-  }
-
-  if (!listToShow.length) {
-    $("#adminBody").innerHTML = `<div class="empty">Is tab mein koi property nahi hai.</div>`;
-    return;
-  }
-
-  $("#adminBody").innerHTML = listToShow.map((p) => `
-    <div class="ar" data-pid="${p.id}">
-      <div class="th">${p.photos && p.photos[0] ? `<img src="${p.photos[0]}" alt="">` : typeLabel(p.type)}</div>
-      <div class="in">
-        <span class="st ${p.status}">${p.status.toUpperCase()}</span>
-        <h4>${p.title}</h4>
-        <div class="mt">₹ ${p.price || "-"} • ${p.area}${p.village ? " (" + p.village + ")" : ""} • ${p.purpose.toUpperCase()}</div>
-        <div class="mt">Owner: ${p.ownerName || "-"} (${p.ownerMob || "-"})</div>
-        <div class="acts">
-          ${p.status !== "approved" ? `<button class="ok" data-act="approve">✓ Approve (Live)</button>` : ""}
-          ${p.status !== "rejected" ? `<button class="no" data-act="reject">✕ Reject</button>` : ""}
-          <button data-act="delete">🗑 Delete</button>
-        </div>
-      </div>
-    </div>
-  `).join("");
-
-  $$("#adminBody .ar").forEach((row) => {
-    const id = row.dataset.pid;
-    row.querySelectorAll("[data-act]").forEach((btn) => {
-      btn.onclick = () => {
-        const act = btn.dataset.act;
-        props = loadProps();
-        if (act === "delete") {
-          props = props.filter((x) => x.id !== id);
-          saveProps(props);
-          toast("Property delete kar di gayi.");
-        } else {
-          const target = props.find((x) => x.id === id);
-          if (target) {
-            target.status = act === "approve" ? "approved" : "rejected";
-            saveProps(props);
-            toast(target.status === "approved" ? "Property APPROVED aur website par LIVE ho gayi!" : "Property rejected kar di gayi.");
-          }
-        }
-        renderAdminPanel();
-      };
-    });
-  });
-}
-
-function renderAdminPhotoBox() {
-  const box = $("#ad_ph");
-  if (!box) return;
-  box.innerHTML = `
-    ${adminPhotos.map((src, i) => `<div class="ph"><img src="${src}" alt=""><b data-arm="${i}">×</b></div>`).join("")}
-    ${adminPhotos.length < 3 ? `<label class="addph">+ Photo<input type="file" accept="image/*" multiple style="display:none" id="ad_file"></label>` : ""}
-  `;
-  box.querySelectorAll("[data-arm]").forEach((b) => {
-    b.onclick = () => { adminPhotos.splice(Number(b.dataset.arm), 1); renderAdminPhotoBox(); };
-  });
-  const inp = $("#ad_file");
-  if (inp) inp.onchange = (e) => readFilesToDataUrls(e.target.files, adminPhotos, 3, renderAdminPhotoBox);
-}
-
-function renderAgentPanel() {
-  if (!currentAgent) {
-    $("#g-login").classList.remove("hide");
-    $("#g-main").classList.add("hide");
-    return;
-  }
-  $("#g-login").classList.add("hide");
-  $("#g-main").classList.remove("hide");
-  const approved = loadProps().filter((p) => p.status === "approved");
-  $("#g-main").innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-      <div><h2>Agent: ${currentAgent.name}</h2><p class="sub" style="margin:0">${currentAgent.mob}</p></div>
-      <button class="va" id="agOut">Logout</button>
-    </div>
-    <p class="sub">Abhi ${approved.length} approved properties live hain:</p>
-    <div class="grid">
-      ${approved.map((p) => `
-        <div class="pc" onclick="openPropertyModal('${p.id}')">
-          <div class="bd">
-            <h4>${p.title}</h4>
-            <div class="pr">₹ ${p.price || "-"}</div>
-            <div class="mt">📍 ${p.area} • ${p.purpose.toUpperCase()}</div>
-          </div>
-        </div>
-      `).join("")}
-    </div>
-  `;
-  $("#agOut").onclick = () => { currentAgent = null; renderAgentPanel(); };
-}
-
-function openRegisterModal() {
-  $("#mBody").innerHTML = `
-    <h3>Register / Login</h3>
-    <p style="color:#6b7794;font-size:14px;margin-bottom:12px">Property dene wale (seller) ke liye registration ki zaroorat nahi - seedha form bharein.</p>
-    <button class="pbtn" style="margin-top:8px" onclick="closeModal();location.hash='#sell'">📝 Property Daalein</button>
-    <button class="pbtn g" style="margin-top:10px" onclick="closeModal();location.hash='#agent'">🧑‍💼 Agent Login / Register</button>
-    <button class="pbtn y" style="margin-top:10px" onclick="closeModal();location.hash='#admin'">🔐 Admin Login</button>
-  `;
-  $("#modal").classList.remove("hide");
-}
-
-function route() {
-  const hash = (location.hash || "#home").replace("#", "");
-  const view = ["home", "list", "sell", "agent", "admin"].includes(hash) ? hash : "home";
-  ["home", "list", "sell", "agent", "admin"].forEach((v) => {
-    $("#v-" + v).classList.toggle("hide", v !== view);
-  });
-  $("#menu").classList.add("hide");
-  if (view === "list") renderList();
-  if (view === "sell") renderSellerPhotoBox();
-  if (view === "agent") renderAgentPanel();
-  if (view === "admin") renderAdminPanel();
-}
-
-$("#burger").onclick = () => $("#menu").classList.toggle("hide");
-$("#regBtn").onclick = openRegisterModal;
-$("#mClose").onclick = closeModal;
-$("#modal").onclick = (e) => { if (e.target === $("#modal")) closeModal(); };
-
-$$("#ptabs button").forEach((b) => {
-  b.onclick = () => {
-    $$("#ptabs button").forEach((x) => x.classList.remove("on"));
-    b.classList.add("on");
-    filterState.purpose = b.dataset.p;
-  };
-});
-
-$("#btnSearch").onclick = () => {
-  const p = ($("#ptabs button.on") || {}).dataset?.p || "buy";
-  const area = $("#loc").value;
-  if (p === "sell") {
-    location.hash = "#sell";
-    return;
-  }
-  filterState = { purpose: p, area, type: "" };
-  location.hash = "#list";
-  renderList();
-};
-
-$("#viewAll").onclick = () => {
-  filterState = { purpose: "", area: "", type: "" };
-  location.hash = "#list";
-  renderList();
-};
-
-$('[data-go="list"]').onclick = () => {
-  filterState = { purpose: "", area: "", type: "" };
-  location.hash = "#list";
-  renderList();
-};
-$("#sellQuick").onclick = () => { location.hash = "#sell"; };
-$("#adminQuick").onclick = () => { location.hash = "#admin"; };
-
-$("#loginForm").onsubmit = (e) => {
-  e.preventDefault();
-  isAdminLoggedIn = true;
-  adminTab = "pending";
-  renderAdminPanel();
-  toast("Admin Panel login ho gaya!");
-};
-
-$("#agentLoginForm").onsubmit = (e) => {
-  e.preventDefault();
-  currentAgent = { name: $("#ag_name").value.trim(), mob: $("#ag_mob").value.trim() };
-  renderAgentPanel();
-  toast("Agent login ho gaya!");
-};
-
-$$(".langbar button").forEach((b) => {
-  b.onclick = () => {
-    $$(".langbar button").forEach((x) => x.classList.remove("on"));
-    b.classList.add("on");
-    toast(`Language: ${b.textContent}`);
-  };
-});
-
-window.addEventListener("hashchange", route);
-
-populateSelects();
-renderHome();
-renderSellerPhotoBox();
-route();
-</script>
-</body>
-</html>
