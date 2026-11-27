@@ -4,1153 +4,878 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a2457">
-<title> NK Properties | Tonk, Uniara, Aligarh Plots & Makaan</title>
+<title>NK Properties | Tonk, Uniara, Aligarh Plots & Makaan</title>
 <meta name="description" content="NK Properties - Buy, Sell, Rent, Invest. Plot, makaan, dukaan aur krishi bhoomi.">
 <style>
 :root{--navy:#071a3d;--navy2:#0a2457;--blue:#1457d6;--yellow:#ffd21f;--green:#12a33a;--card:#fff;--ink:#0d1b3a;--mut:#6b7794}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans Devanagari",sans-serif;background:#030d24;color:#fff;min-height:100vh}
-.app{max-width:600px;margin:0 auto;min-height:100vh;background:linear-gradient(180deg,var(--navy2),var(--navy) 60%,#051233);position:relative;padding-bottom:30px;overflow:hidden}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans Devanagari",sans-serif;background:#030d24;color:#fff;min-height:100vh;overflow-x:hidden}
+.app{max-width:600px;margin:0 auto;min-height:100vh;background:linear-gradient(180deg,var(--navy2),var(--navy) 60%,#051233);position:relative;padding-bottom:90px;overflow:hidden}
 button{font:inherit;cursor:pointer;border:0}
 a{color:inherit;text-decoration:none}
 .hide{display:none!important}
-/* header */
-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 8px;position:relative;z-index:3}
-.logo{display:flex;align-items:center;gap:8px;min-width:0}
-.logo .mark{display:block;flex:none;width:66px;height:66px;overflow:hidden;border-radius:50%;border:2px solid rgba(255,255,255,.9);background:#fff}
-.logo .mark img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 22%}
-.logo .nk{display:none}
-.logo .tx{line-height:1.05}
-.logo .tx b{display:block;color:var(--yellow);font-size:25px;font-weight:900;letter-spacing:.5px}
-.logo .tx i{font-size:10.5px;font-style:italic;opacity:.9}
-.hr{display:flex;align-items:center;gap:10px}
-.pill{border:1.5px solid #3b82f6;border-radius:30px;padding:8px 14px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:7px;background:rgba(20,87,214,.15);color:#fff}
-.burger{background:none;color:#fff;width:40px;height:40px;display:flex;flex-direction:column;justify-content:center;gap:6px}
-.burger span{height:4px;background:#fff;border-radius:3px;display:block}
-.menu{position:absolute;top:70px;right:12px;background:#fff;color:var(--ink);border-radius:14px;padding:6px;z-index:20;min-width:210px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
-.menu a{display:block;padding:12px 14px;border-radius:10px;font-weight:600}
-.menu a:hover{background:#eef3ff}
-/* hero */
-.hero{position:relative;padding:18px 16px 22px;min-height:250px}
-.hero h1{font-size:clamp(28px,8.4vw,44px);line-height:1.12;font-weight:800;position:relative;z-index:2;max-width:62%}
-.hero h1 em{color:var(--yellow);font-style:normal;display:block;white-space:nowrap}
-.hero p.hsub{position:relative;z-index:2;margin-top:12px;font-size:clamp(14px,4.2vw,20px);font-weight:600;color:#fff;line-height:1.4;max-width:70%}
-.hero .art{position:absolute;right:0;top:0;width:66%;height:100%;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 38%),linear-gradient(180deg,transparent,#000 10%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 38%),linear-gradient(180deg,transparent,#000 10%,#000 88%,transparent);mask-composite:intersect}
-.hero .art svg,.hero .art img{width:100%;height:100%;display:block}
-.hero .art img{object-fit:cover;object-position:60% center}
-.hero .swoosh{position:absolute;left:16px;bottom:8px;width:300px;height:3px;background:linear-gradient(90deg,var(--yellow),transparent);border-radius:3px;z-index:2}
-/* search card (compact) */
-.sc{margin:6px 14px 0;background:#fff;color:var(--ink);border-radius:20px;padding:12px 12px 12px;box-shadow:0 0 0 2px rgba(59,130,246,.35),0 8px 28px rgba(20,87,214,.35);position:relative;z-index:3}
-.sc h2{font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:9px;color:#10275a}
-.sc h2 svg{width:30px;height:26px}
-.tabs{display:flex;gap:7px}
-.tabs button{flex:1;padding:9px 6px;border-radius:24px;background:#e8edf6;color:#10275a;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px}
-.tabs button svg{width:18px;height:17px}
+
+/* Header */
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 8px;position:relative;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;min-width:0}
+.logo .mark{display:grid;place-items:center;flex:none;width:54px;height:54px;border-radius:50%;border:2px solid var(--yellow);background:linear-gradient(135deg,#1457d6,#071a3d);color:var(--yellow);font-weight:900;font-size:21px;letter-spacing:-0.5px}
+.logo .tx{line-height:1.1}
+.logo .tx b{display:block;color:var(--yellow);font-size:23px;font-weight:900;letter-spacing:.5px}
+.logo .tx i{font-size:11px;font-style:italic;opacity:.9;display:block}
+.hr{display:flex;align-items:center;gap:8px}
+.pill{border:1.5px solid #3b82f6;border-radius:30px;padding:7px 13px;font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;background:rgba(20,87,214,.2);color:#fff}
+.reg{flex:none;background:linear-gradient(180deg,#ffdc3a,#f1b800);color:#10275a;border-radius:30px;font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center;gap:5px;padding:8px 13px;white-space:nowrap}
+.burger{background:none;color:#fff;width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+.burger span{height:3.5px;background:#fff;border-radius:3px;display:block}
+.menu{position:absolute;top:72px;right:14px;background:#fff;color:var(--ink);border-radius:16px;padding:8px;z-index:40;min-width:225px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
+.menu button,.menu a{display:block;width:100%;text-align:left;background:none;padding:11px 14px;border-radius:10px;font-weight:700;color:var(--ink);font-size:15px}
+.menu button:hover,.menu a:hover{background:#eef3ff}
+
+/* Hero */
+.hero{position:relative;padding:18px 16px 24px;min-height:220px}
+.hero h1{font-size:clamp(28px,8vw,42px);line-height:1.15;font-weight:800;position:relative;z-index:2;max-width:75%}
+.hero h1 em{color:var(--yellow);font-style:normal;display:block}
+.hero p.hsub{position:relative;z-index:2;margin-top:10px;font-size:clamp(14px,4vw,18px);font-weight:600;color:#dbe6ff;line-height:1.4;max-width:78%}
+.hero .art{position:absolute;right:-10px;top:10px;width:45%;height:90%;opacity:.22;z-index:1;pointer-events:none}
+.hero .swoosh{position:absolute;left:16px;bottom:8px;width:240px;height:3px;background:linear-gradient(90deg,var(--yellow),transparent);border-radius:3px;z-index:2}
+
+/* Search Card */
+.sc{margin:6px 14px 0;background:#fff;color:var(--ink);border-radius:20px;padding:14px;box-shadow:0 0 0 2px rgba(59,130,246,.35),0 8px 28px rgba(20,87,214,.35);position:relative;z-index:3}
+.sc h2{font-size:17px;display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#10275a}
+.tabs{display:flex;gap:7px;margin-bottom:10px}
+.tabs button{flex:1;padding:10px 6px;border-radius:24px;background:#e8edf6;color:#10275a;font-weight:700;font-size:14px}
 .tabs button.on{background:var(--blue);color:#fff}
-.sel{margin-top:9px;border:1.5px solid #d3dbe9;border-radius:24px;padding:0 12px;display:flex;align-items:center;gap:8px;background:#fff}
-.sel svg:first-child{width:18px;height:21px}
-.sel svg:last-child{width:14px;height:9px}
-.sel select{flex:1;border:0;outline:0;background:transparent;padding:10px 0;font-size:15px;color:#444;font-family:inherit;appearance:none;-webkit-appearance:none}
-.btn-search{margin-top:9px;width:100%;padding:11px;border-radius:24px;background:linear-gradient(180deg,#1b64e8,#0d46b4);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 12px rgba(20,87,214,.45)}
-.btn-search svg{width:20px;height:20px}
-/* categories */
-.sec-h{display:flex;align-items:center;justify-content:space-between;padding:26px 14px 12px}
-.sec-h h3{font-size:clamp(20px,5.6vw,27px);font-weight:800;border-left:6px solid var(--yellow);padding-left:12px;line-height:1.1}
-.va{border:1.5px solid #3b82f6;background:transparent;color:#fff;border-radius:30px;padding:9px 16px;font-weight:600;font-size:16px}
-.cats{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 14px}
-.cat{height:100px;border-radius:20px;overflow:hidden;position:relative;border:2px solid #1f4fa8;cursor:pointer;background:#123}
-.cat svg.bg,.cat img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(3,13,40,.92))}
-.cat .lb{position:absolute;left:10px;right:10px;bottom:8px;z-index:2;display:flex;align-items:center;gap:8px;font-weight:700;font-size:clamp(13px,3.8vw,17px)}
-.cat .lb>span:nth-child(2){min-width:0;line-height:1.15}
-.cat .lb .ic{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.95);color:#10275a;display:grid;place-items:center;flex:none}
-.cat .lb .go{margin-left:auto;width:32px;height:32px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;font-size:17px;flex:none}
-/* trust */
-.trust{margin:16px 10px 0;background:#fff;color:#10275a;border-radius:22px;display:grid;grid-template-columns:repeat(4,1fr);padding:12px 4px;box-shadow:0 0 0 2px rgba(59,130,246,.3)}
-.trust div{text-align:center;font-weight:700;font-size:15px;line-height:1.15;padding:2px 4px;border-right:1.5px solid #d3dbe9;cursor:pointer}
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.sel{border:1.5px solid #d3dbe9;border-radius:14px;padding:0 10px;background:#fff}
+.sel select{width:100%;border:0;outline:0;background:transparent;padding:10px 0;font-size:14.5px;color:#10275a;font-weight:600}
+.btn-search{width:100%;padding:12px;border-radius:24px;background:linear-gradient(180deg,#1b64e8,#0d46b4);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 12px rgba(20,87,214,.45)}
+
+/* Categories */
+.sec-h{display:flex;align-items:center;justify-content:space-between;padding:24px 14px 12px}
+.sec-h h3{font-size:clamp(20px,5.4vw,25px);font-weight:800;border-left:5px solid var(--yellow);padding-left:10px;line-height:1.15}
+.va{border:1.5px solid #3b82f6;background:transparent;color:#fff;border-radius:30px;padding:7px 14px;font-weight:600;font-size:14px}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 14px}
+.cat{height:96px;border-radius:18px;overflow:hidden;position:relative;border:2px solid #1f4fa8;cursor:pointer;background:linear-gradient(135deg,#12357a,#081b44);padding:12px;display:flex;align-items:flex-end}
+.cat .lb{width:100%;display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px}
+.cat .lb .ic{width:34px;height:34px;border-radius:50%;background:#fff;color:#10275a;display:grid;place-items:center;flex:none;font-size:17px}
+.cat .lb .go{margin-left:auto;width:28px;height:28px;border:1.5px solid #fff;border-radius:50%;display:grid;place-items:center;font-size:15px}
+
+/* Trust */
+.trust{margin:18px 14px 0;background:#fff;color:#10275a;border-radius:20px;display:grid;grid-template-columns:repeat(4,1fr);padding:12px 4px;box-shadow:0 0 0 2px rgba(59,130,246,.3)}
+.trust div{text-align:center;font-weight:800;font-size:14px;line-height:1.2;padding:2px 4px;border-right:1.5px solid #d3dbe9}
 .trust div:last-child{border:0}
-.trust small{display:block;font-weight:500;font-size:12.5px;color:#41507a}
-.trust svg{width:38px;height:38px;display:block;margin:0 auto 4px}
-/* bottom bar */
-.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:600px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:12px;z-index:30;background:linear-gradient(180deg,transparent,rgba(3,13,36,.9) 40%)}
-.call{flex:0 1 270px;min-width:0;background:linear-gradient(180deg,#14b53f,#0a8a2c);border-radius:40px;display:flex;align-items:center;justify-content:center;gap:9px;padding:6px 14px;box-shadow:0 0 0 2px #3ddc66 inset}
-.call svg{width:clamp(24px,6vw,32px);height:clamp(24px,6vw,32px);flex:none}
-.call small{display:block;font-size:clamp(10px,3vw,13px);font-weight:600;line-height:1}
-.call b{white-space:nowrap;font-size:clamp(14px,4vw,21px);font-weight:800;letter-spacing:.5px;line-height:1.1}
-/* register button (top right) */
-.reg{flex:none;background:linear-gradient(180deg,#ffdc3a,#f1b800);color:#10275a;border-radius:30px;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 13px;white-space:nowrap;line-height:1.1}
-.reg svg{width:18px;height:18px;flex:none}
-/* inner pages */
-.page{padding:6px 14px 20px}
-.back{background:rgba(255,255,255,.12);color:#fff;border-radius:30px;padding:9px 16px;font-weight:600;margin:6px 0 12px}
-.page h2{font-size:26px;margin-bottom:6px}
-.page .sub{color:#b9c6e6;margin-bottom:14px}
-.grid{display:grid;grid-template-columns:1fr;gap:14px}
-.pc{background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35)}
-.pc .im{height:170px;background:#cde;position:relative}
-.pc .im img,.pc .im svg{width:100%;height:100%;object-fit:cover;display:block}
-.tag{position:absolute;left:10px;top:10px;background:var(--blue);color:#fff;border-radius:20px;font-size:13px;font-weight:700;padding:4px 12px}
+.trust small{display:block;font-weight:500;font-size:11.5px;color:#41507a}
+
+/* Areas */
+.areas{display:flex;flex-wrap:wrap;gap:9px;padding:0 14px}
+.areas button{background:rgba(255,255,255,.1);border:1.5px solid #3b82f6;color:#fff;border-radius:30px;padding:9px 16px;font-weight:700;font-size:14.5px}
+.areas button.on,.areas button:hover{background:var(--yellow);color:#10275a;border-color:var(--yellow)}
+
+/* Property Grid & Cards */
+.grid{display:grid;grid-template-columns:1fr;gap:14px;padding:0 14px}
+.pc{background:#fff;color:var(--ink);border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.pc .im{height:165px;background:linear-gradient(135deg,#1d4ed8,#0f2964);position:relative;display:grid;place-items:center;color:#fff;font-size:42px}
+.pc .im img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;left:10px;top:10px;background:var(--blue);color:#fff;border-radius:20px;font-size:12.5px;font-weight:700;padding:4px 11px}
 .tag.rent{background:#f59e0b}
+.tag.cat-t{left:auto;right:10px;background:rgba(7,26,61,.85)}
 .pc .bd{padding:12px 14px 14px}
-.pc h4{font-size:18px}
-.pc .pr{color:var(--blue);font-weight:800;font-size:20px;margin:4px 0}
-.pc .mt{color:var(--mut);font-size:14px}
-.empty{background:rgba(255,255,255,.08);border-radius:18px;padding:30px 16px;text-align:center;color:#c8d4f0}
-.chips{margin-bottom:6px}
-.chipgrp{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.chips button{background:rgba(255,255,255,.12);color:#fff;border-radius:20px;padding:8px 14px;font-weight:600;font-size:14px}
-.chips button.on{background:var(--yellow);color:#10275a}
-/* forms */
+.pc h4{font-size:17.5px;line-height:1.3}
+.pc .pr{color:var(--blue);font-weight:800;font-size:19px;margin:4px 0}
+.pc .mt{color:var(--mut);font-size:13.5px;display:flex;justify-content:space-between;align-items:center}
+.empty{margin:0 14px;background:rgba(255,255,255,.08);border-radius:18px;padding:28px 16px;text-align:center;color:#c8d4f0}
+
+/* Pages (Sell, Agent, Admin) */
+.page{padding:10px 14px 24px}
+.back{background:rgba(255,255,255,.14);color:#fff;border-radius:30px;padding:8px 16px;font-weight:700;margin-bottom:12px;font-size:14px}
+.page h2{font-size:24px;margin-bottom:4px;color:var(--yellow)}
+.page .sub{color:#b9c6e6;margin-bottom:14px;font-size:14px}
+
+/* Forms */
 .fm{background:#fff;color:var(--ink);border-radius:20px;padding:16px}
-.fm label{display:block;font-size:13.5px;font-weight:700;margin:12px 0 5px;color:#33436e}
-.fm input,.fm select,.fm textarea{width:100%;border:1.5px solid #d3dbe9;border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;outline:none;background:#fff;color:var(--ink)}
+.fm label{display:block;font-size:13px;font-weight:700;margin:11px 0 4px;color:#33436e}
+.fm input,.fm select,.fm textarea{width:100%;border:1.5px solid #d3dbe9;border-radius:12px;padding:11px 12px;font-size:15px;font-family:inherit;outline:none;background:#fff;color:var(--ink)}
 .fm input:focus,.fm select:focus,.fm textarea:focus{border-color:var(--blue)}
-.fm textarea{min-height:80px;resize:vertical}
+.fm textarea{min-height:76px;resize:vertical}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pbtn{margin-top:16px;width:100%;padding:15px;border-radius:30px;background:var(--blue);color:#fff;font-weight:800;font-size:18px}
+.pbtn{margin-top:14px;width:100%;padding:13px;border-radius:30px;background:var(--blue);color:#fff;font-weight:800;font-size:16px}
 .pbtn.g{background:var(--green)}.pbtn.r{background:#d92d3a}.pbtn.y{background:var(--yellow);color:#10275a}
 .photos{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.photos .ph{width:84px;height:84px;border-radius:12px;overflow:hidden;position:relative;background:#eef}
+.photos .ph{width:74px;height:74px;border-radius:10px;overflow:hidden;position:relative;background:#eef}
 .photos .ph img{width:100%;height:100%;object-fit:cover}
-.photos .ph b{position:absolute;right:3px;top:3px;background:#d92d3a;color:#fff;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font-size:13px;cursor:pointer}
-.addph{width:84px;height:84px;border:2px dashed #9db3e0;border-radius:12px;display:grid;place-items:center;color:#4a62a8;font-size:12px;text-align:center;cursor:pointer;font-weight:700}
-.note{font-size:12.5px;color:var(--mut);margin-top:10px}
-/* modal */
-.mo{position:fixed;inset:0;background:rgba(2,8,24,.78);z-index:50;display:flex;align-items:flex-end;justify-content:center}
-.mo .bx{background:#fff;color:var(--ink);width:100%;max-width:600px;max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:18px 16px 24px;position:relative}
-.mo .x{position:absolute;right:12px;top:10px;background:#eef2fb;color:#10275a;width:36px;height:36px;border-radius:50%;font-size:20px;font-weight:700;z-index:2}
-.mo h3{font-size:22px;margin:0 40px 8px 0}
-.gal{display:flex;gap:8px;overflow:auto;margin:10px 0}
-.gal img,.gal svg{height:190px;min-width:78%;border-radius:14px;object-fit:cover}
-.row{display:flex;gap:8px;margin-top:10px}
-.row>*{flex:1}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:10px 0;font-size:15px}
-.kv span{color:var(--mut)}
-/* admin */
+.photos .ph b{position:absolute;right:2px;top:2px;background:#d92d3a;color:#fff;border-radius:50%;width:20px;height:20px;display:grid;place-items:center;font-size:12px;cursor:pointer}
+.addph{width:74px;height:74px;border:2px dashed #9db3e0;border-radius:10px;display:grid;place-items:center;color:#4a62a8;font-size:11.5px;text-align:center;cursor:pointer;font-weight:700}
+
+/* Admin & Agent Rows */
 .atabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px;padding-bottom:4px}
-.atabs button{background:rgba(255,255,255,.12);color:#fff;border-radius:20px;padding:9px 14px;font-weight:700;font-size:14px;white-space:nowrap}
+.atabs button{background:rgba(255,255,255,.12);color:#fff;border-radius:20px;padding:8px 14px;font-weight:700;font-size:13.5px;white-space:nowrap}
 .atabs button.on{background:var(--yellow);color:#10275a}
-.atabs b{background:#d92d3a;color:#fff;border-radius:10px;padding:0 7px;margin-left:5px;font-size:12px}
-.ar{background:#fff;color:var(--ink);border-radius:16px;padding:12px;margin-bottom:12px;display:flex;gap:12px}
-.ar .th{width:84px;height:84px;border-radius:12px;overflow:hidden;flex:none;background:#dde}
-.ar .th img,.ar .th svg{width:100%;height:100%;object-fit:cover}
+.atabs b{background:#d92d3a;color:#fff;border-radius:10px;padding:1px 6px;margin-left:4px;font-size:11px}
+.ar{background:#fff;color:var(--ink);border-radius:16px;padding:12px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.ar .th{width:76px;height:76px;border-radius:12px;overflow:hidden;flex:none;background:#dde;display:grid;place-items:center;font-size:28px;color:#10275a}
+.ar .th img{width:100%;height:100%;object-fit:cover}
 .ar .in{flex:1;min-width:0}
-.ar h4{font-size:16px}
-.ar .mt{font-size:13px;color:var(--mut);margin:2px 0}
-.st{display:inline-block;border-radius:10px;padding:2px 9px;font-size:12px;font-weight:800}
+.ar h4{font-size:15.5px}
+.ar .mt{font-size:12.5px;color:var(--mut);margin:3px 0}
+.st{display:inline-block;border-radius:10px;padding:2px 9px;font-size:11.5px;font-weight:800}
 .st.pending{background:#fff1c9;color:#8a5b00}.st.approved{background:#d4f5de;color:#0c6b2a}.st.rejected{background:#fde0e2;color:#a0212d}
 .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.acts button{border-radius:10px;padding:7px 11px;font-size:13px;font-weight:700;background:#eef2fb;color:#10275a}
+.acts button{border-radius:10px;padding:6px 11px;font-size:12.5px;font-weight:700;background:#eef2fb;color:#10275a}
 .acts .ok{background:#d4f5de;color:#0c6b2a}.acts .no{background:#fde0e2;color:#a0212d}
-.awarn{background:#fff1c9;color:#6b4300;border-radius:14px;padding:12px 14px;margin-bottom:12px;font-size:14px;line-height:1.45;font-weight:600}
+.awarn{background:#fff1c9;color:#6b4300;border-radius:14px;padding:11px 13px;margin-bottom:12px;font-size:13.5px;font-weight:600}
 .awarn.ok{background:#d4f5de;color:#0c6b2a}
-.toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:#10275a;color:#fff;padding:12px 20px;border-radius:30px;z-index:99;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.5);max-width:90%;text-align:center}
-.sellgrid{display:grid;grid-template-columns:1fr;gap:16px}
-.sinfo{background:#12305a;border-radius:18px;padding:22px 20px;line-height:1.5}
-.sinfo h2{color:#ffe08a;font-size:23px;line-height:1.4;margin-bottom:12px}
-.sinfo p{font-size:15px;margin-bottom:14px}
-.sinfo ul{list-style:none;margin-bottom:14px}
-.sinfo li{font-weight:600;margin:10px 0;font-size:15px}
-.sinfo li::before{content:"✓ ";color:#ffd21f;font-weight:900}
-.sform label{font-size:12.5px;color:#1a2442;margin-top:14px}
-.sform .r2 label{margin-top:14px}
-.sform input,.sform select,.sform textarea{padding:11px 12px;font-size:15px;border-radius:8px;border:1px solid #cfd6e4}
-.sform textarea{min-height:76px}
-.photos.wide{display:block}
-.photos.wide .row2{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.addph.wide{width:100%;height:auto;display:flex;align-items:center;gap:8px;justify-content:flex-start;padding:11px 14px;background:#eaf1fb;border:1.5px dashed #1f3f73;border-radius:8px;color:#10275a;font-size:14px}
-.cnt{font-size:12.5px;color:#41507a;margin-top:6px}
-.sbtn{display:flex;align-items:center;justify-content:center;gap:10px;border-radius:10px;background:linear-gradient(180deg,#25d366,#0f9a46);font-size:17px}
-@media(min-width:800px){.sellgrid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start}.sinfo{position:sticky;top:12px}}
-.chat{display:flex;flex-direction:column;gap:8px;height:48vh;min-height:240px;overflow:auto;padding:4px 2px;margin:10px 0}
-.msg{max-width:88%;padding:9px 13px;border-radius:16px;font-size:15px;line-height:1.4;white-space:pre-wrap}
-.msg.bot{background:#eef2fb;color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
-.msg.me{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
-.mini{background:#fff;border:1.5px solid #d3dbe9;border-radius:12px;padding:8px 10px;margin-top:8px;cursor:pointer;color:var(--ink);white-space:normal}
-.mini b{display:block;font-size:14px}.mini em{font-style:normal;color:var(--blue);font-weight:800;font-size:14px}.mini span{font-size:12.5px;color:var(--mut)}
-.qchips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
-.qchips button{background:#eef2fb;color:#10275a;border-radius:16px;padding:6px 11px;font-size:13px;font-weight:700}
-.chatin{display:flex;gap:8px}
-.chatin input{flex:1;min-width:0;border:1.5px solid #d3dbe9;border-radius:24px;padding:11px 14px;font-size:16px;outline:none;color:var(--ink);font-family:inherit}
-.chatin button{background:var(--green);color:#fff;border-radius:24px;padding:0 18px;font-weight:800}
-.gtabs{display:flex;gap:8px;margin-bottom:12px}
-.gtabs button{flex:1;padding:11px;border-radius:24px;background:rgba(255,255,255,.12);color:#fff;font-weight:700}
-.gtabs button.on{background:var(--yellow);color:#10275a}
-.gstat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 12px}
+.gstat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 14px}
 .gstat div{background:rgba(255,255,255,.1);border-radius:14px;padding:12px;text-align:center;font-size:13px}
-.gstat b{display:block;font-size:26px;color:var(--yellow)}
-.agtag{font-size:12.5px;color:#0c6b2a;font-weight:700}
-.sub2{padding:0 14px;color:#b9c6e6;margin:-4px 0 12px}
-.areas{display:flex;flex-wrap:wrap;gap:10px;padding:0 14px}
-.areas button{background:rgba(255,255,255,.1);border:1.5px solid #3b82f6;color:#fff;border-radius:30px;padding:11px 18px;font-weight:700;font-size:16px}
-.areas button:active{background:var(--yellow);color:#10275a}
-.mapbox{margin:0 14px;background:#fff;color:var(--ink);border-radius:22px;padding:14px;box-shadow:0 0 0 2px rgba(59,130,246,.3)}
-.mapbox .sub2{color:#41507a;font-weight:700}
-.mapbox iframe{width:100%;height:240px;border:0;border-radius:14px;background:#dde}
-.cta{margin:22px 14px 0;background:linear-gradient(180deg,#0d3a8a,#0a2457);border:2px solid #1f4fa8;border-radius:22px;padding:20px 16px;text-align:center}
-.cta h3{font-size:24px;margin-bottom:6px}
-.cta p{color:#c8d4f0;margin-bottom:4px}
-.cta .pbtn{display:block;text-decoration:none}
-.ft{margin-top:26px;padding:22px 16px 10px;text-align:center;display:flex;flex-direction:column;gap:6px;color:#c8d4f0;font-size:14px;border-top:1px solid rgba(255,255,255,.12)}
-.ft b{color:var(--yellow);font-size:22px;letter-spacing:.5px}
-.ft small{opacity:.6;margin-top:6px}
-.langbar{display:flex;justify-content:flex-end;align-items:center;gap:6px;padding:0 14px 6px;position:relative;z-index:3}
-.langbar span{font-size:15px;opacity:.85}
-.langbar button{background:rgba(255,255,255,.12);color:#fff;border-radius:16px;padding:5px 12px;font-weight:700;font-size:13px;border:1px solid transparent}
-.langbar button.on{background:var(--yellow);color:#10275a}
-.langbar button:hover{border-color:#fff}
-html{scroll-behavior:smooth}
-body{overflow-x:hidden}
-.call.wa{animation:waPulseCall 2s ease-out infinite}
-.pbtn.g.wa{animation:waPulse 2s ease-out infinite}
-.wa{position:relative;overflow:hidden;transition:transform .2s ease,filter .2s ease}
-.wa:hover{transform:translateY(-3px) scale(1.04);filter:brightness(1.12) saturate(1.1)}
-.wa:active{transform:scale(.97)}
-.wa::after{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:waShine 3.2s ease-in-out infinite;pointer-events:none}
-.wa svg{animation:waShake 2.6s ease-in-out infinite;transform-origin:50% 60%}
-@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.65)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-@keyframes waPulseCall{0%{box-shadow:0 0 0 2px #3ddc66 inset,0 0 0 0 rgba(37,211,102,.7)}70%{box-shadow:0 0 0 2px #3ddc66 inset,0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 2px #3ddc66 inset,0 0 0 0 rgba(37,211,102,0)}}
-@keyframes waShine{0%,55%{left:-70%}100%{left:130%}}
-@keyframes waShake{0%,55%,100%{transform:rotate(0) scale(1)}60%{transform:rotate(-14deg) scale(1.1)}66%{transform:rotate(12deg) scale(1.1)}72%{transform:rotate(-10deg)}78%{transform:rotate(8deg)}84%{transform:rotate(0)}}
+.gstat b{display:block;font-size:24px;color:var(--yellow)}
 
-/* right-side dock */
-.dock{position:fixed;right:10px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.dk{display:flex;align-items:center;flex-direction:row-reverse;height:38px;min-width:38px;border-radius:19px;padding:0 9px;gap:0;color:#fff;font-weight:700;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.45);overflow:hidden;white-space:nowrap;transition:gap .2s,padding .2s,transform .2s,filter .2s}
-.dk svg{width:20px;height:20px;flex:none}
-.dk .lbl{max-width:0;opacity:0;overflow:hidden;transition:max-width .25s,opacity .2s}
-.dk:hover,.dk:focus-visible{gap:7px;padding:0 12px 0 11px;transform:translateX(-2px) scale(1.05);filter:brightness(1.1)}
-.dk:hover .lbl,.dk:focus-visible .lbl{max-width:220px;opacity:1}
-.dk.sell{background:linear-gradient(180deg,#1b64e8,#0d46b4)}
-.dk.agent{background:linear-gradient(180deg,#ffdc3a,#f1b800);color:#10275a}
-.dk.wa{background:linear-gradient(180deg,#25d366,#0f9a46)}
-.dk.wa{animation:waPulse 2s ease-out infinite}
-@media(prefers-reduced-motion:reduce){.wa,.wa::after,.wa svg{animation:none!important}}
-@media(max-width:480px){
- header{padding:12px 10px 6px;gap:6px}
- .logo{gap:5px}
- .logo .mark{width:54px;height:50px}
- .logo .mark img{width:100%;height:100%}
- .logo .nk{font-size:32px;letter-spacing:-1px}
- .logo .tx b{font-size:18px}
- .logo .tx i{font-size:8px;white-space:nowrap}
- .hr{gap:4px}
- .reg{font-size:12.5px;padding:7px 10px;gap:4px}
- .reg svg{width:15px;height:15px}
- .burger{width:32px;height:32px;gap:5px}.burger span{height:3px}
- .menu{top:60px}
- .cat{height:92px}
- .cat .lb{left:8px;right:8px;gap:6px}
- .cat .lb .ic{width:28px;height:28px}.cat .lb .go{width:26px;height:26px;font-size:14px}
- .trust div{font-size:12.5px}.trust small{font-size:10.5px}.trust svg{width:30px;height:30px}
- .va{padding:7px 11px;font-size:14px}
-}
-@media(max-width:699px){.hero .art{width:62%}.hero h1,.hero p.hsub{max-width:62%}.pill{display:none}}
-@media(max-width:380px){.logo .tx i{display:none}.logo .nk{font-size:28px}.reg svg{display:none}}
+/* Modal */
+.mo{position:fixed;inset:0;background:rgba(2,8,24,.8);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.mo .bx{background:#fff;color:var(--ink);width:100%;max-width:600px;max-height:92vh;overflow:auto;border-radius:24px 24px 0 0;padding:18px 16px 24px;position:relative}
+.mo .x{position:absolute;right:12px;top:10px;background:#eef2fb;color:#10275a;width:34px;height:34px;border-radius:50%;font-size:18px;font-weight:700}
+.mo h3{font-size:20px;margin:0 36px 8px 0}
+.gal{display:flex;gap:8px;overflow:auto;margin:10px 0}
+.gal img{height:180px;min-width:75%;border-radius:14px;object-fit:cover}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:10px 0;font-size:14.5px}
+.kv span{color:var(--mut)}
+.row{display:flex;gap:8px;margin-top:12px}
+.row>*{flex:1;text-align:center}
+
+/* Bottom Bar & Toast */
+.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:600px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px;z-index:30;background:linear-gradient(180deg,transparent,rgba(3,13,36,.95) 35%)}
+.call{flex:1;background:linear-gradient(180deg,#14b53f,#0a8a2c);border-radius:40px;display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;color:#fff;font-weight:800;font-size:15px;box-shadow:0 0 0 2px #3ddc66 inset}
+.toast{position:fixed;left:50%;bottom:85px;transform:translateX(-50%);background:#10275a;border:1px solid var(--yellow);color:#fff;padding:11px 18px;border-radius:30px;z-index:99;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.6);max-width:90%;text-align:center;font-size:14px}
+.ft{margin-top:26px;padding:20px 16px 10px;text-align:center;color:#c8d4f0;font-size:13.5px;border-top:1px solid rgba(255,255,255,.12)}
+.ft b{color:var(--yellow);font-size:20px;display:block;margin-bottom:4px}
+
 @media(min-width:700px){
- .app{max-width:900px}
+ .app,.bar,.mo .bx{max-width:900px}
  .cats{grid-template-columns:repeat(4,1fr)}
- .cat{height:150px}
  .grid{grid-template-columns:repeat(2,1fr)}
- .hero{min-height:340px;padding:30px 24px}
- .hero h1{font-size:50px;max-width:52%}
- .hero p.hsub{font-size:22px;max-width:52%}
- .sc{margin:6px 24px 0;padding:14px 16px 14px}
- .sec-h,.cats,.areas,.sub2{padding-left:24px;padding-right:24px}
- .mapbox,.cta{margin-left:24px;margin-right:24px}
- .trust{margin:20px 24px 0}
- .page{padding:6px 24px 24px}
 }
-@media(min-width:1000px){.app{max-width:1100px}.grid{grid-template-columns:repeat(3,1fr)}}
-
-/* Search panel: purpose tabs + Search Properties */
-.sc h2 {
-  display: flex !important;
-  margin: 0 0 9px !important;
-}
-.sc #ptabs {
-  display: flex !important;
-  gap: 7px;
-  margin-bottom: 9px;
-}
-.sc #ptabs button {
-  min-height: 40px;
-  padding: 9px 6px;
-  border-radius: 24px;
-  transition: background .2s ease, transform .2s ease;
-}
-.sc #ptabs button:active {
-  transform: scale(.98);
-}
-.sc .sel {
-  display: none !important;
-}
-.sc {
-  padding: 12px !important;
-}
-.sc .btn-search {
-  margin-top: 0 !important;
-}
-
 </style>
 </head>
 <body>
 <div class="app" id="app">
 
+<!-- HEADER -->
 <header>
-  <a class="logo" href="#home">
-    <span class="mark">
-      <img src="data:image/jpeg;base64,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LLX7Pe3nb3yZdd8a2Qki94t7tKJVcUOT2P3tZBQ1E/bx7aehQ/FY3VU6hZKtC130z04k+sAIwsMdjBbz5RRrsa/2jKojBIMn61Lyvyj2eZskQIUEA0u2nekndTjDxtwre13V7/iO8oZBNSQgnhWoQIwcMh6cbFCIdLhzEZbOLoJ9NCWq6hNPJDsgyG0gbBhbzwG2r1B1bcf3aewlHtTLU0FYDJp1uTUiOML/AFoQGHd72eZHdSEg0OjfyUmkTsWSrKRl2qVYhpEVbRzBqhxY9hHhKJVxELkYEcCDDKeAUaCB5Q5BeeOtSx5P4oCAoA9AjDqWIMMddzyeHW8Qu8TZ3LGxpKZfZY2yJxrskrPcY37xW73fq4K2TtCzger/AP66j3eXR4v3TLDiAw2vPm1xhzmiVcbekEMNWoDWfB8qP1rtH8EHz76iBf8AgMy1SJ0uOVviT9rlWQzaEDGOaPF/esAQgw3q4wwyimg2al7sipL7/8QAAv/aAAwDAQACAAMAAAAQz3/N9999997/APTbXfff/wD3c0000EMIMMMMMMM9/wB9/wD/AH333/3333332/8A9/8AffffTTDwwwwAA/8A333vf3333333HHX33333X333/wDzy0KOHPPP9999sd999999/wDfffffffffffPPf/v7fff/ALLwBVz3323X3z3/AN999999919988tf/wDvff8A8AzwML/7/wB99989/wDfff8A/wB99999999/9/8AfffTffAwvffffDHwv/8A333vWv333333/wD9999999/98/8APffeMMYg1uvfc5SIm/fecsP+/f8A8EFf/HH/AN9/99iDDDDTHb/y/Dm5zkpDBPK819JBX7DHz999/wAwQw1/xvYlnV7YWbnc2KjVyw9fff6www/efPxwQwwwlPfRHqpiGJB7p5YfpfVffffwwwww/wDOY31303z32nPjiMfyJDv4Sy28Xn3308sMsMMNf3333zz3+DsQroHsTcmKD3otCX3332MMMMMMFH3333332s3MysrgEv8AZcS8CGVpDDDDPLDDDDDDx3999TDWdKueVYA9ahEd2q/cLDDD/wDTTwwwww19/fbKsp4PqmVlOPpx1OHN3Ygww/8A3nUEMMMMPMMHOzSTwNxHzDnccM2AC5ikMMOhg9f/AN/fPLDDTC4RByADF+H/AHW3bCVB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" alt="NK logo">
-    </span>
-    <span class="tx"><b>PROPERTIES</b><i>Dream • Buy • Sell • Rent • Invest</i></span>
+  <a class="logo" href="#home" onclick="showView('home')">
+    <span class="mark">NK</span>
+    <span class="tx"><b>NK Properties</b><i>Tonk • Uniara • Aligarh</i></span>
   </a>
   <div class="hr">
-    <span class="pill"><svg width="22" height="24" viewBox="0 0 24 26"><path d="M12 1 2 5v8c0 6 4.5 10 10 12 5.5-2 10-6 10-12V5z" fill="#22c55e"/><path d="m7 13 3.5 3.5L17 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>Property Portal</span>
-    <button class="reg" id="regBtn"><svg width="30" height="30" viewBox="0 0 30 30"><circle cx="12" cy="9" r="6" fill="#10275a"/><path d="M1 28c0-8 5-11 11-11s11 3 11 11z" fill="#10275a"/><path d="M24 4v8M20 8h8" stroke="#10275a" stroke-width="3" stroke-linecap="round"/></svg><span data-i="reg_btn">Register / Login</span></button>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="pill" onclick="showView('sell')">+ प्रॉपर्टी डालें</button>
+    <button class="reg" onclick="showView('agent')">Agent Panel</button>
+    <button class="burger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <div class="menu hide" id="menu">
-    <a href="#home" data-i="m_home">🏠 Home</a>
-    <a href="#list" data-i="m_all">🔎 Sabhi Properties</a>
-    <a href="#sell" data-i="m_sell">📝 Apni Property Daalein</a>
-    <a href="#agent" data-i="m_agent">🧑‍💼 Agent Panel</a>
-    <a href="#home" id="mloc" data-i="m_loc">📍 Hamari Location (Map)</a>
-    <a href="#admin">🔐 Admin Panel</a>
-    <a id="mwa" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <div class="menu hide" id="navMenu">
+    <button onclick="showView('home');toggleMenu()">🏠 Home (Customer Panel)</button>
+    <button onclick="showView('sell');toggleMenu()">➕ प्रॉपर्टी बेचें / किराये पर दें</button>
+    <button onclick="showView('agent');toggleMenu()">🤝 Agent Login / Register</button>
+    <button onclick="showView('admin');toggleMenu()">🛡️ Admin Panel</button>
   </div>
 </header>
-<div class="langbar" role="group" aria-label="Language"><span>🌐</span><button data-l="hing">Hinglish</button><button data-l="hi">हिंदी</button><button data-l="en">English</button></div>
 
-<!-- HOME -->
-<main id="v-home">
-  <section class="sc">
-    <h2><svg width="46" height="40" viewBox="0 0 46 40"><path d="M3 20 23 3l20 17" fill="none" stroke="#1457d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 18v18h28V18L23 7z" fill="#1457d6"/><rect x="19" y="24" width="8" height="12" fill="#fff"/></svg><span data-i="s_title">आप क्या ढूंढ रहे हैं?</span></h2>
-    <div class="tabs" id="ptabs">
-      <button class="on" data-p="buy"><svg width="26" height="24" viewBox="0 0 26 24"><path d="M2 12 13 2l11 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M5 11v11h16V11" fill="currentColor"/><rect x="11" y="15" width="4" height="7" fill="#1457d6"/></svg><span data-i="tab_buy">Buy</span></button>
-      <button data-p="rent"><svg width="28" height="24" viewBox="0 0 28 24"><path d="M2 12l6-5 5 2 5-3 8 6-7 8-3-2-3 2z" fill="#1c2f5e"/></svg><span data-i="tab_rent">Rent</span></button>
-      <button data-p="sell"><svg width="26" height="24" viewBox="0 0 26 24"><rect x="2" y="12" width="5" height="10" fill="#1c2f5e"/><rect x="10" y="7" width="5" height="15" fill="#1c2f5e"/><rect x="18" y="2" width="5" height="20" fill="#1c2f5e"/></svg><span data-i="tab_sell">Sell</span></button>
-    </div>
-    <div class="sel">
-      <svg width="26" height="30" viewBox="0 0 26 30"><path d="M13 1C7 1 3 5.5 3 11c0 7.5 10 18 10 18s10-10.5 10-18C23 5.5 19 1 13 1z" fill="#444"/><circle cx="13" cy="11" r="4" fill="#fff"/></svg>
-      <select id="loc"></select>
-      <svg width="20" height="12" viewBox="0 0 20 12"><path d="m2 2 8 8 8-8" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/></svg>
-    </div>
-    <button type="button" class="btn-search" id="btnSearch"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="12" cy="12" r="8" fill="none" stroke="#fff" stroke-width="3.5"/><path d="m18 18 8 8" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/></svg><span data-i="btn_search">Search Properties</span></button>
-  </section>
-
+<!-- ==================== 1. CUSTOMER PANEL (HOME) ==================== -->
+<main id="view-home">
   <section class="hero">
-    <div class="art" id="heroArt"></div>
-    <h1><span data-i="h_t1">Find Your</span><em data-i="h_t2">Dream Property</em></h1>
-    <p class="hsub" data-i="h_sub">Buy • Sell • Rent • Invest</p>
+    <h1>सपनों का घर और ज़मीन <em>अब आपके बजट में</em></h1>
+    <p class="hsub">टोंक, उनियारा और अलीगढ़ में प्लॉट, मकान, दुकान व कृषि भूमि खरीदें, बेचें या किराये पर लें।</p>
     <div class="swoosh"></div>
   </section>
 
-
-
-  <div class="sec-h"><h3 data-i="cat_h">Popular Property Categories</h3><button class="va" id="viewAll" data-i="view_all">View All →</button></div>
-  <div class="cats" id="cats"></div>
-
-  <div class="trust">
-    <div data-go="list"><svg viewBox="0 0 40 40"><path d="M20 3 6 8v11c0 9 6 15 14 18 8-3 14-9 14-18V8z" fill="#3b82f6"/><path d="m12 20 6 6 11-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg><span data-h="tr1">Verified<br>Properties</span></div>
-    <div data-go="list"><svg viewBox="0 0 40 40"><circle cx="20" cy="12" r="6" fill="#1457d6"/><circle cx="8" cy="15" r="4.5" fill="#1457d6"/><circle cx="32" cy="15" r="4.5" fill="#1457d6"/><path d="M8 34c0-8 5-12 12-12s12 4 12 12z" fill="#1457d6"/></svg><span data-h="tr2">Trusted<br>Agents</span></div>
-    <div id="aiBtn"><svg viewBox="0 0 40 40"><path d="M7 24v-5a13 13 0 0 1 26 0v5" fill="none" stroke="#1457d6" stroke-width="4"/><rect x="3" y="21" width="8" height="12" rx="4" fill="#1457d6"/><rect x="29" y="21" width="8" height="12" rx="4" fill="#1457d6"/><path d="M33 33c0 4-4 5-9 5" fill="none" stroke="#1457d6" stroke-width="3"/></svg><span data-h="tr3">AI Assistant<small>(Hindi / English)</small></span></div>
-    <div id="waTrust" class="wa"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#22c55e"/><path d="M12 29l1.8-6A9 9 0 1 1 18 28z" fill="#fff"/><path d="M16.5 15c.5 3 3.5 6 6.5 6.5l1.5-1.8-2.5-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2.5z" fill="#22c55e"/></svg><span data-h="tr4">Chat on<br>WhatsApp</span></div>
-  </div>
-
-  <div class="sec-h"><h3 data-i="ar_h">Hamare Kshetra</h3></div>
-  <p class="sub2" data-i="ar_sub">Apna kshetra chunein, phir wahan ki properties dekhein.</p>
-  <div class="areas" id="areaChips"></div>
-
-
-
-  <div class="cta">
-    <h3 data-i="cta_h">Plot ya Makaan Chahiye?</h3>
-    <p data-i="cta_p">Price, size aur location ki details ke liye abhi WhatsApp par message karein.</p>
-    <a class="pbtn g wa" id="ctaWa" target="_blank" rel="noopener" data-i="cta_wa">Chat on WhatsApp</a>
-    <a class="pbtn y" href="#sell" data-i="cta_sell">Apni Property Bechein →</a>
-  </div>
-</main>
-
-<!-- LIST -->
-<main id="v-list" class="page hide">
-  <button class="back" data-i="bk_home" onclick="location.hash='#home'">← Home</button>
-  <h2 id="listTitle">Properties</h2>
-  <p class="sub" id="listSub"></p>
-  <div class="chips" id="chips"></div>
-  <div class="grid" id="grid"></div>
-</main>
-
-<!-- SELL -->
-<main id="v-sell" class="page hide">
-  <button class="back" data-i="bk_home" onclick="location.hash='#home'">← Home</button>
-  <div class="sellgrid">
-    <aside class="sinfo">
-      <h2 data-i="s_h">Seller Panel: Apni Zameen / Makaan Daalein</h2>
-      <p data-i="s_p1">Form bharein aur photo jodein - aapki property hamare Admin Panel mein pahunchegi. Hum check karke approve karenge, uske baad wo website par dikhegi.</p>
-      <ul>
-        <li data-i="s_l1">Bilkul free listing</li>
-        <li data-i="s_l2">Plot, makaan, dukaan, krishi bhoomi sab</li>
-        <li data-i="s_l3">Photo ke saath (max 3)</li>
-        <li data-i="s_l4">Hum khud aapko call / WhatsApp karenge</li>
-      </ul>
-      <p data-i="s_p2">Admin ke approve karte hi aapki property website par dikhne lagegi.</p>
-    </aside>
-    <form class="fm sform" id="sellForm">
-      <input type="hidden" id="s_purpose" value="buy">
-      <div class="r2"><div><label data-i="f_name">Aapka Naam</label><input id="s_name" required data-ph="p_name" placeholder="Naam likhein"></div>
-      <div><label data-i="f_mob">Mobile Number</label><input id="s_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required data-ph="p_mob" placeholder="10 digit number"></div></div>
-      <div class="r2"><div><label data-i="f_type">Property Type</label><select id="s_type"></select></div>
-      <div><label data-i="f_area">Kshetra</label><select id="s_area"></select></div></div>
-      <div class="r2"><div><label data-i="f_vill">Gaon / Mohalla</label><input id="s_vill" data-ph="p_vill" placeholder="Jaise: Station Road"></div>
-      <div><label data-i="f_size">Size / Area</label><input id="s_size" data-ph="p_size" placeholder="1000 sq ft / 2 bigha"></div></div>
-      <div class="r2"><div><label data-i="f_pur">Bikri ya Kiraya</label><select id="s_pur"></select></div>
-      <div><label data-i="f_price">Aapki Expected Price</label><input id="s_price" data-ph="p_price" placeholder="Jaise: 8 lakh"></div></div>
-      <label data-i="f_desc">Anya Details</label><textarea id="s_desc" data-ph="p_desc" placeholder="Road facing, registry, paas mein kya hai..."></textarea>
-      <label data-i="f_photo">Property ki Photo</label>
-      <div class="photos wide" id="s_ph"></div>
-      <button class="pbtn g sbtn wa" type="submit"><svg width="20" height="20" viewBox="0 0 40 40"><path d="M20 3a17 17 0 0 0-14.5 25.5L3 37l8.8-2.3A17 17 0 1 0 20 3z" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M14 12c.8 6 6 11.5 12.5 13l2.2-2.8-4-1.8-1.8 1.4c-2-.9-3.8-2.7-4.7-4.7l1.4-1.8-1.8-4z" fill="#fff"/></svg><span data-i="btn_send">Property Bhejein</span></button>
-      <p class="note" data-i="s_note">Aapka mobile number sirf NK Properties ko dikhta hai, website par nahi.</p>
-    </form>
-  </div>
-</main>
-
-<!-- AGENT -->
-<main id="v-agent" class="page hide">
-  <button class="back" data-i="bk_home" onclick="location.hash='#home'">← Home</button>
-  <div id="g-login"></div>
-  <div id="g-main" class="hide"></div>
-</main>
-
-<!-- ADMIN -->
-<main id="v-admin" class="page hide">
-  <button class="back" onclick="location.hash='#home'">← Website</button>
-  <div id="a-login">
-    <h2>Admin Login</h2><p class="sub">Sirf NK Properties owner ke liye.</p>
-    <form class="fm" id="loginForm">
-      <label>Mobile Number</label><input id="a_phone" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required autocomplete="username" placeholder="10 digit number">
-      <label>Password</label><input id="a_pass" type="password" required autocomplete="current-password">
-      <button class="pbtn" type="submit">Login</button>
-    </form>
-  </div>
-  <div id="a-main" class="hide">
-    <h2>Admin Panel</h2>
-    <div id="a-warn"></div>
-    <div class="atabs" id="atabs"></div>
-    <div id="a-list"></div>
-    <div id="a-settings" class="hide"></div>
-  </div>
-</main>
-
-<footer class="ft">
-  <b>NK PROPERTIES</b>
-  <span>Dream • Buy • Sell • Rent • Invest</span>
-  <span data-i="ft_loc">📍 Tonk | Uniara | Aligarh, Rajasthan</span>
-  <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=NK+Properties+Tonk+Rajasthan" data-i="ft_map">🗺️ Google Maps par Location dekhein</a>
-  <span>WhatsApp: <a id="ftWa" target="_blank" rel="noopener" style="font-weight:700"></a></span>
-  <a href="#admin" style="opacity:.7">Admin Login</a>
-  <small>© NK Properties. All rights reserved.</small>
-    <div class="sec-h" id="locSec"><h3 data-i="loc_h">📍 Hamari Location</h3></div>
-    <div class="mapbox">
-      <p class="sub2" style="padding:0;margin-bottom:10px" data-i="map_sub">Tonk | Uniara | Aligarh, Rajasthan</p>
-      <iframe title="NK Properties Location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Tonk+Rajasthan+India&z=9&output=embed"></iframe>
-      <a class="pbtn" style="display:block;text-align:center" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=NK+Properties+Tonk+Rajasthan"><span data-i="map_btn">🗺️ Google Maps kholein</span></a>
+  <!-- Search Card -->
+  <section class="sc">
+    <h2>🔍 प्रॉपर्टी खोजें</h2>
+    <div class="tabs" id="ptabs">
+      <button class="on" data-p="all" onclick="setPurpose('all',this)">सभी</button>
+      <button data-p="buy" onclick="setPurpose('buy',this)">खरीदें (Buy)</button>
+      <button data-p="rent" onclick="setPurpose('rent',this)">किराया (Rent)</button>
     </div>
+    <div class="srow">
+      <div class="sel">
+        <select id="fArea" onchange="renderProperties()">
+          <option value="all">📍 सभी शहर/क्षेत्र</option>
+          <option value="Tonk">टोंक (Tonk)</option>
+          <option value="Uniara">उनियारा (Uniara)</option>
+          <option value="Aligarh">अलीगढ़ (Aligarh)</option>
+          <option value="Other">अन्य क्षेत्र</option>
+        </select>
+      </div>
+      <div class="sel">
+        <select id="fCat" onchange="renderProperties()">
+          <option value="all">🏘️ सभी प्रकार</option>
+          <option value="Plot">प्लॉट (Plot)</option>
+          <option value="Makaan">मकान (House)</option>
+          <option value="Dukaan">दुकान (Shop)</option>
+          <option value="Kheti">कृषि भूमि (Land)</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-search" onclick="renderProperties(true)">प्रॉपर्टी देखें</button>
+  </section>
+
+  <!-- Categories -->
+  <div class="sec-h">
+    <h3>कैटेगरी चुनें</h3>
+    <button class="va" onclick="resetFilters()">सभी देखें</button>
+  </div>
+  <div class="cats">
+    <div class="cat" onclick="quickCat('Plot')"><div class="lb"><span class="ic">📐</span><span>प्लॉट</span><span class="go">›</span></div></div>
+    <div class="cat" onclick="quickCat('Makaan')"><div class="lb"><span class="ic">🏠</span><span>मकान</span><span class="go">›</span></div></div>
+    <div class="cat" onclick="quickCat('Dukaan')"><div class="lb"><span class="ic">🏪</span><span>दुकान</span><span class="go">›</span></div></div>
+    <div class="cat" onclick="quickCat('Kheti')"><div class="lb"><span class="ic">🌾</span><span>कृषि भूमि</span><span class="go">›</span></div></div>
+  </div>
+
+  <!-- Trust Strip -->
+  <div class="trust">
+    <div>100%<small>Verified</small></div>
+    <div>Zero<small>Hidden Fee</small></div>
+    <div>Direct<small>Owner Deal</small></div>
+    <div>Fast<small>Registry</small></div>
+  </div>
+
+  <!-- Area Filter Pills -->
+  <div class="sec-h"><h3>प्रमुख लोकेशन</h3></div>
+  <div class="areas" id="areaPills">
+    <button class="on" onclick="quickArea('all',this)">सभी</button>
+    <button onclick="quickArea('Tonk',this)">Tonk</button>
+    <button onclick="quickArea('Uniara',this)">Uniara</button>
+    <button onclick="quickArea('Aligarh',this)">Aligarh</button>
+  </div>
+
+  <!-- Approved Listings -->
+  <div class="sec-h">
+    <h3 id="listHeading">उपलब्ध प्रॉपर्टी</h3>
+    <span id="dbBadge" style="font-size:12px;color:#ffd21f;font-weight:700">Connecting...</span>
+  </div>
+  <div class="grid" id="propGrid"></div>
+  <div class="empty hide" id="emptyState">कोई प्रॉपर्टी नहीं मिली। फ़िल्टर बदलकर देखें या अपनी प्रॉपर्टी डालें।</div>
+</main>
+
+<!-- ==================== 2. CUSTOMER POST PROPERTY PAGE ==================== -->
+<section class="page hide" id="view-sell">
+  <button class="back" onclick="showView('home')">← वापस जाएं</button>
+  <h2>प्रॉपर्टी पोस्ट करें</h2>
+  <p class="sub">आपकी प्रॉपर्टी Admin वेरिफिकेशन के बाद वेबसाइट पर लाइव हो जाएगी।</p>
+  <form class="fm" onsubmit="handlePropertySubmit(event, 'customer')">
+    <label>आप क्या करना चाहते हैं? *</label>
+    <select id="sPurpose" required>
+      <option value="buy">बेचना है (For Sale)</option>
+      <option value="rent">किराये पर देना है (For Rent)</option>
+    </select>
+
+    <div class="r2">
+      <div>
+        <label>प्रॉपर्टी का प्रकार *</label>
+        <select id="sCat" required>
+          <option value="Plot">प्लॉट (Plot)</option>
+          <option value="Makaan">मकान (House)</option>
+          <option value="Dukaan">दुकान (Shop)</option>
+          <option value="Kheti">कृषि भूमि (Land)</option>
+        </select>
+      </div>
+      <div>
+        <label>शहर / क्षेत्र *</label>
+        <select id="sArea" required>
+          <option value="Tonk">Tonk</option>
+          <option value="Uniara">Uniara</option>
+          <option value="Aligarh">Aligarh</option>
+          <option value="Other">अन्य</option>
+        </select>
+      </div>
+    </div>
+
+    <label>प्रॉपर्टी शीर्षक (Title) *</label>
+    <input id="sTitle" placeholder="उदा. 100 गज कॉर्नर प्लॉट, मेन रोड उनियारा" required>
+
+    <div class="r2">
+      <div>
+        <label>कीमत / किराया (₹) *</label>
+        <input id="sPrice" placeholder="उदा. ₹12 लाख या ₹8,000/माह" required>
+      </div>
+      <div>
+        <label>साइज़ / क्षेत्रफल *</label>
+        <input id="sSize" placeholder="उदा. 100 गज / 2 बीघा" required>
+      </div>
+    </div>
+
+    <label>पूरी लोकेशन / पता *</label>
+    <input id="sLoc" placeholder="कॉलोनी, मोहल्ला या नज़दीकी लैंडमार्क" required>
+
+    <div class="r2">
+      <div>
+        <label>आपका नाम *</label>
+        <input id="sOwner" placeholder="पूरा नाम" required>
+      </div>
+      <div>
+        <label>मोबाइल नंबर *</label>
+        <input id="sPhone" type="tel" pattern="[0-9]{10}" placeholder="10 अंकों का नंबर" required>
+      </div>
+    </div>
+
+    <label>अन्य विवरण</label>
+    <textarea id="sDesc" placeholder="रोड साइज़, पानी-बिजली, दिशा आदि की जानकारी..."></textarea>
+
+    <label>फोटो अपलोड करें (अधिकतम 3 फोटो)</label>
+    <div class="photos" id="custPhotos">
+      <label class="addph">+ फोटो चुनें<input type="file" accept="image/*" multiple hidden onchange="handleImages(this,'cust')"></label>
+    </div>
+
+    <button type="submit" class="pbtn g">प्रॉपर्टी सबमिट करें</button>
+  </form>
+</section>
+
+<!-- ==================== 3. AGENT PANEL ==================== -->
+<section class="page hide" id="view-agent">
+  <button class="back" onclick="showView('home')">← Home</button>
+  <h2>Agent Panel</h2>
+  <p class="sub">रजिस्टर्ड एजेंट यहाँ से प्रॉपर्टी जोड़ सकते हैं और स्टेटस ट्रैक कर सकते हैं।</p>
+
+  <!-- Agent Auth Box -->
+  <div id="agentAuthBox" class="fm">
+    <div class="atabs" style="margin-bottom:10px">
+      <button type="button" class="on" id="tabAgLogin" onclick="switchAgentTab('login')">Agent Login</button>
+      <button type="button" id="tabAgReg" onclick="switchAgentTab('reg')">नया एजेंट रजिस्ट्रेशन</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="agLoginForm" onsubmit="agentLogin(event)">
+      <label>ईमेल आईडी *</label>
+      <input type="email" id="agLoginEmail" placeholder="agent@example.com" required>
+      <label>पासवर्ड *</label>
+      <input type="password" id="agLoginPass" placeholder="••••••••" required>
+      <button type="submit" class="pbtn">लॉगिन करें</button>
+    </form>
+
+    <!-- Register Form -->
+    <form id="agRegForm" class="hide" onsubmit="agentRegister(event)">
+      <label>एजेंट का नाम *</label>
+      <input id="agName" placeholder="आपका पूरा नाम" required>
+      <div class="r2">
+        <div>
+          <label>मोबाइल नंबर *</label>
+          <input id="agPhone" type="tel" pattern="[0-9]{10}" placeholder="10 अंकों का नंबर" required>
+        </div>
+        <div>
+          <label>कार्य क्षेत्र *</label>
+          <select id="agArea">
+            <option value="Tonk">Tonk</option>
+            <option value="Uniara">Uniara</option>
+            <option value="Aligarh">Aligarh</option>
+          </select>
+        </div>
+      </div>
+      <label>ईमेल आईडी *</label>
+      <input type="email" id="agEmail" placeholder="agent@example.com" required>
+      <label>पासवर्ड बनाएं (कम से कम 6 अक्षर) *</label>
+      <input type="password" id="agPass" minlength="6" placeholder="पासवर्ड" required>
+      <button type="submit" class="pbtn y">रजिस्ट्रेशन सबमिट करें</button>
+    </form>
+  </div>
+
+  <!-- Agent Dashboard (After Login) -->
+  <div id="agentDash" class="hide">
+    <div id="agentStatusBanner" class="awarn">स्टेटस चेक हो रहा है...</div>
+    <div class="gstat">
+      <div><b id="agTotalCount">0</b>मेरी कुल प्रॉपर्टी</div>
+      <div><b id="agApprovedCount">0</b>लाइव (Approved)</div>
+    </div>
+
+    <div id="agentPostSection" class="hide">
+      <h3 style="margin:12px 0 8px">नई प्रॉपर्टी जोड़ें (Agent)</h3>
+      <form class="fm" onsubmit="handlePropertySubmit(event, 'agent')">
+        <div class="r2">
+          <div>
+            <label>उद्देश्य *</label>
+            <select id="aPurpose">
+              <option value="buy">बेचना है (Sale)</option>
+              <option value="rent">किराया (Rent)</option>
+            </select>
+          </div>
+          <div>
+            <label>प्रकार *</label>
+            <select id="aCat">
+              <option value="Plot">प्लॉट</option>
+              <option value="Makaan">मकान</option>
+              <option value="Dukaan">दुकान</option>
+              <option value="Kheti">कृषि भूमि</option>
+            </select>
+          </div>
+        </div>
+        <div class="r2">
+          <div>
+            <label>क्षेत्र *</label>
+            <select id="aArea">
+              <option value="Tonk">Tonk</option>
+              <option value="Uniara">Uniara</option>
+              <option value="Aligarh">Aligarh</option>
+            </select>
+          </div>
+          <div>
+            <label>कीमत *</label>
+            <input id="aPrice" placeholder="उदा. ₹15 लाख" required>
+          </div>
+        </div>
+        <label>प्रॉपर्टी शीर्षक *</label>
+        <input id="aTitle" placeholder="प्रॉपर्टी का नाम व साइज" required>
+        <div class="r2">
+          <div>
+            <label>साइज़ *</label>
+            <input id="aSize" placeholder="120 गज" required>
+          </div>
+          <div>
+            <label>पता / लोकेशन *</label>
+            <input id="aLoc" placeholder="मेन रोड, टोंक" required>
+          </div>
+        </div>
+        <label>विवरण</label>
+        <textarea id="aDesc" placeholder="अतिरिक्त जानकारी..."></textarea>
+        <label>फोटो (अधिकतम 3)</label>
+        <div class="photos" id="agPhotos">
+          <label class="addph">+ फोटो<input type="file" accept="image/*" multiple hidden onchange="handleImages(this,'ag')"></label>
+        </div>
+        <button type="submit" class="pbtn g">लिस्टिंग सबमिट करें</button>
+      </form>
+    </div>
+
+    <h3 style="margin:18px 0 10px">मेरी सबमिट की गई प्रॉपर्टी</h3>
+    <div id="agentPropList"></div>
+    <button class="pbtn r" onclick="logoutUser()">लॉगआउट करें</button>
+  </div>
+</section>
+
+<!-- ==================== 4. ADMIN PANEL ==================== -->
+<section class="page hide" id="view-admin">
+  <button class="back" onclick="showView('home')">← Home</button>
+  <h2>Admin Control Panel</h2>
+  <p class="sub">प्रॉपर्टी और एजेंट्स को अप्रूव, रिजेक्ट या डिलीट करें।</p>
+
+  <!-- Admin Login -->
+  <div id="adminLoginBox" class="fm">
+    <form onsubmit="adminLogin(event)">
+      <label>Admin Email *</label>
+      <input type="email" id="admEmail" placeholder="admin@nkproperties.in" required>
+      <label>Admin Password *</label>
+      <input type="password" id="admPass" placeholder="••••••••" required>
+      <button type="submit" class="pbtn">Admin Login</button>
+    </form>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div id="adminDash" class="hide">
+    <div class="atabs">
+      <button class="on" id="admTabPending" onclick="setAdminTab('pending',this)">Pending <b id="cntPending">0</b></button>
+      <button id="admTabApproved" onclick="setAdminTab('approved',this)">Approved <b id="cntApproved">0</b></button>
+      <button id="admTabAgents" onclick="setAdminTab('agents',this)">Agents <b id="cntAgents">0</b></button>
+      <button id="admTabLeads" onclick="setAdminTab('leads',this)">Inquiries <b id="cntLeads">0</b></button>
+    </div>
+    <div id="adminList"></div>
+    <button class="pbtn r" onclick="logoutUser()">Admin Logout</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <b>NK Properties</b>
+  <span>टोंक • उनियारा • अलीगढ़ (राजस्थान)</span>
+  <small>© 2026 NK Properties. All Rights Reserved.</small>
 </footer>
 
-<div class="dock">
-  <a class="dk sell" href="#sell" aria-label="Seller Panel"><svg viewBox="0 0 24 24"><path d="M3 12 12 4l9 8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 11v9h12v-9" fill="#fff"/><path d="M12 13v5M9.5 15.5h5" stroke="#1457d6" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl" data-i="dk_sell">Seller Panel</span></a>
-  <a class="dk agent" href="#agent" aria-label="Agent Panel"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.2" fill="#10275a"/><path d="M4 21c0-5 3.5-7.5 8-7.5s8 2.5 8 7.5z" fill="#10275a"/></svg><span class="lbl" data-i="dk_agent">Agent Panel</span></a>
-  <a class="dk wa" id="callBtn" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 48 48"><path d="M24 4a20 20 0 0 0-17 30l-3 10 10.5-3A20 20 0 1 0 24 4z" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M17 15c1 6 7 12 14 14l3-3.5-5-2-2 1.6c-2-1-4-3-5-5l1.6-2-2-5z" fill="#fff"/></svg><span class="lbl">WhatsApp <b id="phoneTxt">9785480342</b></span></a>
+<!-- FIXED BOTTOM BAR -->
+<div class="bar">
+  <a class="call" href="tel:+919829000000">📞 कॉल करें</a>
+  <a class="call" style="background:linear-gradient(180deg,#25d366,#0f9a46)" href="https://wa.me/919829000000?text=Namaste%20NK%20Properties,%20mujhe%20property%20ki%20jankari%20chahiye." target="_blank" rel="noopener">💬 WhatsApp</a>
 </div>
+
+<!-- PROPERTY DETAIL & INQUIRY MODAL -->
+<div class="mo hide" id="propModal" onclick="if(event.target===this)closeModal()">
+  <div class="bx">
+    <button class="x" onclick="closeModal()">✕</button>
+    <h3 id="mTitle">Property Title</h3>
+    <div style="color:var(--blue);font-weight:800;font-size:21px" id="mPrice">₹0</div>
+    <div class="gal" id="mGal"></div>
+    <div class="kv" id="mKv"></div>
+    <p id="mDesc" style="font-size:14px;color:#33436e;line-height:1.5;margin-top:8px"></p>
+
+    <div class="fm" style="background:#f4f7fd;margin-top:14px;padding:12px">
+      <strong style="font-size:14.5px;color:#10275a">इस प्रॉपर्टी के लिए पूछताछ (Inquiry) भेजें:</strong>
+      <form onsubmit="submitInquiry(event)">
+        <input type="hidden" id="inqPropId">
+        <input type="hidden" id="inqPropTitle">
+        <div class="r2">
+          <input id="inqName" placeholder="आपका नाम *" required>
+          <input id="inqPhone" type="tel" pattern="[0-9]{10}" placeholder="मोबाइल नंबर *" required>
+        </div>
+        <button type="submit" class="pbtn g" style="margin-top:10px;padding:10px;font-size:15px">कॉल बैक रिक्वेस्ट भेजें</button>
+      </form>
+    </div>
+
+    <div class="row">
+      <a id="mCallBtn" class="pbtn" href="tel:+919829000000">📞 डायरेक्ट कॉल</a>
+      <a id="mWaBtn" class="pbtn g" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
 </div>
 
-<script>
-/* ============ CONFIG ============ */
-// 1) Firebase config yahan paste karein (Firebase Console > Project settings > Web app).
-//    Jab tak null hai, data sirf isi browser (localStorage) mein save hota hai
-//    (yani dusre logon ko property nahi dikhegi aur seller ki property admin tak nahi pahunchegi).
-const FIREBASE_CONFIG = null;
-// 2) Admin: code mein koi password nahi hai. Firebase Authentication mein user banayein
-//    (Email = <mobile number>@nkproperties.in) aur Firestore mein admins/<us user ki UID> document banayein.
-//    firestore.rules publish karna zaroori hai. Poore steps SETUP.md mein hain.
+<div class="toast hide" id="toast"></div>
+</div>
 
-/* ============ PHOTOS ============
-   Ye 5 photo index.html ke SAATH, usi folder mein rakhein:
-   hero.jpg  -> upar ka bada ghar (hero)
-   plot.jpg  -> Residential Plot
-   house.jpg -> House / Villa
-   agri.jpg  -> Agricultural Land
-   shop.jpg  -> Commercial Shop (optional, na ho to drawing dikhegi)
-   Photo na mile to apne aap neeche wali drawing dikhti hai. */
-const PHOTO = { hero:"hero.jpg", plot:"plot.jpg", house:"house.jpg", agri:"agri.jpg", shop:"shop.jpg" };
+<!-- ==================== FIREBASE & APP LOGIC ==================== -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getFirestore, collection, addDoc, getDocs, getDoc, setDoc,
+  updateDoc, deleteDoc, doc, query, where, orderBy, onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+  getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,
+  onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-const TYPES = {
-  plot:{n:"Residential Plot"}, house:{n:"House / Villa"}, agri:{n:"Agricultural Land"}, shop:{n:"Commercial Shop"}
-};
-const TR={
-m_home:["🏠 Home","🏠 होम","🏠 Home"],
-m_all:["🔎 Sabhi Properties","🔎 सभी प्रॉपर्टी","🔎 All Properties"],
-m_sell:["📝 Apni Property Daalein","📝 अपनी प्रॉपर्टी डालें","📝 List Your Property"],
-m_loc:["📍 Hamari Location (Map)","📍 हमारी लोकेशन (मैप)","📍 Our Location (Map)"],
-h_t1:["Find Your","अपनी सपनों की","Find Your"],
-h_t2:["Dream Property","प्रॉपर्टी खोजें","Dream Property"],
-h_sub:["Buy • Sell • Rent • Invest","खरीदें • बेचें • किराया • निवेश","Buy • Sell • Rent • Invest"],
-s_title:["आप क्या ढूंढ रहे हैं?","आप क्या ढूंढ रहे हैं?","What are you looking for?"],
-tab_buy:["Buy","खरीदें","Buy"],tab_rent:["Rent","किराया","Rent"],tab_sell:["Sell","बेचें","Sell"],
-loc_ph:["जिला / शहर / गाँव चुनें","जिला / शहर / गाँव चुनें","Select district / city / village"],
-btn_search:["Search Properties","प्रॉपर्टी खोजें","Search Properties"],
-cat_h:["Popular Property Categories","लोकप्रिय प्रॉपर्टी श्रेणियाँ","Popular Property Categories"],
-view_all:["View All →","सभी देखें →","View All →"],
-ty_plot:["Residential Plot","आवासीय प्लॉट","Residential Plot"],
-ty_house:["House / Villa","मकान / विला","House / Villa"],
-ty_agri:["Agricultural Land","कृषि भूमि","Agricultural Land"],
-ty_shop:["Commercial Shop","व्यावसायिक दुकान","Commercial Shop"],
-tr1:["Verified<br>Properties","सत्यापित<br>प्रॉपर्टी","Verified<br>Properties"],
-tr2:["Trusted<br>Agents","भरोसेमंद<br>एजेंट","Trusted<br>Agents"],
-tr3:["AI Assistant<small>(Hindi / English)</small>","AI सहायक<small>(हिंदी / English)</small>","AI Assistant<small>(Hindi / English)</small>"],
-tr4:["Chat on<br>WhatsApp","WhatsApp पर<br>चैट करें","Chat on<br>WhatsApp"],
-ar_h:["Hamare Kshetra","हमारे क्षेत्र","Our Areas"],
-ar_sub:["Apna kshetra chunein, phir wahan ki properties dekhein.","अपना क्षेत्र चुनें, फिर वहाँ की प्रॉपर्टी देखें।","Choose your area to see the properties there."],
-loc_h:["📍 Hamari Location","📍 हमारी लोकेशन","📍 Our Location"],
-map_sub:["Tonk | Uniara | Aligarh, Rajasthan","टोंक | उनियारा | अलीगढ़, राजस्थान","Tonk | Uniara | Aligarh, Rajasthan"],
-map_btn:["🗺️ Google Maps kholein","🗺️ Google Maps खोलें","🗺️ Open Google Maps"],
-cta_h:["Plot ya Makaan Chahiye?","प्लॉट या मकान चाहिए?","Looking for a Plot or House?"],
-cta_p:["Price, size aur location ki details ke liye abhi WhatsApp par message karein.","कीमत, साइज़ और लोकेशन की जानकारी के लिए अभी WhatsApp पर मैसेज करें।","Message us on WhatsApp now for price, size and location details."],
-cta_wa:["Chat on WhatsApp","WhatsApp पर चैट करें","Chat on WhatsApp"],
-cta_sell:["Apni Property Bechein →","अपनी प्रॉपर्टी बेचें →","Sell Your Property →"],
-ft_loc:["📍 Tonk | Uniara | Aligarh, Rajasthan","📍 टोंक | उनियारा | अलीगढ़, राजस्थान","📍 Tonk | Uniara | Aligarh, Rajasthan"],
-ft_map:["🗺️ Google Maps par Location dekhein","🗺️ Google Maps पर लोकेशन देखें","🗺️ View location on Google Maps"],
-bar_call:["Call / WhatsApp","कॉल / WhatsApp","Call / WhatsApp"],
-reg_btn:["Register / Login","रजिस्टर / लॉगिन","Register / Login"],
-bk_home:["← Home","← होम","← Home"],
-l_all:["Sabhi Properties","सभी प्रॉपर्टी","All Properties"],
-l_cnt:["{n} property mili","{n} प्रॉपर्टी मिली","{n} properties found"],
-c_both:["Buy + Rent","खरीद + किराया","Buy + Rent"],c_buy:["Buy","खरीद","Buy"],c_rent:["Rent","किराया","Rent"],
-c_alltype:["Sabhi Prakar","सभी प्रकार","All Types"],c_allarea:["Sabhi Kshetra","सभी क्षेत्र","All Areas"],
-l_empty:["Abhi is selection mein koi property nahi hai.","अभी इस चयन में कोई प्रॉपर्टी नहीं है।","No properties here yet."],
-l_emptywa:["WhatsApp par poochein","WhatsApp पर पूछें","Ask on WhatsApp"],
-d_ask:["Price poochein","कीमत पूछें","Ask for price"],
-d_type:["Type","प्रकार","Type"],d_area:["Kshetra","क्षेत्र","Area"],d_vill:["Gaon / Mohalla","गाँव / मोहल्ला","Village / Locality"],
-d_size:["Size","साइज़","Size"],d_cat:["Category","श्रेणी","Category"],d_call:["Call","कॉल","Call"],
-s_h:["Seller Panel: Apni Zameen / Makaan Daalein","सेलर पैनल: अपनी ज़मीन / मकान डालें","Seller Panel: List Your Land / House"],
-s_p1:["Form bharein aur photo jodein - aapki property hamare Admin Panel mein pahunchegi. Hum check karke approve karenge, uske baad wo website par dikhegi.","फॉर्म भरें और फोटो जोड़ें - आपकी प्रॉपर्टी हमारे एडमिन पैनल में पहुँचेगी। हम जाँच कर अप्रूव करेंगे, उसके बाद वह वेबसाइट पर दिखेगी।","Fill in the form and add photos - your property reaches our Admin Panel. We will review and approve it, then it appears on the website."],
-s_l1:["Bilkul free listing","बिल्कुल फ्री लिस्टिंग","Completely free listing"],
-s_l2:["Plot, makaan, dukaan, krishi bhoomi sab","प्लॉट, मकान, दुकान, कृषि भूमि सब","Plots, houses, shops, farmland - all"],
-s_l3:["Photo ke saath (max 3)","फोटो के साथ (अधिकतम 3)","With photos (max 3)"],
-s_l4:["Hum khud aapko call / WhatsApp karenge","हम खुद आपको कॉल / WhatsApp करेंगे","We will call / WhatsApp you ourselves"],
-s_p2:["Admin ke approve karte hi aapki property website par dikhne lagegi.","एडमिन के अप्रूव करते ही आपकी प्रॉपर्टी वेबसाइट पर दिखने लगेगी।","Your property will appear on the website as soon as the admin approves it."],
-f_name:["Aapka Naam","आपका नाम","Your Name"],f_mob:["Mobile Number","मोबाइल नंबर","Mobile Number"],
-f_type:["Property Type","प्रॉपर्टी का प्रकार","Property Type"],f_area:["Kshetra","क्षेत्र","Area"],
-f_vill:["Gaon / Mohalla","गाँव / मोहल्ला","Village / Locality"],f_size:["Size / Area","साइज़ / क्षेत्रफल","Size / Area"],
-f_pur:["Bikri ya Kiraya","बिक्री या किराया","Sale or Rent"],
-o_buy:["Bikri (Buy)","बिक्री (Buy)","For Sale (Buy)"],o_rent:["Kiraya (Rent)","किराया (Rent)","For Rent"],
-f_price:["Aapki Expected Price","आपकी अपेक्षित कीमत","Your Expected Price"],f_desc:["Anya Details","अन्य जानकारी","Other Details"],
-f_photo:["Property ki Photo","प्रॉपर्टी की फोटो","Property Photo"],
-p_name:["Naam likhein","नाम लिखें","Enter your name"],p_mob:["10 digit number","10 अंकों का नंबर","10-digit number"],
-p_vill:["Jaise: Station Road","जैसे: स्टेशन रोड","e.g. Station Road"],p_size:["1000 sq ft / 2 bigha","1000 sq ft / 2 बीघा","1000 sq ft / 2 bigha"],
-p_price:["Jaise: 8 lakh","जैसे: 8 लाख","e.g. 8 lakh"],p_desc:["Road facing, registry, paas mein kya hai...","रोड फेसिंग, रजिस्ट्री, पास में क्या है...","Road facing, registry, what is nearby..."],
-btn_send:["Property Bhejein","प्रॉपर्टी भेजें","Submit Property"],
-s_note:["Aapka mobile number sirf NK Properties ko dikhta hai, website par nahi.","आपका मोबाइल नंबर सिर्फ NK Properties को दिखता है, वेबसाइट पर नहीं।","Your mobile number is visible only to NK Properties, not on the website."],
-pk_add:["📷 Photo jodein (max 3)","📷 फोटो जोड़ें (अधिकतम 3)","📷 Add photos (max 3)"],
-ok_h:["✅ Property bhej di gayi!","✅ प्रॉपर्टी भेज दी गई!","✅ Property submitted!"],
-ok_p:["Aapki property Admin ke paas review ke liye pahunch gayi hai. Approve hote hi wo website par dikhne lagegi. Hum aapko jald call / WhatsApp karenge.","आपकी प्रॉपर्टी एडमिन के पास रिव्यू के लिए पहुँच गई है। अप्रूव होते ही वह वेबसाइट पर दिखने लगेगी। हम आपको जल्द कॉल / WhatsApp करेंगे।","Your property has reached the Admin for review. It will appear on the website once approved. We will call / WhatsApp you soon."],
-ok_wa:["WhatsApp par bhi bhejein","WhatsApp पर भी भेजें","Also send on WhatsApp"],
-ai_h:["AI Assistant (Hindi / English)","AI सहायक (हिंदी / English)","AI Assistant (Hindi / English)"],
-ai_p:["Aap kya dhoondh rahe hain? Apni zaroorat WhatsApp par bhejein, hum turant jawab denge.","आप क्या ढूंढ रहे हैं? अपनी ज़रूरत WhatsApp पर भेजें, हम तुरंत जवाब देंगे।","What are you looking for? Send your need on WhatsApp and we will reply right away."],
-rg_h:["Register / Login","रजिस्टर / लॉगिन","Register / Login"],
-rg_p:["Property dene wale (seller) ke liye registration ki zaroorat nahi - seedha form bharein.","प्रॉपर्टी देने वाले (सेलर) के लिए रजिस्ट्रेशन की ज़रूरत नहीं - सीधे फॉर्म भरें।","Sellers do not need to register - just fill in the form."],
-rg_sell:["📝 Property Daalein","📝 प्रॉपर्टी डालें","📝 List Property"],
-rg_admin:["🔐 Admin Login","🔐 एडमिन लॉगिन","🔐 Admin Login"],
-rg_agent:["🧑‍💼 Agent Login / Register","🧑‍💼 एजेंट लॉगिन / रजिस्टर","🧑‍💼 Agent Login / Register"],
-dk_sell:["Seller Panel","सेलर पैनल","Seller Panel"],
-dk_agent:["Agent Panel","एजेंट पैनल","Agent Panel"],
-m_agent:["🧑‍💼 Agent Panel","🧑‍💼 एजेंट पैनल","🧑‍💼 Agent Panel"],
-c_ph:["Yahan likhein...","यहाँ लिखें...","Type here..."],
-c_send:["Bhejein","भेजें","Send"],
-c_chips:["Plot dikhao|Makaan kiraye par|20 lakh tak zameen|Apni property bechni hai","प्लॉट दिखाओ|मकान किराये पर|20 लाख तक जमीन|अपनी प्रॉपर्टी बेचनी है","Show plots|House for rent|Land under 20 lakh|I want to sell property"],
-c_greet:["Namaste! 👋 Main NK Properties ka AI Assistant hoon. Batayein - kaun si property chahiye (plot, makaan, dukaan, zameen), kis kshetra mein aur budget kitna hai?","नमस्ते! 👋 मैं NK Properties का AI सहायक हूँ। बताइए - कौन सी प्रॉपर्टी चाहिए (प्लॉट, मकान, दुकान, जमीन), किस क्षेत्र में और बजट कितना है?","Hello! 👋 I'm the NK Properties AI Assistant. Tell me what you're looking for (plot, house, shop, farmland), which area and your budget."],
-c_found:["Aapke liye {n} property mili:","आपके लिए {n} प्रॉपर्टी मिली:","I found {n} matching properties:"],
-c_none:["Is selection mein abhi koi property nahi hai. Kshetra ya budget badal kar poochein, ya WhatsApp par bataiye - hum aapke liye dhoondh denge.","इस चयन में अभी कोई प्रॉपर्टी नहीं है। क्षेत्र या बजट बदल कर पूछें, या WhatsApp पर बताइए - हम आपके लिए ढूंढ देंगे।","There are no matching properties right now. Try a different area or budget, or tell us on WhatsApp and we will find one for you."],
-c_sell:["Apni property bechne ke liye Seller form bharein - bilkul free hai. Admin approve karte hi wo website par lag jaati hai.","अपनी प्रॉपर्टी बेचने के लिए सेलर फॉर्म भरें - बिल्कुल फ्री है। एडमिन के अप्रूव करते ही वह वेबसाइट पर लग जाती है।","To sell your property, fill in the Seller form - it is free and goes live once the admin approves it."],
-c_agent:["Agent hain? Agent Panel mein register / login karke apni properties daal aur manage kar sakte hain.","एजेंट हैं? एजेंट पैनल में रजिस्टर / लॉगिन करके अपनी प्रॉपर्टी डाल और मैनेज कर सकते हैं।","Are you an agent? Register / log in to the Agent Panel to add and manage your properties."],
-c_contact:["Aap hamein seedha Call / WhatsApp kar sakte hain: +91 {ph}","आप हमें सीधे कॉल / WhatsApp कर सकते हैं: +91 {ph}","You can call / WhatsApp us directly at +91 {ph}"],
-c_loc:["Hamare kshetra: {areas}. Office ki location ke liye Home page par Google Maps dekhein.","हमारे क्षेत्र: {areas}। ऑफिस की लोकेशन के लिए होम पेज पर Google Maps देखें।","Our areas: {areas}. See Google Maps on the Home page for our office location."],
-c_fb:["Maaf kijiye, main samajh nahi paya. Property ka type (plot / makaan / dukaan / zameen), kshetra aur budget batayein. Jaise: 'Tonk mein 20 lakh tak plot'.","माफ़ कीजिए, मैं समझ नहीं पाया। प्रॉपर्टी का प्रकार (प्लॉट / मकान / दुकान / जमीन), क्षेत्र और बजट बताएं। जैसे: 'टोंक में 20 लाख तक प्लॉट'।","Sorry, I didn't get that. Tell me the property type (plot / house / shop / land), area and budget. For example: 'plot in Tonk under 20 lakh'."],
-c_thx:["Aapka shukriya! 🙏 Aur kuch chahiye to poochiye.","आपका शुक्रिया! 🙏 और कुछ चाहिए तो पूछिए।","You're welcome! 🙏 Ask me anything else."],
-c_wabtn:["💬 WhatsApp par baat karein","💬 WhatsApp पर बात करें","💬 Chat on WhatsApp"],
-c_allbtn:["🔎 Sabhi dekhein","🔎 सभी देखें","🔎 See all"]
-};
-const LI={hing:0,hi:1,en:2};
-let lang=(()=>{try{const v=localStorage.getItem("nk_lang");return LI[v]!==undefined?v:"hing"}catch(e){return "hing"}})();
-const t=k=>{const a=TR[k];return a?a[LI[lang]]:k};
-const tn=k=>t("ty_"+k);
-const AREA_HI={Tonk:"टोंक",Uniara:"उनियारा",Aligarh:"अलीगढ़",Jaipur:"जयपुर","Sawai Madhopur":"सवाई माधोपुर",Karwar:"करवर",Indergarh:"इंदरगढ़"};
-const an=a=>lang==="hi"&&AREA_HI[a]?AREA_HI[a]:a;
-function applyLang(){
-  document.documentElement.lang=lang==="en"?"en":"hi";
-  document.querySelectorAll("[data-i]").forEach(e=>{e.textContent=t(e.dataset.i)});
-  document.querySelectorAll("[data-h]").forEach(e=>{e.innerHTML=t(e.dataset.h)});
-  document.querySelectorAll("[data-ph]").forEach(e=>{e.placeholder=t(e.dataset.ph)});
-  document.querySelectorAll(".langbar button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
-  applySettings();renderCats();
-  photoPicker($("#s_ph"),sellPh);
-  if((location.hash||"#home")==="#list")renderList();
-}
-const SET_VER=2;
-const DEF_SETTINGS = { ver:SET_VER, phone:"9785480342", areas:["Tonk","Uniara","Aligarh","Jaipur","Sawai Madhopur","Karwar","Indergarh"] };
-const mergeSettings=o=>{o=o&&typeof o==="object"?{...o}:{};if(o.ver!==SET_VER)delete o.areas;return {...DEF_SETTINGS,...o,ver:SET_VER}};
-
-/* ============ helpers ============ */
-const $ = s => document.querySelector(s);
-const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
-function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2600)}
-
-/* Database se aaya data bharose layak nahi: photo / type / status ko jaanchein */
-const PHOTO_RE=/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/]+={0,2}$/;
-const clean=p=>({...p,
-  photos:(Array.isArray(p.photos)?p.photos:[]).filter(x=>typeof x==="string"&&PHOTO_RE.test(x)).slice(0,3),
-  type:Object.prototype.hasOwnProperty.call(TYPES,p.type)?p.type:"plot",
-  purpose:p.purpose==="rent"?"rent":"buy",
-  status:["pending","approved","rejected"].includes(p.status)?p.status:"pending"});
-
-/* ============ art (SVG fallbacks) ============ */
-function houseSVG(){return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMaxYMax meet"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27508f"/><stop offset="1" stop-color="#0c2250"/></linearGradient><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#ff9d2e"/></linearGradient></defs><rect width="400" height="260" fill="url(#sk)"/><path d="M0 235h400v25H0z" fill="#12361f"/><ellipse cx="40" cy="190" rx="38" ry="55" fill="#0d3a22"/><ellipse cx="385" cy="170" rx="30" ry="70" fill="#0d3a22"/><rect x="80" y="130" width="260" height="105" fill="#e9edf5"/><rect x="60" y="62" width="150" height="76" fill="#cfd6e4"/><rect x="60" y="56" width="165" height="10" fill="#3a3f4a"/><rect x="210" y="40" width="40" height="95" fill="#8a5a3c"/><rect x="215" y="115" width="140" height="10" fill="#2d323d"/><rect x="95" y="145" width="45" height="75" fill="url(#gl)"/><rect x="150" y="145" width="45" height="75" fill="url(#gl)"/><rect x="265" y="140" width="62" height="80" fill="url(#gl)"/><rect x="85" y="75" width="40" height="50" fill="url(#gl)"/><rect x="135" y="75" width="40" height="50" fill="url(#gl)"/><rect x="85" y="132" width="250" height="5" fill="#2d323d"/></svg>`}
-function catSVG(t){
- const m={
- plot:`<rect width="300" height="120" fill="#7fb7e6"/><path d="M0 52h300v68H0z" fill="#5fae45"/><path d="M0 62 120 52 300 70M20 120 110 58M150 120 190 56M260 120 240 60" stroke="#e7d968" stroke-width="2.5" fill="none"/>`,
- house:`<rect width="300" height="120" fill="#6fa8dc"/><rect x="110" y="30" width="110" height="80" fill="#e9edf5"/><rect x="90" y="48" width="70" height="36" fill="#c8cfdd"/><rect x="125" y="44" width="28" height="36" fill="#ffc261"/><rect x="170" y="44" width="40" height="36" fill="#ffc261"/><rect x="0" y="100" width="300" height="20" fill="#2f6b34"/>`,
- agri:`<rect width="300" height="120" fill="#f5a35a"/><circle cx="150" cy="58" r="22" fill="#ffe29a"/><rect y="62" width="300" height="58" fill="#3f9a3a"/><path d="M150 62 20 120M150 62 80 120M150 62 150 120M150 62 220 120M150 62 280 120" stroke="#7fd25a" stroke-width="5"/>`,
- shop:`<rect width="300" height="120" fill="#8fc0ee"/><rect x="95" y="20" width="120" height="90" fill="#24467f"/><g fill="#7ec3ff"><rect x="102" y="28" width="26" height="28"/><rect x="134" y="28" width="26" height="28"/><rect x="166" y="28" width="26" height="28"/><rect x="102" y="62" width="26" height="28"/><rect x="134" y="62" width="26" height="28"/><rect x="166" y="62" width="26" height="28"/></g><rect x="40" y="55" width="55" height="55" fill="#d4d9e3"/><rect y="105" width="300" height="15" fill="#3f7a3a"/>`};
- return `<svg class="bg" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice">${m[t]||m.house}</svg>`;
-}
-/* photo (jpg) dikhao; na mile to drawing */
-function catFB(el,k,keepBg){const h=catSVG(k);el.outerHTML=keepBg?h:h.replace('class="bg"','')}
-function typeImg(k,bg){return `<img ${bg?'class="bg" ':''}src="${PHOTO[k]||""}" alt="" loading="lazy" onerror="catFB(this,'${k}',${bg?1:0})">`}
-const catIcons={
- plot:'<svg width="18" height="20" viewBox="0 0 26 30"><path d="M13 1C7 1 3 5.5 3 11c0 7.5 10 18 10 18s10-10.5 10-18C23 5.5 19 1 13 1z" fill="#10275a"/><circle cx="13" cy="11" r="4" fill="#fff"/></svg>',
- house:'<svg width="20" height="18" viewBox="0 0 26 24"><path d="M2 12 13 2l11 10" fill="none" stroke="#10275a" stroke-width="3"/><path d="M5 11v11h16V11" fill="#10275a"/></svg>',
- agri:'<svg width="18" height="20" viewBox="0 0 20 24"><path d="M10 23V8M10 8C6 8 4 5 4 2c4 0 6 2 6 6zm0 0c4 0 6-3 6-6-4 0-6 2-6 6zM10 16c-4 0-6-3-6-6 4 0 6 2 6 6zm0 0c4 0 6-3 6-6-4 0-6 2-6 6z" fill="#10275a" stroke="#10275a" stroke-width="1.5"/></svg>',
- shop:'<svg width="18" height="20" viewBox="0 0 22 24"><path d="M2 8h18l-1 14H3z" fill="#10275a"/><path d="M7 8V6a4 4 0 0 1 8 0v2" fill="none" stroke="#10275a" stroke-width="2.5"/></svg>'
+/* ===================================================================
+   STEP 1: यहाँ अपना FIREBASE CONFIG पेस्ट करें
+   =================================================================== */
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
 };
 
-/* ============ data layer ============ */
-let fb=null, fdb=null, fauth=null;
-function loadScript(src){return new Promise((res,rej)=>{const t=document.createElement("script");t.src=src;t.onload=res;t.onerror=rej;document.head.appendChild(t)})}
-async function loadFirebase(){const b="https://www.gstatic.com/firebasejs/10.12.2/";await loadScript(b+"firebase-app-compat.js");await Promise.all([loadScript(b+"firebase-firestore-compat.js"),loadScript(b+"firebase-auth-compat.js")])}
-const Store = {
-  mode:"local",
-  async init(){
-    if(FIREBASE_CONFIG){
-      try{await loadFirebase();firebase.initializeApp(FIREBASE_CONFIG);fdb=firebase.firestore();fauth=firebase.auth();this.mode="firebase"}catch(e){console.warn(e);toast("Firebase connect nahi hua")}
-    }
+// Admin का ईमेल यहाँ सेट करें (Firebase Auth में इसी ईमेल से यूज़र बनाएं)
+const ADMIN_EMAIL = "admin@nkproperties.in";
+
+/* ===================================================================
+   STATE & DATABASE INITIALIZATION (Firebase + Local Fallback)
+   =================================================================== */
+const isFirebaseConfigured = firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY";
+let db = null, auth = null;
+
+let state = {
+  properties: [],
+  agents: [],
+  leads: [],
+  purpose: "all",
+  adminTab: "pending",
+  currentUser: null,
+  currentAgentProfile: null,
+  tempPhotos: { cust: [], ag: [] }
+};
+
+// Sample data अगर डेटाबेस खाली हो या Firebase सेटअप न हुआ हो
+const DEMO_PROPERTIES = [
+  {
+    id: "demo1",
+    title: "150 गज आवासीय प्लॉट, जयपुर रोड टोंक",
+    purpose: "buy",
+    category: "Plot",
+    area: "Tonk",
+    price: "₹18.5 लाख",
+    size: "150 गज",
+    location: "जयपुर-कोटा हाईवे के पास, टोंक",
+    ownerName: "NK Properties Office",
+    phone: "9829000000",
+    description: "30 फीट चौड़ी रोड, पक्की रजिस्ट्री व दाखिल-खारिज उपलब्ध।",
+    photos: [],
+    status: "approved",
+    role: "admin",
+    createdAt: Date.now() - 86400000
   },
-  async list(){
-    if(this.mode==="firebase"){
-      // Rules filter nahi karte: har query wahi maange jiski permission hai.
-      // Seller naam/mobile alag "propertyPrivate" collection mein hai.
-      const col=fdb.collection("properties"),priv=fdb.collection("propertyPrivate");
-      const rows=s=>s.docs.map(d=>({...d.data(),id:d.id}));
-      if(isAdmin){
-        const [a,b]=await Promise.all([col.get(),priv.get()]);
-        const m={};b.docs.forEach(d=>m[d.id]=d.data());
-        return rows(a).map(p=>clean({...p,...(m[p.id]||{})}));
+  {
+    id: "demo2",
+    title: "नया बना 2 BHK मकान, उनियारा",
+    purpose: "buy",
+    category: "Makaan",
+    area: "Uniara",
+    price: "₹24 लाख",
+    size: "100 गज",
+    location: "आदर्श नगर कॉलोनी, उनियारा",
+    ownerName: "राजेश शर्मा (Agent)",
+    phone: "9829000000",
+    description: "मॉड्यूलर किचन, कार पार्किंग व पानी की टंकी सहित।",
+    photos: [],
+    status: "approved",
+    role: "agent",
+    createdAt: Date.now() - 43200000
+  },
+  {
+    id: "demo3",
+    title: "मेन मार्केट शोरूम / दुकान किराये के लिए",
+    purpose: "rent",
+    category: "Dukaan",
+    area: "Aligarh",
+    price: "₹9,000 / माह",
+    size: "12x25 फीट",
+    location: "बस स्टैंड रोड, अलीगढ़",
+    ownerName: "NK Properties Office",
+    phone: "9829000000",
+    description: "बैंक, ऑफिस या शोरूम के लिए उत्तम लोकेशन।",
+    photos: [],
+    status: "approved",
+    role: "admin",
+    createdAt: Date.now()
+  }
+];
+
+function loadLocalFallback() {
+  state.properties = JSON.parse(localStorage.getItem("nk_props") || "null") || DEMO_PROPERTIES;
+  state.agents = JSON.parse(localStorage.getItem("nk_agents") || "[]");
+  state.leads = JSON.parse(localStorage.getItem("nk_leads") || "[]");
+  document.getElementById("dbBadge").textContent = "⚡ Local Demo Mode";
+  renderProperties();
+}
+
+function saveLocalFallback() {
+  localStorage.setItem("nk_props", JSON.stringify(state.properties));
+  localStorage.setItem("nk_agents", JSON.stringify(state.agents));
+  localStorage.setItem("nk_leads", JSON.stringify(state.leads));
+}
+
+if (isFirebaseConfigured) {
+  try {
+    const app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    auth = getAuth(app);
+    document.getElementById("dbBadge").textContent = "🟢 Online DB Connected";
+
+    // Realtime Listener: Properties
+    onSnapshot(query(collection(db, "properties"), orderBy("createdAt", "desc")), (snap) => {
+      state.properties = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      renderProperties();
+      if (state.currentUser) {
+        renderAgentDashboard();
+        renderAdminDashboard();
       }
-      const all=rows(await col.where("status","==","approved").get());
-      if(AG){const own=rows(await col.where("agentId","==",AG.id).get());own.forEach(p=>{const i=all.findIndex(x=>x.id===p.id);if(i<0)all.push(p);else all[i]=p})}
-      return all.map(clean);
-    }
-    // Bina Firebase: sirf dekhne ke liye
-    try{const v=JSON.parse(localStorage.getItem("nk_props")||"null");if(Array.isArray(v))return v.map(p=>{const c=clean(p);delete c.sellerName;delete c.sellerMobile;return c})}catch(e){}
-    return seedData();
-  },
-  async save(p){
-    if(this.mode!=="firebase")throw new Error("Online database juda nahi hai");
-    const isNew=!p.id;p.id=p.id||fdb.collection("properties").doc().id;
-    const {id,sellerName,sellerMobile,...pub}=clean(p);
-    const batch=fdb.batch();
-    batch.set(fdb.collection("properties").doc(id),pub);
-    // Naye record ya admin ke edit par hi private jaankari likhein
-    if(isNew||isAdmin||sellerMobile!==undefined)batch.set(fdb.collection("propertyPrivate").doc(id),{sellerName:sellerName||"",sellerMobile:sellerMobile||""});
-    await batch.commit();return p;
-  },
-  async remove(id){
-    if(this.mode!=="firebase")throw new Error("Online database juda nahi hai");
-    const batch=fdb.batch();
-    batch.delete(fdb.collection("properties").doc(id));
-    batch.delete(fdb.collection("propertyPrivate").doc(id));
-    await batch.commit();
-  },
-  async settings(){
-    if(this.mode==="firebase"){try{const d=await fdb.collection("settings").doc("main").get();if(d.exists)return mergeSettings(d.data())}catch(e){}return {...DEF_SETTINGS}}
-    try{return mergeSettings(JSON.parse(localStorage.getItem("nk_set")||"{}"))}catch(e){return {...DEF_SETTINGS}}
-  },
-  async saveSettings(s){
-    if(this.mode==="firebase"){await fdb.collection("settings").doc("main").set(s);return}
-    throw new Error("Online database juda nahi hai");
-  }
-};
-function seedData(){
-  const n=Date.now();
-  const mk=(i,title,type,area,village,size,price,purpose)=>({id:"demo"+i,title,type,purpose,area,village,size,price,desc:"Demo property - admin panel se delete ya edit karein.",photos:[],sellerName:"Demo",sellerMobile:"9785480342",status:"approved",createdAt:n-i*1000});
-  return [
-    mk(1,"Main road par Residential Plot","plot","Tonk","Civil Lines","150 gaj","₹ 18 Lakh","buy"),
-    mk(2,"2 BHK Makaan","house","Uniara","Ward 5","1200 sq ft","₹ 28 Lakh","buy"),
-    mk(3,"Upjaau Krishi Bhoomi","agri","Aligarh","Aligarh Gaon","2 Bigha","₹ 9 Lakh / Bigha","buy"),
-    mk(4,"Market mein Dukaan","shop","Tonk","Bada Bazar","12x20 ft","₹ 6,000 / mahina","rent")
-  ];
-}
-
-/* ============ state ============ */
-let S={...DEF_SETTINGS}, PROPS=[], purpose="buy", fType="all", fArea="all", isAdmin=false, aTab="all", fPur="all";
-const waNum=()=>"91"+S.phone.replace(/\D/g,"").slice(-10);
-const waLink=t=>`https://wa.me/${waNum()}?text=${encodeURIComponent(t||"Namaste, mujhe NK Properties se property ki jaankari chahiye.")}`;
-
-function applySettings(){
-  $("#phoneTxt").textContent=S.phone;
-  $("#callBtn").href=waLink();
-  $("#mwa").href=waLink();
-  $("#ctaWa").href=waLink("Namaste, mujhe plot / makaan ki jaankari chahiye.");
-  $("#ftWa").href=waLink();$("#ftWa").textContent="+91 "+S.phone.slice(0,5)+" "+S.phone.slice(5);
-  $("#areaChips").innerHTML=S.areas.map(a=>`<button data-a="${esc(a)}">📍 ${esc(an(a))}</button>`).join("");
-  document.querySelectorAll("#areaChips button").forEach(b=>b.onclick=()=>{fPur="all";fType="all";fArea=b.dataset.a;go("list")});
-  const opts=`<option value="all">${t("loc_ph")}</option>`+S.areas.map(a=>`<option value="${esc(a)}">${esc(an(a))}</option>`).join("");
-  const cur=$("#loc").value;$("#loc").innerHTML=opts;if(S.areas.includes(cur))$("#loc").value=cur;
-  {const c=$("#s_area").value;$("#s_area").innerHTML=S.areas.map(a=>`<option value="${esc(a)}">${esc(an(a))}</option>`).join("");if(S.areas.includes(c))$("#s_area").value=c}
-  {const c=$("#s_type").value;$("#s_type").innerHTML=Object.keys(TYPES).map(k=>`<option value="${k}">${tn(k)}</option>`).join("");if(TYPES[c])$("#s_type").value=c}
-  {const c=$("#s_pur").value||"buy";$("#s_pur").innerHTML=`<option value="buy">${t("o_buy")}</option><option value="rent">${t("o_rent")}</option>`;$("#s_pur").value=c}
-}
-
-/* ============ render ============ */
-function renderCats(){
-  $("#cats").innerHTML=Object.entries(TYPES).map(([k,v])=>`<div class="cat" data-t="${k}">${typeImg(k,true)}<div class="lb"><span class="ic">${catIcons[k]}</span><span>${tn(k)}</span><span class="go">›</span></div></div>`).join("");
-  document.querySelectorAll(".cat").forEach(c=>c.onclick=()=>{fType=c.dataset.t;fArea="all";fPur="all";go("list")});
-}
-function cardHTML(p){
-  const img=p.photos&&p.photos[0]?`<img src="${p.photos[0]}" alt="">`:typeImg(p.type,false);
-  return `<div class="pc" data-id="${esc(p.id)}"><div class="im">${img}<span class="tag ${p.purpose==="rent"?"rent":""}">${p.purpose==="rent"?t("c_rent"):t("c_buy")}</span></div><div class="bd"><h4>${esc(p.title||TYPES[p.type]?.n)}</h4><div class="pr">${esc(p.price||t("d_ask"))}</div><div class="mt">📍 ${esc(p.village?p.village+", ":"")}${esc(an(p.area))} &nbsp;•&nbsp; ${esc(p.size||"")}</div>${p.agentName?`<div class="mt agtag">🧑‍💼 Agent: ${esc(p.agentName)}</div>`:""}</div></div>`;
-}
-function renderList(){
-  const pub=PROPS.filter(p=>p.status==="approved");
-  let rows=pub.filter(p=>(fType==="all"||p.type===fType)&&(fArea==="all"||p.area===fArea)&&(fPur==="all"||p.purpose===fPur));
-  rows.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-  $("#listTitle").textContent=(fType==="all"?t("l_all"):tn(fType))+(fPur==="rent"?" ("+t("c_rent")+")":fPur==="buy"?" ("+t("c_buy")+")":"");
-  $("#listSub").textContent=t("l_cnt").replace("{n}",rows.length)+(fArea!=="all"?" - "+an(fArea):"");
-  const grp=(attr,cur,items)=>`<div class="chipgrp">${items.map(([k,n])=>`<button data-${attr}="${esc(k)}" class="${cur===k?"on":""}">${esc(n)}</button>`).join("")}</div>`;
-  $("#chips").innerHTML=grp("p",fPur,[["all",t("c_both")],["buy",t("c_buy")],["rent",t("c_rent")]])+
-    grp("t",fType,[["all",t("c_alltype")],...Object.keys(TYPES).map(k=>[k,tn(k)])])+
-    grp("a",fArea,[["all",t("c_allarea")],...S.areas.map(a=>[a,an(a)])]);
-  document.querySelectorAll("#chips button").forEach(b=>b.onclick=()=>{
-    if(b.dataset.p!==undefined)fPur=b.dataset.p;else if(b.dataset.t!==undefined)fType=b.dataset.t;else fArea=b.dataset.a;
-    renderList();
-  });
-  $("#grid").innerHTML=rows.length?rows.map(cardHTML).join(""):`<div class="empty" style="grid-column:1/-1">${t("l_empty")}<br><br><button class="pbtn g wa" style="max-width:260px;margin-left:auto;margin-right:auto" onclick="window.open('${waLink("Mujhe property chahiye")}')">${t("l_emptywa")}</button></div>`;
-  document.querySelectorAll("#grid .pc").forEach(c=>c.onclick=()=>openDetail(c.dataset.id));
-}
-function modal(html){
-  const m=document.createElement("div");m.className="mo";m.innerHTML=`<div class="bx"><button class="x">×</button>${html}</div>`;
-  m.onclick=e=>{if(e.target===m)m.remove()};m.querySelector(".x").onclick=()=>m.remove();document.body.appendChild(m);return m;
-}
-function openDetail(id){
-  const p=PROPS.find(x=>x.id===id);if(!p)return;
-  const gal=p.photos&&p.photos.length?p.photos.map(s=>`<img src="${s}" alt="">`).join(""):typeImg(p.type,false);
-  const msg=`Namaste, mujhe ye property chahiye: ${p.title} (${p.village||""} ${p.area}) - ${p.price||""}`;
-  const num=p.agentMobile?"91"+String(p.agentMobile).replace(/\D/g,"").slice(-10):waNum();
-  modal(`<h3>${esc(p.title)}</h3><div class="gal">${gal}</div><div class="pr" style="color:#1457d6;font-weight:800;font-size:22px">${esc(p.price||t("d_ask"))}</div>
-  <div class="kv"><span>${t("d_type")}</span><b>${tn(p.type)}</b><span>${t("d_area")}</span><b>${esc(an(p.area))}</b><span>${t("d_vill")}</span><b>${esc(p.village||"-")}</b><span>${t("d_size")}</span><b>${esc(p.size||"-")}</b><span>${t("d_cat")}</span><b>${p.purpose==="rent"?t("c_rent"):t("c_buy")}</b></div>
-  <p style="white-space:pre-wrap">${esc(p.desc||"")}</p>${p.agentName?`<p class="agtag" style="margin-top:8px">🧑‍💼 Agent: ${esc(p.agentName)}</p>`:""}
-  <div class="row"><a class="pbtn g wa" style="text-align:center" target="_blank" rel="noopener" href="https://wa.me/${num}?text=${encodeURIComponent(msg)}">WhatsApp</a><a class="pbtn" style="text-align:center" href="tel:+${num}">${t("d_call")}</a></div>`);
-}
-
-/* ============ photos ============ */
-function compress(file,max=800,q=.6){
-  return new Promise((res,rej)=>{
-    const r=new FileReader();r.onerror=rej;
-    r.onload=()=>{const im=new Image();im.onerror=rej;im.onload=()=>{
-      const k=Math.min(1,max/Math.max(im.width,im.height));const c=document.createElement("canvas");
-      c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",q))};im.src=r.result};
-    r.readAsDataURL(file);
-  });
-}
-function photoPicker(box,arr){
-  if(box.classList.contains("wide"))return widePicker(box,arr);
-  function draw(){
-    box.innerHTML=arr.map((s,i)=>`<div class="ph"><img src="${s}"><b data-i="${i}">×</b></div>`).join("")+(arr.length<3?`<label class="addph">📷 Photo jodein<br>${arr.length}/3<input type="file" accept="image/*" multiple hidden></label>`:"");
-    box.querySelectorAll("b").forEach(b=>b.onclick=()=>{arr.splice(+b.dataset.i,1);draw()});
-    const inp=box.querySelector("input");
-    if(inp)inp.onchange=async()=>{for(const f of [...inp.files].slice(0,3-arr.length)){try{arr.push(await compress(f))}catch(e){toast("Photo load nahi hui")}}draw()};
-  }
-  draw();
-}
-function widePicker(box,arr){
-  function draw(){
-    box.innerHTML=(arr.length?`<div class="row2">${arr.map((s,i)=>`<div class="ph"><img src="${s}"><b data-i="${i}">×</b></div>`).join("")}</div>`:"")+
-      (arr.length<3?`<label class="addph wide">${t("pk_add")}<input type="file" accept="image/*" multiple hidden></label>`:"")+`<div class="cnt">${arr.length}/3</div>`;
-    box.querySelectorAll("b").forEach(b=>b.onclick=()=>{arr.splice(+b.dataset.i,1);draw()});
-    const inp=box.querySelector("input");
-    if(inp)inp.onchange=async()=>{for(const f of [...inp.files].slice(0,3-arr.length)){try{arr.push(await compress(f))}catch(e){toast("Photo load nahi hui")}}draw()};
-  }
-  draw();
-}
-
-/* ============ sell form ============ */
-const sellPh=[];
-function initSell(){
-  photoPicker($("#s_ph"),sellPh);
-  $("#sellForm").onsubmit=async e=>{
-    e.preventDefault();
-    // Seller ki property pehle "pending" mein jaati hai. Admin approve kare tabhi website par dikhti hai.
-    const p={title:`${TYPES[$("#s_type").value].n} - ${$("#s_area").value}`,type:$("#s_type").value,purpose:$("#s_pur").value||"buy",area:$("#s_area").value,village:$("#s_vill").value.trim(),size:$("#s_size").value.trim(),price:$("#s_price").value.trim(),desc:$("#s_desc").value.trim(),photos:[...sellPh],sellerName:$("#s_name").value.trim(),sellerMobile:$("#s_mob").value.trim(),status:"pending",createdAt:Date.now()};
-    if(Store.mode!=="firebase"){
-      // Database nahi hai to jhootha "bhej diya" na dikhayein; WhatsApp se bhejein
-      modal(`<h3>Online form abhi chalu nahi hai</h3><p style="margin:8px 0 4px">Aapki jaankari abhi bheji nahi gayi hai. Neeche button dabakar WhatsApp par bhejein, photo bhi wahin jodein.</p><a class="pbtn g wa" style="display:block;text-align:center" target="_blank" rel="noopener" href="${esc(waLink(`Namaste, meri property: ${p.title}, ${p.village}, ${p.size}, ${p.price}. ${p.desc} Naam: ${p.sellerName}, Mobile: ${p.sellerMobile}`))}">WhatsApp par bhejein</a>`);
-      return;
-    }
-    try{await Store.save(p)}catch(err){return toast("Save nahi hua, dobara try karein")}
-    try{PROPS=await Store.list()}catch(err){}
-    e.target.reset();sellPh.length=0;photoPicker($("#s_ph"),sellPh);applySettings();
-    location.hash="#home";
-    modal(`<h3>${t("ok_h")}</h3><p style="margin:8px 0 4px">${t("ok_p")}</p><a class="pbtn g wa" style="display:block;text-align:center;text-decoration:none" target="_blank" rel="noopener" href="${waLink(`Namaste, maine NK Properties par apni ${p.title} (${p.size}) bheji hai. Naam: ${p.sellerName}`)}">${t("ok_wa")}</a>`);
-  };
-}
-
-/* ============ admin ============ */
-async function isAdminUser(u){
-  if(!u)return false;
-  try{return (await fdb.collection("admins").doc(u.uid).get()).exists}catch(e){return false}
-}
-async function adminLogin(phone,pass){
-  if(Store.mode!=="firebase")throw new Error("Admin login ke liye Firebase jodna zaroori hai");
-  phone=String(phone).replace(/\D/g,"").slice(-10);
-  const cred=await fauth.signInWithEmailAndPassword(phone+"@nkproperties.in",pass);
-  if(!await isAdminUser(cred.user)){await fauth.signOut();return false}
-  isAdmin=true;AG=null;return true;
-}
-let adminOpened=false;
-async function showAdmin(){
-  $("#a-login").classList.toggle("hide",isAdmin);
-  $("#a-main").classList.toggle("hide",!isAdmin);
-  if(isAdmin){
-    // Admin khulte hi nayi (pending) properties ka list taza karke dikhao
-    try{PROPS=await Store.list()}catch(e){}
-    if(!adminOpened){adminOpened=true;if(PROPS.some(p=>p.status==="pending"))aTab="pending"}
-    renderAdmin();
-  }
-}
-function renderAdmin(){
-  const cnt=s=>PROPS.filter(p=>p.status===s).length;
-  $("#a-warn").innerHTML=`<div class="awarn ok">✅ Online database juda hai. Seller ki property pehle yahan <b>Pending</b> mein aati hai; Approve karte hi website par dikhti hai.</div>`;
-  const tabs=[["all","All",0],["pending","Pending",cnt("pending")],["approved","Live",0],["rejected","Rejected",0],["agents","👥 Agents",0],["settings","⚙ Settings",0]];
-  $("#atabs").innerHTML=tabs.map(([k,n,c])=>`<button data-k="${k}" class="${aTab===k?"on":""}">${n}${c?`<b>${c}</b>`:""}</button>`).join("")+`<button id="addNew" style="background:var(--green)">➕ Nayi Property</button><button id="logoutBtn" style="background:#d92d3a">Logout</button>`;
-  document.querySelectorAll("#atabs button[data-k]").forEach(b=>b.onclick=()=>{aTab=b.dataset.k;renderAdmin()});
-  $("#addNew").onclick=()=>propForm();
-  $("#logoutBtn").onclick=async()=>{if(fauth)await fauth.signOut();isAdmin=false;adminOpened=false;try{PROPS=await Store.list()}catch(e){}showAdmin()};
-  const isSet=aTab==="settings";
-  $("#a-list").classList.toggle("hide",isSet);$("#a-settings").classList.toggle("hide",!isSet);
-  if(isSet)return renderSettings();
-  if(aTab==="agents")return renderAgentsAdmin();
-  const rows=PROPS.filter(p=>aTab==="all"||p.status===aTab).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-  $("#a-list").innerHTML=rows.length?rows.map(p=>`<div class="ar"><div class="th">${p.photos&&p.photos[0]?`<img src="${p.photos[0]}">`:typeImg(p.type,false)}</div><div class="in"><h4>${esc(p.title)}</h4><div class="mt">${TYPES[p.type]?.n} • ${p.purpose==="rent"?"Rent":"Buy"} • ${esc(p.area)} ${esc(p.village||"")}</div><div class="mt">${esc(p.size||"")} • <b>${esc(p.price||"")}</b></div><div class="mt">👤 ${esc(p.sellerName||"-")} ${esc(p.sellerMobile||"")}</div><span class="st ${p.status}">${p.status}</span>
-  <div class="acts" data-id="${esc(p.id)}">${p.status!=="approved"?'<button class="ok" data-a="ok">✅ Approve</button>':""}${p.status!=="rejected"?'<button class="no" data-a="no">Reject</button>':""}<button data-a="edit">✏ Edit</button><button data-a="del">🗑 Delete</button>${p.sellerMobile?`<button data-a="wa">💬 Seller</button>`:""}</div></div></div>`).join(""):`<div class="empty">Koi property nahi.</div>`;
-  document.querySelectorAll("#a-list .acts button").forEach(b=>b.onclick=async()=>{
-    const id=b.parentElement.dataset.id,p=PROPS.find(x=>x.id===id),a=b.dataset.a;
-    if(a==="edit")return propForm(p);
-    if(a==="wa")return window.open(`https://wa.me/91${p.sellerMobile.replace(/\D/g,"").slice(-10)}?text=${encodeURIComponent("Namaste "+(p.sellerName||"")+", NK Properties se bol rahe hain, aapki property ke baare mein.")}`,"_blank");
-    try{
-      if(a==="del"){if(!confirm("Pakka delete karein?"))return;await Store.remove(id)}
-      else{p.status=a==="ok"?"approved":"rejected";await Store.save(p)}
-      PROPS=await Store.list();renderAdmin();toast(a==="ok"?"Approve ho gayi - ab website par live hai":"Ho gaya");
-    }catch(err){toast("Nahi hua: "+(err.code||err.message))}
-  });
-}
-function propForm(p,agent,after){
-  const e=p||{type:"plot",purpose:"buy",area:S.areas[0],photos:[]};const ph=[...(e.photos||[])];
-  const m=modal(`<h3>${p?"Property Edit":"Nayi Property Jodein"}</h3><form class="fm" style="padding:0">
-  <label>Website par Title</label><input id="f_title" required value="${esc(e.title||"")}">
-  <div class="r2"><div><label>Type</label><select id="f_type">${Object.entries(TYPES).map(([k,v])=>`<option value="${k}" ${e.type===k?"selected":""}>${v.n}</option>`).join("")}</select></div>
-  <div><label>Category</label><select id="f_pur"><option value="buy" ${e.purpose==="buy"?"selected":""}>Buy (Bikri)</option><option value="rent" ${e.purpose==="rent"?"selected":""}>Rent (Kiraya)</option></select></div></div>
-  <div class="r2"><div><label>Kshetra</label><select id="f_area">${S.areas.map(a=>`<option ${e.area===a?"selected":""}>${esc(a)}</option>`).join("")}</select></div>
-  <div><label>Gaon / Mohalla</label><input id="f_vill" value="${esc(e.village||"")}"></div></div>
-  <div class="r2"><div><label>Size</label><input id="f_size" value="${esc(e.size||"")}"></div><div><label>Price (website par)</label><input id="f_price" value="${esc(e.price||"")}"></div></div>
-  ${agent?"":`<div class="r2"><div><label>Seller Naam</label><input id="f_sn" value="${esc(e.sellerName||"")}"></div><div><label>Seller Mobile</label><input id="f_sm" type="tel" value="${esc(e.sellerMobile||"")}"></div></div>`}
-  <label>Description</label><textarea id="f_desc">${esc(e.desc||"")}</textarea>
-  <label>Photos (max 3)</label><div class="photos" id="f_ph"></div>
-  <button class="pbtn g" type="submit">${agent?"📨 Approval ke liye bhejein":"✅ Website par Lagayein"}</button></form>`);
-  photoPicker(m.querySelector("#f_ph"),ph);
-  m.querySelector("form").onsubmit=async ev=>{
-    ev.preventDefault();const q=s=>m.querySelector(s).value.trim();
-    const np={...e,title:q("#f_title"),type:q("#f_type"),purpose:q("#f_pur"),area:q("#f_area"),village:q("#f_vill"),size:q("#f_size"),price:q("#f_price"),...(agent?{sellerName:agent.name,sellerMobile:agent.mobile,agentId:agent.id,agentName:agent.name,agentMobile:agent.mobile}:{sellerName:q("#f_sn"),sellerMobile:q("#f_sm")}),desc:q("#f_desc"),photos:ph,status:agent?"pending":"approved",createdAt:e.createdAt||Date.now()};
-    try{await Store.save(np)}catch(err){return toast("Save nahi hua: "+(err.code||err.message))}
-    PROPS=await Store.list();m.remove();(after||renderAdmin)();toast(agent?"Save ho gaya - Admin approval ke baad live hogi":"Save ho gaya - website par live");
-  };
-}
-function renderSettings(){
-  $("#a-settings").innerHTML=`<form class="fm" id="setForm">
-  <label>Phone / WhatsApp Number (10 digit)</label><input id="st_phone" value="${esc(S.phone)}" maxlength="10">
-  <label>Kshetra list (comma se alag karein)</label><textarea id="st_areas">${esc(S.areas.join(", "))}</textarea>
-  <button class="pbtn" type="submit">Settings Save Karein</button></form>
-  <div class="fm" style="margin-top:14px"><label>Backup</label><div class="row"><button class="pbtn" id="bkExp" type="button">Export JSON</button><label class="pbtn y" style="text-align:center;margin:16px 0 0;font-size:16px;color:#10275a">Import<input id="bkImp" type="file" accept="application/json" hidden></label></div></div>`;
-  $("#setForm").onsubmit=async ev=>{ev.preventDefault();
-    const ph=$("#st_phone").value.replace(/\D/g,"");if(ph.length!==10)return toast("10 digit number daalein");
-    const areas=$("#st_areas").value.split(",").map(s=>s.trim()).filter(Boolean);if(!areas.length)return toast("Kam se kam ek kshetra");
-    S={...S,phone:ph,areas,ver:SET_VER};await Store.saveSettings(S);applySettings();toast("Settings save ho gayi")};
-  $("#bkExp").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify({props:PROPS,settings:S})],{type:"application/json"}));a.download="nk-backup.json";a.click()};
-  $("#bkImp").onchange=async ev=>{try{const d=JSON.parse(await ev.target.files[0].text());for(const p of d.props||[])await Store.save(p);if(d.settings){S={...S,...d.settings};await Store.saveSettings(S)}PROPS=await Store.list();applySettings();renderAdmin();toast("Import ho gaya")}catch(err){toast("File galat hai")}};
-}
-
-/* ============ agents ============ */
-const AG_DOMAIN="@agent.nkproperties.in";
-let AG=null, gMode="login";
-let agBusy=false;
-const Agents={
-  async list(){const s=await fdb.collection("agents").get();return s.docs.map(d=>({...d.data(),id:d.id}))},
-  async put(a){const {id,...d}=a;await fdb.collection("agents").doc(id).set(d)},
-  async del(id){await fdb.collection("agents").doc(id).delete()},
-  async register(name,mobile,pass,area,code){
-    const email=mobile+AG_DOMAIN;let cred,created=false;
-    try{cred=await fauth.createUserWithEmailAndPassword(email,pass);created=true}
-    catch(e){if(e.code!=="auth/email-already-in-use")throw e;cred=await fauth.signInWithEmailAndPassword(email,pass)}
-    const a={name,mobile,area,inviteCode:code,blocked:false,createdAt:Date.now()};
-    try{
-      // Dono ek saath; invitation galat / purana / use ho chuka ho to rules dono rok dete hain
-      const batch=fdb.batch();
-      batch.set(fdb.collection("agents").doc(cred.user.uid),a);
-      batch.update(fdb.collection("invites").doc(code),{usedBy:cred.user.uid});
-      await batch.commit();
-    }catch(e){
-      if(created){try{await cred.user.delete()}catch(x){}}
-      await fauth.signOut();throw new Error("invite");
-    }
-    return {...a,id:cred.user.uid};
-  },
-  async login(mobile,pass){
-    const cred=await fauth.signInWithEmailAndPassword(mobile+AG_DOMAIN,pass);
-    const d=await fdb.collection("agents").doc(cred.user.uid).get();
-    if(!d.exists){await fauth.signOut();throw new Error("Agent record nahi mila")}
-    const a={...d.data(),id:d.id};
-    if(a.blocked){await fauth.signOut();throw new Error("Aapka account band hai")}
-    return a;
-  }
-};
-/* 7 din ka, ek baar chalne wala invitation, ek hi mobile number ke liye */
-async function createInvite(mobile){
-  const code=[...crypto.getRandomValues(new Uint8Array(16))].map(x=>x.toString(16).padStart(2,"0")).join("");
-  await fdb.collection("invites").doc(code).set({mobile,usedBy:null,expiresAt:firebase.firestore.Timestamp.fromMillis(Date.now()+7*864e5)});
-  return code;
-}
-function showAgent(){
-  $("#g-login").classList.toggle("hide",!!AG);
-  $("#g-main").classList.toggle("hide",!AG);
-  if(AG)renderAgent();else renderAgentAuth();
-}
-function renderAgentAuth(){
-  if(Store.mode!=="firebase"){$("#g-login").innerHTML=`<h2>Agent Panel</h2><p class="sub">Agent Panel abhi band hai. Online database judne ke baad chalu hoga.</p>`;return}
-  const reg=gMode==="reg";
-  $("#g-login").innerHTML=`<h2>Agent Panel</h2><p class="sub">Property agents ke liye alag panel - invitation se register karein ya login karein.</p>
-  <div class="gtabs"><button data-g="login" class="${reg?"":"on"}">Login</button><button data-g="reg" class="${reg?"on":""}">Invitation se Register</button></div>
-  <form class="fm" id="agForm">
-    ${reg?`<label>Invitation Code (Admin se milega)</label><input id="g_code" required pattern="[0-9a-f]{32}" autocomplete="off"><label>Aapka Naam</label><input id="g_name" required>`:""}
-    <label>Mobile Number</label><input id="g_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required autocomplete="username" placeholder="10 digit number">
-    ${reg?`<label>Kaam ka Kshetra</label><select id="g_area">${S.areas.map(a=>`<option value="${esc(a)}">${esc(an(a))}</option>`).join("")}</select>`:""}
-    <label>Password${reg?" (kam se kam 6 akshar)":""}</label><input id="g_pass" type="password" required ${reg?'minlength="6"':""} autocomplete="${reg?"new-password":"current-password"}">
-    <button class="pbtn ${reg?"g":""}" type="submit">${reg?"Register Karein":"Login"}</button>
-  </form>`;
-  document.querySelectorAll("#g-login [data-g]").forEach(b=>b.onclick=()=>{gMode=b.dataset.g;renderAgentAuth()});
-  $("#agForm").onsubmit=async e=>{
-    e.preventDefault();
-    const mob=$("#g_mob").value.replace(/\D/g,"").slice(-10),pw=$("#g_pass").value;
-    agBusy=true;
-    try{
-      AG=reg?await Agents.register($("#g_name").value.trim(),mob,pw,$("#g_area").value,$("#g_code").value.trim()):await Agents.login(mob,pw);
-      isAdmin=false;
-      try{PROPS=await Store.list()}catch(x){}
-      showAgent();toast(reg?"Register ho gaye!":"Login ho gaya");
-    }catch(err){
-      const c=String(err.code||"")+" "+String(err.message||"");
-      toast(c.includes("invite")?"Invitation code galat, purana ya use ho chuka hai, ya is number ka nahi hai":c.includes("already")?"Ye number pehle se registered hai":c.includes("weak")?"Password kam se kam 6 akshar ka rakhein":c.includes("band")?"Aapka account band hai":"Number ya password galat hai");
-    }finally{agBusy=false}
-  };
-}
-function renderAgent(){
-  const mine=PROPS.filter(p=>p.agentId===AG.id).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-  const rows=mine.map(p=>`<div class="ar"><div class="th">${p.photos&&p.photos[0]?`<img src="${p.photos[0]}">`:typeImg(p.type,false)}</div><div class="in"><h4>${esc(p.title)}</h4><div class="mt">${TYPES[p.type]?.n} • ${p.purpose==="rent"?"Rent":"Buy"} • ${esc(p.area)} ${esc(p.village||"")}</div><div class="mt">${esc(p.size||"")} • <b>${esc(p.price||"")}</b></div><span class="st ${p.status}">${p.status}</span><div class="acts" data-id="${esc(p.id)}"><button data-a="edit">✏ Edit</button><button data-a="del">🗑 Delete</button></div></div></div>`).join("");
-  $("#g-main").innerHTML=`<h2>Namaste, ${esc(AG.name)} 👋</h2><p class="sub">📞 ${esc(AG.mobile)} • 📍 ${esc(an(AG.area||""))}</p>
-  <div class="gstat"><div><b>${mine.length}</b>Meri Properties</div><div><b>${mine.filter(p=>p.status==="approved").length}</b>Website par Live</div></div>
-  <div class="atabs"><button id="gAdd" style="background:var(--green)">➕ Nayi Property</button><button id="gOut" style="background:#d92d3a">Logout</button></div>
-  <div id="g-list">${rows||`<div class="empty">Abhi koi property nahi. "Nayi Property" dabakar apni pehli property daalein.</div>`}</div>`;
-  $("#gAdd").onclick=()=>propForm(null,AG,renderAgent);
-  $("#gOut").onclick=async()=>{if(fauth)await fauth.signOut();AG=null;showAgent()};
-  document.querySelectorAll("#g-list .acts button").forEach(b=>b.onclick=async()=>{
-    const id=b.parentElement.dataset.id,p=PROPS.find(x=>x.id===id);
-    if(!p||p.agentId!==AG.id)return;
-    if(b.dataset.a==="edit")return propForm(p,AG,renderAgent);
-    if(!confirm("Pakka delete karein?"))return;
-    await Store.remove(id);PROPS=await Store.list();renderAgent();toast("Delete ho gaya");
-  });
-}
-async function renderAgentsAdmin(){
-  const list=(await Agents.list()).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-  $("#a-list").innerHTML=list.length?list.map(a=>{const n=PROPS.filter(p=>p.agentId===a.id).length;return `<div class="ar"><div class="in"><h4>🧑‍💼 ${esc(a.name)}</h4><div class="mt">📞 ${esc(a.mobile)} • 📍 ${esc(a.area||"-")}</div><div class="mt">Properties: <b>${n}</b></div><span class="st ${a.blocked?"rejected":"approved"}">${a.blocked?"blocked":"active"}</span><div class="acts" data-id="${esc(a.id)}"><button data-a="blk">${a.blocked?"✅ Unblock":"⛔ Block"}</button><button data-a="wa">💬 WhatsApp</button><button data-a="del">🗑 Delete</button></div></div></div>`}).join(""):`<div class="empty">Abhi koi agent register nahi hua.</div>`;
-  $("#a-list").insertAdjacentHTML("afterbegin",`<form class="fm" id="invForm" style="margin-bottom:14px"><label>Naye Agent ka Mobile Number</label><input id="inv_mob" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required><button class="pbtn g" type="submit">✉ Invitation Banayein</button><div id="invOut"></div></form>`);
-  $("#invForm").onsubmit=async ev=>{ev.preventDefault();
-    const mob=$("#inv_mob").value;
-    try{const code=await createInvite(mob);
-      const msg=`NK Properties Agent invitation\nWebsite: ${location.origin}${location.pathname}#agent\nCode: ${code}\n7 din tak, sirf ek baar.`;
-      $("#invOut").innerHTML=`<p class="note" style="word-break:break-all">Code: <b>${code}</b></p><a class="pbtn g wa" style="display:block;text-align:center" target="_blank" rel="noopener" href="${esc(`https://wa.me/91${mob}?text=${encodeURIComponent(msg)}`)}">WhatsApp par bhejein</a>`;
-    }catch(err){toast("Invitation nahi bana: "+(err.code||err.message))}
-  };
-  document.querySelectorAll("#a-list .acts button").forEach(b=>b.onclick=async()=>{
-    const a=list.find(x=>x.id===b.parentElement.dataset.id);if(!a)return;
-    if(b.dataset.a==="wa")return window.open(`https://wa.me/91${String(a.mobile).replace(/\D/g,"").slice(-10)}`,"_blank");
-    if(b.dataset.a==="del"){if(!confirm("Agent delete karein?"))return;await Agents.del(a.id)}
-    else{a.blocked=!a.blocked;await Agents.put(a)}
-    renderAgentsAdmin();toast("Ho gaya");
-  });
-}
-
-/* ============ AI assistant (rule based, offline) ============ */
-const CH={
-  type:{plot:["plot","प्लॉट","प्लाट"],house:["makaan","makan","ghar","house","villa","flat","bhk","मकान","घर","विला"],agri:["zameen","zamin","jamin","khet","krishi","agri","farm","land","bigha","bhoomi","bhumi","ज़मीन","जमीन","खेत","कृषि","भूमि","बीघा"],shop:["dukaan","dukan","shop","commercial","store","godown","दुकान"]},
-  rent:["kiraya","kiraye","rent","किराया","किराए","किराये"],
-  buy:["kharid","khareed","buy","purchase","for sale","खरीद"],
-  alias:{Uniara:["uniyara","uniara","उनियारा"],Aligarh:["aligarh","alighar","अलीगढ़","अलीगढ"],Tonk:["tonk","टोंक"],Jaipur:["jaipur","जयपुर"],"Sawai Madhopur":["sawai","madhopur","सवाई"],Karwar:["karwar","करवर"],Indergarh:["indergarh","इंदरगढ़","इंदरगढ"]}
-};
-const normD=s=>String(s).replace(/[०-९]/g,c=>"०१२३४५६७८९".indexOf(c));
-const UNIT_RE="(crore|cr|करोड़|करोड|lakhs?|lacs?|lac|लाख|hazaar|hazar|हजार|हज़ार|thousand|k)(?![a-z])";
-const unitMult=u=>{u=u.toLowerCase();if(/^(crore|cr|करोड़|करोड)$/.test(u))return 1e7;if(/^(lakhs?|lacs?|lac|लाख)$/.test(u))return 1e5;return 1e3};
-function amtFrom(s,needUnit){
-  s=normD(s).replace(/,/g,"");
-  let m=s.match(new RegExp("(\\d+(?:\\.\\d+)?)\\s*"+UNIT_RE,"i"));
-  if(m)return parseFloat(m[1])*unitMult(m[2]);
-  if(needUnit){m=s.match(/\d{5,}/);return m?parseInt(m[0],10):null}
-  m=s.match(/\d+(?:\.\d+)?/);return m?parseFloat(m[0]):null;
-}
-function findArea(x){return S.areas.find(a=>[a.toLowerCase(),...(CH.alias[a]||[])].some(w=>x.includes(w)))}
-function chatReply(text,rl){
-  const T=k=>TR[k][LI[rl]];
-  const x=normD(text).toLowerCase();
-  const has=l=>l.some(w=>x.includes(w));
-  const wa=(msg)=>({k:"wa",label:T("c_wabtn"),wa:msg});
-  if(/(bech|bikwa|\bsell\b|बेच)/.test(x))return {text:T("c_sell"),acts:[{k:"sell",label:TR.rg_sell[LI[rl]]}]};
-  if(/(agent|एजेंट|ejent)/.test(x))return {text:T("c_agent"),acts:[{k:"agent",label:TR.m_agent[LI[rl]]}]};
-  const ty=Object.keys(CH.type).find(k=>has(CH.type[k]));
-  const pu=has(CH.rent)?"rent":has(CH.buy)?"buy":null;
-  const ar=findArea(x);
-  const bud=amtFrom(x,true);
-  const wantsList=/(property|dikhao|dikha|show|chahiye|dhoond|find|batao|प्रॉपर्टी|दिखाओ|चाहिए|खोज|list)/.test(x);
-  const search=()=>{
-    const up=/(above|se zyada|se jyada|se upar|से ज्यादा|से ज़्यादा|ऊपर|से अधिक)/.test(x);
-    const rows=PROPS.filter(p=>p.status==="approved"&&(!ty||p.type===ty)&&(!pu||p.purpose===pu)&&(!ar||p.area===ar)&&(()=>{if(!bud)return true;const pv=amtFrom(p.price||"",false);return pv==null||(up?pv>=bud:pv<=bud)})()).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-    if(!rows.length)return {text:T("c_none"),acts:[wa("Mujhe property chahiye: "+text)]};
-    const acts=[];
-    if(rows.length>4)acts.push({k:"list",label:T("c_allbtn"),f:{t:ty||"all",a:ar||"all",p:pu||"all"}});
-    acts.push(wa("Mujhe property chahiye: "+text));
-    return {text:T("c_found").replace("{n}",rows.length),props:rows.slice(0,4),acts};
-  };
-  if(ty||pu||bud)return search();
-  if(/(call|phone|number|whatsapp|contact|sampark|संपर्क|नंबर|फोन|कॉल)/.test(x))return {text:T("c_contact").replace("{ph}",S.phone),acts:[wa()]};
-  if(!ar&&/(kahan|kahaan|address|location|office|map|कहाँ|कहां|पता|लोकेशन)/.test(x))return {text:T("c_loc").replace("{areas}",S.areas.map(an).join(", "))};
-  if(ar||wantsList)return search();
-  if(/^\s*(hi+|hello|hey|namaste|namaskar|ram ram|नमस्ते|नमस्कार)(?![a-z])/i.test(x))return {text:T("c_greet")};
-  if(/(thanks|thank|shukriya|dhanyavad|धन्यवाद|शुक्रिया)/.test(x))return {text:T("c_thx")};
-  return {text:T("c_fb"),acts:[wa(text)]};
-}
-function openChat(){
-  const m=modal(`<h3>🤖 ${t("ai_h")}</h3><div class="chat" id="chatBox"></div><div class="qchips" id="qch"></div><form class="chatin" id="chatForm"><input id="chatIn" autocomplete="off" placeholder="${esc(t("c_ph"))}"><button type="submit">${t("c_send")}</button></form>`);
-  const box=m.querySelector("#chatBox"),inp=m.querySelector("#chatIn");
-  const say=(who,html)=>{const d=document.createElement("div");d.className="msg "+who;d.innerHTML=html;box.appendChild(d);box.scrollTop=box.scrollHeight;return d};
-  const botSay=r=>{
-    const d=say("bot",esc(r.text));
-    (r.props||[]).forEach(p=>{const c=document.createElement("div");c.className="mini";c.innerHTML=`<b>${esc(p.title)}</b><em>${esc(p.price||t("d_ask"))}</em><br><span>📍 ${esc(p.village?p.village+", ":"")}${esc(an(p.area))} • ${p.purpose==="rent"?t("c_rent"):t("c_buy")}${p.size?" • "+esc(p.size):""}</span>`;c.onclick=()=>openDetail(p.id);d.appendChild(c)});
-    (r.acts||[]).forEach(a=>{const b=document.createElement("button");b.type="button";b.className="pbtn"+(a.k==="wa"?" g":"");b.style.cssText="margin-top:8px;padding:10px;font-size:15px";b.textContent=a.label;
-      b.onclick=()=>{
-        if(a.k==="wa")return window.open(waLink(a.wa),"_blank");
-        m.remove();
-        if(a.k==="list"){fType=a.f.t;fArea=a.f.a;fPur=a.f.p}
-        go(a.k==="agent"?"agent":a.k==="sell"?"sell":"list");
-      };d.appendChild(b)});
-    box.scrollTop=box.scrollHeight;
-  };
-  const send=txt=>{txt=String(txt).trim();if(!txt)return;say("me",esc(txt));inp.value="";const rl=(/[\u0900-\u097F]/.test(txt)&&lang==="hing")?"hi":lang;setTimeout(()=>botSay(chatReply(txt,rl)),300)};
-  m.querySelector("#chatForm").onsubmit=e=>{e.preventDefault();send(inp.value)};
-  botSay({text:t("c_greet")});
-  m.querySelector("#qch").innerHTML=t("c_chips").split("|").map(s=>`<button type="button">${esc(s)}</button>`).join("");
-  m.querySelectorAll("#qch button").forEach(b=>b.onclick=()=>send(b.textContent));
-}
-
-/* ============ routing ============ */
-function go(h){if(location.hash==="#"+h)route();else location.hash="#"+h}
-function setTab(p){purpose=p;document.querySelectorAll("#ptabs button").forEach(x=>x.classList.toggle("on",x.dataset.p===p))}
-function route(){
-  const h=(location.hash||"#home").slice(1);
-  ["home","list","sell","admin","agent"].forEach(v=>$("#v-"+v).classList.toggle("hide",v!==h));
-  $("#menu").classList.add("hide");
-  if(h==="home"&&purpose==="sell")setTab("buy");
-  window.scrollTo(0,0);
-  if(h==="list")renderList();
-  if(h==="admin")showAdmin();
-  if(h==="agent")showAgent();
-  if(!["home","list","sell","admin","agent"].includes(h))location.hash="#home";
-}
-window.addEventListener("hashchange",route);
-
-/* ============ boot ============ */
-async function boot(){
-  const ha=$("#heroArt");ha.innerHTML=`<img src="${PHOTO.hero}" alt="NK Properties">`;
-  ha.firstChild.onerror=()=>{ha.innerHTML=houseSVG()};
-  await Store.init();
-  S=await Store.settings();PROPS=await Store.list().catch(()=>[]);
-  try{localStorage.removeItem("nk_apass");localStorage.removeItem("nk_agents");sessionStorage.removeItem("nk_admin");sessionStorage.removeItem("nk_agent")}catch(e){}
-  if(Store.mode==="firebase"){fauth.onAuthStateChanged(async u=>{
-    if(agBusy)return; // register / login ke beech mein state na badlein
-    let admin=false,agent=null;
-    if(u&&u.email){
-      if(u.email.endsWith(AG_DOMAIN)){try{const d=await fdb.collection("agents").doc(u.uid).get();if(d.exists&&!d.data().blocked)agent={...d.data(),id:d.id}}catch(e){}}
-      else admin=await isAdminUser(u);
-    }
-    isAdmin=admin;AG=agent;
-    // login badalne par list dobara laao (admin ko pending bhi dikhni chahiye)
-    try{PROPS=await Store.list()}catch(e){}
-    const h=location.hash||"";if(h==="#admin")showAdmin();if(h==="#agent")showAgent();if(h==="#list")renderList();
-  })}
-  initSell();applyLang();
-  document.querySelectorAll(".langbar button").forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem("nk_lang",lang)}catch(e){}applyLang()});
-  document.querySelectorAll("#ptabs button").forEach(b=>b.onclick=()=>{setTab(b.dataset.p);if(purpose==="sell")go("sell")});
-  document.querySelectorAll('#menu a[href="#list"]').forEach(a=>a.onclick=e=>{e.preventDefault();fType="all";fArea="all";fPur="all";go("list")});
-  // Search Properties: open the live property results using the selected Buy/Rent tab.
-  const searchButton=$("#btnSearch");
-  if(searchButton){
-    searchButton.addEventListener("click",e=>{
-      e.preventDefault();
-      if(purpose==="sell"){go("sell");return;}
-      fType="all";
-      fArea="all"; // Location selector is intentionally hidden in the compact search panel.
-      fPur=purpose;
-      go("list");
-      // If already on the results page, refresh the results immediately.
-      if((location.hash||"")==="#list")renderList();
     });
+
+    // Realtime Listener: Agents
+    onSnapshot(collection(db, "agents"), (snap) => {
+      state.agents = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      if (state.currentUser) {
+        renderAgentDashboard();
+        renderAdminDashboard();
+      }
+    });
+
+    // Realtime Listener: Leads
+    onSnapshot(query(collection(db, "leads"), orderBy("createdAt", "desc")), (snap) => {
+      state.leads = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      if (state.currentUser) renderAdminDashboard();
+    });
+
+    // Auth State Listener
+    onAuthStateChanged(auth, async (user) => {
+      state.currentUser = user;
+      if (user) {
+        if (user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+          document.getElementById("adminLoginBox").classList.add("hide");
+          document.getElementById("adminDash").classList.remove("hide");
+          renderAdminDashboard();
+        } else {
+          const agSnap = await getDoc(doc(db, "agents", user.uid));
+          state.currentAgentProfile = agSnap.exists() ? { id: agSnap.id, ...agSnap.data() } : null;
+          document.getElementById("agentAuthBox").classList.add("hide");
+          document.getElementById("agentDash").classList.remove("hide");
+          renderAgentDashboard();
+        }
+      } else {
+        document.getElementById("adminLoginBox").classList.remove("hide");
+        document.getElementById("adminDash").classList.add("hide");
+        document.getElementById("agentAuthBox").classList.remove("hide");
+        document.getElementById("agentDash").classList.add("hide");
+      }
+    });
+  } catch (err) {
+    console.error("Firebase init error:", err);
+    loadLocalFallback();
   }
-  $("#viewAll").onclick=()=>{fType="all";fArea="all";fPur="all";go("list")};
-  document.querySelectorAll(".trust [data-go]").forEach(d=>d.onclick=()=>{fType="all";fArea="all";fPur="all";go("list")});
-  $("#waTrust").onclick=()=>window.open(waLink(),"_blank");
-  $("#aiBtn").onclick=openChat;
-  $("#mloc").onclick=()=>setTimeout(()=>$("#locSec").scrollIntoView({behavior:"smooth"}),60);
-  $("#burger").onclick=e=>{e.stopPropagation();$("#menu").classList.toggle("hide")};
-  document.addEventListener("click",e=>{if(!e.target.closest("#menu"))$("#menu").classList.add("hide")});
-  $("#regBtn").onclick=()=>modal(`<h3>${t("rg_h")}</h3><p style="margin:8px 0 4px;color:#6b7794">${t("rg_p")}</p><div class="row" style="flex-direction:column"><button class="pbtn" id="mSell" style="margin-top:6px">${t("rg_sell")}</button><button class="pbtn g" id="mAgent" style="margin-top:6px">${t("rg_agent")}</button><button class="pbtn y" id="mAdm" style="margin-top:6px">${t("rg_admin")}</button></div>`);
-  document.body.addEventListener("click",e=>{
-    if(e.target.id==="mSell"){document.querySelector(".mo")?.remove();go("sell")}
-    if(e.target.id==="mAdm"){document.querySelector(".mo")?.remove();go("admin")}
-    if(e.target.id==="mAgent"){document.querySelector(".mo")?.remove();go("agent")}
-  });
-  $("#loginForm").onsubmit=async e=>{e.preventDefault();
-    try{const ok=await adminLogin($("#a_phone").value,$("#a_pass").value);
-      if(!ok)return toast("Number ya password galat hai");
-      showAdmin();toast("Login ho gaya")}
-    catch(err){toast("Login fail: "+(err.code||err.message))}};
-  route();
+} else {
+  loadLocalFallback();
 }
-boot();
-</script>
-</body>
-</html>
+
+/* ===================================================================
+   UI NAVIGATION & HELPERS
+   =================================================================== */
+window.showView = (name) => {
+  ["home", "sell", "agent", "admin"].forEach(v => {
+    document.getElementById("view-" + v).classList.toggle("hide", v !== name);
+  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+window.toggleMenu = () => {
+  document.getElementById("navMenu").classList.toggle("hide");
+};
+
+window.toast = (msg) => {
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.remove("hide");
+  clearTimeout(window._tTimer);
+  window._tTimer = setTimeout(() => el.classList.add("hide"), 3200);
+};
+
+// Image Compressor (Base64 under ~150KB so Firestore doc limit never exceeds)
+window.handleImages = (input, target) => {
+  const files = Array.from(input.files).slice(0, 3 - state.tempPhotos[target].length);
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const maxW = 720;
+        const scale = Math.min(1, maxW / img.width);
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+        state.tempPhotos[target].push(canvas.toDataURL("image/jpeg", 0.65));
+        renderPhotoThumbs(target);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value = "";
+};
+
+function renderPhotoThumbs(target) {
+  const container = document.getElementById(target === "cust" ? "custPhotos" : "agPhotos");
+  const addBtn = container.querySelector(".addph");
+  container.querySelectorAll(".ph").forEach(el => el.remove());
+  state.tempPhotos[target].forEach((src, idx) => {
+    const div = document.createElement("div");
+    div.className = "ph";
+    div.innerHTML = `<img src="${src}"><b onclick="removePhoto('${target}',${idx})">×</b>`;
+    container.insertBefore(div, addBtn);
+  });
+}
+
+window.removePhoto = (target, idx) => {
+  state.tempPhotos[target].splice(idx, 1);
+  renderPhotoThumbs(target);
+};
+
+/* ===================================================================
+   CUSTOMER PANEL: SEARCH, FILTER & RENDER
+   =================================================================== */
+window.setPurpose = (p, btn) => {
+  state.purpose = p;
+  document.querySelectorAll("#ptabs button").forEach(b => b.classList.remove("on"));
+  btn.classList.add("on");
+  renderProperties();
+};
+
+window.quickCat = (cat) => {
+  document.getElementById("fCat").value = cat;
+  renderProperties(true);
+};
+
+window.quickArea = (area, btn) => {
+  document.getElementById("fArea").value = area;
+  document.querySelectorAll("#areaPills button").forEach(b => b.classList.remove("on"));
+  if (btn) btn.classList.add("on");
+  renderProperties(true);
+};
+
+window.resetFilters = () => {
+  state.purpose = "all";
+  document.querySelectorAll("#ptabs button").forEach((b, i) => b.classList.toggle("on", i === 0));
+  document.getElementById("fArea").value = "all";
+  document.getElementById("fCat").value = "all";
+  renderProperties();
+};
+
+window.renderProperties = (scrollToResults = false) => {
+  const area = document.getElementById("fArea").value;
+  const cat = document.getElementById("fCat").value;
+
+  const filtered = state.properties.filter(p => {
+    if (p.status !== "approved") return false;
+    if (state.purpose !== "all" && p.purpose !== state.purpose) return false;
+    if (area !== "all" && p.area !== area) return false;
+    if (cat !== "all" && p.category !== cat) return false;
+    return true;
+  });
+
+  const grid = document.getElementById("propGrid");
+  const empty = document.getElementById("emptyState");
+  document.getElementById("listHeading").textContent = `उपलब्ध प्रॉपर्टी (${filtered.length})`;
+
+  if (!filtered.length) {
+    grid.innerHTML = "";
+    empty.classList.remove("hide");
+  } else {
+    empty.classList.add("hide");
+    grid.innerHTML = filtered.map(p => `
+      <article class="pc" onclick="openModal('${p.id}')">
+        <div class="im">
+          ${p.photos && p.photos[0] ? `<img src="${p.photos[0]}" alt="${p.title}">` : `<span>${p.category === 'Plot' ? '📐' : p.category === 'Makaan' ? '🏠' : p.category === 'Dukaan' ? '🏪' : '🌾'}</span>`}
+          <span class="tag ${p.purpose === 'rent' ? 'rent' : ''}">${p.purpose === 'rent' ? 'किराया' : 'बिक्री'}</span>
+          <span class="tag cat-t">${p.category}</span>
+        </div>
+        <div class="bd">
+          <h4>${p.title}</h4>
+          <div class="pr">${p.price}</div>
+          <div class="mt">
+            <span>📍 ${p.area} • ${p.size}</span>
+            <span style="color:#1457d6;font-weight:700">डिटेल देखें ›</span>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  if (scrollToResults) {
+    document.getElementById("listHeading").scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+/* ===================================================================
+   PROPERTY DETAIL MODAL & INQUIRY
+   =================================================================== */
+window.openModal = (id) => {
+  const p = state.properties.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById("mTitle").textContent = p.title;
+  document.getElementById("mPrice").textContent = p.price;
+  document.getElementById("mDesc").textContent = p.description || "";
+  document.getElementById("inqPropId").value = p.id;
+  document.getElementById("inqPropTitle").value = p.title;
+
+  const gal = document.getElementById("mGal");
+  gal.innerHTML = (p.photos && p.photos.length)
+    ? p.photos.map(src => `<img src="${src}">`).join("")
+    : "";
+
+  document.getElementById("mKv").innerHTML = `
+    <span>प्रकार:</span><b>${p.category} (${p.purpose === 'rent' ? 'किराया' : 'बिक्री'})</b>
+    <span>क्षेत्र:</span><b>${p.area}</b>
+    <span>लोकेशन:</span><b>${p.location}</b>
+    <span>साइज़:</span><b>${p.size}</b>
+    <span>पोस्टकर्ता:</span><b>${p.ownerName}</b>
+  `;
+
+  const phone = p.phone || "9829000000";
+  document.getElementById("mCallBtn").href = `tel:+91${phone}`;
+  document.getElementById("mWaBtn").href = `https://wa.me/91${phone}?text=${encodeURIComponent("Namaste, mujhe is property me ruchi hai: " + p.title + " (" + p.area + ")")}`;
+
+  document.getElementById("propModal").classList.remove("hide");
+};
+
+window.closeModal = () => {
+  document.getElementById("propModal").classList.add("hide");
+};
+
+window.submitInquiry = async (e) => {
+  e.preventDefault();
+  const lead = {
+    propId: document.getElementById("inqPropId").value,
+    propTitle: document.getElementById("inqPropTitle").value,
+    name: document.getElementById("inqName
